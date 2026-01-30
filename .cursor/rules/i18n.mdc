@@ -1,0 +1,13 @@
+---
+description: i18n French/Spanish — all user-facing text via vue-i18n
+globs: "**/*.vue,**/locales/**"
+alwaysApply: false
+---
+
+# i18n (fr / es)
+
+- **Locales**: French (fr) and Spanish (es) only. All user-facing text must go through i18n.
+- **Templates**: Use `$t('key')` or `$t('key', { param })`; never hardcode fr/es strings in templates.
+- **Script**: Use `useI18n()` and keep the i18n object (e.g. `const i18n = useI18n(); i18n.t('key')`). Prefer computed for translated strings.
+- **Keys**: Organize by section (e.g. `hero.title`, `footer.copyright`). Keep keys in `src/locales/` (fr.json, es.json or equivalent).
+- **Default/fallback**: Set a default locale (e.g. fr); document fallback in CLAUDE.md/README.

@@ -1,0 +1,11 @@
+---
+description: Core project standards for a-orixe
+alwaysApply: true
+---
+
+# a-orixe project standards
+
+- Prefer project conventions defined in **CLAUDE.md** (tech stack, style, commands).
+- Follow patterns already used in the codebase; avoid introducing new styles without reason.
+- Keep changes focused; one concern per commit or change set when possible.
+- When adding dependencies or scripts, document them in README or CLAUDE.md.

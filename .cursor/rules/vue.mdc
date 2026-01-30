@@ -1,0 +1,15 @@
+---
+description: Vue 3 patterns for a-orixe (Composition API, single page, SSG, GSAP, Lenis)
+globs: "**/*.vue"
+alwaysApply: false
+---
+
+# Vue 3 (a-orixe)
+
+- Use **Composition API** only: `<script setup lang="ts">`. No Options API or `this`.
+- Type props and emits: `defineProps<{ ... }>()`, `defineEmits<{ ... }>()`.
+- Use `:key` on any `v-for`. Never put `v-if` and `v-for` on the same element.
+- **Animations**: **GSAP** (timelines, ScrollTrigger for scroll-driven effects). Run only on the client: inside `onMounted` or a composable after mount, or wrap in `<ClientOnly>`.
+- **Smooth scroll**: **Lenis** — init in `onMounted` or a composable; destroy in `onUnmounted`. Sync with ScrollTrigger via `lenis.on('scroll', () => ScrollTrigger.update())` if using both.
+- SCSS: use `@use` only, never `@import`. Use scoped styles; `:deep()` when needed.
+- Single long page: no Vue Router; structure by sections/components. App entry exports `createApp` (vite-ssg), not direct mount.
