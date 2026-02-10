@@ -1,0 +1,39 @@
+{
+  "meta": { "language": "ES" },
+  "site": {
+    "title": "A Orixe",
+    "desktopTitle": "DESKTOP - A ORIXE – 28"
+  },
+  "hero": {
+    "title": "« A Orixe »",
+    "subtitle": "el secreto mejor guardado de Galicia"
+  },
+  "credits": {
+    "by": "Por Florence Antunes",
+    "authorRole": "arquitectura narrativa, gestión de proyecto.",
+    "publishedOn": "Publicado el: 20 de febrero de 2026",
+    "artDirection": "Dirección artística e identidad visual: Marc Lafon",
+    "illustration": "Ilustración original: Ludivine Maréchal",
+    "devDesign": "Desarrollo y diseño interactivo: Daniele Tabanella"
+  },
+  "intro": {
+    "heading": "INTRO",
+    "paragraph": "En Galicia, un recorrido aún muy discreto se ha abierto un hueco a la sombra de los grandes caminos de Compostela. En esta región del noroeste de España, el camino « A Orixe » se abre paso entre pinares, dunas inmaculadas, senderos costeros, puertos pesqueros, pueblos y aldeas rurales. Una ruta peatonal de 135 km, reconocida solo desde 2021, que ofrece una inmersión inédita y privilegiada en el corazón de una Galicia auténtica y preservada. Pero « A Orixe » solo existe gracias al trabajo callado de un puñado de apasionados.",
+    "subheading": "Una pasión naciente llamada camino"
+  },
+  "labeur": {
+    "heading": "LABOR"
+  },
+  "citation": {
+    "heading": "CITA"
+  },
+  "sousTitre": {
+    "heading": "SUBTÍTULO"
+  },
+  "encadrementFonce": {
+    "heading": "RECUADRO OSCURO"
+  },
+  "legendeImage": {
+    "label": "LEYENDA DE IMAGEN"
+  }
+}

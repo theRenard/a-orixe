@@ -1,30 +1,47 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import LanguageSelector from './components/LanguageSelector.vue'
+import HeroSection from './components/HeroSection.vue'
+import CreditsSection from './components/CreditsSection.vue'
+import IntroSection from './components/IntroSection.vue'
+</script>
 
 <template>
   <div class="app-root">
-    <h1 class="text-intro">A Orixe</h1>
-    <p class="text-labeur">
-      Design tokens from
-      <a
-        href="https://xd.adobe.com/view/cfc3d8df-bdf8-4d75-ab82-e32cb595b6dd-9a90/specs/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >Adobe XD</a>
-      are loaded in <code>src/styles/design-tokens.css</code>.
-    </p>
+    <LanguageSelector />
+    <main>
+      <HeroSection />
+      <CreditsSection />
+      <IntroSection />
+    </main>
   </div>
 </template>
 
 <style scoped>
 .app-root {
-  max-width: 40rem;
-  margin: 0 auto;
-  padding: 2rem;
-  background: var(--color-cream);
+  position: relative;
+  width: 100%;
   min-height: 100vh;
+}
+
+.app-root::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: url('./assets/fond_texture.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .app-root :deep(a) {
   color: var(--color-orange);
+}
+</style>
+
+<style>
+html,
+body {
+  min-height: 100%;
 }
 </style>

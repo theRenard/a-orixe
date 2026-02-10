@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "language": "FR"
+  },
+  "site": {
+    "title": "A Orixe",
+    "desktopTitle": "DESKTOP - A ORIXE – 28"
+  },
+  "hero": {
+    "title": "« A Orixe »",
+    "subtitle": "le secret le mieux gardé de Galice"
+  },
+  "credits": {
+    "by": "Par Florence Antunes",
+    "authorRole": "architecture narrative, gestion de projet.",
+    "publishedOn": "Publié le: 20 février 2026",
+    "artDirection": "Direction artistique et identité visuelle: Marc Lafon",
+    "illustration": "Illustration originale: Ludivine Maréchal",
+    "devDesign": "Développement & Design interactif: Daniele Tabanella"
+  },
+  "intro": {
+    "heading": "INTRO",
+    "paragraph": "En Galice, un parcours encore très confidentiel s'est fait une place à l'ombre des grands chemins de Compostelle. Dans cette région du nord-ouest de l'Espagne, el camino « A Orixe » se faufile entre pinèdes, dunes immaculées, sentiers côtiers, ports de pêche, villages et hameaux ruraux. Une route pédestre de 135 km, reconnue depuis 2021 seulement, qui offre une plongée inédite et privilégiée au cœur d'une Galice authentique et préservée. Mais « A Orixe » n'existe que grâce au travail de fourmi d'une poignée de passionnés.",
+    "subheading": "Une passion naissante nommée camino"
+  },
+  "labeur": {
+    "heading": "LABEUR"
+  },
+  "citation": {
+    "heading": "CITATION"
+  },
+  "sousTitre": {
+    "heading": "SOUS-TITRE"
+  },
+  "encadrementFonce": {
+    "heading": "ENCADREMENT FONCÉ"
+  },
+  "legendeImage": {
+    "label": "LEGENDE IMAGE"
+  }
+}
