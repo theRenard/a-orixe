@@ -23,10 +23,13 @@
     "devDesignPrefix": "Développement & Design interactif : ",
     "devDesignName": "Daniele Tabanella"
   },
-  "intro": {
-    "heading": "INTRO",
+  "camino": {
+    "title": "Une passion naissante nommée camino",
     "paragraph": "En Galice, un parcours encore très confidentiel s'est fait une place à l'ombre des grands chemins de Compostelle. Dans cette région du nord-ouest de l'Espagne, el camino « A Orixe » se faufile entre pinèdes, dunes immaculées, sentiers côtiers, ports de pêche, villages et hameaux ruraux. Une route pédestre de 135 km, reconnue depuis 2021 seulement, qui offre une plongée inédite et privilégiée au cœur d'une Galice authentique et préservée. Mais « A Orixe » n'existe que grâce au travail de fourmi d'une poignée de passionnés.",
-    "subheading": "Une passion naissante nommée camino"
+    "paragraph1": "Des pèlerins, Manuel Mariño Nin en a probablement croisé plusieurs milliers. Depuis 1995, le Galicien, viscéralement attaché à sa terre, est hospitalier sur le chemin de Saint-Jacques de Compostelle. Employé de la Xunta de Galicia (gouvernement régional de la communauté autonome de Galice), Manuel Mariño Nin a accueilli pendant 18 ans des pèlerins logés dans l'auberge la plus importante du chemin français (el camino francés): Monte do Gozo.",
+    "paragraph2": "Les années saintes (lorsque le 25 juillet, fête de Saint-Jacques, tombe un dimanche) jusqu'à 800 pèlerins se pressent dans cette auberge nichée sur une colline de Santiago. Le reste du temps, ils sont 400 à pouvoir y être hébergés.",
+    "quote": "Depuis que j'ai commencé à accueillir les pèlerins arrivant à Compostelle, je me suis immergé dans tout ce que représente le chemin: son histoire, ses valeurs, l'empathie, la solidarité, l'effort des pèlerins, le respect de leurs motivations",
+    "quoteAuthor": "raconte Manuel Mariño Nin"
   },
   "labeur": {
     "heading": "LABEUR"

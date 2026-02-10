@@ -20,6 +20,13 @@ Single long-page website with Vue 3, programmatic animations, and bilingual cont
 - **TypeScript**: Preferred for `.ts`/`.vue` logic.
 - **Tooling**: ESLint, Prettier (align with Vue/TS).
 
+## Mobile route and redirect
+
+- **Default**: `/` shows the desktop layout (full sections, hero illustration, etc.).
+- **Mobile**: `/mobile` shows the mobile layout; live under `src/views/mobile/` (e.g. `MobileView.vue`).
+- **Redirect logic**: A router guard uses `useMobileDetection` (viewport width ≤768px or mobile user-agent) to send small screens to `/mobile` and desktop to `/`. Implemented in `src/composables/useMobileDetection.ts` (native `matchMedia` + `navigator.userAgent`); no extra dependency.
+- **Override for testing**: `?desktop=1` on any path forces desktop; `?mobile=1` forces mobile.
+
 ## Key directories
 
 ```
@@ -27,9 +34,12 @@ Single long-page website with Vue 3, programmatic animations, and bilingual cont
 ├── src/
 │   ├── assets/          # Images, fonts, static assets
 │   ├── components/      # Vue components (sections, UI bits)
-│   ├── composables/     # Reusable logic (e.g. useScrollAnimation)
+│   ├── composables/     # Reusable logic (e.g. useMobileDetection)
 │   ├── locales/         # i18n: fr.json, es.json (or .ts)
 │   ├── styles/          # Global SCSS (variables, mixins)
+│   ├── views/
+│   │   ├── mobile/      # Mobile route view and mobile-only components
+│   │   └── ...
 │   ├── App.vue
 │   └── main.ts
 ├── public/

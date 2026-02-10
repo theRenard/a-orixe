@@ -79,6 +79,17 @@
   color: var(--color-black);
 }
 
+/** Citation attribution (italic, smaller) */
+.text-citation-attribution {
+  font-family: var(--font-family-ubuntu);
+  font-style: var(--font-style-italic);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-black);
+}
+
 /** Section subtitle (Fraunces, orange) */
 .text-sous-titre {
   font-family: var(--font-family-fraunces);

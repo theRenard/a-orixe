@@ -1,20 +1,12 @@
 <script setup lang="ts">
-import LanguageSelector from './components/LanguageSelector.vue'
-import HeroIllustration from './components/HeroIllustration.vue'
-import HeroSection from './components/HeroSection.vue'
-import CreditsSection from './components/CreditsSection.vue'
-import IntroSection from './components/IntroSection.vue'
+import LanguageSelector from '@/components/LanguageSelector.vue'
+import { RouterView } from 'vue-router'
 </script>
 
 <template>
   <div class="app-root">
     <LanguageSelector />
-    <main>
-      <HeroIllustration />
-      <HeroSection />
-      <CreditsSection />
-      <IntroSection v-if="false" />
-    </main>
+    <RouterView />
   </div>
 </template>
 
@@ -22,7 +14,7 @@ import IntroSection from './components/IntroSection.vue'
 .app-root {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: 100vh !important;
 }
 
 .app-root::before {

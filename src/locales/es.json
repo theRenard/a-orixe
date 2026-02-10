@@ -1,5 +1,7 @@
 {
-  "meta": { "language": "ES" },
+  "meta": {
+    "language": "ES"
+  },
   "site": {
     "title": "A Orixe",
     "desktopTitle": "DESKTOP - A ORIXE – 28"
@@ -21,10 +23,13 @@
     "devDesignPrefix": "Desarrollo y diseño interactivo : ",
     "devDesignName": "Daniele Tabanella"
   },
-  "intro": {
-    "heading": "INTRO",
+  "camino": {
+    "title": "Una pasión naciente llamada camino",
     "paragraph": "En Galicia, un recorrido aún muy discreto se ha abierto un hueco a la sombra de los grandes caminos de Compostela. En esta región del noroeste de España, el camino « A Orixe » se abre paso entre pinares, dunas inmaculadas, senderos costeros, puertos pesqueros, pueblos y aldeas rurales. Una ruta peatonal de 135 km, reconocida solo desde 2021, que ofrece una inmersión inédita y privilegiada en el corazón de una Galicia auténtica y preservada. Pero « A Orixe » solo existe gracias al trabajo callado de un puñado de apasionados.",
-    "subheading": "Una pasión naciente llamada camino"
+    "paragraph1": "Peregrinos, Manuel Mariño Nin ha cruzado probablemente a varios miles. Desde 1995, el gallego, visceralmente apegado a su tierra, es hospitalario en el camino de Santiago de Compostela. Empleado de la Xunta de Galicia (gobierno regional de la comunidad autónoma de Galicia), Manuel Mariño Nin ha acogido durante 18 años a peregrinos alojados en el albergue más importante del camino francés (el camino francés): Monte do Gozo.",
+    "paragraph2": "En los años santos (cuando el 25 de julio, fiesta de Santiago, cae en domingo) hasta 800 peregrinos se agolpan en este albergue enclavado en una colina de Santiago. El resto del tiempo, 400 pueden alojarse allí.",
+    "quote": "Desde que empecé a acoger a los peregrinos que llegaban a Compostela, me he sumergido en todo lo que representa el camino: su historia, sus valores, la empatía, la solidaridad, el esfuerzo de los peregrinos, el respeto por sus motivaciones",
+    "quoteAuthor": "cuenta Manuel Mariño Nin"
   },
   "labeur": {
     "heading": "LABOR"
