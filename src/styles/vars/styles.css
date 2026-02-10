@@ -1,0 +1,113 @@
+/**
+ * Typography / character styles (use design token variables).
+ */
+
+/** Question text (bold, brown-dark) */
+.text-questions {
+  font-family: var(--font-family-ubuntu);
+  font-style: var(--font-style-normal);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-sm);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-brown-dark);
+}
+
+/** Answer / response text (normal, orange) */
+.text-reponse {
+  font-family: var(--font-family-ubuntu);
+  font-style: var(--font-style-normal);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-sm);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-orange);
+}
+
+/** Image caption / legend (medium, teal) */
+.text-legende-image {
+  font-family: var(--font-family-ubuntu);
+  font-style: var(--font-style-normal);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-text);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-teal-medium);
+}
+
+/** Large display quote (light weight italic, teal-light) */
+.text-display-quote {
+  font-family: var(--font-family-ubuntu);
+  font-style: var(--font-style-italic);
+  font-weight: var(--font-weight-light);
+  font-size: var(--font-size-display);
+  line-height: var(--line-height-display);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-teal-light);
+}
+
+/** Small intro label (Helvetica, gray) */
+.text-m-intro {
+  font-family: var(--font-family-helvetica);
+  font-style: var(--font-style-normal);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-gray);
+}
+
+/** Dark frame / box heading (bold, teal-dark) */
+.text-encadrement-fonce {
+  font-family: var(--font-family-ubuntu);
+  font-style: var(--font-style-normal);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-teal-dark);
+}
+
+/** Block quote / citation (italic bold, black) */
+.text-citation {
+  font-family: var(--font-family-ubuntu);
+  font-style: var(--font-style-italic);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-xl);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-black);
+}
+
+/** Section subtitle (Fraunces, orange) */
+.text-sous-titre {
+  font-family: var(--font-family-fraunces);
+  font-style: var(--font-style-normal);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-3xl);
+  line-height: var(--line-height-lg);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-orange);
+}
+
+/** Intro heading (bold, black) */
+.text-intro {
+  font-family: var(--font-family-ubuntu);
+  font-style: var(--font-style-normal);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-md);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-black);
+}
+
+/** Body / paragraph (labeur – normal, black) */
+.text-labeur {
+  font-family: var(--font-family-ubuntu);
+  font-style: var(--font-style-normal);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-black);
+}

@@ -8,25 +8,27 @@ const { t } = useI18n()
   <section class="credits" aria-label="Crédits">
     <div class="credits__inner">
       <div class="credits__col credits__col--left">
+        <div class="credits__line-accent" aria-hidden="true" />
         <p class="credits__by">
-          {{ t('credits.by') }}
+          {{ t('credits.byPrefix') }}<span class="credits__name">{{ t('credits.byName') }}</span>
         </p>
         <p class="credits__role">
           {{ t('credits.authorRole') }}
         </p>
         <p class="credits__date">
-          {{ t('credits.publishedOn') }}
+          {{ t('credits.publishedOnPrefix') }}<span class="credits__name">{{ t('credits.publishedOnDate') }}</span>
         </p>
       </div>
       <div class="credits__col credits__col--right">
+        <div class="credits__line-accent" aria-hidden="true" />
         <p class="credits__line">
-          {{ t('credits.artDirection') }}
+          {{ t('credits.artDirectionPrefix') }}<span class="credits__name">{{ t('credits.artDirectionName') }}</span>
         </p>
         <p class="credits__line">
-          {{ t('credits.illustration') }}
+          {{ t('credits.illustrationPrefix') }}<span class="credits__name">{{ t('credits.illustrationName') }}</span>
         </p>
         <p class="credits__line">
-          {{ t('credits.devDesign') }}
+          {{ t('credits.devDesignPrefix') }}<span class="credits__name">{{ t('credits.devDesignName') }}</span>
         </p>
       </div>
     </div>
@@ -35,8 +37,8 @@ const { t } = useI18n()
 
 <style scoped>
 .credits {
+  margin-top: 100px;
   width: 100%;
-  padding: 0 1.5rem 2rem;
 }
 
 .credits__inner {
@@ -45,40 +47,63 @@ const { t } = useI18n()
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem 3rem;
+}
+
+.credits__col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
   font-family: var(--font-family-ubuntu);
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-base);
-  color: var(--color-black);
+  font-style: var(--font-style-normal);
+  font-weight: var(--font-weight-normal);
+  font-size: 16px;
+  line-height: 18px;
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-orange);
 }
 
 .credits__col--left {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+  text-align: left;
 }
 
 .credits__col--right {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  justify-content: flex-start;
+  text-align: right;
 }
 
-.credits__by {
-  font-weight: var(--font-weight-bold);
-  margin: 0;
+.credits__line-accent {
+  width: 8rem;
+  height: 4px;
+  background: var(--color-orange);
+  margin-bottom: 0.5rem;
 }
 
+.credits__col--right .credits__line-accent {
+  margin-left: auto;
+}
+
+.credits__by,
 .credits__role,
 .credits__date,
 .credits__line {
   margin: 0;
-  font-weight: var(--font-weight-normal);
+}
+
+.credits__name {
+  font-weight: var(--font-weight-bold);
+  text-decoration: underline;
 }
 
 @media (max-width: 640px) {
   .credits__inner {
     grid-template-columns: 1fr;
+  }
+
+  .credits__col--right {
+    text-align: left;
+  }
+
+  .credits__col--right .credits__line-accent {
+    margin-left: 0;
   }
 }
 </style>

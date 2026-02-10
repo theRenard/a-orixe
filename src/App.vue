@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import LanguageSelector from './components/LanguageSelector.vue'
+import HeroIllustration from './components/HeroIllustration.vue'
 import HeroSection from './components/HeroSection.vue'
 import CreditsSection from './components/CreditsSection.vue'
 import IntroSection from './components/IntroSection.vue'
@@ -9,9 +10,10 @@ import IntroSection from './components/IntroSection.vue'
   <div class="app-root">
     <LanguageSelector />
     <main>
+      <HeroIllustration />
       <HeroSection />
       <CreditsSection />
-      <IntroSection />
+      <IntroSection v-if="false" />
     </main>
   </div>
 </template>
@@ -39,9 +41,3 @@ import IntroSection from './components/IntroSection.vue'
 }
 </style>
 
-<style>
-html,
-body {
-  min-height: 100%;
-}
-</style>

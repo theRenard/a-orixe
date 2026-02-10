@@ -6,15 +6,6 @@ const { t } = useI18n()
 
 <template>
   <section class="hero" aria-labelledby="hero-title">
-    <div class="hero__illustration">
-      <img
-        src="../assets/illustrations/illu_principale_ok.webp"
-        alt=""
-        width="1920"
-        height="1080"
-        fetchpriority="high"
-      >
-    </div>
     <div class="hero__text">
       <h1 id="hero-title" class="hero__title">
         {{ t('hero.title') }}
@@ -22,7 +13,6 @@ const { t } = useI18n()
       <p class="hero__subtitle">
         {{ t('hero.subtitle') }}
       </p>
-      <div class="hero__lines" aria-hidden="true" />
     </div>
   </section>
 </template>
@@ -33,22 +23,9 @@ const { t } = useI18n()
   width: 100%;
 }
 
-.hero__illustration {
-  width: 100%;
-  line-height: 0;
-}
-
-.hero__illustration img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-}
-
 .hero__text {
   text-align: center;
-  padding: 1.5rem 1.5rem 2rem;
-  max-width: 1200px;
+  width: 1030px;
   margin: 0 auto;
 }
 
@@ -58,7 +35,7 @@ const { t } = useI18n()
   font-size: clamp(2.5rem, 8vw, 6.625rem); /* 106px at 1920 */
   line-height: 1.1;
   color: var(--color-brown-dark);
-  margin: 0 0 0.25em;
+  text-align: left;
 }
 
 .hero__subtitle {
@@ -68,20 +45,7 @@ const { t } = useI18n()
   line-height: 1.2;
   color: var(--color-orange);
   margin: 0;
+  text-align: left;
 }
 
-.hero__lines {
-  margin-top: 1rem;
-  display: flex;
-  gap: 0.5rem;
-  justify-content: center;
-}
-
-.hero__lines::before,
-.hero__lines::after {
-  content: '';
-  width: 2rem;
-  height: 4px;
-  background: var(--color-orange);
-}
 </style>

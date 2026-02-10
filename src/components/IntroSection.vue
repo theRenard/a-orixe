@@ -23,7 +23,6 @@ const { t } = useI18n()
 <style scoped>
 .intro {
   width: 100%;
-  padding: 0 1.5rem 3rem;
 }
 
 .intro__inner {

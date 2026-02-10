@@ -34,23 +34,23 @@ const { locale } = useI18n()
 .language-selector {
   position: fixed;
   top: 0;
-  right: 0;
+  right: 200px;
   z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 75px;
-  height: 35px;
-  margin: 1rem 1rem 0 0;
-  padding: 0;
   background: #ffffff;
-  background-repeat: no-repeat;
   background-position: 0 0;
   background-origin: padding-box;
   opacity: 1;
   font-family: var(--font-family-ubuntu);
   font-size: var(--font-size-sm);
   line-height: 1;
+  padding: 7px;
+  gap: 0.4rem;
+  height: 35px;
+  width: 75px;
+  border-bottom: 3px solid var(--color-orange);
 }
 
 .language-selector__option {
@@ -58,7 +58,6 @@ const { locale } = useI18n()
   align-items: center;
   justify-content: center;
   margin: 0;
-  padding: 0 4px;
   border: none;
   background: none;
   color: var(--color-black);
@@ -73,11 +72,10 @@ const { locale } = useI18n()
 
 .language-selector__option--active {
   font-weight: var(--font-weight-bold);
-  color: var(--color-black);
+  color: var(--color-orange);
 }
 
 .language-selector__separator {
-  padding: 0 2px;
-  color: var(--color-gray);
+  color: var(--color-black);
 }
 </style>

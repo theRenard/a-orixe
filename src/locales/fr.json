@@ -11,12 +11,17 @@
     "subtitle": "le secret le mieux gardé de Galice"
   },
   "credits": {
-    "by": "Par Florence Antunes",
-    "authorRole": "architecture narrative, gestion de projet.",
-    "publishedOn": "Publié le: 20 février 2026",
-    "artDirection": "Direction artistique et identité visuelle: Marc Lafon",
-    "illustration": "Illustration originale: Ludivine Maréchal",
-    "devDesign": "Développement & Design interactif: Daniele Tabanella"
+    "byPrefix": "Par ",
+    "byName": "Florence Antunes",
+    "authorRole": "Idée originale, interviews, architecture narrative, gestion de projet.",
+    "publishedOnPrefix": "Publié le : ",
+    "publishedOnDate": "20 février 2026",
+    "artDirectionPrefix": "Direction artistique et identité visuelle : ",
+    "artDirectionName": "Marc Lafon",
+    "illustrationPrefix": "Illustrations originales : ",
+    "illustrationName": "Ludivine Martin",
+    "devDesignPrefix": "Développement & Design interactif : ",
+    "devDesignName": "Daniele Tabanella"
   },
   "intro": {
     "heading": "INTRO",

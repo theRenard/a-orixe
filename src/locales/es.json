@@ -9,12 +9,17 @@
     "subtitle": "el secreto mejor guardado de Galicia"
   },
   "credits": {
-    "by": "Por Florence Antunes",
-    "authorRole": "arquitectura narrativa, gestión de proyecto.",
-    "publishedOn": "Publicado el: 20 de febrero de 2026",
-    "artDirection": "Dirección artística e identidad visual: Marc Lafon",
-    "illustration": "Ilustración original: Ludivine Maréchal",
-    "devDesign": "Desarrollo y diseño interactivo: Daniele Tabanella"
+    "byPrefix": "Por ",
+    "byName": "Florence Antunes",
+    "authorRole": "Idea original, entrevistas, arquitectura narrativa, gestión del proyecto.",
+    "publishedOnPrefix": "Publicado el : ",
+    "publishedOnDate": "20 de febrero de 2026",
+    "artDirectionPrefix": "Dirección artística e identidad visual : ",
+    "artDirectionName": "Marc Lafon",
+    "illustrationPrefix": "Ilustraciones originales : ",
+    "illustrationName": "Ludivine Martin",
+    "devDesignPrefix": "Desarrollo y diseño interactivo : ",
+    "devDesignName": "Daniele Tabanella"
   },
   "intro": {
     "heading": "INTRO",
