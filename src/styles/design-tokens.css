@@ -1,0 +1,182 @@
+/**
+ * A Orixe design tokens
+ * From Adobe XD (https://xd.adobe.com/view/cfc3d8df-bdf8-4d75-ab82-e32cb595b6dd-9a90/specs/)
+ * Variables renamed for clarity and reuse.
+ *
+ * Fonts: Ubuntu and Fraunces are loaded from Google Fonts in index.html
+ * (preconnect + stylesheet link). Weights: Ubuntu 300, 400, 500, 700 + italic 400;
+ * Fraunces 400, 700 + italics.
+ */
+
+:root {
+  /* Colors */
+  --color-teal-dark: #2d4b4b;
+  --color-teal-medium: #609897;
+  --color-teal-light: #a2cfcd;
+  --color-teal-bright: #0e9594;
+  --color-brown-black: #260c03;
+  --color-brown-dark: #591f0a;
+  --color-cream: #fffdfa;
+  --color-orange: #d65108;
+  --color-amber: #efa00b;
+  --color-tan: #f5dfbb;
+  --color-sage: #6b9080;
+  --color-coral: #f2542d;
+  --color-blue-tint: #f8fbff;
+  --color-blue-light: #d0dbea;
+  --color-blue-dark: #30455f;
+  --color-white-off: #fcfcfc;
+  --color-green-dark: #3f4b39;
+  --color-black: #000000;
+  --color-gray: #707070;
+
+  /* Font families */
+  --font-family-ubuntu: Ubuntu, system-ui, sans-serif;
+  --font-family-fraunces: Fraunces, Georgia, serif;
+  --font-family-helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  /* Font styles */
+  --font-style-normal: normal;
+  --font-style-italic: italic;
+
+  /* Font weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* Font sizes */
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 20px;
+  --font-size-lg: 24px;
+  --font-size-xl: 27px;
+  --font-size-2xl: 30px;
+  --font-size-3xl: 35px;
+  --font-size-display: 150px;
+
+  /* Spacing (letter) */
+  --letter-spacing-normal: 0px;
+
+  /* Line heights */
+  --line-height-tight: 15px;
+  --line-height-sm: 30px;
+  --line-height-base: 34px;
+  --line-height-md: 35px;
+  --line-height-text: 36px;
+  --line-height-lg: 40px;
+  --line-height-xl: 44px;
+  --line-height-display: 55px;
+}
+
+/* Character / typography styles */
+
+/** Question text (bold, brown-dark) */
+.text-questions {
+  font-family: var(--font-family-ubuntu);
+  font-style: var(--font-style-normal);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-sm);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-brown-dark);
+}
+
+/** Answer / response text (normal, orange) */
+.text-reponse {
+  font-family: var(--font-family-ubuntu);
+  font-style: var(--font-style-normal);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-sm);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-orange);
+}
+
+/** Image caption / legend (medium, teal) */
+.text-legende-image {
+  font-family: var(--font-family-ubuntu);
+  font-style: var(--font-style-normal);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-text);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-teal-medium);
+}
+
+/** Large display quote (light weight italic, teal-light) */
+.text-display-quote {
+  font-family: var(--font-family-ubuntu);
+  font-style: var(--font-style-italic);
+  font-weight: var(--font-weight-light);
+  font-size: var(--font-size-display);
+  line-height: var(--line-height-display);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-teal-light);
+}
+
+/** Small intro label (Helvetica, gray) */
+.text-m-intro {
+  font-family: var(--font-family-helvetica);
+  font-style: var(--font-style-normal);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-gray);
+}
+
+/** Dark frame / box heading (bold, teal-dark) */
+.text-encadrement-fonce {
+  font-family: var(--font-family-ubuntu);
+  font-style: var(--font-style-normal);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-teal-dark);
+}
+
+/** Block quote / citation (italic bold, black) */
+.text-citation {
+  font-family: var(--font-family-ubuntu);
+  font-style: var(--font-style-italic);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-xl);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-black);
+}
+
+/** Section subtitle (Fraunces, orange) */
+.text-sous-titre {
+  font-family: var(--font-family-fraunces);
+  font-style: var(--font-style-normal);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-3xl);
+  line-height: var(--line-height-lg);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-orange);
+}
+
+/** Intro heading (bold, black) */
+.text-intro {
+  font-family: var(--font-family-ubuntu);
+  font-style: var(--font-style-normal);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-md);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-black);
+}
+
+/** Body / paragraph (labeur – normal, black) */
+.text-labeur {
+  font-family: var(--font-family-ubuntu);
+  font-style: var(--font-style-normal);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-black);
+}
