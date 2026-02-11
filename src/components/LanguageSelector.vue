@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
-
-const { locale } = useI18n()
 </script>
 
 <template>
@@ -9,10 +6,10 @@ const { locale } = useI18n()
     <button
       type="button"
       class="language-selector__option"
-      :class="{ 'language-selector__option--active': locale === 'fr' }"
+      :class="{ 'language-selector__option--active': $i18n.locale === 'fr' }"
       aria-label="Français"
-      :aria-pressed="locale === 'fr'"
-      @click="locale = 'fr'"
+      :aria-pressed="$i18n.locale === 'fr'"
+      @click="$i18n.locale = 'fr'"
     >
       FR
     </button>
@@ -20,10 +17,10 @@ const { locale } = useI18n()
     <button
       type="button"
       class="language-selector__option"
-      :class="{ 'language-selector__option--active': locale === 'es' }"
+      :class="{ 'language-selector__option--active': $i18n.locale === 'es' }"
       aria-label="Español"
-      :aria-pressed="locale === 'es'"
-      @click="locale = 'es'"
+      :aria-pressed="$i18n.locale === 'es'"
+      @click="$i18n.locale = 'es'"
     >
       ES
     </button>

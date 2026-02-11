@@ -1,12 +1,9 @@
 <script setup lang="ts">
 /**
  * Style reference page: lists all typography/character classes from
- * src/styles/vars/styles.css for comparing mockup with the actual page.
+ * src/styles/vars/typography.css (BEM block: type) for mockup vs page comparison.
  */
 import { RouterLink } from 'vue-router'
-// Ensure reset, tokens and typography classes are available on this route (avoids missing styles on direct load / code-split)
-import '@/styles/reset.css'
-import '@/styles/design-tokens.css'
 
 interface StyleEntry {
   class: string
@@ -15,17 +12,22 @@ interface StyleEntry {
 }
 
 const styleEntries: StyleEntry[] = [
-  { class: 'text-questions', description: 'Question text (bold, brown-dark)', sample: 'Question sample' },
-  { class: 'text-reponse', description: 'Answer / response text (normal, orange)', sample: 'Answer sample' },
-  { class: 'text-legende-image', description: 'Image caption / legend (medium, teal)', sample: 'Caption sample' },
-  { class: 'text-display-quote', description: 'Large display quote (light weight italic, teal-light)', sample: 'Display quote' },
-  { class: 'text-m-intro', description: 'Small intro label (Helvetica, gray)', sample: 'Intro label' },
-  { class: 'text-encadrement-fonce', description: 'Dark frame / box heading (bold, teal-dark)', sample: 'Frame heading' },
-  { class: 'text-citation', description: 'Block quote / citation (italic bold, black)', sample: 'Citation text' },
-  { class: 'text-citation-attribution', description: 'Citation attribution (italic, smaller)', sample: '— Author' },
-  { class: 'text-sous-titre', description: 'Section subtitle (Fraunces, orange)', sample: 'Section subtitle' },
-  { class: 'text-intro', description: 'Intro heading (bold, black)', sample: 'Intro heading' },
-  { class: 'text-labeur', description: 'Body / paragraph (normal, black)', sample: 'Body paragraph text.' },
+  { class: 'type__hero-title', description: 'Hero title (bold, 106px, Fraunces)', sample: 'Hero title' },
+  { class: 'type__hero-subtitle', description: 'Hero subtitle (bold, 63px, Fraunces, orange)', sample: 'Hero subtitle' },
+  { class: 'type__hero-synopsis', description: 'Hero synopsis (bold, xl, Ubuntu, black)', sample: 'Hero synopsis text.' },
+  { class: 'type__credits', description: 'Credits (normal, 16px, Ubuntu, orange)', sample: 'Credits line' },
+  { class: 'type__credits-link', description: 'Credits link (bold, underlined, orange)', sample: 'Credits link' },
+  { class: 'type__credits-bold', description: 'Credits bold (bold, 16px, orange)', sample: 'Credits bold' },
+  { class: 'type__section-title', description: 'Section title (bold, 3xl, Fraunces, orange)', sample: 'Section title' },
+  { class: 'type__section-title type__section-title--with-line', description: 'Section title with orange line above', sample: 'Section title with line' },
+  { class: 'type__section-paragraph', description: 'Section paragraph (normal, lg, Ubuntu, black)', sample: 'Section paragraph text.' },
+  { class: 'type__testimonial-block', description: 'Testimonial block (italic bold, 2xl, Ubuntu, black)', sample: 'Testimonial quote' },
+  { class: 'type__testimonial-name', description: 'Testimonial name (normal, lg, Ubuntu, black)', sample: 'Testimonial author' },
+  { class: 'type__question', description: 'Question (bold, lg, Ubuntu, teal-dark)', sample: 'Question text' },
+  { class: 'type__interview-title', description: 'Interview title (bold, 3xl, Fraunces, brown-dark)', sample: 'Interview title' },
+  { class: 'type__interview-subtitle', description: 'Interview subtitle (bold, xl, Ubuntu, brown-dark)', sample: 'Interview subtitle' },
+  { class: 'type__interview-question', description: 'Interview question (bold, lg, brown-dark)', sample: 'Interview question' },
+  { class: 'type__interview-answer', description: 'Interview answer (normal, lg, Ubuntu, orange)', sample: 'Interview answer text.' },
 ]
 
 </script>
@@ -33,11 +35,11 @@ const styleEntries: StyleEntry[] = [
 <template>
   <main class="styles-reference-page">
     <header class="styles-reference-page__header">
-      <h1 class="styles-reference-page__title">Style reference</h1>
+      <h1 class="styles-reference-page__title type__section-title">Style reference</h1>
       <p class="styles-reference-page__subtitle">
-        Classes from <code>src/styles/vars/styles.css</code> — use for mockup vs page comparison.
+        Classes from <code>src/styles/vars/typography.css</code> (BEM: type__*) — use for mockup vs page comparison.
       </p>
-      <RouterLink to="/" class="styles-reference-page__back">← Back to site</RouterLink>
+      <RouterLink to="/" class="styles-reference-page__back type__credits-link">← Back to site</RouterLink>
     </header>
 
     <section class="styles-reference-page__list">
@@ -73,10 +75,6 @@ const styleEntries: StyleEntry[] = [
 }
 
 .styles-reference-page__title {
-  font-family: var(--font-family-fraunces);
-  font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-orange);
   margin: 0 0 0.5rem;
 }
 
@@ -95,9 +93,6 @@ const styleEntries: StyleEntry[] = [
 }
 
 .styles-reference-page__back {
-  font-family: var(--font-family-ubuntu);
-  font-size: var(--font-size-sm);
-  color: var(--color-orange);
   text-decoration: none;
 }
 

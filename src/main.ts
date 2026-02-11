@@ -5,6 +5,7 @@ import { i18n } from './i18n'
 import './styles/reset.css'
 import './styles/design-tokens.css'
 import './styles/vars/styles.css'
+import './styles/vars/typography.css'
 
 const app = createApp(App)
 

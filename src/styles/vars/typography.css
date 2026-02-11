@@ -1,0 +1,133 @@
+/* Typography – BEM block: type (uses design-tokens.css) */
+
+/* Hero */
+.type__hero-title {
+  font: var(--font-style-normal) var(--font-weight-bold) 106px/88px var(--font-family-fraunces);
+  text-align: left;
+  letter-spacing: 3.18px;
+  color: #481706;
+}
+
+.type__hero-subtitle {
+  font: var(--font-style-normal) var(--font-weight-bold) 63px/88px var(--font-family-fraunces);
+  text-align: left;
+  letter-spacing: 1.89px;
+  color: var(--color-orange);
+}
+
+.type__hero-synopsis {
+  font: var(--font-style-normal) var(--font-weight-bold) var(--font-size-xl)/var(--line-height-md) var(--font-family-ubuntu);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-black);
+  text-align: left;
+}
+
+/* Credits: shared base */
+.type__credits,
+.type__credits-link,
+.type__credits-bold {
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-orange);
+  text-align: left;
+}
+
+.type__credits {
+  font: var(--font-style-normal) var(--font-weight-normal) 16px/18px var(--font-family-ubuntu);
+}
+
+.type__credits-link {
+  font: var(--font-style-normal) var(--font-weight-bold) 16px/18px var(--font-family-ubuntu);
+  text-decoration: underline;
+}
+
+.type__credits-bold {
+  font: var(--font-style-normal) var(--font-weight-bold) 16px/18px var(--font-family-ubuntu);
+}
+
+/* Section */
+.type__section-title,
+.type__section-paragraph {
+  letter-spacing: var(--letter-spacing-normal);
+  text-align: left;
+}
+
+.type__section-title {
+  font: var(--font-style-normal) var(--font-weight-bold) var(--font-size-3xl)/var(--line-height-lg) var(--font-family-fraunces);
+  color: var(--color-orange);
+}
+
+.type__section-title--with-line::before {
+  content: '';
+  display: block;
+  width: 30%;
+  min-width: 8rem;
+  height: 3px;
+  background: var(--color-orange);
+  margin: 0 0 1.5rem;
+}
+
+.type__section-paragraph {
+  font: var(--font-style-normal) var(--font-weight-normal) var(--font-size-lg)/var(--line-height-base) var(--font-family-ubuntu);
+  color: var(--color-black);
+}
+
+/* Testimonial */
+.type__testimonial-block,
+.type__testimonial-name {
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-black);
+  text-align: left;
+}
+
+.type__testimonial-block {
+  font: var(--font-style-italic) var(--font-weight-bold) var(--font-size-2xl)/var(--line-height-xl) var(--font-family-ubuntu);
+}
+
+.type__testimonial-quote {
+  position: absolute;
+  top: -6rem;
+  left: -7rem;
+  font: var(--font-style-italic) var(--font-weight-light) 6em/0.85 var(--font-family-ubuntu);
+  color: var(--color-teal-light);
+}
+
+.type__testimonial-name {
+  font: var(--font-style-normal) var(--font-weight-normal) var(--font-size-lg)/var(--line-height-xl) var(--font-family-ubuntu);
+}
+
+/* Question */
+.type__question {
+  font: var(--font-style-normal) var(--font-weight-bold) var(--font-size-lg)/var(--line-height-base) var(--font-family-ubuntu);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-teal-dark);
+  text-align: left;
+}
+
+/* Interview: shared base */
+.type__interview-title,
+.type__interview-subtitle,
+.type__interview-question,
+.type__interview-answer {
+  letter-spacing: var(--letter-spacing-normal);
+  text-align: left;
+}
+
+.type__interview-title {
+  font: var(--font-style-normal) var(--font-weight-bold) var(--font-size-3xl)/var(--line-height-lg) var(--font-family-fraunces);
+  color: var(--color-brown-dark);
+}
+
+.type__interview-subtitle {
+  font: var(--font-style-normal) var(--font-weight-bold) var(--font-size-xl)/var(--line-height-md) var(--font-family-ubuntu);
+  color: var(--color-brown-dark);
+}
+
+.type__interview-question {
+  font: var(--font-style-normal) var(--font-weight-bold) var(--font-size-lg)/var(--line-height-base) var(--font-family-ubuntu);
+  color: var(--color-brown-dark);
+}
+
+.type__interview-answer {
+  font: var(--font-style-normal) var(--font-weight-normal) var(--font-size-lg)/var(--line-height-base) var(--font-family-ubuntu);
+  color: var(--color-orange);
+}

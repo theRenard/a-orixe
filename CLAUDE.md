@@ -51,7 +51,7 @@ Single long-page website with Vue 3, programmatic animations, and bilingual cont
 ## Conventions
 
 - **Components**: PascalCase; one main component per section on the long page when it makes sense.
-- **i18n**: Keys by feature/section (e.g. `hero.title`, `footer.copyright`). Never hardcode fr/es strings in templates or components.
+- **i18n**: Keys by feature/section (e.g. `hero.title`, `footer.copyright`). Never hardcode fr/es strings in templates or components. In templates use the global `$t('key')` for translations and `$i18n.locale` for the current locale; do not use `useI18n()` and `t` in components solely for template translations.
 - **Animations**: Prefer composables (e.g. `useScrollReveal`) that wrap the animation library; keep animation logic out of raw template code when possible.
 - **Script/style**: `<script setup lang="ts">`; scoped styles; SCSS with `@use` only.
 - **Naming**: camelCase for composables/utils; PascalCase for components.
@@ -88,6 +88,6 @@ The site is **pre-rendered at build time** so the initial HTML contains content 
 ## Gotchas / notes
 
 - **GitHub Pages**: always set `base` in Vite to the repo name with leading/trailing slash: `'/a-orixe/'`.
-- **i18n**: set initial locale and fallback (e.g. `fr` as default, `es` as second); ensure all UI strings go through `$t` / `useI18n().t`.
+- **i18n**: set initial locale and fallback (e.g. `fr` as default, `es` as second); ensure all UI strings go through `$t` in templates; use `$i18n.locale` for locale in templates. Use `useI18n()` only when you need `t` or `locale` in `<script>` (e.g. in composables or for reactive logic).
 - **Pre-render**: Entry must export `createApp` (vite-ssg); do not call `app.mount('#app')` directly. Use `<ClientOnly>` for any block that breaks during SSG (e.g. heavy scroll/window usage) and provide a placeholder if needed.
 - **GSAP**: Use in composables or `onMounted`; for scroll-driven animations use ScrollTrigger. Run only on the client (wrap in `<ClientOnly>` or call from `onMounted`) to avoid SSG errors. **Lenis**: Initialise smooth scroll in `onMounted` or a composable (e.g. `useLenis`); call `lenis.destroy()` in `onUnmounted`. If using GSAP ScrollTrigger, sync with `lenis.on('scroll', () => ScrollTrigger.update())`. Keep animations performant (prefer transform/opacity).
