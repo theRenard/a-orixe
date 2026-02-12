@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import HeroSection from '@/components/HeroSection.vue'
-import CreditsSection from '@/components/CreditsSection.vue'
-import CaminoSection from '@/components/CaminoSection.vue'
+import HeroSection from '@/components/sections/HeroSection.vue'
+import CaminoSection from '@/components/sections/CaminoSection.vue'
 </script>
 
 <template>
   <main class="mobile-view">
     <HeroSection />
-    <CreditsSection />
     <CaminoSection />
   </main>
 </template>

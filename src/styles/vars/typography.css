@@ -131,3 +131,11 @@
   font: var(--font-style-normal) var(--font-weight-normal) var(--font-size-lg)/var(--line-height-base) var(--font-family-ubuntu);
   color: var(--color-orange);
 }
+
+/* Footnote / small italic (e.g. testimonial footnote) */
+.type__footnote {
+  font: var(--font-style-italic) var(--font-weight-normal) 16px/25px var(--font-family-ubuntu);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-teal-medium);
+  text-align: left;
+}

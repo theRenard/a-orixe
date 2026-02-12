@@ -1,22 +1,17 @@
 <script setup lang="ts">
-defineProps<{
-  quoteKey: string
-  authorKey: string
-}>()
 </script>
 
 <template>
-  <section class="testimonial-section">
+  <section class="with-borders">
     <div class="container">
-
-      <blockquote class="section">
+      <blockquote class="centered">
         <div>
           <p class="type__testimonial-block relative">
             <span class="type__testimonial-quote">«</span>
-            {{ $t(quoteKey) }} »
+            {{ $t('camino.quote') }} »
           </p>
           <footer class="type__testimonial-name">
-            {{ $t(authorKey) }}
+            {{ $t('camino.quoteAuthor') }}
           </footer>
         </div>
       </blockquote>

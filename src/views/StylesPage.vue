@@ -42,7 +42,7 @@ const styleEntries: StyleEntry[] = [
       <RouterLink to="/" class="styles-reference-page__back type__credits-link">← Back to site</RouterLink>
     </header>
 
-    <section class="styles-reference-page__list">
+    <div class="styles-reference-page__list">
       <article
         v-for="entry in styleEntries"
         :key="entry.class"
@@ -56,7 +56,7 @@ const styleEntries: StyleEntry[] = [
           {{ entry.sample }}
         </p>
       </article>
-    </section>
+    </div>
   </main>
 </template>
 

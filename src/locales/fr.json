@@ -31,6 +31,22 @@
     "quote": "Depuis que j'ai commencé à accueillir les pèlerins arrivant à Compostelle, je me suis immergé dans tout ce que représente le chemin: son histoire, ses valeurs, l'empathie, la solidarité, l'effort des pèlerins, le respect de leurs motivations",
     "quoteAuthor": "raconte Manuel Mariño Nin"
   },
+  "etapesCles": {
+    "title": "Deux étapes clés dans le chemin de Saint-Jacques",
+    "paragraph": "L'hospitalier se pique rapidement au jeu du camino, enchaîne cours et conférences. Au fil de son apprentissage, il comprend qu'il existe deux phénomènes clés dans le chemin de Saint-Jacques : l'Inventio (la découverte du corps de l'Apôtre) et la Traslatio. La Traslatio fait référence au transfert du corps de l'Apôtre Jacques de Jérusalem (où il fut assassiné en 44 de notre ère) à l'actuelle Saint-Jacques-de-Compostelle. Selon la légende, ses disciples le placèrent dans une barque de pierre qui, en quelques jours, guidée par une main divine, échoua le long des côtes espagnoles, dans la péninsule du Barbanza."
+  },
+  "ressentirLieux": {
+    "title": "Ressentir les lieux où tout a commencé",
+    "paragraph": "Cette information, il ne manque pas une occasion de la partager avec les pèlerins qu'il rencontre au Monte do Gozo. « Lorsqu'ils arrivaient dans mon auberge, après avoir discuté avec eux et écouté leurs récits de pèlerinage, je leur racontais à mon tour que le corps de l'Apôtre était passé devant la côte de mon village lors de son voyage vers Compostelle ».",
+    "transition": "L'idée commence à germer.",
+    "question": "Et si nous trouvions un moyen d'inviter les pèlerins à se rendre sur cette côte, là où la barque de l'Apôtre Jacques est entrée dans la ria de Arousa ? Et si nous leur permettions de réaliser tout le cheminement emprunté à pied par les disciples transportant son corps ?",
+    "imageCaption": "Vue sur la ria de Arousa"
+  },
+  "secondTestimonial": {
+    "quote": "Il se trouve que le corps de l'Apôtre est entré en Galice par la ria de Arousa*, en passant devant mon village, A Pobra do Caramiñal, ainsi que devant les autres villages qui composent cette ria",
+    "quoteAuthor": "poursuit Manuel Mariño Nin",
+    "footnote": "*Une ria est une particularité géographique de Galice qui désigne les embouchures des fleuves dans la mer où l'eau salée se mélange à l'eau douce. Un environnement idéal pour le développement de la faune et de la flore aquatiques."
+  },
   "labeur": {
     "heading": "LABEUR"
   },

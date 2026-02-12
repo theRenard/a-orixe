@@ -31,6 +31,22 @@
     "quote": "Desde que empecé a acoger a los peregrinos que llegaban a Compostela, me he sumergido en todo lo que representa el camino: su historia, sus valores, la empatía, la solidaridad, el esfuerzo de los peregrinos, el respeto por sus motivaciones",
     "quoteAuthor": "cuenta Manuel Mariño Nin"
   },
+  "etapesCles": {
+    "title": "Dos etapas clave en el camino de Santiago",
+    "paragraph": "El hospitalero se engancha pronto al juego del camino, encadenando cursos y conferencias. Con el aprendizaje, comprende que existen dos fenómenos clave en el camino de Santiago: la Inventio (el descubrimiento del cuerpo del Apóstol) y la Traslatio. La Traslatio alude al traslado del cuerpo del Apóstol Santiago desde Jerusalén (donde fue asesinado en el año 44 de nuestra era) hasta la actual Santiago de Compostela. Según la leyenda, sus discípulos lo colocaron en una barca de piedra que, en pocos días, guiada por una mano divina, fue a dar a las costas españolas, en la península del Barbanza."
+  },
+  "ressentirLieux": {
+    "title": "Sentir los lugares donde todo comenzó",
+    "paragraph": "Esta información no deja de compartirla con los peregrinos que encuentra en Monte do Gozo. « Cuando llegaban a mi albergue, después de hablar con ellos y escuchar sus relatos del camino, les contaba a mi vez que el cuerpo del Apóstol había pasado frente a la costa de mi pueblo durante su viaje a Compostela ».",
+    "transition": "La idea empieza a germinar.",
+    "question": "¿Y si encontráramos la forma de invitar a los peregrinos a acercarse a esta costa, allí donde la barca del Apóstol Santiago entró en la ría de Arousa? ¿Y si les permitiéramos recorrer a pie todo el camino que siguieron los discípulos transportando su cuerpo?",
+    "imageCaption": "Vista de la ría de Arousa"
+  },
+  "secondTestimonial": {
+    "quote": "Resulta que el cuerpo del Apóstol entró en Galicia por la ría de Arousa*, pasando por mi pueblo, A Pobra do Caramiñal, así como por los demás pueblos que componen esta ría",
+    "quoteAuthor": "continúa Manuel Mariño Nin",
+    "footnote": "*Una ría es una particularidad geográfica de Galicia que designa las desembocaduras de los ríos en el mar donde el agua salada se mezcla con el agua dulce. Un entorno ideal para el desarrollo de la fauna y la flora acuáticas."
+  },
   "labeur": {
     "heading": "LABOR"
   },
