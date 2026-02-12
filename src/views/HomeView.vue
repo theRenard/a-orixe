@@ -11,6 +11,7 @@ import ReconstitutionTracSection from '@/components/sections/ReconstitutionTracS
 import TravailFourmiSection from '@/components/sections/TravailFourmiSection.vue'
 import ThirdTestimonial from '@/components/sections/ThirdTestimonial.vue'
 import ElementsJacquaireSection from '@/components/sections/ElementsJacquaireSection.vue'
+import ParcoursPraticableSection from '@/components/sections/ParcoursPraticableSection.vue'
 </script>
 
 <template>
@@ -27,5 +28,6 @@ import ElementsJacquaireSection from '@/components/sections/ElementsJacquaireSec
   <TravailFourmiSection />
   <ThirdTestimonial />
   <ElementsJacquaireSection />
+  <ParcoursPraticableSection />
 </main>
 </template>
