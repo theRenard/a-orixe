@@ -80,9 +80,9 @@ onUnmounted(() => {
   display: inline-flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.75rem 1.25rem;
+  padding: 0.5rem .5rem;
   background: var(--color-cream);
-  border: 2px solid var(--color-teal-medium);
+  border: 3px solid var(--color-teal-medium);
   border-radius: 9999px;
   font-family: var(--font-family-ubuntu);
   font-size: var(--font-size-base);
@@ -106,10 +106,10 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
   flex-shrink: 0;
-  border: 2px solid var(--color-teal-medium);
+  border: 3px solid var(--color-teal-medium);
   border-radius: 50%;
   background: var(--color-cream);
   color: var(--color-teal-medium);
@@ -126,5 +126,6 @@ onUnmounted(() => {
 
 .sound-player__text {
   line-height: 1.2;
+  margin-right: 1rem;
 }
 </style>
