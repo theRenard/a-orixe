@@ -6,6 +6,10 @@
     "title": "A Orixe",
     "desktopTitle": "DESKTOP - A ORIXE – 28"
   },
+  "soundPlayer": {
+    "playLabel": "Écouter la prononciation",
+    "stopLabel": "Arrêter la prononciation"
+  },
   "hero": {
     "title": "« A Orixe »",
     "subtitle": "le secret le mieux gardé de Galice"
@@ -41,6 +45,13 @@
     "transition": "L'idée commence à germer.",
     "question": "Et si nous trouvions un moyen d'inviter les pèlerins à se rendre sur cette côte, là où la barque de l'Apôtre Jacques est entrée dans la ria de Arousa ? Et si nous leur permettions de réaliser tout le cheminement emprunté à pied par les disciples transportant son corps ?",
     "imageCaption": "Vue sur la ria de Arousa"
+  },
+  "association": {
+    "paragraph1": "Don Manuel Antonio Villar Fernández adhère complètement et l'assure de son soutien. Personne ne se doute alors qu'ils sont au début d'une histoire qui va les happer durant plusieurs années.",
+    "blockquote": "Il existe de nombreuses routes de Compostelle. Pourquoi une de plus ? Parce que ce tracé présenterait un élément différenciant majeur : aucun autre chemin n'accompagne le corps de l'Apôtre.",
+    "paragraph2": "Dès lors, Manuel Mariño Nin pense à un nom : A Orixe (l'origine, en galicien) et crée l'association sur ses deniers personnels. « Les Amis du chemin de Compostelle de Barbanza A Orixe » est née. « Je savais que c'était l'outil nécessaire pour un jour officialiser ce chemin » confie celui qui en devient le premier président.",
+    "soundPlayerText": "Prononciation de « A Orixe »",
+    "paragraph3": "Le projet n'en est qu'à ses débuts. La route sera longue."
   },
   "secondTestimonial": {
     "quote": "Il se trouve que le corps de l'Apôtre est entré en Galice par la ria de Arousa*, en passant devant mon village, A Pobra do Caramiñal, ainsi que devant les autres villages qui composent cette ria",

@@ -6,6 +6,10 @@
     "title": "A Orixe",
     "desktopTitle": "DESKTOP - A ORIXE – 28"
   },
+  "soundPlayer": {
+    "playLabel": "Escuchar la pronunciación",
+    "stopLabel": "Detener la pronunciación"
+  },
   "hero": {
     "title": "« A Orixe »",
     "subtitle": "el secreto mejor guardado de Galicia"
@@ -41,6 +45,13 @@
     "transition": "La idea empieza a germinar.",
     "question": "¿Y si encontráramos la forma de invitar a los peregrinos a acercarse a esta costa, allí donde la barca del Apóstol Santiago entró en la ría de Arousa? ¿Y si les permitiéramos recorrer a pie todo el camino que siguieron los discípulos transportando su cuerpo?",
     "imageCaption": "Vista de la ría de Arousa"
+  },
+  "association": {
+    "paragraph1": "Don Manuel Antonio Villar Fernández se adhiere por completo y le asegura su apoyo. Nadie sospecha entonces que están al inicio de una historia que los absorberá durante varios años.",
+    "blockquote": "Existen numerosas rutas de Compostela. ¿Por qué una más? Porque este trazado presentaría un elemento diferenciador mayor: ningún otro camino acompaña el cuerpo del Apóstol.",
+    "paragraph2": "Desde entonces, Manuel Mariño Nin piensa en un nombre: A Orixe (el origen, en gallego) y crea la asociación con su propio dinero. « Los Amigos del camino de Compostela de Barbanza A Orixe » nace. « Sabía que era la herramienta necesaria para un día oficializar este camino » confiesa quien se convierte en su primer presidente.",
+    "soundPlayerText": "Pronunciación de « A Orixe »",
+    "paragraph3": "El proyecto no hace más que comenzar. El camino será largo."
   },
   "secondTestimonial": {
     "quote": "Resulta que el cuerpo del Apóstol entró en Galicia por la ría de Arousa*, pasando por mi pueblo, A Pobra do Caramiñal, así como por los demás pueblos que componen esta ría",

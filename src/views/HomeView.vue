@@ -6,6 +6,7 @@ import EtapesClesSection from '@/components/sections/EtapesClesSection.vue'
 import RessentirLieuxSection from '@/components/sections/RessentirLieuxSection.vue'
 import FirstTestimonial from '@/components/sections/FirstTestimonial.vue'
 import SecondTestimonial from '@/components/sections/SecondTestimonial.vue'
+import AssociationSection from '@/components/sections/AssociationSection.vue'
 </script>
 
 <template>
@@ -17,5 +18,6 @@ import SecondTestimonial from '@/components/sections/SecondTestimonial.vue'
   <EtapesClesSection />
   <SecondTestimonial />
   <RessentirLieuxSection />
+  <AssociationSection />
 </main>
 </template>
