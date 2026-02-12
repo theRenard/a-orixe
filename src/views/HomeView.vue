@@ -7,6 +7,10 @@ import RessentirLieuxSection from '@/components/sections/RessentirLieuxSection.v
 import FirstTestimonial from '@/components/sections/FirstTestimonial.vue'
 import SecondTestimonial from '@/components/sections/SecondTestimonial.vue'
 import AssociationSection from '@/components/sections/AssociationSection.vue'
+import ReconstitutionTracSection from '@/components/sections/ReconstitutionTracSection.vue'
+import TravailFourmiSection from '@/components/sections/TravailFourmiSection.vue'
+import ThirdTestimonial from '@/components/sections/ThirdTestimonial.vue'
+import ElementsJacquaireSection from '@/components/sections/ElementsJacquaireSection.vue'
 </script>
 
 <template>
@@ -19,5 +23,9 @@ import AssociationSection from '@/components/sections/AssociationSection.vue'
   <SecondTestimonial />
   <RessentirLieuxSection />
   <AssociationSection />
+  <ReconstitutionTracSection />
+  <TravailFourmiSection />
+  <ThirdTestimonial />
+  <ElementsJacquaireSection />
 </main>
 </template>

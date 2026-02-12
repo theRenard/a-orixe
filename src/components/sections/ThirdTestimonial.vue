@@ -2,27 +2,19 @@
 </script>
 
 <template>
-<section class="with-borders with-background">
+<section class="section--half-viewport with-background">
   <div class="container">
     <blockquote class="centered">
       <div>
         <p class="type__testimonial-block relative">
           <span class="type__testimonial-quote">«</span>
-          {{ $t('secondTestimonial.quote') }} »
+          {{ $t('thirdTestimonial.quote') }} »
         </p>
         <footer class="type__testimonial-name">
-          {{ $t('secondTestimonial.quoteAuthor') }}
+          {{ $t('thirdTestimonial.quoteAuthor') }}
         </footer>
       </div>
     </blockquote>
-    <img src="../../assets/illustrations/phare.webp" :alt="$t('secondTestimonial.quote')"
-      class="second-testimonial__image" loading="lazy">
-    <div class="centered">
-
-      <p class="type__footnote mt-10">
-        {{ $t('secondTestimonial.footnote') }}
-      </p>
-    </div>
   </div>
 </section>
 </template>

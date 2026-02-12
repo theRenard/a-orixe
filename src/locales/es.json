@@ -53,10 +53,26 @@
     "soundPlayerText": "Pronunciación de « A Orixe »",
     "paragraph3": "El proyecto no hace más que comenzar. El camino será largo."
   },
+  "reconstitutionTrac": {
+    "imageCaption": "Acceso a las dunas de Corrubedo / © Miguel Angel Soutullo Alvarez",
+    "title": "Tras las huellas de Santiago: el rompecabezas de la reconstrucción del trazado",
+    "paragraph1": "Un pequeño grupo se une en torno al proyecto. Está Manuel Mariño Nin, por supuesto, ¡y también Don Manuel Antonio Villar Fernández! Como Saturio Ferreiro, voluntario de la primera hora, y un historiador local que se les une. « Solo éramos ocho en ese momento » recuerda Saturio Ferreiro.",
+    "paragraph2": "La tarea es inmensa. Se trata de reconstruir un camino a partir de una leyenda, de materializar un itinerario marítimo trazando un recorrido terrestre practicable para los peregrinos de hoy.",
+    "question": "¿Pero por dónde habrían pasado los primeros peregrinos, los discípulos de Santiago, con su cuerpo?"
+  },
+  "travailFourmi": {
+    "paragraph": "Los miembros de la asociación emprenden un trabajo de hormiga que combina investigación documental e inventarios para contrastar sus hallazgos con la realidad del terreno. Objetivo: encontrar huellas de la tradición jacobea (relativa a Santiago) en la península del Barbanza. Los voluntarios se sumergen entonces en lecturas arduas de autores españoles. Sus escritos aportan referentes históricos valiosos y permiten identificar ciertos lugares de interés. Estas páginas atestiguan también el paso de peregrinos por esta zona a lo largo de los siglos.",
+    "quote": "Nos basamos principalmente en distintos testimonios históricos de viajeros ilustres como Jerónimo del Hoyo, Fray Jacobo de Castro o el Padre Sarmiento, entre otros",
+    "attribution": "señala Don Manuel Antonio Villar Fernández, actual presidente de la asociación."
+  },
   "secondTestimonial": {
     "quote": "Resulta que el cuerpo del Apóstol entró en Galicia por la ría de Arousa*, pasando por mi pueblo, A Pobra do Caramiñal, así como por los demás pueblos que componen esta ría",
     "quoteAuthor": "continúa Manuel Mariño Nin",
     "footnote": "*Una ría es una particularidad geográfica de Galicia que designa las desembocaduras de los ríos en el mar donde el agua salada se mezcla con el agua dulce. Un entorno ideal para el desarrollo de la fauna y la flora acuáticas."
+  },
+  "elementsJacquaire": {
+    "title": "Cerca de 200 elementos que atestiguan la tradición jacobea están recogidos en el camino",
+    "paragraph": "Se recurre a historiadores especialistas del camino. Mientras los voluntarios consultan archivos y registros parroquiales para encontrar huellas de un camino. « También recogimos testimonios de ancianos que recordaban haber realizado, de niños, una peregrinación por un camino con sus abuelos », añade Saturio Ferreiro, actual tesorero de la asociación."
   },
   "labeur": {
     "heading": "LABOR"

@@ -53,10 +53,31 @@
     "soundPlayerText": "Prononciation de « A Orixe »",
     "paragraph3": "Le projet n'en est qu'à ses débuts. La route sera longue."
   },
+  "reconstitutionTrac": {
+    "imageCaption": "Accès aux dunes de Corrubedo / © Miguel Angel Soutullo Alvarez",
+    "title": "Sur les traces de Saint-Jacques : le casse-tête de la reconstitution du tracé",
+    "paragraph1": "Un petit groupe se fédère autour du projet. Il y a Manuel Mariño Nin, bien sûr, Don Manuel Antonio Villar Fernández en est également ! Comme Saturio Ferreiro bénévole de la première heure et un historien local qui se joint à eux. « Nous n'étions que huit à ce moment-là » rappelle Saturio Ferreiro.",
+    "paragraph2": "La tâche est immense. Il s'agit de reconstituer un chemin à partir d'une légende, de matérialiser un itinéraire maritime en retraçant un parcours terrestre praticable pour les pèlerins d'aujourd'hui.",
+    "question": "Mais par où les premiers pèlerins, les disciples de Saint-Jacques, auraient-ils bien pu passer avec son corps ?"
+  },
+  "travailFourmi": {
+    "paragraph": "Les membres de l'association entament un travail de fourmi mêlant recherches documentaires et inventaires pour confronter leurs trouvailles à la réalité du terrain. Objectif : retrouver des traces de la tradition jacquaire (relative à Saint-Jacques) dans la péninsule du Barbanza. Les bénévoles se plongent alors dans des lectures ardues d'auteurs espagnols. Leurs écrits fournissent des repères historiques précieux et permettent d'identifier certains sites d'intérêt. Ces pages attestent également du passage de pèlerins dans ce secteur à travers les siècles.",
+    "quote": "Nous nous sommes principalement fondés sur différents témoignages historiques de voyageurs illustres tels que Jerónimo del Hoyo, Fray Jacobo de Castro ou le Père Sarmiento, entre autres",
+    "attribution": "indique Don Manuel Antonio Villar Fernández, l'actuel président de l'association."
+  },
   "secondTestimonial": {
     "quote": "Il se trouve que le corps de l'Apôtre est entré en Galice par la ria de Arousa*, en passant devant mon village, A Pobra do Caramiñal, ainsi que devant les autres villages qui composent cette ria",
     "quoteAuthor": "poursuit Manuel Mariño Nin",
     "footnote": "*Une ria est une particularité géographique de Galice qui désigne les embouchures des fleuves dans la mer où l'eau salée se mélange à l'eau douce. Un environnement idéal pour le développement de la faune et de la flore aquatiques."
+  },
+  "thirdTestimonial": {
+    "quote": "Nous nous sommes principalement fondés sur différents témoignages historiques de voyageurs illustres tels que Jerónimo del Hoyo, Fray Jacobo de Castro ou le Père Sarmiento, entre autres",
+    "quoteAuthor": "indique Don Manuel Antonio Villar Fernández, l'actuel président de l'association.",
+    "footnote": "*Une ria est une particularité géographique de Galice qui désigne les embouchures des fleuves dans la mer où l'eau salée se mélange à l'eau douce. Un environnement idéal pour le développement de la faune et de la flore aquatiques."
+  },
+  "elementsJacquaire": {
+    "title": "Près de 200 éléments attestant de la tradition jacquaire sont recensés sur le chemin",
+    "paragraph": "Des historiens spécialistes du chemin sont mis à contribution. Tandis que les bénévoles consultent archives et registres paroissiaux pour trouver des traces d'un chemin. « Nous avons également recueilli des témoignages d'anciens qui se souvenaient d'avoir réalisé, enfant, un pèlerinage sur un chemin avec leurs grands-parents », complète Saturio Ferreiro, actuel trésorier de l'association."
   },
   "labeur": {
     "heading": "LABEUR"

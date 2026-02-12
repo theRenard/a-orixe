@@ -9,7 +9,15 @@ section {
 section.with-borders {
   border-top: 3px solid var(--color-amber-4d);
   border-bottom: 3px solid var(--color-amber-4d);
-  background-color: var(--color-white);
+}
+
+section.with-background {
+  background-color: var(--color-white-off);
+}
+
+/* Half-viewport section: ~50vh height, content centered vertically */
+section.section--half-viewport {
+  min-height: 50vh;
 }
 
 .container {
