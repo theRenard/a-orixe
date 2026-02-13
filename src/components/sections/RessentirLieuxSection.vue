@@ -15,7 +15,7 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
       <p class="type__section-paragraph mt-3">
         {{ $t('ressentirLieux.transition') }}
       </p>
-      <p class="type__question ressentir-lieux-section__question-block mt-3 mb-5">
+      <p class="type__question mt-3 mb-5">
         {{ $t('ressentirLieux.question') }}
       </p>
       <p class="ressentir-lieux-section__caption type__footnote">
@@ -31,11 +31,6 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
 </template>
 
 <style scoped>
-.ressentir-lieux-section__question-block {
-  border-left: 3px solid var(--color-teal-dark);
-  padding-left: 1rem;
-}
-
 .ressentir-lieux-section__caption {
   margin-top: 1rem;
   margin-bottom: 0.5rem;

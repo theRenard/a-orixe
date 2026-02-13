@@ -60,6 +60,13 @@
     "paragraph2": "La tâche est immense. Il s'agit de reconstituer un chemin à partir d'une légende, de matérialiser un itinéraire maritime en retraçant un parcours terrestre praticable pour les pèlerins d'aujourd'hui.",
     "question": "Mais par où les premiers pèlerins, les disciples de Saint-Jacques, auraient-ils bien pu passer avec son corps ?"
   },
+  "concentreGalice": {
+    "title": "135 kilomètres d'un pur concentré de Galice",
+    "imageCaption": "Phare de Corrubedo",
+    "paragraph1": "À l'issue de cette reconstitution, « A Orixe » prend forme et devient une route pédestre côtière de 135 km.",
+    "paragraph2": "Le point de départ, le phare de Corrubedo donne le ton. Les vagues claquent contre cette côte ciselée et sauvage. Les premiers pas du pèlerin frôlent les tapis d'ajoncs qui fleurissent au printemps avant de croiser le premier port de pêche du parcours, celui de Corrubedo.",
+    "paragraph3": "Il y en aura plusieurs autres en poursuivant vers les communes de Ribeira, Palmeira, A Pobra do Caramiñal, Boiro, Rianxo... où, escorté par une horde de mouettes avides, le pèlerin assiste au ballet hypnotique des bateaux de retour de la pêche. Il peine souvent à résister à un plat de Saint-Jacques rôties, à quelques palourdes ou à un poulpe à la Galicienne dégustés en terrasse. Si le ciel de Galice veut bien se montrer clément..."
+  },
   "travailFourmi": {
     "paragraph": "Les membres de l'association entament un travail de fourmi mêlant recherches documentaires et inventaires pour confronter leurs trouvailles à la réalité du terrain. Objectif : retrouver des traces de la tradition jacquaire (relative à Saint-Jacques) dans la péninsule du Barbanza. Les bénévoles se plongent alors dans des lectures ardues d'auteurs espagnols. Leurs écrits fournissent des repères historiques précieux et permettent d'identifier certains sites d'intérêt. Ces pages attestent également du passage de pèlerins dans ce secteur à travers les siècles.",
     "quote": "Nous nous sommes principalement fondés sur différents témoignages historiques de voyageurs illustres tels que Jerónimo del Hoyo, Fray Jacobo de Castro ou le Père Sarmiento, entre autres",
@@ -75,9 +82,19 @@
     "quoteAuthor": "indique Don Manuel Antonio Villar Fernández, l'actuel président de l'association.",
     "footnote": "*Une ria est une particularité géographique de Galice qui désigne les embouchures des fleuves dans la mer où l'eau salée se mélange à l'eau douce. Un environnement idéal pour le développement de la faune et de la flore aquatiques."
   },
+  "fourthTestimonial": {
+    "quote": "Lorsque le délégué des pèlerinages de la SAMI nous a appelés pour nous remettre la certification, ce fut une grande joie et une grande fierté après quatre années de travail intense",
+    "quoteAuthor": "se souvient Saturio Ferreiro."
+  },
   "elementsJacquaire": {
     "title": "Près de 200 éléments attestant de la tradition jacquaire sont recensés sur le chemin",
     "paragraph": "Des historiens spécialistes du chemin sont mis à contribution. Tandis que les bénévoles consultent archives et registres paroissiaux pour trouver des traces d'un chemin. « Nous avons également recueilli des témoignages d'anciens qui se souvenaient d'avoir réalisé, enfant, un pèlerinage sur un chemin avec leurs grands-parents », complète Saturio Ferreiro, actuel trésorier de l'association."
+  },
+  "santiagoSteps": {
+    "title": "6 étapes jusqu'à la cathédrale de Santiago de Compostela",
+    "paragraph1": "« Le travail le plus difficile a probablement été de définir les différentes étapes du chemin. Nous en avons établi six au total, explique Don Manuel Antonio Villar Fernández. Nous avons essayé de suivre les anciens \"chemins royaux\", des routes jadis utilisées pour relier une localité à une autre. Nous les avons respectés autant que possible ».",
+    "paragraph2": "Lorsque cela n'est pas faisable, le plus souvent pour des raisons de sécurité, les bénévoles suivent l'itinéraire le plus simple. « La vue sur la mer, qui se situe toujours à la droite du marcheur, était aussi un objectif important à tenir », complète Don Manuel.",
+    "highlight": "La mer a servi de repère constant tout au long du parcours qui suit la côte de la ria de Arousa, comme un rappel omniprésent du transport du corps de l'Apôtre par voie maritime."
   },
   "parcoursPraticable": {
     "paragraph1": "Au prix de journées de recherches et de repérages à pied, les bénévoles s'emploient patiemment à recenser sur ce périmètre du Barbanza jusqu'à 200 éléments liés à cette tradition. Il s'agit de lieux placés sous la protection de l'Apôtre Jacques : plusieurs hôpitaux de pèlerins, des églises, des couvents, des chapelles... Ils mettent au jour une prolifération d'images du Saint, des coquilles, des portraits, des croix de pierre, etc.",
@@ -98,5 +115,96 @@
   },
   "legendeImage": {
     "label": "LEGENDE IMAGE"
+  },
+  "carteEtapesSantiago": {
+    "caption": "6 étapes jusqu'à la cathédrale de Santiago de Compostela"
+  },
+  "santiagoJourney": {
+    "imageCaption": "Cabo de Cruz, dunes de Corrubedo, port de Rianxo.",
+    "paragraph": "« A Orixe » traverse Dodro et Padrón et leurs paysages ruraux : vignobles, hórreos, chapelles, églises de granit cernées de sépultures, lavoirs et fontaines salvifiques. Dans l'ultime étape, le chemin rejoint le chemin portugais ; l'arrivée se fait sur la Praza do Obradoiro, au pied de la cathédrale de Santiago de Compostela, où des centaines de pèlerins du monde entier immortalisent chaque jour la fin de leur parcours."
+  },
+  "reconnaissance": {
+    "title": "Une si précieuse reconnaissance",
+    "paragraph1": "En Galice, les bénévoles œuvrent pour que leur chemin, « A Orixe », soit reconnu. La reconnaissance pleine et entière dépend de la S.A.M.I. (Sainte Apostolique et Métropolitaine Église) et du Chapitre de la cathédrale de Santiago.",
+    "paragraph2": "« A Orixe » vise à être reconnu comme chemin de Compostelle à part entière ; un dossier complet a été déposé en ce sens.",
+    "quote": "Obtenir la reconnaissance de l'Église a été « assez simple », grâce au travail documentaire et aux inventaires réalisés.",
+    "attribution": "confie le président de l'association.",
+    "paragraph3": "« A Orixe » rejoint le chemin portugais officiel pour son ultime tronçon à partir de Padrón. Les pèlerins qui empruntent « A Orixe » obtiennent la Compostela** dans les mêmes conditions que ceux des autres chemins reconnus.",
+    "documentCaption": "Lettre de reconnaissance",
+    "placeholderLabel": "Document",
+    "footnote": "** La Compostela est le document qui certifie l'arrivée au terme du pèlerinage. Elle s'obtient au bureau d'accueil du pèlerin à Santiago en présentant la credencial. Ce passeport doit être tamponné par différents lieux d'accueil (bars, restaurants, auberges, hôtels, paroisses, etc.) tout au long du parcours."
+  },
+  "flechage": {
+    "title": "Un fléchage repris deux fois par an par les bénévoles",
+    "paragraph1": "Pour obtenir cette reconnaissance, le balisage du parcours avait été un préalable indispensable mais... tout sauf évident. « Il a aussi fallu parvenir à des accords avec les mairies concernant le tracé et la signalisation, rappelle Saturio Ferreiro. Ce qui avait demandé deux années de travail et de démarches administratives ».",
+    "highlight": "Peu à peu, les flèches jaunes qui indiquent le sens de la marche et les changements de direction aux pèlerins commencent à apparaître. Des flèches tracées sur 135 kilomètres à même le bitume, des murs et même des troncs d'arbre ! Des bornes en pierre et en bois sont également installées au fil du parcours.",
+    "paragraph2": "« J'ai participé au premier traçage et depuis, avec un camarade, nous continuons à vérifier et à repeindre les flèches jaunes au moins deux fois par an, indique Saturio Ferreiro. Certaines municipalités nous aident, nous apportent de la peinture, des rouleaux et des pinceaux »."
+  },
+  "signalisation": {
+    "caption": "Signalisation au fil du chemin"
+  },
+  "coupDeCoeur": {
+    "title": "Coup de coeur pour un chemin confidentiel mais unique",
+    "paragraph1": "Ces premières flèches jaunes, si significatives du chemin de Saint-Jacques (tous les chemins sont fléchés en jaune), Sabela Gippini-Ruiz les a rapidement remarquées. La famille de la CEO de Galiwonders (agence de voyages sur-mesure des chemins de Saint-Jacques de Compostelle) est originaire de Ribeira. Sabela Gippini-Ruiz y a passé tous ses étés et la plupart de ses vacances.",
+    "quote": "« J'adore la région du Barbanza, par où passe toute la première partie du chemin A Orixe. Quand j'ai vu la première flèche jaune là-bas, j'ai commencé à me renseigner de manière insistante sur le sujet, explique-t-elle. Dès lors que le chemin était balisé, il était possible de créer un package pour proposer ce parcours à nos clients. Ce que nous avons fait dès 2022 ».",
+    "soundPlayerText": "Sabela qui parle de la péninsule du Barbanza",
+    "paragraph2": "Galiwonders est l'une des rares agences de Galice à le commercialiser. Un choix du cœur pour Sabela Gippini-Ruiz. Car « A Orixe » attire très peu pour le moment : une vingtaine de clients chaque année en moyenne. Bien loin des volumes enregistrés sur d'autres chemins. « Le Français, le Portugais et l'Anglais restent les leaders incontestés, note la CEO de Galiwonders. C'est justement pour cela que ce chemin a un charme particulier »."
+  },
+  "joyau": {
+    "paragraph": "Pour Sabela Gippini-Ruiz, « A Orixe est un joyau méconnu. Un chemin unique qui passe par des plages, des villages de pêcheurs, des phares et même un Parc naturel avec des dunes. C'est pourquoi nous le recommandons aux pèlerins qui recherchent le calme, la déconnexion, qui veulent découvrir quelque chose de différent et d'authentique. On peut encore y trouver des paysages vierges et sauvages, des coins tranquilles... Il n'est pas saturé du tout ».",
+    "caption": "A Pobra do Caramiñal, région de Dodro, Aguiño."
+  },
+  "deconnexion": {
+    "title": "« A Orixe », le choix de la déconnexion",
+    "paragraph1": "Cette saturation que de nombreux Galiciens déplorent — les caminos français, anglais ou portugais sont devenus des routes surfréquentées —, n'est pas encore à l'ordre du jour pour « A Orixe ». Et ne le sera probablement jamais. « Je ne pense pas qu'il devienne aussi populaire que le chemin Français, surtout en raison du manque d'infrastructures d'accueil touristique », estime la CEO de Galiwonders.",
+    "paragraph2": "De plus, beaucoup des aspects qui séduisent dans cette route ne correspondent pas à ce que recherche l'immense majorité des pèlerins, l'aspect social de Compostelle, les échanges, les discussions.",
+    "highlight": "Le long de « A Orixe », on peut marcher des kilomètres dans des forêts d'eucalyptus au seul son de ses pas et du vent dans les feuilles. On peut suivre un sentier marin en scrutant l'horizon bleu et infini, ou traverser des hameaux hors d'âge sans croiser âme qui vive... excepté quelques chats semblant interloqués par cette présence humaine."
+  },
+  "capsuleSonore": {
+    "imageCaption": "Paysage le long d'A Orixe : eau, végétation et village.",
+    "soundPlayerText": "Capsule sonore pas / oiseaux"
+  },
+  "pilgrimsStats": {
+    "title": "Moins de 1% des pèlerins marchent sur A Orixe en 2025",
+    "paragraph1": "Les chiffres en disent d'ailleurs long sur la confidentialité de « A Orixe ». En 2025, le bureau d'accueil des pèlerins de Santiago a comptabilisé 530 000 pèlerins arrivés à Santiago de Compostela après avoir emprunté l'ensemble des chemins. La grande majorité a pris les routes principales : le Camino Francés (46 % des pèlerins) et le Portugais (19 %). Pendant ce temps, à l'écart, 755 personnes seulement marchaient sur « A Orixe ». Soit 0,14 % des pèlerins. À 93 % des Espagnols. Presque personne. Un chemin entier pour eux seuls.",
+    "paragraph2": "Précision utile : tous les pèlerins ne se font pas enregistrer au bureau d'accueil de Santiago, le chiffre pourrait donc être légèrement sous-évalué. De son côté, l'association des Amis du chemin « A Orixe » estime qu'ils seraient environ 1500 à l'emprunter chaque année.",
+    "chart": {
+      "ariaLabel": "Répartition des pèlerins : Camino Francés 46 %, Camino Portugais 19 %, A Orixe 0,14 %.",
+      "bar1Label": "Camino Francés",
+      "bar1Pct": "46 %",
+      "bar2Label": "Camino Portugais",
+      "bar2Pct": "19 %",
+      "bar3Label": "A Orixe",
+      "bar3Pct": "0,14 %"
+    }
+  },
+  "traceRoute": {
+    "title": "« A Orixe », trace sa route à l'ombre des grands chemins de Compostelle",
+    "paragraph1": "« Pour le moment, nous sommes un nouveau chemin, nous essayons de le promouvoir petit à petit. Une promotion qui se diffuse par le bouche-à-oreille, grâce aux particuliers, institutions et diocèses espagnols, explique Don Manuel Antonio Villar Fernández. Nous avançons avec humilité et prudence ».",
+    "paragraph2": "Les bénévoles de l'association « A Orixe » continuent d'œuvrer à la connaissance et à la promotion de cet itinéraire unique en Galice : un site internet, un livret-guide, une exposition tournante, des interventions dans les écoles, des réceptions de groupes de pèlerins... Pas à pas, « A Orixe » trace sa route à l'ombre des grands chemins de Compostelle. Il est probablement le plus authentique de tous.",
+    "paragraph3": "« A Orixe » n'est pas un chemin de plus mais un retour aux origines spirituelles, humaines et géographiques du pèlerinage de Compostelle.",
+    "soundPlayerText": "Capsule sonore Don Manuel",
+    "soundPlayerSubtitle": "petite phrase d'accroche"
+  },
+  "slowTourisme": {
+    "title": "« A Orixe se prête parfaitement au slow tourisme »",
+    "paragraph1": "Adrian Batalla est un guide local originaire de Boiro, village situé sur le parcours de « A Orixe ». Avec un groupe d'amis passionnés d'histoire et de patrimoine galiciens, il souhaite valoriser le camino à travers des animations, des découvertes et des circuits thématiques.",
+    "question": "Qu'est-ce qui rend ce parcours différent des autres chemins de Compostelle ?",
+    "answerPrefix": "Adrian Batalla :",
+    "answerBody": "Sa diversité. On passe de la mer aux collines, des ports aux vieilles pierres des villages, des pêcheurs aux vignerons. Il y a une proximité très forte avec la vie locale, la culture galicienne et la nature. Ce n'est pas qu'un itinéraire spirituel, c'est un voyage d'émotions et de rencontres. On peut lever le nez, discuter, s'arrêter... C'est du slow tourisme dans toute sa dimension. On y trouve le calme, la nature, les traditions vivantes et une vraie déconnexion."
+  },
+  "orixeInterview": {
+    "title": "Vous travaillez avec un groupe d'amis pour développer un projet autour de A Orixe. Dites-nous tout !",
+    "paragraph1": "Ce projet, c'est avant tout une passion partagée. Nous ne cherchons pas du tout à en faire un business. Nous avons tous un travail. Nous voulons accompagner des petits groupes de pèlerins sur notre temps libre, leur proposer des itinéraires enrichis, des activités, des découvertes. À terme, nous aimerions créer notre propre carte du camino A Orixe et bâtir un produit touristique \"slow travel\" fidèle à nos valeurs. A Orixe s'y prête parfaitement !",
+    "question1": "Le \"slow tourisme\", comment cela pourrait se traduire concrètement sur le camino « A Orixe » ?",
+    "answer1": "Nous proposons de marcher autrement. Dix jours de marche au lieu de six, pour prendre le temps, ou même des week-ends de trois jours sur-mesure sur une partie du parcours. L'idée, c'est de s'imprégner : visiter un site archéologique, cuisiner un poisson acheté au port selon une recette locale, écouter une légende racontée par un habitant... Le chemin devient une expérience globale, pas juste un itinéraire.",
+    "question2": "En tant que guide galicien, vous pensez à des lieux en particulier ?",
+    "answer2": "Oui ! Il y en a beaucoup ! Les vestiges du Castro de Neixón, les châteaux et légendes galiciennes, l'église Santa Maria a Antigua do Caraminal, le port de Rianxo... Et bien sûr, l'église de Santiago de Padrón, où selon la tradition, la barque de l'apôtre Jacques s'est amarrée. Chaque lieu raconte un pan d'histoire galicienne."
+  },
+  "experienceDestinee": {
+    "question1": "Cette nouvelle expérience, à qui serait-elle destinée ?",
+    "answer1": "À tout le monde, vraiment. Aux voyageurs étrangers en quête d'authenticité, aux locaux qui veulent redécouvrir leur propre région, aux jeunes qui cherchent du sens, du calme, loin du tourisme de masse. Nous voulons que chacun puisse vivre une aventure humaine et culturelle à son rythme. Le camino « A Orixe » reste encore méconnu, même localement... Complètement ! Et c'est un paradoxe. Beaucoup d'habitants ne connaissent pas ce chemin alors qu'il passe tout près de chez eux. C'est pour cela que nous voulons aussi faire une promotion locale, pour que les Galiciens se réapproprient leur patrimoine et en deviennent les premiers ambassadeurs.",
+    "question2": "Selon vous, « A Orixe » pourra-t-il conserver cette tranquillité qui en fait son originalité ou faut-il craindre une massification comme la connaissent d'autres parcours ?",
+    "answer2": "Je ne crois pas vraiment à une massification. Pour l'instant, les infrastructures d'accueil sont modestes et c'est ce qui préserve l'authenticité du parcours. Nous souhaitons qu'il se développe à petite échelle, en gardant cet esprit humain et intime. A mon avis, le camino A Orixe ne sera jamais un produit de masse et... c'est tant mieux !"
   }
 }

@@ -11,7 +11,7 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
       </p>
       <div class="parcours-praticable-section__row">
         <div class="parcours-praticable-section__col parcours-praticable-section__col--text">
-          <p class="type__question parcours-praticable-section__block">
+          <p class="type__question">
             {{ $t('parcoursPraticable.paragraph2') }}
           </p>
         </div>
@@ -55,12 +55,6 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
   .parcours-praticable-section__col--image {
     flex: 1 1 100%;
   }
-}
-
-.parcours-praticable-section__block {
-  border-left: 3px solid var(--color-teal-dark);
-  padding-left: 1rem;
-  margin: 0;
 }
 
 .parcours-praticable-section__image {

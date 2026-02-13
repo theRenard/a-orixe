@@ -101,6 +101,8 @@
   letter-spacing: var(--letter-spacing-normal);
   color: var(--color-teal-dark);
   text-align: left;
+  border-left: 3px solid var(--color-teal-dark);
+  padding-left: 1rem;
 }
 
 /* Interview: shared base */
