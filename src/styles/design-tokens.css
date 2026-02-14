@@ -13,6 +13,7 @@
   --color-teal-dark: #2d4b4b;
   --color-teal-medium: #609897;
   --color-teal-light: #a2cfcd;
+  --color-teal-enbref-bg: #b1dfda;
   --color-teal-bright: #0e9594;
   --color-brown-black: #260c03;
   --color-brown-dark: #591f0a;
@@ -46,6 +47,7 @@
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
+  --font-weight-black: 900;
 
   /* Font sizes */
   --font-size-xs: 12px;

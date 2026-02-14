@@ -28,6 +28,7 @@ import TraceRouteSection from '@/components/sections/TraceRouteSection.vue'
 import SlowTourismeSection from '@/components/sections/SlowTourismeSection.vue'
 import OrixeInterviewSection from '@/components/sections/OrixeInterviewSection.vue'
 import ExperienceDestineeSection from '@/components/sections/ExperienceDestineeSection.vue'
+import EnBrefSection from '@/components/sections/EnBrefSection.vue'
 </script>
 
 <template>
@@ -61,5 +62,6 @@ import ExperienceDestineeSection from '@/components/sections/ExperienceDestineeS
   <SlowTourismeSection />
   <OrixeInterviewSection />
   <ExperienceDestineeSection />
+  <EnBrefSection />
 </main>
 </template>

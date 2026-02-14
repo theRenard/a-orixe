@@ -205,5 +205,19 @@
     "answer1": "A todo el mundo, de verdad. A viajeros extranjeros en busca de autenticidad, a los locales que quieren redescubrir su propia región, a los jóvenes que buscan sentido, calma, lejos del turismo de masas. Queremos que cada uno pueda vivir una aventura humana y cultural a su ritmo. El camino « A Orixe » sigue siendo poco conocido, incluso a nivel local... ¡Completamente! Y es una paradoja. Muchos habitantes no conocen este camino aunque pasa muy cerca de sus casas. Por eso queremos también hacer una promoción local, para que los gallegos se reapropien de su patrimonio y se conviertan en sus primeros embajadores.",
     "question2": "En su opinión, ¿« A Orixe » podrá conservar esa tranquilidad que lo hace original o hay que temer una masificación como en otros recorridos?",
     "answer2": "No creo realmente en una masificación. Por ahora, las infraestructuras de acogida son modestas y eso es lo que preserva la autenticidad del recorrido. Deseamos que se desarrolle a pequeña escala, manteniendo ese espíritu humano e íntimo. En mi opinión, el camino A Orixe nunca será un producto de masa y... ¡menos mal!"
+  },
+  "enBref": {
+    "titlePrefix": "El camino",
+    "titleSuffix": " « A Orixe » en bref",
+    "stat1Number": "6",
+    "stat1Label": "etapas",
+    "stat2Number": "135",
+    "stat2Label": "kilómetros en total",
+    "departureLabel": "Salida",
+    "departurePlace": "Faro de Corrubedo",
+    "arrivalLabel": "Llegada",
+    "arrivalPlace": "Catedral de Santiago de Compostela",
+    "detailLinkText": "El detalle del recorrido",
+    "detailLinkHere": "aquí"
   }
 }

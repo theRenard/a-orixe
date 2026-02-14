@@ -356,3 +356,32 @@ section.section--half-viewport {
 .relative {
   position: relative;
 }
+
+/* En bref section: infographic-style types (from design) */
+.type__enbref-big {
+  font: normal var(--font-weight-black, 900) 130px/40px var(--font-family-fraunces);
+  letter-spacing: 0;
+  color: var(--color-teal-dark);
+  text-align: center;
+}
+
+.type__enbref-small-green {
+  font: normal var(--font-weight-bold) 24px/30px var(--font-family-fraunces);
+  letter-spacing: 0;
+  color: var(--color-teal-dark);
+  text-align: left;
+}
+
+.type__enbref-small-orange {
+  font: normal var(--font-weight-bold) 20px/40px var(--font-family-ubuntu);
+  letter-spacing: 0;
+  color: var(--color-orange);
+  text-align: center;
+}
+
+.type__enbref-small-orange--left {
+  font: normal var(--font-weight-bold) 20px/40px var(--font-family-ubuntu);
+  letter-spacing: 0;
+  color: var(--color-orange);
+  text-align: left;
+}
