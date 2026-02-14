@@ -219,5 +219,13 @@
     "arrivalPlace": "Catedral de Santiago de Compostela",
     "detailLinkText": "El detalle del recorrido",
     "detailLinkHere": "aquí"
+  },
+  "commentEstNeRecit": {
+    "title": "Cómo nació este relato",
+    "paragraph": "Al principio, solo había ido a caminar sola por Galicia, frente al Atlántico, por un itinerario elegido un poco al azar. Sin cuaderno de notas. Pero con cada encuentro descubrí una historia increíble: la de esos voluntarios que dedicaron cuatro años a reconstruir un camino de Compostela. Y así fue como el camino A Orixe se transformó finalmente en un proyecto editorial: trabajo de campo, investigación, entrevistas, escritura. Y al final de la aventura, la creación de una experiencia digital narrativa e inmersiva sobre un camino recorrido por menos del 1% de los peregrinos de Compostela. También me di cuenta de que nadie había documentado aún esta aventura humana. Pero con 24 años de periodismo a mis espaldas, he aprendido que hay historias que merecen ser contadas con tiempo y atención.",
+    "authorName": "Florence Antunes",
+    "authorRole": "Periodista y diseñadora de experiencias editoriales inmersivas",
+    "authorEmail": "florenceantunes@gmail.com",
+    "authorWebsite": "www.florenceantunes.com"
   }
 }

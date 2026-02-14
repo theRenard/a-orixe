@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import HeroSection from '@/components/sections/HeroSection.vue'
 import CaminoSection from '@/components/sections/CaminoSection.vue'
+import CommentEstNeRecitSection from '@/components/sections/CommentEstNeRecitSection.vue'
 </script>
 
 <template>
   <main class="mobile-view">
     <HeroSection />
     <CaminoSection />
+    <CommentEstNeRecitSection />
   </main>
 </template>
 

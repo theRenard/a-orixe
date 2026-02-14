@@ -220,5 +220,13 @@
     "arrivalPlace": "Cathédrale de Santiago de Compostela",
     "detailLinkText": "Le détail du parcours",
     "detailLinkHere": "ici"
+  },
+  "commentEstNeRecit": {
+    "title": "Comment est né ce récit",
+    "paragraph": "Au départ, j'étais juste partie marcher seule en Galice, face à l'Atlantique, sur un itinéraire choisi un peu au hasard. Sans carnet de notes. Mais au fil des rencontres, j'ai découvert une histoire incroyable : celle de ces bénévoles qui ont passé quatre ans à reconstituer un chemin de Compostelle. Et voilà comment le camino A Orixe s'est finalement transformé en projet éditorial: travail de terrain, recherches, interviews, écriture. Et au bout de l'aventure, la création d'une expérience digitale narrative et immersive sur un chemin parcouru par moins de 1% des pèlerins de Compostelle. J'ai aussi réalisé que personne n'avait encore documenté cette aventure humaine. Mais avec 24 ans de journalisme derrière moi, j'ai appris qu'il y a des histoires qui méritent d'être racontées avec du temps et de l'attention.",
+    "authorName": "Florence Antunes",
+    "authorRole": "Journaliste & conceptrice d'expériences éditoriales immersives",
+    "authorEmail": "florenceantunes@gmail.com",
+    "authorWebsite": "www.florenceantunes.com"
   }
 }
