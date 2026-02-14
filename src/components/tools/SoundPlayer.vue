@@ -116,12 +116,12 @@ onUnmounted(() => {
 }
 
 .sound-player__svg {
-  width: 1rem;
-  height: 1rem;
+  width: 3.16rem;
+  height: 3.16rem;
 }
 
 .sound-player__svg--play {
-  margin-left: 2px;
+  margin-left: 3px;
 }
 
 .sound-player__text {
