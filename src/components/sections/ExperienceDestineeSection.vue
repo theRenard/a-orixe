@@ -2,16 +2,16 @@
   <section class="experience-destinee-section">
     <div class="container">
       <div class="centered">
-        <p class="type__interview-question experience-destinee-section__block mt-5">
+        <p class="type__interview-question experience-destinee-section__block paragraph-spacing">
           {{ $t('experienceDestinee.question1') }}
         </p>
-        <p class="type__interview-answer experience-destinee-section__block">
+        <p class="type__interview-answer experience-destinee-section__block paragraph-spacing">
           {{ $t('experienceDestinee.answer1') }}
         </p>
-        <p class="type__interview-question experience-destinee-section__block">
+        <p class="type__interview-question experience-destinee-section__block paragraph-spacing">
           {{ $t('experienceDestinee.question2') }}
         </p>
-        <p class="type__interview-answer experience-destinee-section__block mb-5">
+        <p class="type__interview-answer experience-destinee-section__block paragraph-spacing">
           {{ $t('experienceDestinee.answer2') }}
         </p>
       </div>
@@ -19,8 +19,3 @@
   </section>
 </template>
 
-<style scoped>
-.type__interview-answer + .type__interview-question {
-  margin-top: 1.5rem;
-}
-</style>

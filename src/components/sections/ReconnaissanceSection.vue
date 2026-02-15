@@ -4,22 +4,22 @@
       <div class="centered">
       <div class="reconnaissance-section__row">
         <div class="reconnaissance-section__content">
-          <h2 class="type__section-title type__section-title--with-line mt-5">
+          <h2 class="type__section-title type__section-title--with-line heading-spacing">
             {{ $t('reconnaissance.title') }}
           </h2>
-          <p class="type__section-paragraph mt-3">
+          <p class="type__section-paragraph paragraph-spacing">
             {{ $t('reconnaissance.paragraph1') }}
           </p>
-          <p class="type__section-paragraph mt-3">
+          <p class="type__section-paragraph paragraph-spacing">
             {{ $t('reconnaissance.paragraph2') }}
           </p>
-          <p class="type__question mt-3">
+          <p class="type__question paragraph-spacing">
             {{ $t('reconnaissance.quote') }}
           </p>
-          <p class="type__section-paragraph reconnaissance-section__attribution">
+          <p class="type__section-paragraph reconnaissance-section__attribution paragraph-spacing">
             {{ $t('reconnaissance.attribution') }}
           </p>
-          <p class="type__section-paragraph mt-3">
+          <p class="type__section-paragraph paragraph-spacing">
             {{ $t('reconnaissance.paragraph3') }}
           </p>
         </div>
@@ -27,13 +27,13 @@
           <div class="reconnaissance-section__placeholder" aria-hidden="true">
             <span class="reconnaissance-section__placeholder-text">{{ $t('reconnaissance.placeholderLabel') }}</span>
           </div>
-          <p class="reconnaissance-section__caption type__footnote">
+          <p class="reconnaissance-section__caption type__footnote paragraph-spacing">
             {{ $t('reconnaissance.documentCaption') }}
           </p>
         </div>
       </div>
       </div>
-      <p class="type__footnote reconnaissance-section__footnote mt-4 mb-5">
+      <p class="type__footnote reconnaissance-section__footnote paragraph-spacing">
         {{ $t('reconnaissance.footnote') }}
       </p>
     </div>
@@ -59,7 +59,6 @@
 }
 
 .reconnaissance-section__attribution {
-  margin-top: 0.5rem;
   font-style: italic;
 }
 
@@ -88,7 +87,6 @@
 }
 
 .reconnaissance-section__caption {
-  margin: 0;
   text-align: center;
 }
 

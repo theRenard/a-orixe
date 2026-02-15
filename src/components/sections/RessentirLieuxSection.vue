@@ -6,19 +6,19 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
 <section class="ressentir-lieux-section">
   <div class="container">
     <div class="centered">
-      <h2 class="type__section-title type__section-title--with-line mt-5">
+      <h2 class="type__section-title type__section-title--with-line heading-spacing">
         {{ $t('ressentirLieux.title') }}
       </h2>
-      <p class="type__section-paragraph mt-3">
+      <p class="type__section-paragraph paragraph-spacing">
         {{ $t('ressentirLieux.paragraph') }}
       </p>
-      <p class="type__section-paragraph mt-3">
+      <p class="type__section-paragraph paragraph-spacing">
         {{ $t('ressentirLieux.transition') }}
       </p>
-      <p class="type__question mt-3 mb-5">
+      <p class="type__question paragraph-spacing">
         {{ $t('ressentirLieux.question') }}
       </p>
-      <p class="ressentir-lieux-section__caption type__footnote">
+      <p class="ressentir-lieux-section__caption type__footnote paragraph-spacing">
         {{ $t('ressentirLieux.imageCaption') }}
       </p>
     </div>
@@ -32,8 +32,6 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
 
 <style scoped>
 .ressentir-lieux-section__caption {
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
   padding-top: 0.5rem;
   border-top: 1px solid var(--color-gray);
 }

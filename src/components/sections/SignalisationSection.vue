@@ -26,7 +26,7 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
             </ImageCrop>
           </div>
         </div>
-        <p class="signalisation-section__caption type__footnote mt-3 mb-5">
+        <p class="signalisation-section__caption type__footnote paragraph-spacing">
           {{ $t('signalisation.caption') }}
         </p>
       </div>

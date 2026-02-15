@@ -7,10 +7,10 @@ import SantiagoJourneyPhotoGrid from '@/components/sections/SantiagoJourneyPhoto
     <div class="container">
       <SantiagoJourneyPhotoGrid />
       <div class="centered">
-        <p class="santiago-journey-section__caption type__footnote">
+        <p class="santiago-journey-section__caption type__footnote paragraph-spacing">
           {{ $t('santiagoJourney.imageCaption') }}
         </p>
-        <p class="type__section-paragraph mt-3 mb-5">
+        <p class="type__section-paragraph paragraph-spacing">
           {{ $t('santiagoJourney.paragraph') }}
         </p>
       </div>
@@ -20,8 +20,6 @@ import SantiagoJourneyPhotoGrid from '@/components/sections/SantiagoJourneyPhoto
 
 <style scoped>
 .santiago-journey-section__caption {
-  margin-top: 1rem;
-  margin-bottom: 0;
   display: flex;
   align-items: center;
   gap: 0.75rem;

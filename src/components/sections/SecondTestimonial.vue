@@ -18,7 +18,7 @@
   <!-- position absolute -->
   <div class="container mb-2" style="position: absolute; bottom: 0; left: 0; right: 0;">
     <div class="centered">
-      <p class="type__footnote">
+      <p class="type__footnote paragraph-spacing">
         {{ $t('secondTestimonial.footnote') }}
       </p>
     </div>

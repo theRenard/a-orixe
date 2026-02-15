@@ -32,10 +32,10 @@
           </a>
         </aside>
         <div class="comment-est-ne-section__content">
-          <h2 class="comment-est-ne-section__title">
+          <h2 class="comment-est-ne-section__title heading-spacing">
             {{ $t('commentEstNeRecit.title') }}
           </h2>
-          <p class="comment-est-ne-section__paragraph">
+          <p class="comment-est-ne-section__paragraph paragraph-spacing">
             {{ $t('commentEstNeRecit.paragraph') }}
           </p>
         </div>
@@ -80,6 +80,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  gap: 0.25rem;
 }
 
 .comment-est-ne-section__avatar {
@@ -96,7 +97,6 @@
   letter-spacing: 0px;
   color: var(--color-teal-dark);
   text-align: left;
-  margin: 0 0 1.5rem;
 }
 
 /* Green paragraph – Ubuntu 18px/30px medium #2D4B4B */
@@ -105,7 +105,6 @@
   letter-spacing: 0px;
   color: var(--color-teal-dark);
   text-align: left;
-  margin: 0;
 }
 
 /* Author name – Ubuntu 28px/27px bold #2D4B4B, center */
@@ -123,7 +122,6 @@
   letter-spacing: 0px;
   color: var(--color-teal-medium);
   text-align: center;
-  margin: 0 0 0.75rem;
 }
 
 /* Author email & website – Ubuntu 19px/27px bold #2D4B4B, center, underline */

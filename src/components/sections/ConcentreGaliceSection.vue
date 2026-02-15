@@ -14,19 +14,19 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
         >
       </ImageCrop>
       <div class="centered">
-        <p class="concentre-galice-section__caption type__footnote">
+        <p class="concentre-galice-section__caption type__footnote paragraph-spacing">
           {{ $t('concentreGalice.imageCaption') }}
         </p>
-        <h2 class="type__section-title type__section-title--with-line mt-4">
+        <h2 class="type__section-title type__section-title--with-line heading-spacing">
           {{ $t('concentreGalice.title') }}
         </h2>
-        <p class="type__section-paragraph mt-3">
+        <p class="type__section-paragraph paragraph-spacing">
           {{ $t('concentreGalice.paragraph1') }}
         </p>
-        <p class="type__section-paragraph mt-3">
+        <p class="type__section-paragraph paragraph-spacing">
           {{ $t('concentreGalice.paragraph2') }}
         </p>
-        <p class="type__section-paragraph mt-3 mb-5">
+        <p class="type__section-paragraph paragraph-spacing">
           {{ $t('concentreGalice.paragraph3') }}
         </p>
       </div>
@@ -36,8 +36,6 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
 
 <style scoped>
 .concentre-galice-section__caption {
-  margin-top: 1rem;
-  margin-bottom: 0;
   display: flex;
   align-items: center;
   gap: 0.75rem;

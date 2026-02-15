@@ -1,7 +1,7 @@
 <template>
   <section class="en-bref-section">
     <div class="en-bref-section__inner container">
-      <h2 class="en-bref-section__title">
+      <h2 class="en-bref-section__title heading-spacing">
         <span class="en-bref-section__title-underline">{{ $t('enBref.titlePrefix') }}</span>{{ $t('enBref.titleSuffix') }}
       </h2>
 
@@ -53,7 +53,7 @@
         </div>
       </div>
 
-      <p class="en-bref-section__link-wrap">
+      <p class="en-bref-section__link-wrap paragraph-spacing">
         {{ $t('enBref.detailLinkText') }}
         <a href="#etapes-cles" class="en-bref-section__link">{{ $t('enBref.detailLinkHere') }}</a>
       </p>
@@ -78,7 +78,6 @@
   font: normal var(--font-weight-bold) 38px/1.2 var(--font-family-fraunces);
   color: var(--color-orange);
   text-align: center;
-  margin: 0 0 3rem;
 }
 
 .en-bref-section__title-underline {

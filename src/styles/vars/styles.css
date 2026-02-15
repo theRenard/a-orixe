@@ -37,6 +37,26 @@ section.section--half-viewport {
   margin-left: auto !important;
 }
 
+/* Paragraphs: no default margin; use .paragraph-spacing for vertical rhythm */
+p {
+  margin: 0;
+}
+
+.paragraph-spacing {
+  margin-top: 3rem !important;
+  margin-bottom: 3rem !important;
+}
+
+/* Headings: no default margin; use .heading-spacing for vertical rhythm */
+h2 {
+  margin: 0;
+}
+
+.heading-spacing {
+  margin-top: 3rem !important;
+  margin-bottom: 3rem !important;
+}
+
 .centered {
   padding: 0 15rem;
 }

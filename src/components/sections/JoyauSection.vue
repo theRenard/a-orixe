@@ -6,7 +6,7 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
   <section class="joyau-section">
     <div class="container">
       <div class="centered">
-        <p class="type__section-paragraph joyau-section__quote mt-5">
+        <p class="type__section-paragraph joyau-section__quote paragraph-spacing">
           {{ $t('joyau.paragraph') }}
         </p>
         <div class="joyau-section__grid mt-4">
@@ -38,7 +38,7 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
             </ImageCrop>
           </div>
         </div>
-        <p class="joyau-section__caption type__footnote mt-3 mb-5">
+        <p class="joyau-section__caption type__footnote paragraph-spacing">
           {{ $t('joyau.caption') }}
         </p>
       </div>

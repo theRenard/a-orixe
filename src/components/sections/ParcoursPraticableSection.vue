@@ -6,12 +6,12 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
 <section class="parcours-praticable-section">
   <div class="container">
     <div class="centered">
-      <p class="type__section-paragraph mt-5">
+      <p class="type__section-paragraph paragraph-spacing">
         {{ $t('parcoursPraticable.paragraph1') }}
       </p>
       <div class="parcours-praticable-section__row">
         <div class="parcours-praticable-section__col parcours-praticable-section__col--text">
-          <p class="type__question">
+          <p class="type__question paragraph-spacing">
             {{ $t('parcoursPraticable.paragraph2') }}
           </p>
         </div>

@@ -2,10 +2,10 @@
 <section class="etapes-cles-section">
   <div class="container">
     <div class="centered">
-      <h2 class="type__section-title type__section-title--with-line mt-5">
+      <h2 class="type__section-title type__section-title--with-line heading-spacing">
         {{ $t('etapesCles.title') }}
       </h2>
-      <p class="type__section-paragraph mt-3 mb-2">
+      <p class="type__section-paragraph paragraph-spacing">
         {{ $t('etapesCles.paragraph') }}
       </p>
     </div>

@@ -4,7 +4,7 @@
     <h1 class="type__hero-title">
       {{ $t('hero.title') }}
     </h1>
-    <p class="type__hero-subtitle mt-2">
+    <p class="type__hero-subtitle paragraph-spacing">
       {{ $t('hero.subtitle') }}
     </p>
     <div class="container credits__inner mt-6">
@@ -16,18 +16,18 @@
         <p>{{ $t('credits.authorRole') }}</p>
         <p>
           {{ $t('credits.publishedOnPrefix') }}<span class="type__credits-bold">{{ $t('credits.publishedOnDate')
-            }}</span>
+          }}</span>
         </p>
       </div>
       <div class="credits__col credits__col--right">
         <div class="credits__line-accent ml-auto" aria-hidden="true" />
         <p>
           {{ $t('credits.artDirectionPrefix') }}<span class="type__credits-bold">{{ $t('credits.artDirectionName')
-            }}</span>
+          }}</span>
         </p>
         <p>
           {{ $t('credits.illustrationPrefix') }}<span class="type__credits-bold">{{ $t('credits.illustrationName')
-            }}</span>
+          }}</span>
         </p>
         <p>
           {{ $t('credits.devDesignPrefix') }}<span class="type__credits-bold">{{ $t('credits.devDesignName') }}</span>
@@ -56,10 +56,6 @@
   gap: 0.25rem;
 }
 
-.credits__col p {
-  margin: 0;
-}
-
 .credits__col--left {
   text-align: left;
 }
@@ -74,5 +70,4 @@
   background: var(--color-orange);
   margin-bottom: 0.5rem;
 }
-
 </style>

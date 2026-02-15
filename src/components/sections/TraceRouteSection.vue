@@ -7,16 +7,16 @@ import audioDonManuel from '@/assets/audio/audio_don_manuel.mp3'
   <section class="trace-route-section">
     <div class="container">
       <div class="centered">
-        <h2 class="type__section-title type__section-title--with-line mt-5">
+        <h2 class="type__section-title type__section-title--with-line heading-spacing">
           {{ $t('traceRoute.title') }}
         </h2>
-        <p class="type__section-paragraph mt-3">
+        <p class="type__section-paragraph paragraph-spacing">
           {{ $t('traceRoute.paragraph1') }}
         </p>
-        <p class="type__section-paragraph mt-3">
+        <p class="type__section-paragraph paragraph-spacing">
           {{ $t('traceRoute.paragraph2') }}
         </p>
-        <p class="type__section-paragraph mt-3">
+        <p class="type__section-paragraph paragraph-spacing">
           {{ $t('traceRoute.paragraph3') }}
         </p>
         <div class="trace-route-section__player-wrap mt-4 mb-5">
