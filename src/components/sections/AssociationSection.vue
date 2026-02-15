@@ -13,12 +13,14 @@ import pronunciationMp3 from '@/assets/audio/audio_prononciation_a_orixe.mp3'
       <p class="type__question paragraph-spacing">
         {{ $t('association.blockquote') }}
       </p>
-      <div class="association-section__row paragraph-spacing">
-        <p class="type__section-paragraph association-section__paragraph">
+    </div>
+    <div class="centered--large">
+      <div class="row-two-col paragraph-spacing">
+        <p class="type__section-paragraph col-left">
           {{ $t('association.paragraph2') }}
         </p>
         <SoundPlayer :src="pronunciationMp3" :text="$t('association.soundPlayerText')"
-          class="association-section__player" />
+          class="col-right" />
       </div>
       <p class="type__section-paragraph paragraph-spacing">
         {{ $t('association.paragraph3') }}
@@ -28,21 +30,3 @@ import pronunciationMp3 from '@/assets/audio/audio_prononciation_a_orixe.mp3'
 </section>
 </template>
 
-<style scoped>
-.association-section__row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 1.5rem;
-}
-
-.association-section__paragraph {
-  flex: 0 0 60%;
-  min-width: 0;
-}
-
-.association-section__player {
-  flex: 1;
-  min-width: 0;
-}
-</style>

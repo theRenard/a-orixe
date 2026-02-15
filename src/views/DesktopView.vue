@@ -47,7 +47,7 @@ import CommentEstNeRecitSection from '@/components/sections/CommentEstNeRecitSec
   <ReconstitutionTracSection /> <!-- ok -->
   <TravailFourmiSection /> <!-- ok -->
   <ThirdTestimonial /> <!-- ok -->
-  <ElementsJacquaireSection />
+  <ElementsJacquaireSection /> <!-- ok -->
   <ParcoursPraticableSection />
   <SantiagoStepsSection />
   <SantiagoJourneySection />

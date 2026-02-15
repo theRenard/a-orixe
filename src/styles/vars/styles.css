@@ -61,6 +61,29 @@ h2 {
   padding: 0 15rem;
 }
 
+.centered--large {
+  padding: 0;
+  padding-left: 15rem;
+}
+
+/* Two-column layout: left column fixed width, right column wraps to full width */
+.row-two-col {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.col-left {
+  flex: 0 0 40%;
+  min-width: 0;
+}
+
+.col-right {
+  flex: 1 1 100%;
+  min-width: 0;
+}
+
 /* Spacing utilities: 1–10 = 1rem–10rem; t=top, r=right, b=bottom, l=left */
 /* Margin */
 .mt-1 {
