@@ -18,27 +18,11 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
       <p class="type__question paragraph-spacing">
         {{ $t('ressentirLieux.question') }}
       </p>
-      <p class="ressentir-lieux-section__caption type__footnote paragraph-spacing">
-        {{ $t('ressentirLieux.imageCaption') }}
-      </p>
     </div>
-    <ImageCrop width="100%" height="300px" position="0 75%">
+    <ImageCrop width="100%" height="300px" position="0 75%" :caption="$t('ressentirLieux.imageCaption')">
       <img src="../../assets/photos/01_florence_antunes.webp" :alt="$t('ressentirLieux.imageCaption')"
         class="ressentir-lieux-section__image" loading="lazy">
     </ImageCrop>
   </div>
 </section>
 </template>
-
-<style scoped>
-.ressentir-lieux-section__caption {
-  padding-top: 0.5rem;
-  border-top: 1px solid var(--color-gray);
-}
-
-.ressentir-lieux-section__image {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-</style>

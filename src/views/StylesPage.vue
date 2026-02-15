@@ -1,7 +1,7 @@
 <script setup lang="ts">
 /**
- * Style reference page: lists all typography/character classes from
- * src/styles/vars/typography.css (BEM block: type) for mockup vs page comparison.
+ * Style reference page: lists typography classes from typography.css and
+ * spacing/layout utilities from styles.css for mockup vs page comparison.
  */
 import { RouterLink } from 'vue-router'
 
@@ -23,6 +23,9 @@ const styleEntries: StyleEntry[] = [
   { class: 'type__section-paragraph', description: 'Section paragraph (normal, lg, Ubuntu, black)', sample: 'Section paragraph text.' },
   { class: 'type__testimonial-block', description: 'Testimonial block (italic bold, 2xl, Ubuntu, black)', sample: 'Testimonial quote' },
   { class: 'type__testimonial-name', description: 'Testimonial name (normal, lg, Ubuntu, black)', sample: 'Testimonial author' },
+  { class: 'type__image-caption', description: 'Image caption (medium, 14px/36px, Ubuntu, teal)', sample: 'Image caption.' },
+  { class: 'type__image-caption type__image-caption--with-line', description: 'Image caption with teal line before', sample: 'Image caption with line' },
+  { class: 'type__footnote', description: 'Footnote (same as image caption, for testimonial footnotes)', sample: 'Footnote text.' },
   { class: 'type__question', description: 'Question (bold, lg, Ubuntu, teal-dark)', sample: 'Question text' },
   { class: 'type__interview-title', description: 'Interview title (bold, 3xl, Fraunces, brown-dark)', sample: 'Interview title' },
   { class: 'type__interview-subtitle', description: 'Interview subtitle (bold, xl, Ubuntu, brown-dark)', sample: 'Interview subtitle' },
@@ -30,6 +33,12 @@ const styleEntries: StyleEntry[] = [
   { class: 'type__interview-answer', description: 'Interview answer (normal, lg, Ubuntu, orange)', sample: 'Interview answer text.' },
 ]
 
+const spacingEntries: StyleEntry[] = [
+  { class: 'paragraph-spacing', description: 'Margin top & bottom 3rem (use on p)', sample: 'Paragraph with .paragraph-spacing' },
+  { class: 'heading-spacing', description: 'Margin top & bottom 3rem (use on h2)', sample: 'Heading with .heading-spacing' },
+  { class: 'ma', description: 'margin: auto (center block)', sample: 'Block with .ma' },
+  { class: 'ml-auto', description: 'margin-left: auto (push right in flex)', sample: 'Item with .ml-auto' },
+]
 </script>
 
 <template>
@@ -37,14 +46,32 @@ const styleEntries: StyleEntry[] = [
     <header class="styles-reference-page__header">
       <h1 class="styles-reference-page__title type__section-title">Style reference</h1>
       <p class="styles-reference-page__subtitle">
-        Classes from <code>src/styles/vars/typography.css</code> (BEM: type__*) — use for mockup vs page comparison.
+        Typography from <code>typography.css</code> (BEM: type__*) and spacing from <code>styles.css</code> — use for mockup vs page comparison.
       </p>
       <RouterLink to="/" class="styles-reference-page__back type__credits-link">← Back to site</RouterLink>
     </header>
 
+    <h2 class="styles-reference-page__section-title heading-spacing">Typography (type__*)</h2>
     <div class="styles-reference-page__list">
       <article
         v-for="entry in styleEntries"
+        :key="entry.class"
+        class="style-card"
+      >
+        <div class="style-card__meta">
+          <code class="style-card__class">.{{ entry.class }}</code>
+          <p class="style-card__desc">{{ entry.description }}</p>
+        </div>
+        <p :class="['style-card__sample', entry.class]">
+          {{ entry.sample }}
+        </p>
+      </article>
+    </div>
+
+    <h2 class="styles-reference-page__section-title heading-spacing">Spacing & layout utilities</h2>
+    <div class="styles-reference-page__list">
+      <article
+        v-for="entry in spacingEntries"
         :key="entry.class"
         class="style-card"
       >
@@ -98,6 +125,12 @@ const styleEntries: StyleEntry[] = [
 
 .styles-reference-page__back:hover {
   text-decoration: underline;
+}
+
+.styles-reference-page__section-title {
+  font: inherit;
+  color: var(--color-teal-dark, #2d4b4b);
+  font-size: 1.25rem;
 }
 
 .styles-reference-page__list {

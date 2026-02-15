@@ -141,3 +141,27 @@
   color: var(--color-teal-medium);
   text-align: left;
 }
+
+/* Image caption (medium, 14px/36px, Ubuntu, teal, optional line) */
+.type__image-caption {
+  font: var(--font-style-normal) var(--font-weight-medium) 14px/36px var(--font-family-ubuntu);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-teal-medium);
+  text-align: left;
+  opacity: 1;
+}
+
+.type__image-caption--with-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.type__image-caption--with-line::before {
+  content: '';
+  flex-shrink: 0;
+  width: 35px;
+  min-width: 35px;
+  height: 2px;
+  background: var(--color-teal-medium);
+}

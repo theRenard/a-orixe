@@ -27,7 +27,7 @@
           <div class="reconnaissance-section__placeholder" aria-hidden="true">
             <span class="reconnaissance-section__placeholder-text">{{ $t('reconnaissance.placeholderLabel') }}</span>
           </div>
-          <p class="reconnaissance-section__caption type__footnote paragraph-spacing">
+          <p class="reconnaissance-section__caption type__image-caption type__image-caption--with-line paragraph-spacing">
             {{ $t('reconnaissance.documentCaption') }}
           </p>
         </div>

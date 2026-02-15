@@ -4,6 +4,7 @@ const props = withDefaults(
     width?: string | number
     height?: string | number
     position?: string
+    caption?: string
   }>(),
   { width: '100%', height: '300px', position: 'center' }
 )
@@ -15,16 +16,14 @@ function toCssSize(value: string | number): string {
 </script>
 
 <template>
-  <div
-    class="image-crop"
-    :style="{
-      width: toCssSize(width),
-      height: toCssSize(height),
-      '--image-crop-position': props.position,
-    }"
-  >
-    <slot />
-  </div>
+<div class="image-crop" :style="{
+  width: toCssSize(width),
+  height: toCssSize(height),
+  '--image-crop-position': props.position,
+}">
+  <p class="type__image-caption type__image-caption--with-line">{{ caption }}</p>
+  <slot />
+</div>
 </template>
 
 <style scoped>
