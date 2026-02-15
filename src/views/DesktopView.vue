@@ -48,24 +48,25 @@ import CommentEstNeRecitSection from '@/components/sections/CommentEstNeRecitSec
   <TravailFourmiSection /> <!-- ok -->
   <ThirdTestimonial /> <!-- ok -->
   <ElementsJacquaireSection /> <!-- ok -->
-  <ParcoursPraticableSection />
-  <SantiagoStepsSection />
-  <SantiagoJourneySection />
-  <ConcentreGaliceSection />
-  <ReconnaissanceSection />
-  <FourthTestimonial />
-  <FlechageSection />
-  <SignalisationSection />
-  <CoupDeCoeurSection />
-  <JoyauSection />
-  <DeconnexionSection />
-  <CapsuleSonoreSection />
-  <PilgrimsStatsSection />
-  <TraceRouteSection />
-  <SlowTourismeSection />
-  <OrixeInterviewSection />
-  <ExperienceDestineeSection />
-  <EnBrefSection />
-  <CommentEstNeRecitSection />
+  <ParcoursPraticableSection /> <!-- ok -->
+  <!-- here the section with the illustration that is missing -->
+  <SantiagoStepsSection /> <!-- ok -->
+  <ConcentreGaliceSection /> <!-- ok -->
+  <SantiagoJourneySection /> <!-- ok -->
+  <ReconnaissanceSection /> <!-- missing image -->
+  <FourthTestimonial /> <!-- ok -->
+  <FlechageSection /> <!-- ok -->
+  <SignalisationSection /> <!-- ok -->
+  <CoupDeCoeurSection /> <!-- ok -->
+  <JoyauSection /> <!-- ok -->
+  <DeconnexionSection /> <!-- ok -->
+  <CapsuleSonoreSection /> <!-- ok -->
+  <PilgrimsStatsSection /> <!-- stats are not good yet -->
+  <TraceRouteSection /> <!-- ok -->
+  <SlowTourismeSection /> <!-- ok -->
+  <OrixeInterviewSection /> <!-- ok -->
+  <ExperienceDestineeSection /> <!-- ok-->
+  <EnBrefSection /> <!-- TODO  -->
+  <CommentEstNeRecitSection /> <!-- TODO -->
 </main>
 </template>

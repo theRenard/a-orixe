@@ -7,7 +7,7 @@ const props = withDefaults(
     caption?: string
     captionPosition?: 'top' | 'bottom'
   }>(),
-  { width: '100%', height: '300px', position: 'center', captionPosition: 'top' }
+  { width: '100%', height: '300px', position: 'center' }
 )
 
 function toCssSize(value: string | number): string {
@@ -19,7 +19,7 @@ function toCssSize(value: string | number): string {
 <template>
 <div class="image-crop-container">
   <p v-if="props.captionPosition === 'top'" class="type__image-caption type__image-caption--with-line">{{ props.caption
-  }}</p>
+    }}</p>
 
 </div>
 <div class="image-crop" :style="{

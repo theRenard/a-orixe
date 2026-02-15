@@ -4,30 +4,30 @@ import audioDonManuel from '@/assets/audio/audio_don_manuel.mp3'
 </script>
 
 <template>
-  <section class="trace-route-section">
-    <div class="container">
-      <div class="centered">
-        <h2 class="type__section-title type__section-title--with-line heading-spacing">
-          {{ $t('traceRoute.title') }}
-        </h2>
-        <p class="type__section-paragraph paragraph-spacing">
-          {{ $t('traceRoute.paragraph1') }}
-        </p>
-        <p class="type__section-paragraph paragraph-spacing">
-          {{ $t('traceRoute.paragraph2') }}
-        </p>
-        <p class="type__section-paragraph paragraph-spacing">
-          {{ $t('traceRoute.paragraph3') }}
-        </p>
-        <div class="trace-route-section__player-wrap mt-4 mb-5">
-          <SoundPlayer :src="audioDonManuel">
-            <span class="trace-route-section__player-line1">{{ $t('traceRoute.soundPlayerText') }}</span>
-            <span class="trace-route-section__player-line2">{{ $t('traceRoute.soundPlayerSubtitle') }}</span>
-          </SoundPlayer>
-        </div>
+<section class="trace-route-section">
+  <div class="container">
+    <div class="centered">
+      <h2 class="type__section-title type__section-title--with-line heading-spacing">
+        {{ $t('traceRoute.title') }}
+      </h2>
+      <p class="type__section-paragraph--italic paragraph-spacing">
+        {{ $t('traceRoute.paragraph1') }}
+      </p>
+      <p class="type__section-paragraph paragraph-spacing">
+        {{ $t('traceRoute.paragraph2') }}
+      </p>
+      <p class="type__section-paragraph paragraph-spacing">
+        {{ $t('traceRoute.paragraph3') }}
+      </p>
+      <div class="trace-route-section__player-wrap mt-4 mb-5">
+        <SoundPlayer :src="audioDonManuel">
+          <span class="trace-route-section__player-line1">{{ $t('traceRoute.soundPlayerText') }}</span>
+          <span class="trace-route-section__player-line2">{{ $t('traceRoute.soundPlayerSubtitle') }}</span>
+        </SoundPlayer>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 </template>
 
 <style scoped>
@@ -41,13 +41,12 @@ import audioDonManuel from '@/assets/audio/audio_don_manuel.mp3'
 .trace-route-section__player-wrap :deep(.sound-player__text) {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.15rem;
 }
 
 .trace-route-section__player-wrap :deep(.trace-route-section__player-line2) {
   font-size: 0.875em;
   font-weight: var(--font-weight-normal);
-  color: var(--color-gray);
 }
 </style>

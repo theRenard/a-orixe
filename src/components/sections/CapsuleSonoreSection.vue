@@ -5,26 +5,19 @@ import audioForetOiseaux from '@/assets/audio/audio_foret_oiseaux.mp3'
 </script>
 
 <template>
-  <section class="capsule-sonore-section">
-    <div class="container">
-      <div class="centered">
-        <ImageCrop width="100%" height="340px" position="center 50%">
-          <img
-            src="../../assets/photos/13_florence_antunes.webp"
-            :alt="$t('capsuleSonore.imageCaption')"
-            class="capsule-sonore-section__image"
-            loading="lazy"
-          >
-        </ImageCrop>
-        <div class="capsule-sonore-section__player-wrap mt-3 mb-5">
-          <SoundPlayer
-            :src="audioForetOiseaux"
-            :text="$t('capsuleSonore.soundPlayerText')"
-          />
-        </div>
+<section class="capsule-sonore-section">
+  <div class="container">
+    <ImageCrop width="100%" height="600px" position="center 50%">
+      <img src="../../assets/photos/13_florence_antunes.webp" :alt="$t('capsuleSonore.imageCaption')"
+        class="capsule-sonore-section__image mt-3" loading="lazy">
+    </ImageCrop>
+    <div class="centered">
+      <div class="capsule-sonore-section__player-wrap mt-3 mb-3">
+        <SoundPlayer :src="audioForetOiseaux" :text="$t('capsuleSonore.soundPlayerText')" />
       </div>
     </div>
-  </section>
+  </div>
+</section>
 </template>
 
 <style scoped>

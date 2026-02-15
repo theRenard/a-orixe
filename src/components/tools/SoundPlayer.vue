@@ -91,6 +91,7 @@ onUnmounted(() => {
   letter-spacing: var(--letter-spacing-normal);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+  max-width: 400px;
 }
 
 .sound-player:hover {

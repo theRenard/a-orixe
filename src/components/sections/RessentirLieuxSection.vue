@@ -19,7 +19,8 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
         {{ $t('ressentirLieux.question') }}
       </p>
     </div>
-    <ImageCrop width="100%" height="300px" position="0 75%" :caption="$t('ressentirLieux.imageCaption')">
+    <ImageCrop width="100%" height="300px" position="0 75%" :caption="$t('ressentirLieux.imageCaption')"
+      caption-position="top">
       <img src="../../assets/photos/01_florence_antunes.webp" :alt="$t('ressentirLieux.imageCaption')"
         class="ressentir-lieux-section__image" loading="lazy">
     </ImageCrop>

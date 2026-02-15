@@ -3,47 +3,35 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
 </script>
 
 <template>
-  <section class="joyau-section">
-    <div class="container">
-      <div class="centered">
-        <p class="type__section-paragraph joyau-section__quote paragraph-spacing">
-          {{ $t('joyau.paragraph') }}
-        </p>
-        <div class="joyau-section__grid mt-4">
-          <div class="joyau-section__cell">
-            <ImageCrop width="100%" height="240px" position="center 50%">
-              <img
-                src="../../assets/photos/09_florence_antunes.webp"
-                :alt="$t('joyau.caption')"
-                loading="lazy"
-              >
-            </ImageCrop>
-          </div>
-          <div class="joyau-section__cell">
-            <ImageCrop width="100%" height="240px" position="center 50%">
-              <img
-                src="../../assets/photos/10_florence_antunes.webp"
-                :alt="$t('joyau.caption')"
-                loading="lazy"
-              >
-            </ImageCrop>
-          </div>
-          <div class="joyau-section__cell">
-            <ImageCrop width="100%" height="240px" position="center 50%">
-              <img
-                src="../../assets/photos/11_florence_antunes.webp"
-                :alt="$t('joyau.caption')"
-                loading="lazy"
-              >
-            </ImageCrop>
-          </div>
-        </div>
-        <p class="joyau-section__caption type__image-caption type__image-caption--with-line paragraph-spacing">
-          {{ $t('joyau.caption') }}
-        </p>
+<section class="joyau-section">
+  <div class="container">
+    <div class="centered">
+      <p class="type__section-paragraph joyau-section__quote paragraph-spacing">
+        {{ $t('joyau.paragraph') }}
+      </p>
+    </div>
+    <div class="joyau-section__grid mt-4">
+      <div class="joyau-section__cell">
+        <ImageCrop width="100%" height="600px" position="center 50%">
+          <img src="../../assets/photos/10_florence_antunes.webp" :alt="$t('joyau.caption')" loading="lazy">
+        </ImageCrop>
+      </div>
+      <div class="joyau-section__cell">
+        <ImageCrop width="100%" height="600px" position="center 50%">
+          <img src="../../assets/photos/11_florence_antunes.webp" :alt="$t('joyau.caption')" loading="lazy">
+        </ImageCrop>
+      </div>
+      <div class="joyau-section__cell">
+        <ImageCrop width="100%" height="600px" position="center 50%">
+          <img src="../../assets/photos/12_florence_antunes.webp" :alt="$t('joyau.caption')" loading="lazy">
+        </ImageCrop>
       </div>
     </div>
-  </section>
+    <p class="joyau-section__caption type__image-caption type__image-caption--with-line">
+      {{ $t('joyau.caption') }}
+    </p>
+  </div>
+</section>
 </template>
 
 <style scoped>

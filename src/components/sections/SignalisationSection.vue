@@ -3,35 +3,25 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
 </script>
 
 <template>
-  <section class="signalisation-section">
-    <div class="container">
-      <div class="centered">
-        <div class="signalisation-section__grid">
-          <div class="signalisation-section__cell">
-            <ImageCrop width="100%" height="280px" position="center 50%">
-              <img
-                src="../../assets/photos/04_florence_antunes.webp"
-                :alt="$t('signalisation.caption')"
-                loading="lazy"
-              >
-            </ImageCrop>
-          </div>
-          <div class="signalisation-section__cell">
-            <ImageCrop width="100%" height="280px" position="center 50%">
-              <img
-                src="../../assets/photos/08_florence_antunes.webp"
-                :alt="$t('signalisation.caption')"
-                loading="lazy"
-              >
-            </ImageCrop>
-          </div>
-        </div>
-        <p class="signalisation-section__caption type__image-caption type__image-caption--with-line paragraph-spacing">
-          {{ $t('signalisation.caption') }}
-        </p>
+<section class="signalisation-section mt-3 mb-3">
+  <div class="container">
+    <div class="signalisation-section__grid">
+      <div class="signalisation-section__cell">
+        <ImageCrop width="100%" height="600px" position="center 50%">
+          <img src="../../assets/photos/08_florence_antunes.webp" :alt="$t('signalisation.caption')" loading="lazy">
+        </ImageCrop>
+      </div>
+      <div class="signalisation-section__cell">
+        <ImageCrop width="100%" height="600px" position="center 50%">
+          <img src="../../assets/photos/09_florence_antunes.webp" :alt="$t('signalisation.caption')" loading="lazy">
+        </ImageCrop>
       </div>
     </div>
-  </section>
+    <p class="signalisation-section__caption type__image-caption type__image-caption--with-line">
+      {{ $t('signalisation.caption') }}
+    </p>
+  </div>
+</section>
 </template>
 
 <style scoped>
@@ -42,15 +32,8 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
   max-width: 100%;
 }
 
-@media (max-width: 768px) {
-  .signalisation-section__grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 .signalisation-section__cell {
   overflow: hidden;
-  border-radius: 2px;
 }
 
 .signalisation-section__cell :deep(img) {

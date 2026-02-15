@@ -80,7 +80,7 @@ h2 {
 }
 
 .col-right {
-  flex: 1 1 100%;
+  flex: 0 0 auto; 
   min-width: 0;
 }
 

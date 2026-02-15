@@ -7,37 +7,26 @@ const rightBottomImage = new URL('../../assets/photos/07_florence_antunes.webp',
 </script>
 
 <template>
-  <div class="santiago-journey-photo-grid" role="img" :aria-label="$t('santiagoJourney.imageCaption')">
-    <div class="santiago-journey-photo-grid__cell santiago-journey-photo-grid__cell--left">
-      <ImageCrop width="100%" height="100%" position="center 50%">
-        <img
-          :src="leftImage"
-          :alt="$t('santiagoJourney.imageCaption')"
-          loading="lazy"
-        >
-      </ImageCrop>
-    </div>
-    <div class="santiago-journey-photo-grid__cell santiago-journey-photo-grid__cell--right-top">
-      <ImageCrop width="100%" height="100%" position="center 50%">
-        <img
-          :src="rightTopImage"
-          alt=""
-          loading="lazy"
-          role="presentation"
-        >
-      </ImageCrop>
-    </div>
-    <div class="santiago-journey-photo-grid__cell santiago-journey-photo-grid__cell--right-bottom">
-      <ImageCrop width="100%" height="100%" position="center 50%">
-        <img
-          :src="rightBottomImage"
-          alt=""
-          loading="lazy"
-          role="presentation"
-        >
-      </ImageCrop>
-    </div>
+<div class="santiago-journey-photo-grid" role="img" :aria-label="$t('santiagoJourney.imageCaption')">
+  <div class="santiago-journey-photo-grid__cell santiago-journey-photo-grid__cell--left">
+    <ImageCrop width="100%" height="100%" position="center 50%">
+      <img :src="leftImage" :alt="$t('santiagoJourney.imageCaption')" loading="lazy">
+    </ImageCrop>
   </div>
+  <div class="santiago-journey-photo-grid__cell santiago-journey-photo-grid__cell--right-top">
+    <ImageCrop width="100%" height="100%" position="center 50%">
+      <img :src="rightTopImage" alt="" loading="lazy" role="presentation">
+    </ImageCrop>
+  </div>
+  <div class="santiago-journey-photo-grid__cell santiago-journey-photo-grid__cell--right-bottom">
+    <ImageCrop width="100%" height="100%" position="center 50%">
+      <img :src="rightBottomImage" alt="" loading="lazy" role="presentation">
+    </ImageCrop>
+  </div>
+  <p class="santiago-journey-photo-grid__caption type__image-caption type__image-caption--with-line">
+    {{ $t('santiagoJourney.imageCaption') }}
+  </p>
+</div>
 </template>
 
 <style scoped>

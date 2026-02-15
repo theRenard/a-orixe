@@ -71,6 +71,10 @@
   color: var(--color-black);
 }
 
+.type__section-paragraph--italic {
+  font: var(--font-style-italic) var(--font-weight-normal) var(--font-size-lg)/var(--line-height-base) var(--font-family-ubuntu);
+}
+
 /* Testimonial */
 .type__testimonial-block,
 .type__testimonial-name {
