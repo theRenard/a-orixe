@@ -51,7 +51,7 @@ Single long-page website with Vue 3, programmatic animations, and bilingual cont
 ## Conventions
 
 - **Components**: PascalCase; one main component per section on the long page when it makes sense.
-- **New sections**: Add every new section at the end of the page — i.e. register it last in `src/views/HomeView.vue` (and in the mobile view if applicable), so it appears at the bottom of the long scroll.
+- **New sections**: Add every new section at the end of the page — i.e. register it last in `src/views/DesktopView.vue` (and in the mobile view if applicable), so it appears at the bottom of the long scroll.
 - **i18n**: Keys by feature/section (e.g. `hero.title`, `footer.copyright`). Never hardcode fr/es strings in templates or components. In templates use the global `$t('key')` for translations and `$i18n.locale` for the current locale; do not use `useI18n()` and `t` in components solely for template translations.
 - **Animations**: Prefer composables (e.g. `useScrollReveal`) that wrap the animation library; keep animation logic out of raw template code when possible.
 - **Script/style**: `<script setup lang="ts">`; scoped styles; SCSS with `@use` only.

@@ -5,7 +5,7 @@
 <section class="elements-jacquaire-section">
   <div class="container">
     <img src="../../assets/illustrations/benevoles_ok.webp" :alt="$t('elementsJacquaire.title')"
-      class="elements-jacquaire-section__image" loading="lazy" width="50%" height="auto">
+      class="elements-jacquaire-section__image ma" loading="lazy" width="50%" height="auto">
     <div class="centered">
       <h2 class="type__section-title elements-jacquaire-section__title mt-4">
         {{ $t('elementsJacquaire.title') }}
@@ -23,7 +23,6 @@
   display: block;
   max-width: 100%;
   height: auto;
-  margin: auto;
 }
 
 .elements-jacquaire-section__title {

@@ -2,7 +2,7 @@
 </script>
 
 <template>
-<section class="with-borders with-background">
+<section class="section--full-viewport with-borders with-background">
   <div class="container">
     <blockquote class="centered">
       <div>
@@ -16,7 +16,7 @@
       </div>
     </blockquote>
     <img src="../../assets/illustrations/phare.webp" :alt="$t('secondTestimonial.quote')"
-      class="second-testimonial__image" loading="lazy">
+      class="second-testimonial__image ml-auto" loading="lazy">
     <div class="centered">
 
       <p class="type__footnote mt-10">
@@ -33,6 +33,5 @@
   max-width: 100%;
   height: auto;
   align-self: flex-end;
-  margin-left: auto;
 }
 </style>

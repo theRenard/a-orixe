@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <section class="section--half-viewport with-background fourth-testimonial">
+  <section class="section--full-viewport section--half-viewport with-background fourth-testimonial">
     <div class="container fourth-testimonial__container">
       <img
         src="../../assets/illustrations/mouette.webp"

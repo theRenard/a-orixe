@@ -2,7 +2,7 @@
 </script>
 
 <template>
-<section class="section--half-viewport with-background">
+<section class="section--full-viewport section--half-viewport with-background">
   <div class="container">
     <blockquote class="centered">
       <div>
@@ -18,13 +18,3 @@
   </div>
 </section>
 </template>
-
-<style scoped>
-.second-testimonial__image {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  align-self: flex-end;
-  margin-left: auto;
-}
-</style>

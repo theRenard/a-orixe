@@ -12,7 +12,8 @@
   },
   "hero": {
     "title": "« A Orixe »",
-    "subtitle": "le secret le mieux gardé de Galice"
+    "subtitle": "le secret le mieux gardé de Galice",
+    "illustrationAlt": "Illustration du chemin A Orixe"
   },
   "credits": {
     "byPrefix": "Par ",

@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '@/views/HomeView.vue'
+import DesktopView from '@/views/DesktopView.vue'
 import StylesPage from '@/views/StylesPage.vue'
 import MobileView from '@/views/mobile/MobileView.vue'
 import { shouldUseMobileVersion } from '@/composables/useMobileDetection'
@@ -7,7 +7,7 @@ import { shouldUseMobileVersion } from '@/composables/useMobileDetection'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    { path: '/', name: 'Home', component: HomeView },
+    { path: '/', name: 'Home', component: DesktopView },
     { path: '/mobile', name: 'Mobile', component: MobileView },
     { path: '/styles', name: 'Styles', component: StylesPage },
   ],

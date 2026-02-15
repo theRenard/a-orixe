@@ -9,4 +9,4 @@ alwaysApply: true
 - Follow patterns already used in the codebase; avoid introducing new styles without reason.
 - Keep changes focused; one concern per commit or change set when possible.
 - When adding dependencies or scripts, document them in README or CLAUDE.md.
-- When adding a new section to the long page, add it at the end: register the component last in `HomeView.vue` (and in the mobile view if applicable) so the section appears at the bottom of the scroll.
+- When adding a new section to the long page, add it at the end: register the component last in `DesktopView.vue` (and in the mobile view if applicable) so the section appears at the bottom of the scroll.

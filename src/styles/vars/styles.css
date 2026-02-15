@@ -1,6 +1,4 @@
 section {
-  min-width: 100vw;
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,6 +13,11 @@ section.with-background {
   background-color: var(--color-white-off);
 }
 
+section.section--full-viewport {
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
 /* Half-viewport section: ~50vh height, content centered vertically */
 section.section--half-viewport {
   min-height: 50vh;
@@ -25,9 +28,17 @@ section.section--half-viewport {
   margin: 0 auto;
 }
 
+/* Margin auto utilities */
+.ma {
+  margin: auto !important;
+}
+
+.ml-auto {
+  margin-left: auto !important;
+}
 
 .centered {
-  padding: 0 10rem;
+  padding: 0 15rem;
 }
 
 /* Spacing utilities: 1–10 = 1rem–10rem; t=top, r=right, b=bottom, l=left */

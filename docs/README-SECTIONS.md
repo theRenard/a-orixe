@@ -36,7 +36,7 @@ This document describes how new long-page sections are added to a-orixe when giv
 
 ## 4. Wire the section into the page
 
-- **File**: `src/views/HomeView.vue`.
+- **File**: `src/views/DesktopView.vue`.
 - **Steps**:
   1. Import the new section component.
   2. Add the component in the desired order in the template (e.g. after `AssociationSection`).
@@ -51,6 +51,6 @@ This document describes how new long-page sections are added to a-orixe when giv
 
 - **i18n**: New key `reconstitutionTrac` with `imageCaption`, `title`, `paragraph1`, `paragraph2`, `question` (fr + es).
 - **Component**: `ReconstitutionTracSection.vue` — hero image (ImageCrop) → caption with short orange horizontal line (`::before`) → title with orange line → two paragraphs → question block with teal left border.
-- **HomeView**: Import and render `<ReconstitutionTracSection />` after `<AssociationSection />`.
+- **DesktopView**: Import and render `<ReconstitutionTracSection />` after `<AssociationSection />`.
 
 This keeps sections consistent in structure, i18n, typography, and placement.

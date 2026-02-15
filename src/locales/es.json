@@ -12,7 +12,8 @@
   },
   "hero": {
     "title": "« A Orixe »",
-    "subtitle": "el secreto mejor guardado de Galicia"
+    "subtitle": "el secreto mejor guardado de Galicia",
+    "illustrationAlt": "Ilustración del camino A Orixe"
   },
   "credits": {
     "byPrefix": "Por ",

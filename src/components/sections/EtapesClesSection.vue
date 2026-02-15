@@ -5,20 +5,12 @@
       <h2 class="type__section-title type__section-title--with-line mt-5">
         {{ $t('etapesCles.title') }}
       </h2>
-      <p class="type__section-paragraph mt-3 mb-5">
+      <p class="type__section-paragraph mt-3 mb-2">
         {{ $t('etapesCles.paragraph') }}
       </p>
     </div>
-    <img src="../../assets/illustrations/saint_jacques_ok.webp" :alt="$t('etapesCles.title')"
-      class="etapes-cles-section__image" loading="lazy">
+    <img class="ma mb-2" src="../../assets/illustrations/saint_jacques_ok.webp" :alt="$t('etapesCles.title')"
+      loading="lazy" style="width: 60vw;">
   </div>
 </section>
 </template>
-
-<style scoped>
-.etapes-cles-section__image {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-</style>

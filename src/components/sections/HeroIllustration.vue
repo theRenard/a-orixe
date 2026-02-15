@@ -1,16 +1,16 @@
 <script setup lang="ts">
+import heroImage from '@/assets/illustrations/illu_principale_ok.webp'
 </script>
 
 <template>
-  <section class="hero-illustration">
-    <img
-      src="../../assets/illustrations/illu_principale_ok.webp"
-      alt=""
-      width="1920"
-      height="1080"
-      fetchpriority="high"
-    >
-  </section>
+<section class="hero-illustration section--full-viewport">
+  <div
+    class="hero-illustration__bg"
+    :style="{ backgroundImage: `url(${heroImage})` }"
+    role="img"
+    :aria-label="$t('hero.illustrationAlt')"
+  />
+</section>
 </template>
 
 <style scoped>
@@ -19,10 +19,11 @@
   line-height: 0;
 }
 
-.hero-illustration img {
+.hero-illustration__bg {
   width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 </style>

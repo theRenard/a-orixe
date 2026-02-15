@@ -2,7 +2,7 @@
 </script>
 
 <template>
-<section class="with-borders with-background">
+<section class="section--full-viewport with-borders with-background">
   <div class="container">
     <blockquote class="centered">
       <div>

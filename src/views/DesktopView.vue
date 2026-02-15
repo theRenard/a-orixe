@@ -34,12 +34,12 @@ import CommentEstNeRecitSection from '@/components/sections/CommentEstNeRecitSec
 
 <template>
 <main>
-  <HeroIllustration />
-  <HeroSection />
-  <CaminoSection />
-  <FirstTestimonial />
-  <EtapesClesSection />
-  <SecondTestimonial />
+  <HeroIllustration /> <!-- ok -->
+  <HeroSection /> <!-- ok -->
+  <CaminoSection /> <!-- ok -->
+  <FirstTestimonial /> <!-- ok -->
+  <EtapesClesSection /> <!-- ok -->
+  <SecondTestimonial /> <!-- ok -->
   <RessentirLieuxSection />
   <AssociationSection />
   <ReconstitutionTracSection />

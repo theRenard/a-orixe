@@ -1,38 +1,41 @@
 <template>
-  <section class="type__credits" aria-label="Crédits">
-    <div class="container">
-      <h1 class="type__hero-title">
-        {{ $t('hero.title') }}
-      </h1>
-      <p class="type__hero-subtitle">
-          {{ $t('hero.subtitle') }}
-      </p>
-    <div class="container credits__inner">
-        <div class="credits__col credits__col--left">
-          <div class="credits__line-accent" aria-hidden="true" />
-          <p>
-            {{ $t('credits.byPrefix') }}<span class="type__credits-bold">{{ $t('credits.byName') }}</span>
-          </p>
-          <p>{{ $t('credits.authorRole') }}</p>
-          <p>
-            {{ $t('credits.publishedOnPrefix') }}<span class="type__credits-bold">{{ $t('credits.publishedOnDate') }}</span>
-          </p>
-        </div>
-        <div class="credits__col credits__col--right">
-          <div class="credits__line-accent" aria-hidden="true" />
-          <p>
-            {{ $t('credits.artDirectionPrefix') }}<span class="type__credits-bold">{{ $t('credits.artDirectionName') }}</span>
-          </p>
-          <p>
-            {{ $t('credits.illustrationPrefix') }}<span class="type__credits-bold">{{ $t('credits.illustrationName') }}</span>
-          </p>
-          <p>
-            {{ $t('credits.devDesignPrefix') }}<span class="type__credits-bold">{{ $t('credits.devDesignName') }}</span>
-          </p>
-        </div>
+<section class="mt-4 type__credits" aria-label="Crédits">
+  <div class="container">
+    <h1 class="type__hero-title">
+      {{ $t('hero.title') }}
+    </h1>
+    <p class="type__hero-subtitle mt-2">
+      {{ $t('hero.subtitle') }}
+    </p>
+    <div class="container credits__inner mt-6">
+      <div class="credits__col credits__col--left">
+        <div class="credits__line-accent" aria-hidden="true" />
+        <p>
+          {{ $t('credits.byPrefix') }}<span class="type__credits-bold">{{ $t('credits.byName') }}</span>
+        </p>
+        <p>{{ $t('credits.authorRole') }}</p>
+        <p>
+          {{ $t('credits.publishedOnPrefix') }}<span class="type__credits-bold">{{ $t('credits.publishedOnDate')
+            }}</span>
+        </p>
       </div>
+      <div class="credits__col credits__col--right">
+        <div class="credits__line-accent ml-auto" aria-hidden="true" />
+        <p>
+          {{ $t('credits.artDirectionPrefix') }}<span class="type__credits-bold">{{ $t('credits.artDirectionName')
+            }}</span>
+        </p>
+        <p>
+          {{ $t('credits.illustrationPrefix') }}<span class="type__credits-bold">{{ $t('credits.illustrationName')
+            }}</span>
+        </p>
+        <p>
+          {{ $t('credits.devDesignPrefix') }}<span class="type__credits-bold">{{ $t('credits.devDesignName') }}</span>
+        </p>
       </div>
-  </section>
+    </div>
+  </div>
+</section>
 </template>
 
 <style scoped>
@@ -72,7 +75,4 @@
   margin-bottom: 0.5rem;
 }
 
-.credits__col--right .credits__line-accent {
-  margin-left: auto;
-}
 </style>
