@@ -1,8 +1,5 @@
-<script setup lang="ts">
-</script>
-
 <template>
-<section class="section--full-viewport with-borders with-background">
+<section class="section--full-viewport with-borders with-background" style="position: relative;">
   <div class="container">
     <blockquote class="centered">
       <div>
@@ -17,9 +14,11 @@
     </blockquote>
     <img src="../../assets/illustrations/phare.webp" :alt="$t('secondTestimonial.quote')"
       class="second-testimonial__image ml-auto" loading="lazy">
+  </div>
+  <!-- position absolute -->
+  <div class="container mb-2" style="position: absolute; bottom: 0; left: 0; right: 0;">
     <div class="centered">
-
-      <p class="type__footnote mt-10">
+      <p class="type__footnote">
         {{ $t('secondTestimonial.footnote') }}
       </p>
     </div>

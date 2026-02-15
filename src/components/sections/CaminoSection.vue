@@ -1,7 +1,7 @@
 <template>
-  <section class="camino-section">
-    <div class="container">
-      <div class="centered">
+<section class="camino-section">
+  <div class="container">
+    <div class="centered">
       <p class="type__hero-synopsis mt-5">
         {{ $t('camino.paragraph') }}
       </p>
@@ -14,7 +14,7 @@
       <p class="type__section-paragraph mt-3 mb-5">
         {{ $t('camino.paragraph2') }}
       </p>
-      </div>
-      </div>
-  </section>
+    </div>
+  </div>
+</section>
 </template>
