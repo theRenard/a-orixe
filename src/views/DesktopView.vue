@@ -67,6 +67,6 @@ import CommentEstNeRecitSection from '@/components/sections/CommentEstNeRecitSec
   <OrixeInterviewSection /> <!-- ok -->
   <ExperienceDestineeSection /> <!-- ok-->
   <EnBrefSection /> <!-- TODO  -->
-  <CommentEstNeRecitSection /> <!-- TODO -->
+  <CommentEstNeRecitSection /> <!-- TODO missing image -->
 </main>
 </template>

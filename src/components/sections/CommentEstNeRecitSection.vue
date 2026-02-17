@@ -1,47 +1,35 @@
 <template>
-  <section class="comment-est-ne-section">
-    <div class="comment-est-ne-section__inner container">
-      <div class="comment-est-ne-section__grid">
-        <aside class="comment-est-ne-section__author">
-          <img
-            src="@/assets/illustrations/florence-antunes.png"
-            alt=""
-            class="comment-est-ne-section__avatar"
-            width="200"
-            height="200"
-          >
-          <h3 class="comment-est-ne-section__author-name">
-            {{ $t('commentEstNeRecit.authorName') }}
-          </h3>
-          <p class="comment-est-ne-section__author-role">
-            {{ $t('commentEstNeRecit.authorRole') }}
-          </p>
-          <a
-            href="mailto:florenceantunes@gmail.com"
-            class="comment-est-ne-section__author-email"
-          >
-            {{ $t('commentEstNeRecit.authorEmail') }}
-          </a>
-          <a
-            href="https://www.florenceantunes.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="comment-est-ne-section__author-website"
-          >
-            {{ $t('commentEstNeRecit.authorWebsite') }}
-          </a>
-        </aside>
-        <div class="comment-est-ne-section__content">
-          <h2 class="comment-est-ne-section__title heading-spacing">
-            {{ $t('commentEstNeRecit.title') }}
-          </h2>
-          <p class="comment-est-ne-section__paragraph paragraph-spacing">
-            {{ $t('commentEstNeRecit.paragraph') }}
-          </p>
-        </div>
+<section class="comment-est-ne-section">
+  <div class="comment-est-ne-section__inner container">
+    <div class="comment-est-ne-section__grid">
+      <aside class="comment-est-ne-section__author">
+        <img src="@/assets/photos/florenceantunes-portrait.webp" alt="" class="comment-est-ne-section__avatar"
+          width="200" height="200">
+        <h3 class="comment-est-ne-section__author-name">
+          {{ $t('commentEstNeRecit.authorName') }}
+        </h3>
+        <p class="comment-est-ne-section__author-role">
+          {{ $t('commentEstNeRecit.authorRole') }}
+        </p>
+        <a href="mailto:florenceantunes@gmail.com" class="comment-est-ne-section__author-email">
+          {{ $t('commentEstNeRecit.authorEmail') }}
+        </a>
+        <a href="https://www.florenceantunes.com" target="_blank" rel="noopener noreferrer"
+          class="comment-est-ne-section__author-website">
+          {{ $t('commentEstNeRecit.authorWebsite') }}
+        </a>
+      </aside>
+      <div class="comment-est-ne-section__content">
+        <h2 class="comment-est-ne-section__title heading-spacing">
+          {{ $t('commentEstNeRecit.title') }}
+        </h2>
+        <p class="comment-est-ne-section__paragraph paragraph-spacing">
+          {{ $t('commentEstNeRecit.paragraph') }}
+        </p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 </template>
 
 <style scoped>
