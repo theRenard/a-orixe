@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import SoundPlayer from '@/components/tools/SoundPlayer.vue'
 import pronunciationMp3 from '@/assets/audio/audio_prononciation_a_orixe.mp3'
+import pronunciationImage from '@/assets/audio-photos/pastille-photo-saturio.jpg'
 </script>
 
 <template>
@@ -19,7 +20,7 @@ import pronunciationMp3 from '@/assets/audio/audio_prononciation_a_orixe.mp3'
         <p class="type__section-paragraph col-left">
           {{ $t('association.paragraph2') }}
         </p>
-        <SoundPlayer :src="pronunciationMp3" :text="$t('association.soundPlayerText')"
+        <SoundPlayer :src="pronunciationMp3" :text="$t('association.soundPlayerText')" :image="pronunciationImage"
           class="col-right" />
       </div>
       <p class="type__section-paragraph paragraph-spacing">
@@ -29,4 +30,3 @@ import pronunciationMp3 from '@/assets/audio/audio_prononciation_a_orixe.mp3'
   </div>
 </section>
 </template>
-

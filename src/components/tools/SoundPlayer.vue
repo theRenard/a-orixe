@@ -5,8 +5,11 @@ const props = withDefaults(
   defineProps<{
     src: string
     text?: string
+    subtitle?: string
+    /** Image URL or imported asset for the circular portrait on the left */
+    image?: string
   }>(),
-  { text: '' }
+  { text: '', subtitle: '', image: '' }
 )
 
 const isPlaying = ref(false)
@@ -55,23 +58,27 @@ onUnmounted(() => {
 })
 </script>
 
-<template><button type="button" class="sound-player"
+<template><button type="button" class="sound-player" :class="{ 'sound-player--with-image': image }"
   :aria-label="isPlaying ? $t('soundPlayer.stopLabel') : $t('soundPlayer.playLabel')" :aria-pressed="isPlaying"
   @click="toggle">
   <span class="sound-player__icon" aria-hidden="true">
-    <!-- Play: right-pointing triangle -->
     <svg v-if="!isPlaying" class="sound-player__svg sound-player__svg--play" viewBox="0 0 24 24" fill="currentColor"
       aria-hidden="true">
       <path d="M8 5v14l11-7z" />
     </svg>
-    <!-- Stop: square -->
     <svg v-else class="sound-player__svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M6 6h12v12H6z" />
     </svg>
   </span>
   <span class="sound-player__text">
-    <template v-if="text">{{ text }}</template>
+    <template v-if="text">
+      <span class="sound-player__line1">{{ text }}</span>
+      <span v-if="subtitle" class="sound-player__line2">{{ subtitle }}</span>
+    </template>
     <slot v-else />
+  </span>
+  <span v-if="image" class="sound-player__image-wrap" aria-hidden="true">
+    <img :src="image" alt="" class="sound-player__image" />
   </span>
 </button></template>
 
@@ -80,7 +87,7 @@ onUnmounted(() => {
   display: inline-flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.5rem .5rem;
+  padding: 0.5rem 0.5rem;
   background: var(--color-cream);
   border: 3px solid var(--color-teal-medium);
   border-radius: 9999px;
@@ -92,6 +99,7 @@ onUnmounted(() => {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   max-width: 400px;
+  height: 5rem;
 }
 
 .sound-player:hover {
@@ -101,6 +109,26 @@ onUnmounted(() => {
 .sound-player:focus-visible {
   outline: 2px solid var(--color-teal-medium);
   outline-offset: 2px;
+}
+
+.sound-player__image-wrap {
+  margin-left: auto;
+  width: 5rem;
+  height: 5rem;
+  flex-shrink: 0;
+  padding: 0;
+  border: 3px solid var(--color-teal-dark);
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  margin-right: calc(-0.5rem - 3px);
+}
+
+.sound-player__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .sound-player__icon {
@@ -126,7 +154,16 @@ onUnmounted(() => {
 }
 
 .sound-player__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
   line-height: 1.2;
-  margin-right: 1rem;
+  margin-right: 0.25rem;
+}
+
+.sound-player__line2 {
+  font-size: 0.875em;
+  font-weight: var(--font-weight-normal);
 }
 </style>

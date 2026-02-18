@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import DesktopView from '@/views/DesktopView.vue'
 import StylesPage from '@/views/StylesPage.vue'
+import SoundPlayerTest from '@/views/SoundPlayerTest.vue'
 import MobileView from '@/views/mobile/MobileView.vue'
 import { shouldUseMobileVersion } from '@/composables/useMobileDetection'
 
@@ -10,6 +11,7 @@ const router = createRouter({
     { path: '/', name: 'Home', component: DesktopView },
     { path: '/mobile', name: 'Mobile', component: MobileView },
     { path: '/styles', name: 'Styles', component: StylesPage },
+    { path: '/sound-player-test', name: 'SoundPlayerTest', component: SoundPlayerTest },
   ],
 })
 
