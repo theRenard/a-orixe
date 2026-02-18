@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import SoundPlayer from '@/components/tools/SoundPlayer.vue'
 import audioSabela from '@/assets/audio/audio_sabela.mp3'
+import chaptersSabela from '@/assets/audio-refs/Horodatage-Audio-Sabela.json'
+import sabelaImage from '@/assets/audio-photos/pastille-photosabela.jpg'
 </script>
 
 <template>
@@ -11,14 +13,9 @@ import audioSabela from '@/assets/audio/audio_sabela.mp3'
         {{ $t('coupDeCoeur.title') }}
       </h2>
       <p class="type__section-paragraph paragraph-spacing" v-html="$t('coupDeCoeur.paragraph1')"></p>
-    </div>
-    <div class="centered--large">
-      <div class="row-two-col paragraph-spacing">
-        <p class="type__section-paragraph col-left" v-html="$t('coupDeCoeur.quote')"></p>
-        <SoundPlayer :src="audioSabela" :text="$t('coupDeCoeur.soundPlayerText')" class="col-right" />
-      </div>
-    </div>
-    <div class="centered">
+      <p class="type__section-paragraph col-left" v-html="$t('coupDeCoeur.quote')"></p>
+      <SoundPlayer :src="audioSabela" :text="$t('coupDeCoeur.soundPlayerText')" :image="sabelaImage"
+        :chapters="chaptersSabela" class="align-center paragraph-spacing" />
       <p class="type__section-paragraph paragraph-spacing" v-html="$t('coupDeCoeur.paragraph2')"></p>
     </div>
   </div>

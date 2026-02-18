@@ -127,18 +127,16 @@
   },
   "santiagoJourney": {
     "imageCaption": "Cabo de Cruz, dunas de Corrubedo, puerto de Rianxo.",
+    "soundPlayerQuote": "« El peregrino de Padrón que Adrián nunca olvidó »",
+    "soundPlayerSpeakerDescription": "Me llamo Adrián, soy guía local y trabajo en un hotel en Padrón, la ciudad donde comienza la última etapa de A Orixe.",
     "paragraph": "« A Orixe » recorre Dodro y Padrón y sus paisajes rurales: viñedos, hórreos, capillas, iglesias de granito rodeadas de sepulturas, lavaderos y fuentes salvadoras. En la última etapa, el camino enlaza con el camino portugués; la llegada tiene lugar en la Praza do Obradoiro, a los pies de la catedral de Santiago de Compostela, donde cientos de peregrinos de todo el mundo inmortalizan cada día el final de su recorrido."
   },
   "reconnaissance": {
     "title": "Un reconocimiento tan preciado",
-    "paragraph1": "En Galicia, los voluntarios trabajan para que su camino, « A Orixe », sea reconocido. El reconocimiento pleno depende de la S.A.M.I. (Santa Apostólica y Metropolitana Iglesia) y del Cabildo de la catedral de Santiago.",
-    "paragraph2": "« A Orixe » aspira a ser reconocido como camino de Compostela de pleno derecho; se ha presentado un dossier completo en ese sentido.",
-    "quote": "Obtener el reconocimiento de la Iglesia fue « bastante sencillo », gracias al trabajo documental y a los inventarios realizados.",
-    "attribution": "confía el presidente de la asociación.",
-    "paragraph3": "« A Orixe » enlaza con el camino portugués oficial para su último tramo a partir de Padrón. Los peregrinos que recorren « A Orixe » obtienen la Compostela** en las mismas condiciones que los de los demás caminos reconocidos.",
+    "paragraph1": "Los voluntarios tienen ahí un puro concentrado de Galicia y no piensan quedarse a medias. El trabajo solo estará completo con el reconocimiento de la SAMI (Santa Apostólica y Metropolitana Iglesia) y del Cabildo de la catedral de Compostela. Solo ellos pueden reconocer « A Orixe » como camino de Compostela de pleno derecho. Se les ha presentado un dossier completo. « El reconocimiento por la Iglesia de Compostela fue al final bastante sencillo de obtener, con todo el trabajo documental y el inventario que habíamos realizado, precisa el presidente de la asociación. Además, este camino enlaza con otro camino oficial en la última etapa desde Padrón: el camino portugués. Hoy, todo peregrino o grupo que recorre el camino A Orixe recibe la Compostela** en las mismas condiciones que cualquier peregrino que realiza un camino reconocido por las autoridades ».",
     "documentCaption": "Carta de reconocimiento",
     "placeholderLabel": "Documento",
-    "footnote": "** La Compostela es el documento que certifica la llegada al final del peregrinaje. Se obtiene en la oficina de acogida del peregrino en Santiago presentando la credencial. Este pasaporte debe ser sellado en distintos puntos de acogida (bares, restaurantes, albergues, hoteles, parroquias, etc.) a lo largo del recorrido."
+    "footnote": "** La Compostela es el documento que certifica la llegada al término del peregrinaje. Se obtiene en la oficina de acogida del peregrino en Santiago presentando la credencial. Este pasaporte debe ser sellado en distintos puntos de acogida (bares, restaurantes, albergues, hoteles, parroquias, etc) a lo largo del recorrido."
   },
   "flechage": {
     "title": "Un balizaje repintado dos veces al año por los voluntarios",
@@ -153,7 +151,7 @@
     "title": "Flechazo por un camino discreto pero único",
     "paragraph1": "Esas primeras flechas amarillas, tan significativas del camino de Santiago (todos los caminos están señalizados en amarillo), Sabela Gippini-Ruiz las notó enseguida. La familia de la CEO de Galiwonders (agencia de viajes a medida de los caminos de Santiago de Compostela) es originaria de Ribeira. Sabela Gippini-Ruiz pasó allí todos sus veranos y la mayoría de sus vacaciones.",
     "quote": "« Me encanta la región del Barbanza, por donde pasa toda la primera parte del camino A Orixe. Cuando vi la primera flecha amarilla allí, empecé a informarme con insistencia sobre el tema, explica. En cuanto el camino estuvo balizado, fue posible crear un paquete para ofrecer este recorrido a nuestros clientes. Lo que hicimos desde 2022 ».",
-    "soundPlayerText": "Sabela habla de la península del Barbanza",
+    "soundPlayerText": "Un verano en el Barbanza con Sabela",
     "paragraph2": "Galiwonders es una de las pocas agencias de Galicia que lo comercializa. Una elección del corazón para Sabela Gippini-Ruiz. Porque « A Orixe » atrae muy poco por el momento: una veintena de clientes al año de media. Muy lejos de los volúmenes registrados en otros caminos. « El francés, el portugués y el inglés siguen siendo los líderes indiscutibles, señala la CEO de Galiwonders. Precisamente por eso este camino tiene un encanto particular »."
   },
   "joyau": {
@@ -168,7 +166,7 @@
   },
   "capsuleSonore": {
     "imageCaption": "Paisaje a lo largo de A Orixe: agua, vegetación y pueblo.",
-    "soundPlayerText": "Cápsula sonora pasos / pájaros"
+    "soundPlayerText": "En algún lugar entre los helechos y los cantos de los pájaros..."
   },
   "pilgrimsStats": {
     "title": "Menos del 1 % de los peregrinos caminan por A Orixe en 2025",

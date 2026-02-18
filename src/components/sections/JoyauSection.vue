@@ -8,7 +8,9 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
     <div class="centered">
       <p class="type__section-paragraph joyau-section__quote paragraph-spacing" v-html="$t('joyau.paragraph')"></p>
     </div>
-    <div class="joyau-section__grid mt-4">
+    <p class="joyau-section__caption type__image-caption type__image-caption--with-line" v-html="$t('joyau.caption')">
+    </p>
+    <div class="joyau-section__grid">
       <div class="joyau-section__cell">
         <ImageCrop width="100%" height="600px" position="center 50%">
           <img src="../../assets/photos/10_florence_antunes.webp" :alt="$t('joyau.caption')" loading="lazy">
@@ -25,7 +27,6 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
         </ImageCrop>
       </div>
     </div>
-    <p class="joyau-section__caption type__image-caption type__image-caption--with-line" v-html="$t('joyau.caption')"></p>
   </div>
 </section>
 </template>

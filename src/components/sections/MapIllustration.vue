@@ -4,16 +4,10 @@ import mapLineImage from '@/assets/illustrations/map_line.webp'
 </script>
 
 <template>
-<section class="map-illustration section--full-viewport" role="img" :aria-label="$t('carteEtapesSantiago.caption')">
-  <div
-    class="map-illustration__bg"
-    :style="{ backgroundImage: `url(${mapImage})` }"
-  />
-  <div
-    class="map-illustration__line"
-    :style="{ backgroundImage: `url(${mapLineImage})` }"
-    aria-hidden="true"
-  />
+<section class="map-illustration section--full-viewport mt-4" role="img"
+  :aria-label="$t('carteEtapesSantiago.caption')">
+  <div class="map-illustration__bg" :style="{ backgroundImage: `url(${mapImage})` }" />
+  <div class="map-illustration__line" :style="{ backgroundImage: `url(${mapLineImage})` }" aria-hidden="true" />
 </section>
 </template>
 

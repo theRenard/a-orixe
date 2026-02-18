@@ -214,6 +214,7 @@ onUnmounted(() => {
   gap: 0.15rem;
   line-height: 1.2;
   margin-right: 0.25rem;
+  text-align: left;
 }
 
 .sound-player__line2 {

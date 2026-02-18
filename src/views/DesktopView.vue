@@ -18,6 +18,7 @@ import ElementsJacquaireSection from '@/components/sections/ElementsJacquaireSec
 import ParcoursPraticableSection from '@/components/sections/ParcoursPraticableSection.vue'
 import MapIllustration from '@/components/sections/MapIllustration.vue'
 import SantiagoStepsSection from '@/components/sections/SantiagoStepsSection.vue'
+import SantiagoJourneyPhotoGrid from '@/components/sections/SantiagoJourneyPhotoGrid.vue'
 import SantiagoJourneySection from '@/components/sections/SantiagoJourneySection.vue'
 import ReconnaissanceSection from '@/components/sections/ReconnaissanceSection.vue'
 import FlechageSection from '@/components/sections/FlechageSection.vue'
@@ -55,6 +56,7 @@ import CommentEstNeRecitSection from '@/components/sections/CommentEstNeRecitSec
   <MapIllustration />
   <SantiagoStepsSection /> <!-- ok -->
   <ConcentreGaliceSection /> <!-- ok -->
+  <SantiagoJourneyPhotoGrid />
   <SantiagoJourneySection /> <!-- ok -->
   <ReconnaissanceSection /> <!-- missing image -->
   <FourthTestimonial /> <!-- ok -->
