@@ -4,6 +4,7 @@ import HeroSection from '@/components/sections/HeroSection.vue'
 import CaminoSection from '@/components/sections/CaminoSection.vue'
 import EtapesClesSection from '@/components/sections/EtapesClesSection.vue'
 import RessentirLieuxSection from '@/components/sections/RessentirLieuxSection.vue'
+import RessentirLieuxClosingSection from '@/components/sections/RessentirLieuxClosingSection.vue'
 import FifthTestimonial from '@/components/sections/FifthTestimonial.vue'
 import FirstTestimonial from '@/components/sections/FirstTestimonial.vue'
 import SecondTestimonial from '@/components/sections/SecondTestimonial.vue'
@@ -42,6 +43,7 @@ import CommentEstNeRecitSection from '@/components/sections/CommentEstNeRecitSec
   <EtapesClesSection /> <!-- ok -->
   <SecondTestimonial /> <!-- ok -->
   <RessentirLieuxSection /> <!-- ok -->
+  <RessentirLieuxClosingSection />
   <FifthTestimonial /> <!-- ok -->
   <AssociationSection /> <!-- ok -->
   <ReconstitutionTracSection /> <!-- ok -->

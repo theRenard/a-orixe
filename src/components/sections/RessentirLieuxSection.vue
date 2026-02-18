@@ -18,9 +18,6 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
       <img src="../../assets/photos/01_florence_antunes.webp" :alt="$t('ressentirLieux.imageCaption')"
         class="ressentir-lieux-section__image" loading="lazy">
     </ImageCrop>
-    <div class="centered">
-      <p class="type__section-paragraph paragraph-spacing" v-html="$t('ressentirLieux.paragraph2')"></p>
-    </div>
   </div>
 </section>
 </template>
