@@ -10,14 +10,10 @@ import pronunciationImage from '@/assets/audio-photos/pastille-photo-saturio.jpg
     <div class="centered">
       <p class="type__section-paragraph paragraph-spacing" v-html="$t('association.paragraph1')"></p>
       <p class="type__question paragraph-spacing" v-html="$t('association.blockquote')"></p>
-    </div>
-    <div class="centered--large">
-      <div class="row-two-col paragraph-spacing">
-        <p class="type__section-paragraph col-left" v-html="$t('association.paragraph2')"></p>
-        <SoundPlayer :src="pronunciationMp3" :text="$t('association.soundPlayerText')" :image="pronunciationImage"
-          class="col-right" />
-      </div>
+      <p class="type__section-paragraph col-left" v-html="$t('association.paragraph2')"></p>
       <p class="type__section-paragraph paragraph-spacing" v-html="$t('association.paragraph3')"></p>
+      <SoundPlayer :src="pronunciationMp3" :text="$t('association.soundPlayerText')" :image="pronunciationImage"
+        class="paragraph-spacing align-center" />
     </div>
   </div>
 </section>

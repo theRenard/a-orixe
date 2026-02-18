@@ -66,6 +66,10 @@ h2 {
   padding-left: 15rem;
 }
 
+.align-center {
+  margin: 0 auto;
+}
+
 /* Two-column layout: left column fixed width, right column wraps to full width */
 .row-two-col {
   display: flex;

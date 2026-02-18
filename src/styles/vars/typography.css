@@ -170,4 +170,6 @@
   min-width: 35px;
   height: 2px;
   background: var(--color-teal-medium);
+  position: relative;
+  top: 3px;
 }

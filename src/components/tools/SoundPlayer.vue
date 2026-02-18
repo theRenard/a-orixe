@@ -223,7 +223,7 @@ onUnmounted(() => {
 
 /* Wrapper when transcript is shown: single rounded card */
 .sound-player-widget {
-  display: inline-block;
+  display: block;
   max-width: 480px;
   position: relative;
 }
