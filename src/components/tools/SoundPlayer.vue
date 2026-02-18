@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { ref, onUnmounted } from 'vue'
 
+/** One chapter: start time (MM:SS) and corresponding text (e.g. from Horodatage-Audio-*.json). */
+export interface SoundPlayerChapter {
+  timestamp: string
+  text: string
+}
+
 const props = withDefaults(
   defineProps<{
     src: string
@@ -8,8 +14,10 @@ const props = withDefaults(
     subtitle?: string
     /** Image URL or imported asset for the circular portrait on the left */
     image?: string
+    /** Optional timestamped chapters/transcript (e.g. from Horodatage-Audio-*.json). */
+    chapters?: SoundPlayerChapter[]
   }>(),
-  { text: '', subtitle: '', image: '' }
+  { text: '', subtitle: '', image: '', chapters: () => [] }
 )
 
 const isPlaying = ref(false)
@@ -98,7 +106,7 @@ onUnmounted(() => {
   letter-spacing: var(--letter-spacing-normal);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  max-width: 400px;
+  max-width: 480px;
   height: 5rem;
 }
 
