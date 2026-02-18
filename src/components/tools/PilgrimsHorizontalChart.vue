@@ -1,46 +1,48 @@
 <template>
-  <figure class="pilgrims-horizontal-chart" role="img" :aria-label="$t('pilgrimsStats.chart.ariaLabel')">
-    <div class="pilgrims-horizontal-chart__row pilgrims-horizontal-chart__row--1">
-      <div class="pilgrims-horizontal-chart__labels">
-        <span class="pilgrims-horizontal-chart__name">{{ $t('pilgrimsStats.chart.bar1Label') }}</span>
-        <span class="pilgrims-horizontal-chart__pct">{{ $t('pilgrimsStats.chart.bar1Pct') }}</span>
-      </div>
-      <div class="pilgrims-horizontal-chart__track">
-        <div class="pilgrims-horizontal-chart__fill" />
-      </div>
+<figure class="pilgrims-horizontal-chart" role="img" :aria-label="$t('pilgrimsStats.chart.ariaLabel')">
+  <div class="pilgrims-horizontal-chart__row pilgrims-horizontal-chart__row--1">
+    <div class="pilgrims-horizontal-chart__labels">
+      <span class="pilgrims-horizontal-chart__name">{{ $t('pilgrimsStats.chart.bar1Label') }}</span>
+      <span class="pilgrims-horizontal-chart__pct">{{ $t('pilgrimsStats.chart.bar1Pct') }}</span>
     </div>
-    <div class="pilgrims-horizontal-chart__row pilgrims-horizontal-chart__row--2">
-      <div class="pilgrims-horizontal-chart__labels">
-        <span class="pilgrims-horizontal-chart__name">{{ $t('pilgrimsStats.chart.bar2Label') }}</span>
-        <span class="pilgrims-horizontal-chart__pct">{{ $t('pilgrimsStats.chart.bar2Pct') }}</span>
-      </div>
-      <div class="pilgrims-horizontal-chart__track">
-        <div class="pilgrims-horizontal-chart__fill" />
-      </div>
+    <div class="pilgrims-horizontal-chart__track">
+      <div class="pilgrims-horizontal-chart__fill" />
     </div>
-    <div class="pilgrims-horizontal-chart__row pilgrims-horizontal-chart__row--3">
-      <div class="pilgrims-horizontal-chart__labels">
-        <span class="pilgrims-horizontal-chart__name">{{ $t('pilgrimsStats.chart.bar3Label') }}</span>
-        <span class="pilgrims-horizontal-chart__pct">{{ $t('pilgrimsStats.chart.bar3Pct') }}</span>
-      </div>
-      <div class="pilgrims-horizontal-chart__track">
-        <div class="pilgrims-horizontal-chart__fill pilgrims-horizontal-chart__fill--line" />
-      </div>
+  </div>
+  <div class="pilgrims-horizontal-chart__row pilgrims-horizontal-chart__row--2">
+    <div class="pilgrims-horizontal-chart__labels">
+      <span class="pilgrims-horizontal-chart__name">{{ $t('pilgrimsStats.chart.bar2Label') }}</span>
+      <span class="pilgrims-horizontal-chart__pct">{{ $t('pilgrimsStats.chart.bar2Pct') }}</span>
     </div>
-  </figure>
+    <div class="pilgrims-horizontal-chart__track">
+      <div class="pilgrims-horizontal-chart__fill" />
+    </div>
+  </div>
+  <div class="pilgrims-horizontal-chart__row pilgrims-horizontal-chart__row--3">
+    <div class="pilgrims-horizontal-chart__labels">
+      <span class="pilgrims-horizontal-chart__name">{{ $t('pilgrimsStats.chart.bar3Label') }}</span>
+      <span class="pilgrims-horizontal-chart__pct">{{ $t('pilgrimsStats.chart.bar3Pct') }}</span>
+    </div>
+    <div class="pilgrims-horizontal-chart__track">
+      <div class="pilgrims-horizontal-chart__fill pilgrims-horizontal-chart__fill--line" />
+    </div>
+  </div>
+</figure>
 </template>
 
 <style scoped>
 .pilgrims-horizontal-chart {
   margin: 0;
   padding: 0;
+  width: 500px;
+  margin: 0 auto;
 }
 
 .pilgrims-horizontal-chart__row {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 1rem;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .pilgrims-horizontal-chart__row:last-child {
@@ -51,25 +53,26 @@
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  min-width: 10rem;
+  width: 8rem;
+  line-height: 1.1;
 }
 
 .pilgrims-horizontal-chart__name {
-  font: var(--font-style-normal) var(--font-weight-bold) var(--font-size-base)/1.2 var(--font-family-ubuntu);
-  color: var(--color-teal-dark, #2d4b4b);
+  font: var(--font-style-normal) var(--font-weight-bold) 1.3rem/1.3rem var(--font-family-ubuntu);
+  color: var(--color-black, #2d4b4b);
 }
 
 .pilgrims-horizontal-chart__pct {
-  font: var(--font-style-normal) var(--font-weight-bold) var(--font-size-base)/1.2 var(--font-family-ubuntu);
-  color: var(--color-teal-dark, #2d4b4b);
-  margin-top: 0.15rem;
+  font: var(--font-style-normal) var(--font-weight-bold) 1.3rem/1.3rem var(--font-family-ubuntu);
+  color: var(--color-black, #2d4b4b);
+  margin-top: 0.05rem;
 }
 
 .pilgrims-horizontal-chart__track {
   flex: 1;
   min-width: 0;
   max-width: 320px;
-  height: 28px;
+  height: 60px;
   background-color: #d9edee;
 }
 
