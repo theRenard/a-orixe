@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import SoundPlayer from '@/components/tools/SoundPlayer.vue'
 import audioDonManuel from '@/assets/audio/audio_don_manuel.mp3'
+import chaptersDonManuel from '@/assets/audio-refs/Horodatage-Audio-DonManuel.json'
+import donManuelImage from '@/assets/audio-photos/pastille-photodonmanuel1.jpg'
 </script>
 
 <template>
@@ -14,7 +16,7 @@ import audioDonManuel from '@/assets/audio/audio_don_manuel.mp3'
       <p class="type__section-paragraph paragraph-spacing" v-html="$t('traceRoute.paragraph2')"></p>
       <p class="type__section-paragraph paragraph-spacing" v-html="$t('traceRoute.paragraph3')"></p>
       <div class="trace-route-section__player-wrap mt-4 mb-5">
-        <SoundPlayer :src="audioDonManuel">
+        <SoundPlayer :src="audioDonManuel" :image="donManuelImage" :chapters="chaptersDonManuel">
           <span class="trace-route-section__player-line1">{{ $t('traceRoute.soundPlayerText') }}</span>
           <span class="trace-route-section__player-line2">{{ $t('traceRoute.soundPlayerSubtitle') }}</span>
         </SoundPlayer>
