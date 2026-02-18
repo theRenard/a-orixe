@@ -118,8 +118,8 @@ onUnmounted(() => {
     </span>
     <span class="sound-player__text">
       <template v-if="text">
-        <span class="sound-player__line1">{{ text }}</span>
-        <span v-if="subtitle" class="sound-player__line2">{{ subtitle }}</span>
+        <span class="sound-player__line1" v-html="text"></span>
+        <span v-if="subtitle" class="sound-player__line2" v-html="subtitle"></span>
       </template>
       <slot v-else />
     </span>
@@ -129,7 +129,7 @@ onUnmounted(() => {
   </button>
   <div v-if="hasChapters && currentChapterText && isPlaying" class="sound-player__transcript" aria-live="polite">
 
-    <span class="sound-player__transcript-chapter">{{ currentChapterText }}</span>
+    <span class="sound-player__transcript-chapter" v-html="currentChapterText"></span>
   </div>
 </div>
 </template>

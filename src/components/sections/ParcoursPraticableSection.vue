@@ -14,7 +14,8 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
           <p class="type__question" v-html="$t('parcoursPraticable.paragraph2')"></p>
         </div>
         <div class="col-right">
-          <ImageCrop width="100%" height="600px" position="center 40%">
+          <ImageCrop width="100%" height="600px" position="center 40%"
+            :caption="$t('parcoursPraticable.photoCredit')" caption-position="bottom">
             <img src="../../assets/photos/03_florence_antunes.webp" :alt="$t('parcoursPraticable.imageCaption')"
               loading="lazy">
           </ImageCrop>
