@@ -16,6 +16,7 @@ import ThirdTestimonial from '@/components/sections/ThirdTestimonial.vue'
 import FourthTestimonial from '@/components/sections/FourthTestimonial.vue'
 import ElementsJacquaireSection from '@/components/sections/ElementsJacquaireSection.vue'
 import ParcoursPraticableSection from '@/components/sections/ParcoursPraticableSection.vue'
+import MapIllustration from '@/components/sections/MapIllustration.vue'
 import SantiagoStepsSection from '@/components/sections/SantiagoStepsSection.vue'
 import SantiagoJourneySection from '@/components/sections/SantiagoJourneySection.vue'
 import ReconnaissanceSection from '@/components/sections/ReconnaissanceSection.vue'
@@ -51,7 +52,7 @@ import CommentEstNeRecitSection from '@/components/sections/CommentEstNeRecitSec
   <ThirdTestimonial /> <!-- ok -->
   <ElementsJacquaireSection /> <!-- ok -->
   <ParcoursPraticableSection /> <!-- ok -->
-  <!-- here the section with the illustration that is missing -->
+  <MapIllustration />
   <SantiagoStepsSection /> <!-- ok -->
   <ConcentreGaliceSection /> <!-- ok -->
   <SantiagoJourneySection /> <!-- ok -->

@@ -14,7 +14,7 @@ import audioSabela from '@/assets/audio/audio_sabela.mp3'
     </div>
     <div class="centered--large">
       <div class="row-two-col paragraph-spacing">
-        <p class="type__section-paragraph--italic col-left" v-html="$t('coupDeCoeur.quote')"></p>
+        <p class="type__section-paragraph col-left" v-html="$t('coupDeCoeur.quote')"></p>
         <SoundPlayer :src="audioSabela" :text="$t('coupDeCoeur.soundPlayerText')" class="col-right" />
       </div>
     </div>
