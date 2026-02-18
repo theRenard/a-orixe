@@ -10,4 +10,6 @@ export const i18n = createI18n({
     fr,
     es,
   },
+  // Allow HTML in locale messages (e.g. <i>, <em>, <strong>). Use v-html in templates to render.
+  warnHtmlInMessage: 'off',
 })

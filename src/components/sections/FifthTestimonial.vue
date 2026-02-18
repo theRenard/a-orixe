@@ -8,11 +8,9 @@
       <div>
         <p class="type__testimonial-block relative">
           <span class="type__testimonial-quote">«</span>
-          {{ $t('fifthTestimonial.quote') }} »
+          <span v-html="$t('fifthTestimonial.quote')"></span> »
         </p>
-        <footer class="type__testimonial-name">
-          {{ $t('fifthTestimonial.quoteAuthor') }}
-        </footer>
+        <footer class="type__testimonial-name" v-html="$t('fifthTestimonial.quoteAuthor')"></footer>
       </div>
     </blockquote>
   </div>

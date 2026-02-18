@@ -7,9 +7,7 @@ import SantiagoJourneyPhotoGrid from '@/components/sections/SantiagoJourneyPhoto
   <div class="container">
     <SantiagoJourneyPhotoGrid />
     <div class="centered">
-      <p class="type__section-paragraph paragraph-spacing">
-        {{ $t('santiagoJourney.paragraph') }}
-      </p>
+      <p class="type__section-paragraph paragraph-spacing" v-html="$t('santiagoJourney.paragraph')"></p>
     </div>
   </div>
 </section>

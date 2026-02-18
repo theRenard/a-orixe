@@ -5,11 +5,9 @@
       <div>
         <p class="type__testimonial-block relative">
           <span class="type__testimonial-quote">«</span>
-          {{ $t('secondTestimonial.quote') }} »
+          <span v-html="$t('secondTestimonial.quote')"></span> »
         </p>
-        <footer class="type__testimonial-name">
-          {{ $t('secondTestimonial.quoteAuthor') }}
-        </footer>
+        <footer class="type__testimonial-name" v-html="$t('secondTestimonial.quoteAuthor')"></footer>
       </div>
     </blockquote>
     <img src="../../assets/illustrations/phare.webp" :alt="$t('secondTestimonial.quote')"
@@ -18,9 +16,7 @@
   <!-- position absolute -->
   <div class="container mb-2" style="position: absolute; bottom: 0; left: 0; right: 0;">
     <div class="centered">
-      <p class="type__footnote paragraph-spacing">
-        {{ $t('secondTestimonial.footnote') }}
-      </p>
+      <p class="type__footnote paragraph-spacing" v-html="$t('secondTestimonial.footnote')"></p>
     </div>
   </div>
 </section>

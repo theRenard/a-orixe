@@ -43,8 +43,8 @@ p {
 }
 
 .paragraph-spacing {
-  margin-top: 3rem !important;
-  margin-bottom: 3rem !important;
+  margin-top: 2.5rem !important;
+  margin-bottom: 2.5rem !important;
 }
 
 /* Headings: no default margin; use .heading-spacing for vertical rhythm */
@@ -53,8 +53,8 @@ h2 {
 }
 
 .heading-spacing {
-  margin-top: 3rem !important;
-  margin-bottom: 3rem !important;
+  margin-top: 2.5rem !important;
+  margin-bottom: 2.5rem !important;
 }
 
 .centered {
@@ -80,7 +80,7 @@ h2 {
 }
 
 .col-right {
-  flex: 0 0 auto; 
+  flex: 0 0 auto;
   min-width: 0;
 }
 

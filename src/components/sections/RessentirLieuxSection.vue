@@ -9,15 +9,9 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
       <h2 class="type__section-title type__section-title--with-line heading-spacing">
         {{ $t('ressentirLieux.title') }}
       </h2>
-      <p class="type__section-paragraph paragraph-spacing">
-        {{ $t('ressentirLieux.paragraph') }}
-      </p>
-      <p class="type__section-paragraph paragraph-spacing">
-        {{ $t('ressentirLieux.transition') }}
-      </p>
-      <p class="type__question paragraph-spacing">
-        {{ $t('ressentirLieux.question') }}
-      </p>
+      <p class="type__section-paragraph paragraph-spacing" v-html="$t('ressentirLieux.paragraph')"></p>
+      <p class="type__section-paragraph paragraph-spacing" v-html="$t('ressentirLieux.transition')"></p>
+      <p class="type__question paragraph-spacing" v-html="$t('ressentirLieux.question')"></p>
     </div>
     <ImageCrop width="100%" height="300px" position="0 75%" :caption="$t('ressentirLieux.imageCaption')"
       caption-position="top">
@@ -25,9 +19,7 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
         class="ressentir-lieux-section__image" loading="lazy">
     </ImageCrop>
     <div class="centered">
-      <p class="type__section-paragraph paragraph-spacing">
-        {{ $t('ressentirLieux.paragraph2') }}
-      </p>
+      <p class="type__section-paragraph paragraph-spacing" v-html="$t('ressentirLieux.paragraph2')"></p>
     </div>
   </div>
 </section>

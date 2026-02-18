@@ -14,11 +14,9 @@
         <div>
           <p class="type__testimonial-block relative">
             <span class="type__testimonial-quote">«</span>
-            {{ $t('fourthTestimonial.quote') }} »
+            <span v-html="$t('fourthTestimonial.quote')"></span> »
           </p>
-          <footer class="type__testimonial-name">
-            {{ $t('fourthTestimonial.quoteAuthor') }}
-          </footer>
+          <footer class="type__testimonial-name" v-html="$t('fourthTestimonial.quoteAuthor')"></footer>
         </div>
       </blockquote>
     </div>

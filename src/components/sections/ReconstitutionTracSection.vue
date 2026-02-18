@@ -14,15 +14,9 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
       <h2 class="type__section-title type__section-title--with-line heading-spacing">
         {{ $t('reconstitutionTrac.title') }}
       </h2>
-      <p class="type__section-paragraph paragraph-spacing">
-        {{ $t('reconstitutionTrac.paragraph1') }}
-      </p>
-      <p class="type__section-paragraph paragraph-spacing">
-        {{ $t('reconstitutionTrac.paragraph2') }}
-      </p>
-      <p class="type__question paragraph-spacing">
-        {{ $t('reconstitutionTrac.question') }}
-      </p>
+      <p class="type__section-paragraph paragraph-spacing" v-html="$t('reconstitutionTrac.paragraph1')"></p>
+      <p class="type__section-paragraph paragraph-spacing" v-html="$t('reconstitutionTrac.paragraph2')"></p>
+      <p class="type__question paragraph-spacing" v-html="$t('reconstitutionTrac.question')"></p>
     </div>
   </div>
 </section>

@@ -10,15 +10,9 @@ import audioDonManuel from '@/assets/audio/audio_don_manuel.mp3'
       <h2 class="type__section-title type__section-title--with-line heading-spacing">
         {{ $t('traceRoute.title') }}
       </h2>
-      <p class="type__section-paragraph--italic paragraph-spacing">
-        {{ $t('traceRoute.paragraph1') }}
-      </p>
-      <p class="type__section-paragraph paragraph-spacing">
-        {{ $t('traceRoute.paragraph2') }}
-      </p>
-      <p class="type__section-paragraph paragraph-spacing">
-        {{ $t('traceRoute.paragraph3') }}
-      </p>
+      <p class="type__section-paragraph--italic paragraph-spacing" v-html="$t('traceRoute.paragraph1')"></p>
+      <p class="type__section-paragraph paragraph-spacing" v-html="$t('traceRoute.paragraph2')"></p>
+      <p class="type__section-paragraph paragraph-spacing" v-html="$t('traceRoute.paragraph3')"></p>
       <div class="trace-route-section__player-wrap mt-4 mb-5">
         <SoundPlayer :src="audioDonManuel">
           <span class="trace-route-section__player-line1">{{ $t('traceRoute.soundPlayerText') }}</span>

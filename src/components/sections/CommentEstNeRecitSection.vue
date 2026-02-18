@@ -8,9 +8,7 @@
         <h3 class="comment-est-ne-section__author-name">
           {{ $t('commentEstNeRecit.authorName') }}
         </h3>
-        <p class="comment-est-ne-section__author-role">
-          {{ $t('commentEstNeRecit.authorRole') }}
-        </p>
+        <p class="comment-est-ne-section__author-role" v-html="$t('commentEstNeRecit.authorRole')"></p>
         <a href="mailto:florenceantunes@gmail.com" class="comment-est-ne-section__author-email">
           {{ $t('commentEstNeRecit.authorEmail') }}
         </a>
@@ -23,9 +21,7 @@
         <h2 class="comment-est-ne-section__title heading-spacing">
           {{ $t('commentEstNeRecit.title') }}
         </h2>
-        <p class="comment-est-ne-section__paragraph paragraph-spacing">
-          {{ $t('commentEstNeRecit.paragraph') }}
-        </p>
+        <p class="comment-est-ne-section__paragraph paragraph-spacing" v-html="$t('commentEstNeRecit.paragraph')"></p>
       </div>
     </div>
   </div>

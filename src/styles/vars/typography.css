@@ -59,9 +59,9 @@
 .type__section-title--with-line::before {
   content: '';
   display: block;
-  width: 30%;
+  width: 15%;
   min-width: 8rem;
-  height: 3px;
+  height: 4px;
   background: var(--color-orange);
   margin: 0 0 1.5rem;
 }
@@ -105,8 +105,10 @@
   letter-spacing: var(--letter-spacing-normal);
   color: var(--color-teal-dark);
   text-align: left;
-  border-left: 3px solid var(--color-teal-dark);
+  border-left: 4px solid var(--color-teal-dark);
   padding-left: 1rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
 }
 
 /* Interview: shared base */

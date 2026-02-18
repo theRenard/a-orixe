@@ -7,12 +7,8 @@
           <h2 class="type__section-title type__section-title--with-line heading-spacing">
             {{ $t('concentreGalice.title') }}
           </h2>
-          <p class="type__section-paragraph paragraph-spacing">
-            {{ $t('concentreGalice.paragraph1') }}
-          </p>
-          <p class="type__question paragraph-spacing">
-            {{ $t('concentreGalice.paragraph2') }}
-          </p>
+          <p class="type__section-paragraph paragraph-spacing" v-html="$t('concentreGalice.paragraph1')"></p>
+          <p class="type__question paragraph-spacing" v-html="$t('concentreGalice.paragraph2')"></p>
         </div>
         <div class="col-right">
           <ImageCrop width="100%" height="700px" position="center 40%" :caption="$t('concentreGalice.imageCaption')"
@@ -24,9 +20,7 @@
       </div>
     </div>
     <div class="centered">
-      <p class="type__section-paragraph paragraph-spacing">
-        {{ $t('concentreGalice.paragraph3') }}
-      </p>
+      <p class="type__section-paragraph paragraph-spacing" v-html="$t('concentreGalice.paragraph3')"></p>
     </div>
   </div>
 </section>

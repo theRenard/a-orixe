@@ -7,35 +7,21 @@
           <h2 class="type__section-title type__section-title--with-line heading-spacing">
             {{ $t('reconnaissance.title') }}
           </h2>
-          <p class="type__section-paragraph paragraph-spacing">
-            {{ $t('reconnaissance.paragraph1') }}
-          </p>
-          <p class="type__section-paragraph paragraph-spacing">
-            {{ $t('reconnaissance.paragraph2') }}
-          </p>
-          <p class="type__question paragraph-spacing">
-            {{ $t('reconnaissance.quote') }}
-          </p>
-          <p class="type__section-paragraph reconnaissance-section__attribution paragraph-spacing">
-            {{ $t('reconnaissance.attribution') }}
-          </p>
-          <p class="type__section-paragraph paragraph-spacing">
-            {{ $t('reconnaissance.paragraph3') }}
-          </p>
+          <p class="type__section-paragraph paragraph-spacing" v-html="$t('reconnaissance.paragraph1')"></p>
+          <p class="type__section-paragraph paragraph-spacing" v-html="$t('reconnaissance.paragraph2')"></p>
+          <p class="type__question paragraph-spacing" v-html="$t('reconnaissance.quote')"></p>
+          <p class="type__section-paragraph reconnaissance-section__attribution paragraph-spacing" v-html="$t('reconnaissance.attribution')"></p>
+          <p class="type__section-paragraph paragraph-spacing" v-html="$t('reconnaissance.paragraph3')"></p>
         </div>
         <div class="reconnaissance-section__document">
           <div class="reconnaissance-section__placeholder" aria-hidden="true">
             <span class="reconnaissance-section__placeholder-text">{{ $t('reconnaissance.placeholderLabel') }}</span>
           </div>
-          <p class="reconnaissance-section__caption type__image-caption type__image-caption--with-line paragraph-spacing">
-            {{ $t('reconnaissance.documentCaption') }}
-          </p>
+          <p class="reconnaissance-section__caption type__image-caption type__image-caption--with-line paragraph-spacing" v-html="$t('reconnaissance.documentCaption')"></p>
         </div>
       </div>
       </div>
-      <p class="type__footnote reconnaissance-section__footnote paragraph-spacing">
-        {{ $t('reconnaissance.footnote') }}
-      </p>
+      <p class="type__footnote reconnaissance-section__footnote paragraph-spacing" v-html="$t('reconnaissance.footnote')"></p>
     </div>
   </section>
 </template>

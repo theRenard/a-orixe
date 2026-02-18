@@ -4,16 +4,14 @@
     <h1 class="type__hero-title">
       {{ $t('hero.title') }}
     </h1>
-    <p class="type__hero-subtitle paragraph-spacing">
-      {{ $t('hero.subtitle') }}
-    </p>
-    <div class="container credits__inner mt-6">
+    <p class="type__hero-subtitle paragraph-spacing" v-html="$t('hero.subtitle')"></p>
+    <div class="container credits__inner mt-6 paragraph-spacing">
       <div class="credits__col credits__col--left">
         <div class="credits__line-accent" aria-hidden="true" />
         <p>
           {{ $t('credits.byPrefix') }}<span class="type__credits-bold">{{ $t('credits.byName') }}</span>
         </p>
-        <p>{{ $t('credits.authorRole') }}</p>
+        <p v-html="$t('credits.authorRole')"></p>
         <p>
           {{ $t('credits.publishedOnPrefix') }}<span class="type__credits-bold">{{ $t('credits.publishedOnDate')
           }}</span>
