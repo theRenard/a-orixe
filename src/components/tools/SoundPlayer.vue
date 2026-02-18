@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onUnmounted } from 'vue'
+import { ref, computed, onUnmounted } from 'vue'
 
 /** One chapter: start time (MM:SS) and corresponding text (e.g. from Horodatage-Audio-*.json). */
 export interface SoundPlayerChapter {
@@ -21,12 +21,26 @@ const props = withDefaults(
 )
 
 const isPlaying = ref(false)
+/** Index of the chapter to show in the transcript strip; 0 when no chapters or not playing. */
+const currentChapterIndex = ref(0)
 let audio: HTMLAudioElement | null = null
+
+const hasChapters = computed(() => (props.chapters?.length ?? 0) > 0)
+const currentChapterText = computed(() =>
+  hasChapters.value && props.chapters
+    ? props.chapters[currentChapterIndex.value]?.text ?? ''
+    : ''
+)
+
+/** Parse "MM:SS" to seconds. */
+function timestampToSeconds(ts: string): number {
+  const [m, s] = ts.trim().split(':').map(Number)
+  return (m ?? 0) * 60 + (s ?? 0)
+}
 
 function ensureAudio(): HTMLAudioElement {
   if (!audio) {
     audio = new Audio(props.src)
-    // Debug: confirm URL and load/error
     console.log('[SoundPlayer] src URL:', props.src)
     audio.addEventListener('ended', () => {
       isPlaying.value = false
@@ -37,8 +51,25 @@ function ensureAudio(): HTMLAudioElement {
     audio.addEventListener('error', (e) => {
       console.error('[SoundPlayer] load/play error:', e, 'code:', audio?.error?.code, 'message:', audio?.error?.message)
     })
+    if (props.chapters?.length) {
+      audio.addEventListener('timeupdate', updateChapterFromTime)
+    }
   }
   return audio
+}
+
+function updateChapterFromTime() {
+  if (!audio || !props.chapters?.length) return
+  const t = audio.currentTime
+  let index = 0
+  for (let i = props.chapters.length - 1; i >= 0; i--) {
+    const ch = props.chapters[i]
+    if (ch && timestampToSeconds(ch.timestamp) <= t) {
+      index = i
+      break
+    }
+  }
+  currentChapterIndex.value = index
 }
 
 async function toggle() {
@@ -47,10 +78,12 @@ async function toggle() {
     a.pause()
     a.currentTime = 0
     isPlaying.value = false
+    currentChapterIndex.value = 0
   } else {
     try {
       await a.play()
       isPlaying.value = true
+      if (hasChapters.value) updateChapterFromTime()
     } catch (err) {
       // Often: NotAllowedError = browser autoplay policy (no user gesture or site not allowed)
       console.error('[SoundPlayer] play() failed:', err)
@@ -60,35 +93,46 @@ async function toggle() {
 
 onUnmounted(() => {
   if (audio) {
+    if (props.chapters?.length) {
+      audio.removeEventListener('timeupdate', updateChapterFromTime)
+    }
     audio.pause()
     audio = null
   }
 })
 </script>
 
-<template><button type="button" class="sound-player" :class="{ 'sound-player--with-image': image }"
-  :aria-label="isPlaying ? $t('soundPlayer.stopLabel') : $t('soundPlayer.playLabel')" :aria-pressed="isPlaying"
-  @click="toggle">
-  <span class="sound-player__icon" aria-hidden="true">
-    <svg v-if="!isPlaying" class="sound-player__svg sound-player__svg--play" viewBox="0 0 24 24" fill="currentColor"
-      aria-hidden="true">
-      <path d="M8 5v14l11-7z" />
-    </svg>
-    <svg v-else class="sound-player__svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M6 6h12v12H6z" />
-    </svg>
-  </span>
-  <span class="sound-player__text">
-    <template v-if="text">
-      <span class="sound-player__line1">{{ text }}</span>
-      <span v-if="subtitle" class="sound-player__line2">{{ subtitle }}</span>
-    </template>
-    <slot v-else />
-  </span>
-  <span v-if="image" class="sound-player__image-wrap" aria-hidden="true">
-    <img :src="image" alt="" class="sound-player__image" />
-  </span>
-</button></template>
+<template>
+<div class="sound-player-widget">
+  <button type="button" class="sound-player" :class="{ 'sound-player--with-image': image }"
+    :aria-label="isPlaying ? $t('soundPlayer.stopLabel') : $t('soundPlayer.playLabel')" :aria-pressed="isPlaying"
+    @click="toggle">
+    <span class="sound-player__icon" aria-hidden="true">
+      <svg v-if="!isPlaying" class="sound-player__svg sound-player__svg--play" viewBox="0 0 24 24" fill="currentColor"
+        aria-hidden="true">
+        <path d="M8 5v14l11-7z" />
+      </svg>
+      <svg v-else class="sound-player__svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M6 6h12v12H6z" />
+      </svg>
+    </span>
+    <span class="sound-player__text">
+      <template v-if="text">
+        <span class="sound-player__line1">{{ text }}</span>
+        <span v-if="subtitle" class="sound-player__line2">{{ subtitle }}</span>
+      </template>
+      <slot v-else />
+    </span>
+    <span v-if="image" class="sound-player__image-wrap" aria-hidden="true">
+      <img :src="image" alt="" class="sound-player__image" />
+    </span>
+  </button>
+  <div v-if="hasChapters && currentChapterText && isPlaying" class="sound-player__transcript" aria-live="polite">
+
+    <span class="sound-player__transcript-chapter">{{ currentChapterText }}</span>
+  </div>
+</div>
+</template>
 
 <style scoped>
 .sound-player {
@@ -98,7 +142,7 @@ onUnmounted(() => {
   padding: 0.5rem 0.5rem;
   background: var(--color-cream);
   border: 3px solid var(--color-teal-medium);
-  border-radius: 9999px;
+  border-radius: 50px;
   font-family: var(--font-family-ubuntu);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-medium);
@@ -108,6 +152,8 @@ onUnmounted(() => {
   -webkit-tap-highlight-color: transparent;
   max-width: 480px;
   height: 5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .sound-player:hover {
@@ -173,5 +219,48 @@ onUnmounted(() => {
 .sound-player__line2 {
   font-size: 0.875em;
   font-weight: var(--font-weight-normal);
+}
+
+/* Wrapper when transcript is shown: single rounded card */
+.sound-player-widget {
+  display: inline-block;
+  max-width: 480px;
+  position: relative;
+}
+
+.sound-player-widget--with-chapters .sound-player {
+  border-radius: 1.25rem 1.25rem 0 0;
+  border: none;
+  max-width: none;
+}
+
+/* Teal transcript strip (green part) */
+.sound-player__transcript {
+  background: var(--color-teal-medium);
+  color: var(--color-white);
+  font-family: var(--font-family-ubuntu);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: 1.4;
+  padding: 1rem 1.25rem;
+  text-align: left;
+  border-radius: 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  min-height: 5rem;
+  padding-top: 6rem;
+  padding-bottom: 1rem;
+}
+
+.sound-player__transcript-chapter {
+  /* display: block;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-white); */
+  display: inline-block;
+  padding-bottom: 1rem;
 }
 </style>

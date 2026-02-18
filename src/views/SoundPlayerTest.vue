@@ -7,69 +7,67 @@ import SoundPlayer from '@/components/tools/SoundPlayer.vue'
 import pronunciationMp3 from '@/assets/audio/audio_prononciation_a_orixe.mp3'
 import pronunciationImage from '@/assets/audio-photos/pastille-photo-saturio.jpg'
 import audioDonManuel from '@/assets/audio/audio_don_manuel.mp3'
+import chaptersDonManuel from '@/assets/audio-refs/Horodatage-Audio-DonManuel.json'
 import audioForetOiseaux from '@/assets/audio/audio_foret_oiseaux.mp3'
 import audioSabela from '@/assets/audio/audio_sabela.mp3'
+import donManuelImage from '@/assets/audio-photos/pastille-photodonmanuel1.jpg'
 </script>
 
 <template>
-  <main class="sound-player-test-page">
-    <header class="sound-player-test-page__header">
-      <h1 class="sound-player-test-page__title type__section-title">SoundPlayer test</h1>
-      <p class="sound-player-test-page__subtitle">
-        All <code>SoundPlayer</code> instances used across the site — for visual and playback testing.
+<main class="sound-player-test-page">
+  <header class="sound-player-test-page__header">
+    <h1 class="sound-player-test-page__title type__section-title">SoundPlayer test</h1>
+    <p class="sound-player-test-page__subtitle">
+      All <code>SoundPlayer</code> instances used across the site — for visual and playback testing.
+    </p>
+    <RouterLink to="/" class="sound-player-test-page__back type__credits-link">← Back to site</RouterLink>
+  </header>
+
+  <div class="sound-player-test-page__list">
+    <article class="sound-player-test-page__card">
+      <h2 class="sound-player-test-page__card-title">Association (pronunciation + image)</h2>
+      <p class="sound-player-test-page__card-desc">
+        <code>:src</code> + <code>:text</code> + <code>:image</code> (pastille Saturio)
       </p>
-      <RouterLink to="/" class="sound-player-test-page__back type__credits-link">← Back to site</RouterLink>
-    </header>
+      <div class="sound-player-test-page__player-wrap">
+        <SoundPlayer :src="pronunciationMp3" :text="$t('association.soundPlayerText')" :image="pronunciationImage" />
+      </div>
+    </article>
 
-    <div class="sound-player-test-page__list">
-      <article class="sound-player-test-page__card">
-        <h2 class="sound-player-test-page__card-title">Association (pronunciation + image)</h2>
-        <p class="sound-player-test-page__card-desc">
-          <code>:src</code> + <code>:text</code> + <code>:image</code> (pastille Saturio)
-        </p>
-        <div class="sound-player-test-page__player-wrap">
-          <SoundPlayer
-            :src="pronunciationMp3"
-            :text="$t('association.soundPlayerText')"
-            :image="pronunciationImage"
-          />
-        </div>
-      </article>
+    <article class="sound-player-test-page__card">
+      <h2 class="sound-player-test-page__card-title">Trace route (Don Manuel, slot with 2 lines + chapters)</h2>
+      <p class="sound-player-test-page__card-desc">
+        <code>:src</code> + default slot (line1 + line2) + <code>:chapters</code> (Horodatage-Audio-DonManuel)
+      </p>
+      <div class="sound-player-test-page__player-wrap sound-player-test-page__player-wrap--centered">
+        <SoundPlayer :src="audioDonManuel" :chapters="chaptersDonManuel" :image="donManuelImage">
+          <span class="sound-player-test-page__line1">{{ $t('traceRoute.soundPlayerText') }}</span>
+          <span class="sound-player-test-page__line2">{{ $t('traceRoute.soundPlayerSubtitle') }}</span>
+        </SoundPlayer>
+      </div>
+    </article>
 
-      <article class="sound-player-test-page__card">
-        <h2 class="sound-player-test-page__card-title">Trace route (Don Manuel, slot with 2 lines)</h2>
-        <p class="sound-player-test-page__card-desc">
-          <code>:src</code> + default slot (line1 + line2)
-        </p>
-        <div class="sound-player-test-page__player-wrap sound-player-test-page__player-wrap--centered">
-          <SoundPlayer :src="audioDonManuel">
-            <span class="sound-player-test-page__line1">{{ $t('traceRoute.soundPlayerText') }}</span>
-            <span class="sound-player-test-page__line2">{{ $t('traceRoute.soundPlayerSubtitle') }}</span>
-          </SoundPlayer>
-        </div>
-      </article>
+    <article class="sound-player-test-page__card">
+      <h2 class="sound-player-test-page__card-title">Capsule sonore (forêt / oiseaux)</h2>
+      <p class="sound-player-test-page__card-desc">
+        <code>:src</code> + <code>:text</code> only
+      </p>
+      <div class="sound-player-test-page__player-wrap">
+        <SoundPlayer :src="audioForetOiseaux" :text="$t('capsuleSonore.soundPlayerText')" />
+      </div>
+    </article>
 
-      <article class="sound-player-test-page__card">
-        <h2 class="sound-player-test-page__card-title">Capsule sonore (forêt / oiseaux)</h2>
-        <p class="sound-player-test-page__card-desc">
-          <code>:src</code> + <code>:text</code> only
-        </p>
-        <div class="sound-player-test-page__player-wrap">
-          <SoundPlayer :src="audioForetOiseaux" :text="$t('capsuleSonore.soundPlayerText')" />
-        </div>
-      </article>
-
-      <article class="sound-player-test-page__card">
-        <h2 class="sound-player-test-page__card-title">Coup de cœur (Sabela)</h2>
-        <p class="sound-player-test-page__card-desc">
-          <code>:src</code> + <code>:text</code> only
-        </p>
-        <div class="sound-player-test-page__player-wrap">
-          <SoundPlayer :src="audioSabela" :text="$t('coupDeCoeur.soundPlayerText')" />
-        </div>
-      </article>
-    </div>
-  </main>
+    <article class="sound-player-test-page__card">
+      <h2 class="sound-player-test-page__card-title">Coup de cœur (Sabela)</h2>
+      <p class="sound-player-test-page__card-desc">
+        <code>:src</code> + <code>:text</code> only
+      </p>
+      <div class="sound-player-test-page__player-wrap">
+        <SoundPlayer :src="audioSabela" :text="$t('coupDeCoeur.soundPlayerText')" />
+      </div>
+    </article>
+  </div>
+</main>
 </template>
 
 <style scoped>
