@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import phareCorrubedo from '@/assets/illustrations/phare.png'
+import cathedrale from '@/assets/illustrations/cathedrale.png'
+</script>
+
 <template>
 <section class="en-bref-section section--full-viewport">
   <div class="en-bref-section__inner container">
@@ -15,12 +20,14 @@
         <div class="type__enbref-small-orange">{{ $t('enBref.stat2Label') }}</div>
       </div>
       <div class="en-bref-section__place">
+        <img :src="phareCorrubedo" :alt="$t('enBref.departurePlace')" class="en-bref-section__icon">
         <div>
           <div class="type__enbref-small-orange--left">{{ $t('enBref.departureLabel') }}</div>
           <div class="type__enbref-small-green">{{ $t('enBref.departurePlace') }}</div>
         </div>
       </div>
       <div class="en-bref-section__place">
+        <img :src="cathedrale" :alt="$t('enBref.arrivalPlace')" class="en-bref-section__icon">
         <div>
           <div class="type__enbref-small-orange--left">{{ $t('enBref.arrivalLabel') }}</div>
           <div class="type__enbref-small-green">{{ $t('enBref.arrivalPlace') }}</div>
@@ -31,7 +38,7 @@
     <p class="en-bref-section__link-wrap paragraph-spacing">
       <span class="type__enbref-small-green">{{ $t('enBref.detailLinkText') }}</span>
       <a href="#etapes-cles" class="type__enbref-small-green en-bref-section__link">{{ $t('enBref.detailLinkHere')
-      }}</a>
+        }}</a>
     </p>
   </div>
 </section>
@@ -45,7 +52,6 @@
 .en-bref-section__inner {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 0 2rem;
 }
 
 .en-bref-section__title {
@@ -63,10 +69,10 @@
 
 .en-bref-section__stats-row {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 2rem 2rem;
+  gap: 3rem;
   margin-bottom: 2.5rem;
 }
 
@@ -74,21 +80,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 20%;
 }
 
 .en-bref-section__place {
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  width: 20%;
+  align-items: flex-start;
+  justify-content: space-between;
+  /* gap: 1rem; */
 }
 
 .en-bref-section__icon {
   flex-shrink: 0;
-  width: 48px;
-  height: 48px;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
+  margin-right: 1rem;
 }
 
 .en-bref-section__icon--svg {
