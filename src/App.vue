@@ -4,10 +4,10 @@ import { RouterView } from 'vue-router'
 </script>
 
 <template>
-  <div class="app-root">
-    <LanguageSelector />
-    <RouterView />
-  </div>
+<div class="app-root">
+  <LanguageSelector />
+  <RouterView />
+</div>
 </template>
 
 <style scoped>
@@ -27,9 +27,4 @@ import { RouterView } from 'vue-router'
   background-position: center;
   background-repeat: no-repeat;
 }
-
-.app-root :deep(a) {
-  color: var(--color-orange);
-}
 </style>
-

@@ -1,27 +1,30 @@
 <template>
-<section class="comment-est-ne-section">
-  <div class="comment-est-ne-section__inner container">
-    <div class="comment-est-ne-section__grid">
-      <aside class="comment-est-ne-section__author">
-        <img src="@/assets/photos/florenceantunes-portrait.webp" alt="" class="comment-est-ne-section__avatar"
-          width="200" height="200">
-        <h3 class="comment-est-ne-section__author-name">
-          {{ $t('commentEstNeRecit.authorName') }}
-        </h3>
-        <p class="comment-est-ne-section__author-role" v-html="$t('commentEstNeRecit.authorRole')"></p>
-        <a href="mailto:florenceantunes@gmail.com" class="comment-est-ne-section__author-email">
-          {{ $t('commentEstNeRecit.authorEmail') }}
-        </a>
-        <a href="https://www.florenceantunes.com" target="_blank" rel="noopener noreferrer"
-          class="comment-est-ne-section__author-website">
-          {{ $t('commentEstNeRecit.authorWebsite') }}
-        </a>
-      </aside>
-      <div class="comment-est-ne-section__content">
-        <h2 class="comment-est-ne-section__title heading-spacing">
-          {{ $t('commentEstNeRecit.title') }}
-        </h2>
-        <p class="comment-est-ne-section__paragraph paragraph-spacing" v-html="$t('commentEstNeRecit.paragraph')"></p>
+<section class="section--full-viewport comment-est-ne-section">
+  <div class="container">
+    <div class="comment-est-ne-section__inner paragraph-spacing">
+      <div class="comment-est-ne-section__grid">
+        <aside class="comment-est-ne-section__author">
+          <img src="@/assets/photos/florenceantunes-portrait.webp" alt="" class="comment-est-ne-section__avatar"
+            width="280" height="280">
+          <h3 class="comment-est-ne-section__author-name">
+            {{ $t('commentEstNeRecit.authorName') }}
+          </h3>
+          <p class="comment-est-ne-section__author-role" v-html="$t('commentEstNeRecit.authorRole')"></p>
+          <a href="mailto:florenceantunes@gmail.com" class="comment-est-ne-section__author-email">
+            {{ $t('commentEstNeRecit.authorEmail') }}
+          </a>
+          <a href="https://www.florenceantunes.com" target="_blank" rel="noopener noreferrer"
+            class="comment-est-ne-section__author-website">
+            {{ $t('commentEstNeRecit.authorWebsite') }}
+          </a>
+        </aside>
+        <div class="comment-est-ne-section__content mt-5">
+          <h2 class="comment-est-ne-section__title heading-spacing">
+            {{ $t('commentEstNeRecit.title') }}
+          </h2>
+          <p class="comment-est-ne-section__paragraph paragraph-spacing" v-html="$t('commentEstNeRecit.paragraph')">
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -31,18 +34,18 @@
 <style scoped>
 .comment-est-ne-section {
   background-color: var(--color-white);
-  padding: 4rem 0 5rem;
+  /* padding: 4rem 0 5rem; */
 }
 
 .comment-est-ne-section__inner {
-  max-width: 1000px;
+  /* max-width: 1000px; */
   margin: 0 auto;
   padding: 0 2rem;
 }
 
 .comment-est-ne-section__grid {
   display: grid;
-  grid-template-columns: minmax(200px, 280px) 1fr;
+  grid-template-columns: 280px 1fr;
   gap: 3rem 4rem;
   align-items: start;
 }
@@ -68,8 +71,8 @@
 }
 
 .comment-est-ne-section__avatar {
-  width: 200px;
-  height: 200px;
+  width: 280px;
+  height: 280px;
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 1.25rem;
@@ -108,12 +111,12 @@
   text-align: center;
 }
 
-/* Author email & website – Ubuntu 19px/27px bold #2D4B4B, center, underline */
+/* Author email & website – bold, underline, dark greenish-grey #3C4C4A */
 .comment-est-ne-section__author-email,
 .comment-est-ne-section__author-website {
   font: normal normal var(--font-weight-bold) 19px/27px var(--font-family-ubuntu);
   letter-spacing: 0px;
-  color: var(--color-teal-dark);
+  color: #3c4c4a;
   text-align: center;
   text-decoration: underline;
   margin: 0 0 0.25rem;

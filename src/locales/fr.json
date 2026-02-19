@@ -195,8 +195,9 @@
     "title": "« A Orixe se prête parfaitement au slow tourisme »",
     "paragraph1": "Adrian Batalla est un guide local originaire de Boiro, village situé sur le parcours de <i>« A Orixe »</i>. Avec un groupe d'amis passionnés d'histoire et de patrimoine galiciens, il souhaite valoriser le camino à travers des animations, des découvertes et des circuits thématiques.",
     "question": "Qu'est-ce qui rend ce parcours différent des autres chemins de Compostelle ?",
-    "answerPrefix": "Adrian Batalla :",
-    "answerBody": "Sa diversité. On passe de la mer aux collines, des ports aux vieilles pierres des villages, des pêcheurs aux vignerons. Il y a une proximité très forte avec la vie locale, la culture galicienne et la nature. Ce n'est pas qu'un itinéraire spirituel, c'est un voyage d'émotions et de rencontres. On peut lever le nez, discuter, s'arrêter... C'est du slow tourisme dans toute sa dimension. On y trouve le calme, la nature, les traditions vivantes et une vraie déconnexion."
+    "answerPrefix": "Adrian Batalla : ",
+    "answerBody": "Sa diversité. On passe de la mer aux collines, des ports aux vieilles pierres des villages, des pêcheurs aux vignerons. Il y a une proximité très forte avec la vie locale, la culture galicienne et la nature. Ce n'est pas qu'un itinéraire spirituel, c'est un voyage d'émotions et de rencontres. On peut lever le nez, discuter, s'arrêter... C'est du slow tourisme dans toute sa dimension. On y trouve le calme, la nature, les traditions vivantes et une vraie déconnexion.",
+    "illustrationAlt": "Croquis d'un village côtier."
   },
   "orixeInterview": {
     "title": "Vous travaillez avec un groupe d'amis pour développer un projet autour de A Orixe. Dites-nous tout !",
@@ -207,6 +208,7 @@
     "answer2": "Oui ! Il y en a beaucoup ! Les vestiges du Castro de Neixón, les châteaux et légendes galiciennes, l'église Santa Maria a Antigua do Caraminal, le port de Rianxo... Et bien sûr, l'église de Santiago de Padrón, où selon la tradition, la barque de l'apôtre Jacques s'est amarrée. Chaque lieu raconte un pan d'histoire galicienne."
   },
   "experienceDestinee": {
+    "illustrationAlt": "Illustration d'un bateau.",
     "question1": "Cette nouvelle expérience, à qui serait-elle destinée ?",
     "answer1": "À tout le monde, vraiment. Aux voyageurs étrangers en quête d'authenticité, aux locaux qui veulent redécouvrir leur propre région, aux jeunes qui cherchent du sens, du calme, loin du tourisme de masse. Nous voulons que chacun puisse vivre une aventure humaine et culturelle à son rythme. Le camino <i>« A Orixe »</i> reste encore méconnu, même localement... Complètement ! Et c'est un paradoxe. Beaucoup d'habitants ne connaissent pas ce chemin alors qu'il passe tout près de chez eux. C'est pour cela que nous voulons aussi faire une promotion locale, pour que les Galiciens se réapproprient leur patrimoine et en deviennent les premiers ambassadeurs.",
     "question2": "Selon vous, <i>« A Orixe »</i> pourra-t-il conserver cette tranquillité qui en fait son originalité ou faut-il craindre une massification comme la connaissent d'autres parcours ?",

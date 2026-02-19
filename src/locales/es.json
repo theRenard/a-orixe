@@ -194,8 +194,9 @@
     "title": "« A Orixe se presta perfectamente al slow tourism »",
     "paragraph1": "Adrian Batalla es un guía local originario de Boiro, pueblo situado en el recorrido de « A Orixe ». Con un grupo de amigos apasionados por la historia y el patrimonio gallegos, quiere valorizar el camino a través de animaciones, descubrimientos y circuitos temáticos.",
     "question": "¿Qué hace que este recorrido sea diferente de los demás caminos de Compostela?",
-    "answerPrefix": "Adrian Batalla :",
-    "answerBody": "Su diversidad. Se pasa del mar a las colinas, de los puertos a las piedras antiguas de los pueblos, de los pescadores a los viticultores. Hay una proximidad muy fuerte con la vida local, la cultura gallega y la naturaleza. No es solo un itinerario espiritual, es un viaje de emociones y encuentros. Se puede levantar la mirada, charlar, pararse... Es el slow tourism en toda su dimensión. En él se encuentra la calma, la naturaleza, las tradiciones vivas y una verdadera desconexión."
+    "answerPrefix": "Adrian Batalla : ",
+    "answerBody": "Su diversidad. Se pasa del mar a las colinas, de los puertos a las piedras antiguas de los pueblos, de los pescadores a los viticultores. Hay una proximidad muy fuerte con la vida local, la cultura gallega y la naturaleza. No es solo un itinerario espiritual, es un viaje de emociones y encuentros. Se puede levantar la mirada, charlar, pararse... Es el slow tourism en toda su dimensión. En él se encuentra la calma, la naturaleza, las tradiciones vivas y una verdadera desconexión.",
+    "illustrationAlt": "Boceto de un pueblo costero."
   },
   "orixeInterview": {
     "title": "Trabajáis con un grupo de amigos para desarrollar un proyecto en torno a A Orixe. ¡Contadnos todo!",
@@ -206,6 +207,7 @@
     "answer2": "¡Sí! ¡Hay muchos! Los vestigios del Castro de Neixón, los castillos y leyendas gallegas, la iglesia Santa Maria a Antigua do Caraminal, el puerto de Rianxo... Y por supuesto, la iglesia de Santiago de Padrón, donde según la tradición atracó la barca del apóstol Santiago. Cada lugar cuenta una parte de la historia gallega."
   },
   "experienceDestinee": {
+    "illustrationAlt": "Ilustración de un barco.",
     "question1": "¿A quién estaría destinada esta nueva experiencia?",
     "answer1": "A todo el mundo, de verdad. A viajeros extranjeros en busca de autenticidad, a los locales que quieren redescubrir su propia región, a los jóvenes que buscan sentido, calma, lejos del turismo de masas. Queremos que cada uno pueda vivir una aventura humana y cultural a su ritmo. El camino « A Orixe » sigue siendo poco conocido, incluso a nivel local... ¡Completamente! Y es una paradoja. Muchos habitantes no conocen este camino aunque pasa muy cerca de sus casas. Por eso queremos también hacer una promoción local, para que los gallegos se reapropien de su patrimonio y se conviertan en sus primeros embajadores.",
     "question2": "En su opinión, ¿« A Orixe » podrá conservar esa tranquilidad que lo hace original o hay que temer una masificación como en otros recorridos?",
