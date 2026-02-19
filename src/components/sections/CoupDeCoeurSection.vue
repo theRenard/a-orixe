@@ -2,7 +2,7 @@
 import SoundPlayer from '@/components/tools/SoundPlayer.vue'
 import audioSabela from '@/assets/audio/audio_sabela.mp3'
 import chaptersSabela from '@/assets/audio-refs/Horodatage-Audio-Sabela.json'
-import sabelaImage from '@/assets/audio-photos/pastille-photosabela.jpg'
+import sabelaImage from '@/assets/audio-photos/pastille-photo-sabela.webp'
 </script>
 
 <template>

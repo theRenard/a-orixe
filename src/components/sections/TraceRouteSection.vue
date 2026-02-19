@@ -2,7 +2,7 @@
 import SoundPlayer from '@/components/tools/SoundPlayer.vue'
 import audioDonManuel from '@/assets/audio/audio_don_manuel.mp3'
 import chaptersDonManuel from '@/assets/audio-refs/Horodatage-Audio-DonManuel.json'
-import donManuelImage from '@/assets/audio-photos/pastille-photodonmanuel1.jpg'
+import donManuelImage from '@/assets/audio-photos/pastille-photo-don-manuel.webp'
 </script>
 
 <template>

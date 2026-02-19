@@ -146,7 +146,7 @@ onUnmounted(() => {
   font-family: var(--font-family-ubuntu);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-medium);
-  color: var(--color-blue-dark);
+  color: var(--color-teal-dark);
   letter-spacing: var(--letter-spacing-normal);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
@@ -157,7 +157,7 @@ onUnmounted(() => {
 }
 
 .sound-player:hover {
-  background: var(--color-tan);
+  background: var(--color-teal-light);
 }
 
 .sound-player:focus-visible {
@@ -196,15 +196,12 @@ onUnmounted(() => {
   border-radius: 50%;
   background: var(--color-cream);
   color: var(--color-teal-medium);
+  position: relative;
 }
 
 .sound-player__svg {
   width: 3.16rem;
   height: 3.16rem;
-}
-
-.sound-player__svg--play {
-  margin-left: 3px;
 }
 
 .sound-player__text {
@@ -246,6 +243,8 @@ onUnmounted(() => {
   padding: 1rem 1.25rem;
   text-align: left;
   border-radius: 50px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
   position: absolute;
   top: 0;
   left: 0;
@@ -262,6 +261,6 @@ onUnmounted(() => {
   font-weight: var(--font-weight-medium);
   color: var(--color-white); */
   display: inline-block;
-  padding-bottom: 1rem;
+  /* padding-bottom: 1rem; */
 }
 </style>

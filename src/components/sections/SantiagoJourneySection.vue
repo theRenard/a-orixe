@@ -2,7 +2,7 @@
 import SoundPlayer from '@/components/tools/SoundPlayer.vue'
 import audioAdrian from '@/assets/audio/audio_adrian.mp3'
 import chaptersAdrian from '@/assets/audio-refs/Horodatage-Audio-Adrian.json'
-import adrianImage from '@/assets/audio-photos/pastille-photoadrian.jpg'
+import adrianImage from '@/assets/audio-photos/pastille-photo-adrian.webp'
 </script>
 
 <template>

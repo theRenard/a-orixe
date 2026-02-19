@@ -89,8 +89,21 @@ h2 {
   max-width: 60%;
 }
 
+.with-shadow {
+  box-shadow: 0px 0px 60px #D6510819;
+}
+
 /* Spacing utilities: 1–10 = 1rem–10rem; t=top, r=right, b=bottom, l=left */
 /* Margin */
+
+.mt-0 {
+  margin-top: 0 !important;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+
 .mt-1 {
   margin-top: 1rem !important;
 }

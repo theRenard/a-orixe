@@ -4,8 +4,8 @@
     <h1 class="type__hero-title">
       {{ $t('hero.title') }}
     </h1>
-    <p class="type__hero-subtitle paragraph-spacing" v-html="$t('hero.subtitle')"></p>
-    <div class="container credits__inner mt-6 paragraph-spacing">
+    <p class="type__hero-subtitle mt-0 " v-html="$t('hero.subtitle')"></p>
+    <div class="container credits__inner paragraph-spacing">
       <div class="credits__col credits__col--left">
         <div class="credits__line-accent" aria-hidden="true" />
         <p>
@@ -14,18 +14,18 @@
         <p v-html="$t('credits.authorRole')"></p>
         <p>
           {{ $t('credits.publishedOnPrefix') }}<span class="type__credits-bold">{{ $t('credits.publishedOnDate')
-          }}</span>
+            }}</span>
         </p>
       </div>
       <div class="credits__col credits__col--right">
         <div class="credits__line-accent ml-auto" aria-hidden="true" />
         <p>
           {{ $t('credits.artDirectionPrefix') }}<span class="type__credits-bold">{{ $t('credits.artDirectionName')
-          }}</span>
+            }}</span>
         </p>
         <p>
           {{ $t('credits.illustrationPrefix') }}<span class="type__credits-bold">{{ $t('credits.illustrationName')
-          }}</span>
+            }}</span>
         </p>
         <p>
           {{ $t('credits.devDesignPrefix') }}<span class="type__credits-bold">{{ $t('credits.devDesignName') }}</span>

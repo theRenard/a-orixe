@@ -1,8 +1,5 @@
-<script setup lang="ts">
-</script>
-
 <template>
-<section class="section--full-viewport with-borders with-background">
+<section class="section--full-viewport with-background with-shadow">
   <div class="container">
     <blockquote class="centered">
       <div>

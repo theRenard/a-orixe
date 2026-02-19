@@ -5,12 +5,12 @@
 import { RouterLink } from 'vue-router'
 import SoundPlayer from '@/components/tools/SoundPlayer.vue'
 import pronunciationMp3 from '@/assets/audio/audio_prononciation_a_orixe.mp3'
-import pronunciationImage from '@/assets/audio-photos/pastille-photo-saturio.jpg'
+import pronunciationImage from '@/assets/audio-photos/pastille-photo-saturio.webp'
 import audioDonManuel from '@/assets/audio/audio_don_manuel.mp3'
 import chaptersDonManuel from '@/assets/audio-refs/Horodatage-Audio-DonManuel.json'
 import audioForetOiseaux from '@/assets/audio/audio_foret_oiseaux.mp3'
 import audioSabela from '@/assets/audio/audio_sabela.mp3'
-import donManuelImage from '@/assets/audio-photos/pastille-photodonmanuel1.jpg'
+import donManuelImage from '@/assets/audio-photos/pastille-photo-don-manuel.webp'
 </script>
 
 <template>

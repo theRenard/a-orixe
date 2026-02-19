@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import SoundPlayer from '@/components/tools/SoundPlayer.vue'
 import pronunciationMp3 from '@/assets/audio/audio_prononciation_a_orixe.mp3'
-import pronunciationImage from '@/assets/audio-photos/pastille-photo-saturio.jpg'
+import pronunciationImage from '@/assets/audio-photos/pastille-photo-saturio.webp'
 </script>
 
 <template>

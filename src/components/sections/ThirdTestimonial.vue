@@ -2,7 +2,7 @@
 </script>
 
 <template>
-<section class="section--full-viewport section--half-viewport with-background">
+<section class="section--full-viewport section--half-viewport with-background with-shadow">
   <div class="container">
     <blockquote class="centered">
       <div>

@@ -1,5 +1,5 @@
 <template>
-<section class="section--full-viewport with-borders with-background" style="position: relative;">
+<section class="section--full-viewport with-background with-shadow" style="position: relative;">
   <div class="container">
     <blockquote class="centered">
       <div>

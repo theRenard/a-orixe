@@ -84,6 +84,10 @@
 }
 
 .type__testimonial-block {
+  padding-bottom: 1rem;
+}
+
+.type__testimonial-block {
   font: var(--font-style-italic) var(--font-weight-bold) var(--font-size-2xl)/var(--line-height-xl) var(--font-family-ubuntu);
 }
 
@@ -96,7 +100,7 @@
 }
 
 .type__testimonial-name {
-  font: var(--font-style-normal) var(--font-weight-normal) var(--font-size-lg)/var(--line-height-xl) var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-normal) var(--font-size-lg)/var(--line-height-base) var(--font-family-ubuntu);
 }
 
 /* Question */
@@ -106,7 +110,7 @@
   color: var(--color-teal-dark);
   text-align: left;
   border-left: 4px solid var(--color-teal-dark);
-  padding-left: 1rem;
+  padding-left: 2rem;
   padding-bottom: 1rem;
   padding-top: 1rem;
 }
@@ -123,6 +127,16 @@
 .type__interview-title {
   font: var(--font-style-normal) var(--font-weight-bold) var(--font-size-3xl)/var(--line-height-lg) var(--font-family-fraunces);
   color: var(--color-brown-dark);
+}
+
+.type__interview-title::before {
+  content: '';
+  display: block;
+  width: 15%;
+  min-width: 8rem;
+  height: 4px;
+  background: var(--color-brown-dark);
+  margin: 0 0 1.5rem;
 }
 
 .type__interview-subtitle {
