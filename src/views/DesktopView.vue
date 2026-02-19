@@ -38,40 +38,40 @@ import CommentEstNeRecitSection from '@/components/sections/CommentEstNeRecitSec
 
 <template>
 <main>
-  <HeroIllustration /> <!-- ok -->
-  <HeroSection /> <!-- ok -->
-  <CaminoSection /> <!-- ok -->
-  <FirstTestimonial /> <!-- ok -->
-  <EtapesClesSection /> <!-- ok -->
-  <SecondTestimonial /> <!-- ok -->
-  <RessentirLieuxSection /> <!-- ok -->
+  <HeroIllustration />
+  <HeroSection />
+  <CaminoSection />
+  <FirstTestimonial />
+  <EtapesClesSection />
+  <SecondTestimonial />
+  <RessentirLieuxSection />
   <RessentirLieuxClosingSection />
-  <FifthTestimonial /> <!-- ok -->
-  <AssociationSection /> <!-- ok -->
-  <ReconstitutionTracSection /> <!-- ok -->
-  <TravailFourmiSection /> <!-- ok -->
-  <ThirdTestimonial /> <!-- ok -->
-  <ElementsJacquaireSection /> <!-- ok -->
-  <ParcoursPraticableSection /> <!-- ok -->
+  <FifthTestimonial />
+  <AssociationSection />
+  <ReconstitutionTracSection />
+  <TravailFourmiSection />
+  <ThirdTestimonial />
+  <ElementsJacquaireSection />
+  <ParcoursPraticableSection />
   <MapIllustration />
-  <SantiagoStepsSection /> <!-- ok -->
-  <ConcentreGaliceSection /> <!-- ok -->
+  <SantiagoStepsSection />
+  <ConcentreGaliceSection />
   <SantiagoJourneyPhotoGrid />
-  <SantiagoJourneySection /> <!-- ok -->
-  <ReconnaissanceSection /> <!-- missing image -->
-  <FourthTestimonial /> <!-- ok -->
-  <FlechageSection /> <!-- ok -->
-  <SignalisationSection /> <!-- ok -->
-  <CoupDeCoeurSection /> <!-- ok -->
-  <JoyauSection /> <!-- ok -->
-  <DeconnexionSection /> <!-- ok -->
-  <CapsuleSonoreSection /> <!-- ok -->
-  <PilgrimsStatsSection /> <!-- stats are not good yet -->
-  <TraceRouteSection /> <!-- ok -->
-  <SlowTourismeSection /> <!-- ok -->
-  <OrixeInterviewSection /> <!-- ok -->
-  <ExperienceDestineeSection /> <!-- ok-->
-  <EnBrefSection /> <!-- TODO  -->
-  <CommentEstNeRecitSection /> <!-- TODO missing image -->
+  <SantiagoJourneySection />
+  <ReconnaissanceSection />
+  <FourthTestimonial />
+  <FlechageSection />
+  <SignalisationSection />
+  <CoupDeCoeurSection />
+  <JoyauSection />
+  <DeconnexionSection />
+  <CapsuleSonoreSection />
+  <PilgrimsStatsSection />
+  <TraceRouteSection />
+  <SlowTourismeSection />
+  <OrixeInterviewSection />
+  <ExperienceDestineeSection />
+  <EnBrefSection />
+  <CommentEstNeRecitSection />
 </main>
 </template>
