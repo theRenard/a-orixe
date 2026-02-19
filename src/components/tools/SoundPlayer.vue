@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onUnmounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 /** One chapter: start time (MM:SS) and corresponding text (e.g. from Horodatage-Audio-*.json). */
 export interface SoundPlayerChapter {
@@ -20,12 +21,15 @@ const props = withDefaults(
   { text: '', subtitle: '', image: '', chapters: () => [] }
 )
 
+const { locale } = useI18n()
 const isPlaying = ref(false)
 /** Index of the chapter to show in the transcript strip; 0 when no chapters or not playing. */
 const currentChapterIndex = ref(0)
 let audio: HTMLAudioElement | null = null
 
 const hasChapters = computed(() => (props.chapters?.length ?? 0) > 0)
+/** Transcription (chapter strip) is disabled for Spanish. */
+const transcriptionActive = computed(() => hasChapters.value && locale.value !== 'es')
 const currentChapterText = computed(() =>
   hasChapters.value && props.chapters
     ? props.chapters[currentChapterIndex.value]?.text ?? ''
@@ -51,7 +55,7 @@ function ensureAudio(): HTMLAudioElement {
     audio.addEventListener('error', (e) => {
       console.error('[SoundPlayer] load/play error:', e, 'code:', audio?.error?.code, 'message:', audio?.error?.message)
     })
-    if (props.chapters?.length) {
+    if (transcriptionActive.value) {
       audio.addEventListener('timeupdate', updateChapterFromTime)
     }
   }
@@ -83,7 +87,7 @@ async function toggle() {
     try {
       await a.play()
       isPlaying.value = true
-      if (hasChapters.value) updateChapterFromTime()
+      if (transcriptionActive.value) updateChapterFromTime()
     } catch (err) {
       // Often: NotAllowedError = browser autoplay policy (no user gesture or site not allowed)
       console.error('[SoundPlayer] play() failed:', err)
@@ -127,7 +131,7 @@ onUnmounted(() => {
       <img :src="image" alt="" class="sound-player__image" />
     </span>
   </button>
-  <div v-if="hasChapters && currentChapterText && isPlaying" class="sound-player__transcript" aria-live="polite">
+  <div v-if="transcriptionActive && currentChapterText && isPlaying" class="sound-player__transcript" aria-live="polite">
 
     <span class="sound-player__transcript-chapter" v-html="currentChapterText"></span>
   </div>
