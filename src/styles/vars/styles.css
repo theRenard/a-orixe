@@ -417,7 +417,7 @@ h2 {
 
 /* En bref section: infographic-style types (from design) */
 .type__enbref-big {
-  font: normal var(--font-weight-black, 900) 130px/40px var(--font-family-fraunces);
+  font: normal var(--font-weight-black, 900) 130px/130px var(--font-family-fraunces);
   letter-spacing: 0;
   color: var(--color-teal-dark);
   text-align: center;

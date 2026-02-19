@@ -215,7 +215,7 @@
     "answer2": "Je ne crois pas vraiment à une massification. Pour l'instant, les infrastructures d'accueil sont modestes et c'est ce qui préserve l'authenticité du parcours. Nous souhaitons qu'il se développe à petite échelle, en gardant cet esprit humain et intime. A mon avis, le camino A Orixe ne sera jamais un produit de masse et... c'est tant mieux !"
   },
   "enBref": {
-    "titlePrefix": "Le chemin",
+    "titlePrefix": "El camino",
     "titleSuffix": " « A Orixe » en bref",
     "stat1Number": "6",
     "stat1Label": "étapes",
@@ -225,7 +225,7 @@
     "departurePlace": "Phare de Corrubedo",
     "arrivalLabel": "Arrivée",
     "arrivalPlace": "Cathédrale de Santiago de Compostela",
-    "detailLinkText": "Le détail du parcours",
+    "detailLinkText": "Le détail du parcours ",
     "detailLinkHere": "ici"
   },
   "commentEstNeRecit": {
