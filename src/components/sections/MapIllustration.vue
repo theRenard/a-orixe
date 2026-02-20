@@ -4,14 +4,18 @@ import mapLineImage from '@/assets/illustrations/map_line.webp'
 </script>
 
 <template>
-<section class="map-illustration section--full-viewport mt-4" role="img"
+<section class="map-illustration section--full-viewport mt-4 image-section" role="img"
   :aria-label="$t('carteEtapesSantiago.caption')">
-  <div class="map-illustration__bg" :style="{ backgroundImage: `url(${mapImage})` }" />
+  <img class="map-illustration__bg" :src="mapImage" alt="" />
   <div class="map-illustration__line" :style="{ backgroundImage: `url(${mapLineImage})` }" aria-hidden="true" />
 </section>
 </template>
 
 <style scoped>
+.image-section {
+  min-height: auto !important;
+}
+
 .map-illustration {
   width: 100%;
   line-height: 0;
@@ -19,11 +23,10 @@ import mapLineImage from '@/assets/illustrations/map_line.webp'
 }
 
 .map-illustration__bg {
+  display: block;
   width: 100%;
-  min-height: 100vh;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  height: auto;
+  vertical-align: middle;
 }
 
 .map-illustration__line {
