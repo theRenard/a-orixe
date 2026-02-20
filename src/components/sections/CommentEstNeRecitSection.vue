@@ -80,7 +80,7 @@
 
 /* Big green heading – Fraunces 35px/30px bold #2D4B4B */
 .comment-est-ne-section__title {
-  font: normal normal var(--font-weight-bold) 35px/30px var(--font-family-fraunces);
+  font: normal normal var(--font-weight-bold) calc(35px * var(--font-scale)) / calc(30px * var(--font-scale)) var(--font-family-fraunces);
   letter-spacing: 0px;
   color: var(--color-teal-dark);
   text-align: left;
@@ -88,7 +88,7 @@
 
 /* Green paragraph – Ubuntu 18px/30px medium #2D4B4B */
 .comment-est-ne-section__paragraph {
-  font: normal normal var(--font-weight-medium) 18px/30px var(--font-family-ubuntu);
+  font: normal normal var(--font-weight-medium) calc(18px * var(--font-scale)) / calc(30px * var(--font-scale)) var(--font-family-ubuntu);
   letter-spacing: 0px;
   color: var(--color-teal-dark);
   text-align: left;
@@ -96,7 +96,7 @@
 
 /* Author name – Ubuntu 28px/27px bold #2D4B4B, center */
 .comment-est-ne-section__author-name {
-  font: normal normal var(--font-weight-bold) 28px/27px var(--font-family-ubuntu);
+  font: normal normal var(--font-weight-bold) calc(28px * var(--font-scale)) / calc(27px * var(--font-scale)) var(--font-family-ubuntu);
   letter-spacing: 0px;
   color: var(--color-teal-dark);
   text-align: center;
@@ -105,7 +105,7 @@
 
 /* Author role – Ubuntu 19px/27px normal #609897, center */
 .comment-est-ne-section__author-role {
-  font: normal normal var(--font-weight-normal) 19px/27px var(--font-family-ubuntu);
+  font: normal normal var(--font-weight-normal) calc(19px * var(--font-scale)) / calc(27px * var(--font-scale)) var(--font-family-ubuntu);
   letter-spacing: 0px;
   color: var(--color-teal-medium);
   text-align: center;
@@ -114,7 +114,7 @@
 /* Author email & website – bold, underline, dark greenish-grey #3C4C4A */
 .comment-est-ne-section__author-email,
 .comment-est-ne-section__author-website {
-  font: normal normal var(--font-weight-bold) 19px/27px var(--font-family-ubuntu);
+  font: normal normal var(--font-weight-bold) calc(19px * var(--font-scale)) / calc(27px * var(--font-scale)) var(--font-family-ubuntu);
   letter-spacing: 0px;
   color: #3c4c4a;
   text-align: center;

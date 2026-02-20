@@ -55,7 +55,7 @@ import cathedrale from '@/assets/illustrations/cathedrale.png'
 }
 
 .en-bref-section__title {
-  font: normal var(--font-weight-bold) 38px/1.2 var(--font-family-fraunces);
+  font: normal var(--font-weight-bold) calc(38px * var(--font-scale)) / 1.2 var(--font-family-fraunces);
   color: var(--color-orange);
   text-align: left;
 }
@@ -107,7 +107,7 @@ import cathedrale from '@/assets/illustrations/cathedrale.png'
 }
 
 .en-bref-section__link-wrap {
-  font: normal var(--font-weight-normal) 20px/40px var(--font-family-ubuntu);
+  font: normal var(--font-weight-normal) calc(20px * var(--font-scale)) / calc(40px * var(--font-scale)) var(--font-family-ubuntu);
   color: var(--color-teal-dark);
   text-align: center;
   margin: 0;

@@ -1,5 +1,7 @@
 {
-  "meta": { "language": "ES" },
+  "meta": {
+    "language": "ES"
+  },
   "site": {
     "title": "A Orixe",
     "desktopTitle": "DESKTOP - A ORIXE – 28"
@@ -28,7 +30,7 @@
   },
   "camino": {
     "title": "Una pasión incipiente denominada camino",
-    "paragraph": "En Galicia, un recorrido aún muy confidencial se abre paso a la sombra de los grandes caminos de Compostela. En esta región del noroeste de España, el camino <i>« A Orixe »</i> se abre paso entre pinares, dunas inmaculadas, senderos costeros, puertos pesqueros, pueblos y aldeas rurales. Una ruta peatonal de 135 km, reconocida solo desde 2021, que ofrece una inmersión inédita y privilegiada en el corazón de una Galicia auténtica y preservada. Pero <i>« A Orixe »</i> solo existe gracias al trabajo callado de un puñado de apasionados.",
+    "paragraph": "En Galicia, un camino aún desconocido se ha hecho un pequeño hueco a la sombra de los grandes caminos de Santiago: el « A Orixe ». Esta ruta tuvo que esperar hasta 2021 para ser señalizada y reconocida como camino de Santiago oficial. El recorrido pedestre de 135 km marcado de referencias a Santiago transcurre entre pinares, dunas inmaculadas, senderos costeros, puertos pesqueros, pueblos y aldeas rurales. Una inmersión inédita y privilegiada en el corazón de la Galicia profunda y preservada. Pero « A Orixe » solo existe gracias al trabajo minucioso de un puñado de apasionados.",
     "paragraph1": "Probablemente Manuel Mariño Nin se haya cruzado con miles de peregrinos. Este gallego, visceralmente arraigado a su tierra, es hospitalero del camino de Santiago desde 1995. Empleado de la Xunta de Galicia, Manuel Mariño Nin ha acogido durante 18 años a peregrinos que se alojan en el albergue de mayor relevancia del camino francés: el Monte do Gozo.",
     "paragraph2": "Enclavado en una colina de Santiago, este albergue ha llegado a acoger hasta 800 peregrinos en los años santos (años en los que el día 25 de julio, festividad de Santiago, cae en domingo) y 400 peregrinos el resto de años.",
     "quote": "Desde que empecé a acoger a peregrinos que llegaban a Compostela me sumergí en todo lo que representa el camino: su historia, sus valores, la empatía, la solidaridad, el esfuerzo de los peregrinos, el respeto por sus motivaciones",
@@ -42,29 +44,29 @@
     "title": "Vivir de cerca el lugar en el que empezó todo",
     "paragraph": "Manuel no pierde la oportunidad de compartir esta información con los peregrinos que conoce en el Monte do Gozo. <i>«Cuando llegaban a mi albergue, tras haber hablado con ellos y escuchado sus relatos de peregrinaje, yo les contaba que el cuerpo del apóstol había pasado por la zona costera de mi pueblo en su viaje a Compostela»</i>.",
     "transition": "La idea empieza a germinar.",
-    "question": "¿Y si encontráramos la forma de invitar a los peregrinos a acercarse a esta costa, allí donde la barca del apóstol Santiago entró en la ría de Arousa? ¿Y si les permitiéramos recorrer a pie todo el camino que siguieron los discípulos transportando su cuerpo?",
+    "question": "¿Y si diéramos con la forma de invitar a los peregrinos a visitar esta costa, el lugar donde la barca del apóstol Santiago viró para entrar en la ría de Arousa y, a continuación, todo el camino de los discípulos que transportaban su cuerpo caminando?",
     "paragraph2": "Estamos en 2017. Casualidades de la vida (o señales del destino), Manuel Mariño Nin se apunta con una de sus hijas a una ruta organizada por don Manuel Antonio Villar Fernández. El cura de las parroquias de Santa María a Antiga do Caramiñal, Santa María do Xobre y San Pedro de Palmeira (ubicadas en la península del Barbanza) organiza cada fin de semana marchas espirituales en el camino francés.",
     "imageCaption": "Vista de la ría de Arousa"
   },
   "association": {
     "paragraph1": "A don Manuel Antonio Villar Fernández le encanta la idea y le garantiza a Manuel Mariño Nin que le va a ayudar. Nadie sospecha entonces que están al inicio de una historia que les va a tener absorbidos varios años.",
-    "blockquote": "Existen numerosas rutas de Compostela. ¿Por qué una más? Porque este trazado presentaría un elemento diferenciador mayor: ningún otro camino acompaña el cuerpo del Apóstol.",
-    "paragraph2": "Desde ese momento, Manuel Mariño Nin piensa en un nombre: A Orixe (el origen, en gallego) y crea la asociación con sus propios medios. Fue así como nació «Los amigos del camino de Santiago de Barbanza A Orixe». «Sabía que era la herramienta necesaria para oficializar el camino un día», comenta Manuel, que pasaría a ser el primer presidente.",
+    "blockquote": "Hay muchos caminos de Santiago. ¿Por qué crear otro? Porque esta señalización presentaría un elemento diferenciador principal: ningún otro camino acompaña al cuerpo del Apóstol.",
+    "paragraph2": "Desde ese momento, Manuel Mariño Nin piensa en un nombre: A Orixe (el origen, en gallego) y crea la asociación con sus propios medios. Fue así como nació <i>«Los amigos del camino de Santiago de Barbanza A Orixe»</i>. <i>«Sabía que era la herramienta necesaria para oficializar el camino un día»</i>, comenta Manuel, que pasaría a ser el primer presidente.",
     "soundPlayerText": "¿Sabes pronunciar A Orixe? Lección de pronunciación con Saturio",
     "paragraph3": "El proyecto todavía está en sus inicios. Queda un largo recorrido."
   },
   "reconstitutionTrac": {
     "imageCaption": "Acceso a las dunas de Corrubedo / © Miguel Angel Soutullo Alvarez",
     "title": "Tras las huellas de Santiago: el rompecabezas de la reconstrucción del camino",
-    "paragraph1": "Varias personas se unen al proyecto, entre ellas Manuel Mariño Nin, por supuesto, ¡y también don Manuel Antonio Villar Fernández! Pero desde el primer momento está Saturio Ferreiro, voluntario y también un historiador de la zona. «Solo éramos ocho entonces», recuerda Saturio Ferreiro.",
+    "paragraph1": "Varias personas se unen al proyecto, entre ellas Manuel Mariño Nin, por supuesto, ¡y también don Manuel Antonio Villar Fernández! Pero desde el primer momento está Saturio Ferreiro, voluntario y también un historiador de la zona. <i>«Solo éramos ocho entonces»</i>, recuerda Saturio Ferreiro.",
     "paragraph2": "El trabajo es inmenso. El objetivo es reconstruir un camino a partir de una leyenda, materializar un itinerario marítimo trazando una ruta terrestre que puedan realizar los peregrinos de nuestros días.",
-    "question": "¿Pero por dónde habrían pasado los primeros peregrinos, los discípulos de Santiago, con su cuerpo?"
+    "question": "Sin embargo, ¿por dónde podrían haber pasado con el cuerpo los primeros peregrinos, los discípulos de Santiago?"
   },
   "concentreGalice": {
     "title": "135 kilómetros de Galicia en su estado puro",
     "imageCaption": "Faro de Corrubedo",
-    "paragraph1": "Al término de esta minuciosa reconstrucción, «A Orixe» toma forma y se convierte en una ruta costera a pie de 135 km.",
-    "paragraph2": "El punto de partida, el faro de Corrubedo, marca el tono. Las olas rompen contra esta costa recortada y salvaje. Los primeros pasos del peregrino rozan las alfombras de tojo que florecen en primavera antes de cruzar el primer puerto pesquero del recorrido, el de Corrubedo.",
+    "paragraph1": "Al término de esta minuciosa reconstrucción, « A Orixe » toma forma y se convierte en una ruta costera a pie de 135 km.",
+    "paragraph2": "El punto de partida, el faro de Corrubedo, marca la pauta. Las olas rompen contra esta costa abrupta y salvaje. Los primeros pasos del peregrino rozan el terreno de tojos que florecen en primavera antes de cruzar el primer puerto pesquero de la ruta, el de Corrubedo.",
     "paragraph3": "También hay muchos otros puertos que recorren los municipios de Ribeira, Palmeira, A Pobra do Caramiñal, Boiro, Rianxo… donde, acompañadas de una horda de ávidas gaviotas, el peregrino asiste al baile hipnótico de los barcos que regresan de la pesca. Nos costará resistirnos a tomar un plato de vieiras, de almejas o de pulpo a la gallega en alguna terraza, siempre y cuando el cielo de Galicia sea clemente…"
   },
   "travailFourmi": {
@@ -92,25 +94,35 @@
   },
   "elementsJacquaire": {
     "title": "Cerca de 200 elementos inventariados en el camino acreditan la tradición jacobea",
-    "paragraph": "Se recurrió a la colaboración de historiadores especialistas del camino, mientras los voluntarios consultaron archivos y registros parroquiales para hallar las huellas de un recorrido. «También hemos recopilado testimonios de personas mayores que se acordaban de haber hecho, de pequeños, una peregrinación por un camino con sus abuelos», añade Saturio Ferreiro, actual tesorero de la asociación."
+    "paragraph": "Se recurrió a la colaboración de historiadores especialistas del camino, mientras los voluntarios consultaron archivos y registros parroquiales para hallar las huellas de un recorrido. <i>«También hemos recopilado testimonios de personas mayores que se acordaban de haber hecho, de pequeños, una peregrinación por un camino con sus abuelos»</i>, añade Saturio Ferreiro, actual tesorero de la asociación."
   },
   "santiagoSteps": {
     "title": "Seis etapas hasta la catedral de Santiago de Compostela",
-    "paragraph1": "«Probablemente la tarea más complicada haya sido definir las diferentes etapas del camino. Tenemos seis en total», explica don Manuel Antonio Villar Fernández. «Hemos intentado seguir los antiguos \"caminos reales\", rutas que en su día se utilizaban para conectar una localidad con otra. Estos los hemos respetado en la medida de nuestras posibilidades».",
-    "paragraph2": "Cuando lo anterior no era factible, en general, por motivos de seguridad, los voluntarios han optado por seguir la ruta más sencilla. «Las vistas al mar, que se sitúan siempre a la derecha del caminante, era también uno de nuestros principales objetivos», añade don Manuel.",
-    "highlight": "El mar ha servido de referencia constante a lo largo del recorrido que sigue la costa de la ría de Arousa, como un recordatorio omnipresente del transporte del cuerpo del apóstol por vía marítima."
+    "paragraph1": "<i>«Probablemente la tarea más complicada haya sido definir las diferentes etapas del camino. Tenemos seis en total»</i>, explica don Manuel Antonio Villar Fernández. <i>«Hemos intentado seguir los antiguos \"caminos reales\", rutas que en su día se utilizaban para conectar una localidad con otra. Estos los hemos respetado en la medida de nuestras posibilidades»</i>.",
+    "paragraph2": "Cuando lo anterior no era factible, en general, por motivos de seguridad, los voluntarios han optado por seguir la ruta más sencilla. <i>«Las vistas al mar, que se sitúan siempre a la derecha del caminante, era también uno de nuestros principales objetivos»</i>, añade don Manuel.",
+    "highlight": "El mar ha servido de punto de referencia constante a lo largo del trayecto que recorre la costa de la ría de Arousa, como un recordatorio omnipresente del transporte del cuerpo del apóstol por vía marítima."
   },
   "parcoursPraticable": {
     "paragraph1": "Tras varias jornadas de investigación y búsqueda de ubicaciones a pie, los voluntarios se emplean con paciencia en la recopilación de hasta 200 elementos ligados a esta tradición en el perímetro del Barbanza. Se trata de emplazamientos que estaban bajo la protección del apóstol Santiago: varios hospitales de peregrinos, iglesias, conventos, capillas… Sacan a la luz una gran cantidad de imágenes del santo, conchas, retratos, cruces de piedra, etc.",
-    "paragraph2": "Un haz de indicios confirma la existencia de un recorrido practicable en esta península, antaño utilizado por peregrinos. La presencia de elementos significativos de la tradición jacobea en este sector aboga también a favor de un camino… que queda ahora por materializar.",
+    "paragraph2": "Una serie de indicios consolida la existencia de un trayecto que se realiza en esta península y que antiguamente utilizaron los peregrinos. La existencia de elementos significativos de la tradición jacobea en esta zona aboga asimismo por la creación de un camino… que ahora debe materializar.",
     "imageCaption": "Escultura de la tradición jacobea, concha de Santiago",
     "photoCredit": "© David Andres Gurierrez"
   },
-  "labeur": { "heading": "LABOR" },
-  "citation": { "heading": "CITA" },
-  "sousTitre": { "heading": "SUBTÍTULO" },
-  "encadrementFonce": { "heading": "RECUADRO OSCURO" },
-  "legendeImage": { "label": "LEYENDA DE IMAGEN" },
+  "labeur": {
+    "heading": "LABOR"
+  },
+  "citation": {
+    "heading": "CITA"
+  },
+  "sousTitre": {
+    "heading": "SUBTÍTULO"
+  },
+  "encadrementFonce": {
+    "heading": "RECUADRO OSCURO"
+  },
+  "legendeImage": {
+    "label": "LEYENDA DE IMAGEN"
+  },
   "carteEtapesSantiago": {
     "caption": "Seis etapas hasta la catedral de Santiago de Compostela"
   },
@@ -118,21 +130,21 @@
     "imageCaption": "Cabo de Cruz, dunas de Corrubedo, puerto de Rianxo.",
     "soundPlayerQuote": "<i>«El peregrino de Padrón que Adrián nunca olvidó»</i>",
     "soundPlayerSpeakerDescription": "Me llamo Adrián, soy guía local y trabajo en un hotel en Padrón, la ciudad donde comienza la última etapa de A Orixe.",
-    "paragraph": "A continuación, «A Orixe» se une a Dodro y a Padrón, una zona más rural salpicada de viñedos, varios «hórreos» —los graneros de piedra característicos de Galicia— capillas, iglesias de granito rodeadas de sepulturas, lavaderos, varias fuentes que ofrecen una pausa sanadora… Para terminar, en la última etapa desde Padrón, «A Orixe» se une a la ruta del camino portugués para acabar en la plaza del Obradoiro, a los pies de la catedral de Santiago de Compostela, donde cientos de peregrinos de todo el mundo inmortalizan a diario el final de sus viajes."
+    "paragraph": "A continuación, « A Orixe » se une a Dodro y a Padrón, una zona más rural salpicada de viñedos, varios <i>«hórreos»</i> —los graneros de piedra característicos de Galicia— capillas, iglesias de granito rodeadas de sepulturas, lavaderos, varias fuentes que ofrecen una pausa sanadora… Para terminar, en la última etapa desde Padrón, « A Orixe » se une a la ruta del camino portugués para acabar en la plaza del Obradoiro, a los pies de la catedral de Santiago de Compostela, donde cientos de peregrinos de todo el mundo inmortalizan a diario el final de sus viajes."
   },
   "reconnaissance": {
     "title": "Un valioso reconocimiento",
-    "paragraph1": "Los voluntarios tienen a Galicia en su estado puro ¡y no piensan parar ahora que van tan bien! Solo llegarán a la culminación total de su trabajo con el reconocimiento de la SAMI (Santa, Apostólica y Metropolitana Iglesia) y del Cabildo de la catedral de Santiago de Compostela. Son únicamente ellos quienes pueden reconocer «A Orixe» como un camino de Santiago de plena validez, así que les han presentado un informe completo.",
-    "paragraph2": "«Finalmente, obtener el reconocimiento de la Iglesia de Compostela fue bastante sencillo, gracias a todo el trabajo documental e inventario que habíamos realizado», detalla el presidente de la asociación. «Sobre todo porque en la última etapa desde Padrón se une a otro camino oficial: el camino Portugués. En la actualidad, cualquier peregrino o grupo que recorra el camino de \"A Orixe\" recibe la Compostela** en las mismas condiciones que cualquier otro peregrino que haga una ruta reconocida por las autoridades».",
+    "paragraph1": "Los voluntarios tienen a Galicia en su estado puro ¡y no piensan parar ahora que van tan bien! Solo llegarán a la culminación total de su trabajo con el reconocimiento de la SAMI (Santa, Apostólica y Metropolitana Iglesia) y del Cabildo de la catedral de Santiago de Compostela. Son únicamente ellos quienes pueden reconocer « A Orixe » como un camino de Santiago de plena validez, así que les han presentado un informe completo.",
+    "paragraph2": "<i>«Finalmente, obtener el reconocimiento de la Iglesia de Compostela fue bastante sencillo, gracias a todo el trabajo documental e inventario que habíamos realizado»</i>, detalla el presidente de la asociación. <i>«Sobre todo porque en la última etapa desde Padrón se une a otro camino oficial: el camino Portugués. En la actualidad, cualquier peregrino o grupo que recorra el camino de \"A Orixe\" recibe la Compostela** en las mismas condiciones que cualquier otro peregrino que haga una ruta reconocida por las autoridades»</i>.",
     "documentCaption": "Carta de reconocimiento",
     "placeholderLabel": "Documento",
     "footnote": "**La Compostela es el documento que certifica la llegada a término de la peregrinación. Se obtiene en la oficina de acogida al peregrino de Santiago presentando la credencial. Este pasaporte deben sellarlo varios lugares de acogida (bares, restaurantes, albergues, hoteles, parroquias, etc.) a lo largo del recorrido."
   },
   "flechage": {
     "title": "Los voluntarios repasan la señalización dos veces al año",
-    "paragraph1": "Para obtener este reconocimiento, la señalización del recorrido era un requisito indispensable, pero… nada sencillo de materializar. «También tuvimos que llegar con los ayuntamientos a acuerdos relacionados con el trazado y la señalización», recuerda Saturio Ferreiro. «Esto supuso dos años de trabajo y de trámites administrativos».",
-    "highlight": "Poco a poco, las flechas amarillas que indican el sentido de la marcha y los cambios de dirección a los peregrinos empiezan a aparecer. Flechas trazadas a lo largo de 135 kilómetros sobre el asfalto, los muros e incluso los troncos de los árboles. También se instalan hitos de piedra y madera a lo largo del recorrido.",
-    "paragraph2": "«Participé en el primer trazado y, desde entonces, un compañero y yo seguimos comprobando y repasando con la pintura las flechas amarillas como mínimo dos veces al año», indica Saturio Ferreiro. «Algunos ayuntamientos nos ayudan, nos traen pintura, rodillos y brochas»."
+    "paragraph1": "Para obtener este reconocimiento, la señalización del recorrido era un requisito indispensable, pero… nada sencillo de materializar. <i>«También tuvimos que llegar con los ayuntamientos a acuerdos relacionados con el trazado y la señalización»</i>, recuerda Saturio Ferreiro. <i>«Esto supuso dos años de trabajo y de trámites administrativos»</i>.",
+    "highlight": "Poco a poco empezaron a aparecer las flechas amarillas que indican a los peregrinos el sentido de la marcha y los cambios de dirección. Las flechas a lo largo de los 135 kilómetros se trazaron sobre el asfalto, en las paredes ¡e incluso en los troncos de los árboles! Asimismo, también se instalaron hitos kilométricos de piedra y de madera.",
+    "paragraph2": "<i>«Participé en el primer trazado y, desde entonces, un compañero y yo seguimos comprobando y repasando con la pintura las flechas amarillas como mínimo dos veces al año»</i>, indica Saturio Ferreiro. <i>«Algunos ayuntamientos nos ayudan, nos traen pintura, rodillos y brochas»</i>."
   },
   "signalisation": {
     "caption": "Señalización a lo largo del camino"
@@ -140,28 +152,28 @@
   "coupDeCoeur": {
     "title": "Un flechazo por un camino confidencial pero único",
     "paragraph1": "Sabela Gippini-Ruiz no tardó en fijarse en esas primeras flechas amarillas tan significativas del camino de Santiago (todos los caminos tienen flechas amarillas). La familia de la directora general de Galiwonders (agencia de viajes a medida para los caminos de Santiago de Compostela) es originaria de Ribeira. Sabela Gippini-Ruiz ha pasado allí todos los veranos y la mayor parte de sus vacaciones.",
-    "quote": "«Me encanta la zona del Barbanza, por donde transcurre la primera parte del camino \"A Orixe\". Cuando vi la primera flecha amarilla allí empecé a informarme con insistencia sobre el tema», explica. «En cuanto el camino estuvo señalizado ya era posible crear un paquete para ofrecer esta ruta a nuestros clientes. Algo que empezamos a hacer desde 2022».",
+    "quote": "<i>«Me encanta la zona del Barbanza, por donde transcurre la primera parte del camino \"A Orixe\". Cuando vi la primera flecha amarilla allí empecé a informarme con insistencia sobre el tema»</i>, explica. <i>«En cuanto el camino estuvo señalizado ya era posible crear un paquete para ofrecer esta ruta a nuestros clientes. Algo que empezamos a hacer desde 2022»</i>.",
     "soundPlayerText": "Un verano en el Barbanza con Sabela",
-    "paragraph2": "Galiwonders es una de las pocas agencias de Galicia que lo comercializa. Una decisión que nace del corazón de Sabela Gippini-Ruiz, ya que, por el momento, «A Orixe» no atrae a mucha gente: una media de veinte clientes al año. Se trata de una cifra bastante alejada de los volúmenes registrados en otros caminos. «El francés, el portugués y el inglés siguen siendo los líderes indiscutibles», apunta la directora general de Galiwonders. «Precisamente por eso este camino tiene un encanto especial»."
+    "paragraph2": "Galiwonders es una de las pocas agencias de Galicia que lo comercializa. Una decisión que nace del corazón de Sabela Gippini-Ruiz, ya que, por el momento, « A Orixe » no atrae a mucha gente: una media de veinte clientes al año. Se trata de una cifra bastante alejada de los volúmenes registrados en otros caminos. <i>«El francés, el portugués y el inglés siguen siendo los líderes indiscutibles»</i>, apunta la directora general de Galiwonders. <i>«Precisamente por eso este camino tiene un encanto especial»</i>."
   },
   "joyau": {
-    "paragraph": "Para Sabela Gippini-Ruiz, «A Orixe es una joya desconocida. Un camino único que recorre playas, pueblos pesqueros, faros e incluso un parque natural con dunas. Por eso se lo recomendamos a los peregrinos que van en busca de calma, desconexión y de descubrir algo diferente y auténtico. Todavía se pueden encontrar paisajes vírgenes y salvajes, rincones tranquilos… No está saturado en absoluto».",
+    "paragraph": "Para Sabela Gippini-Ruiz, <i>«A Orixe es una joya desconocida. Un camino único que recorre playas, pueblos pesqueros, faros e incluso un parque natural con dunas. Por eso se lo recomendamos a los peregrinos que van en busca de calma, desconexión y de descubrir algo diferente y auténtico. Todavía se pueden encontrar paisajes vírgenes y salvajes, rincones tranquilos… No está saturado en absoluto»</i>.",
     "caption": "A Pobra do Caramiñal, región de Dodro, Aguiño."
   },
   "deconnexion": {
-    "title": "«A Orixe», la opción para desconectar",
-    "paragraph1": "Esta saturación, que lamentan muchos gallegos —los caminos francés, inglés o portugués se han vuelto rutas muy concurridas—, todavía no es una realidad para «A Orixe», y probablemente nunca lo sea. «No creo que llegue a ser tan popular como el camino francés, sobre todo por la falta de infraestructuras de alojamiento turístico», opina la directora general de Galiwonders.",
+    "title": "« A Orixe », la opción para desconectar",
+    "paragraph1": "Esta saturación, que lamentan muchos gallegos —los caminos francés, inglés o portugués se han vuelto rutas muy concurridas—, todavía no es una realidad para « A Orixe », y probablemente nunca lo sea. <i>«No creo que llegue a ser tan popular como el camino francés, sobre todo por la falta de infraestructuras de alojamiento turístico»</i>, opina la directora general de Galiwonders.",
     "paragraph2": "Además, muchas de las características seductoras de esta ruta no encaja con lo que busca la gran mayoría de los peregrinos: el aspecto social de Compostela, los intercambios, las conversaciones.",
-    "highlight": "A lo largo de «A Orixe» se puede caminar kilómetros por bosques de eucaliptos al solo sonido de los pasos y del viento en las hojas. Se puede seguir un sendero marino escrutando el horizonte azul e infinito, o atravesar aldeas de otro tiempo sin cruzarse con nadie… salvo algunos gatos que parecen desconcertados por esa presencia humana."
+    "highlight": "A lo largo de « A Orixe » se pueden recorrer muchos kilómetros a través de bosques de eucalipto con el único sonido de los propios pasos y del viento agitando las hojas. Al mismo tiempo, permite seguir una travesía marina observando el horizonte azul e infinito, o atravesar aldeas de otro tiempo sin cruzarse con nadie… salvo con varios gatos callejeros."
   },
   "capsuleSonore": {
     "imageCaption": "Paisaje a lo largo de A Orixe: agua, vegetación y pueblo.",
     "soundPlayerText": "En algún lugar entre los helechos y los cantos de los pájaros…"
   },
   "pilgrimsStats": {
-    "title": "Menos del 1 % de los peregrinos caminan por A Orixe en 2025",
-    "paragraph1": "Las cifras ya dicen mucho sobre el desconocimiento del «A Orixe». En 2025, la oficina de acogida al peregrino de Santiago contabilizó la llegada de unos 530 000 peregrinos a Santiago de Compostela en el conjunto de los caminos. La mayoría se concentra en las grandes rutas: el camino francés (46 % de los peregrinos) y el portugués (19 %). Mientras tanto, de forma aislada, tan solo 755 personas caminaban por «A Orixe». Es decir… el 0,14 % de los peregrinos, de los cuales el 93 % eran españoles. Prácticamente nadie. Un camino entero para ellos solos.",
-    "paragraph2": "Puntualización: no todos los peregrinos se registran en la oficina de acogida de Santiago. Probablemente esta cifra esté ligeramente subestimada. Por su parte, la asociación de amigos del camino «A Orixe» estima que cada año lo hacen cerca de 1500 personas.",
+    "title": "Un camino para menos del 1 % de los peregrinos",
+    "paragraph1": "Las cifras ya dicen mucho sobre el desconocimiento del « A Orixe ». En 2025, la oficina de acogida al peregrino de Santiago contabilizó la llegada de unos 530 000 peregrinos a Santiago de Compostela en el conjunto de los caminos. La mayoría se concentra en las grandes rutas: el camino francés (46 % de los peregrinos) y el portugués (19 %). Mientras tanto, de forma aislada, tan solo 755 personas caminaban por « A Orixe ». Es decir… el 0,14 % de los peregrinos, de los cuales el 93 % eran españoles. Prácticamente nadie. Un camino entero para ellos solos.",
+    "paragraph2": "Puntualización: no todos los peregrinos se registran en la oficina de acogida de Santiago. Probablemente esta cifra esté ligeramente subestimada. Por su parte, la asociación de amigos del camino « A Orixe » estima que cada año lo hacen cerca de 1500 personas.",
     "chart": {
       "ariaLabel": "Reparto de peregrinos: Camino Francés 46 %, Camino Portugués 19 %, A Orixe 0,14 %.",
       "bar1Label": "Camino Francés",
@@ -173,35 +185,35 @@
     }
   },
   "traceRoute": {
-    "title": "«A Orixe» traza su ruta a la sombra de los principales caminos de Santiago",
-    "paragraph1": "«De momento somos un camino nuevo e intentamos darlo a conocer poco a poco. Se difunde por el boca a boca gracias a particulares, instituciones y diócesis españolas», explica don Manuel Antonio Villar Fernández. «Avanzamos con humildad y prudencia».",
-    "paragraph2": "Los voluntarios de la asociación «A Orixe» siguen trabajando en la difusión y promoción de este itinerario único en Galicia: una página web, un folleto-guía, una exposición itinerante, intervenciones en escuelas, recepciones de grupos de peregrinos… Poco a poco, «A Orixe» traza su propia trayectoria a la sombra de los principales caminos de Compostela. Probablemente sea el más auténtico de todos.",
-    "paragraph3": "Porque «A Orixe» no es otro camino más, sino un regreso a los orígenes espirituales, humanos y geográficos de la peregrinación a Compostela.",
+    "title": "« A Orixe » traza su ruta a la sombra de los principales caminos de Santiago",
+    "paragraph1": "<i>«De momento somos un camino nuevo e intentamos darlo a conocer poco a poco. Se difunde por el boca a boca gracias a particulares, instituciones y diócesis españolas»</i>, explica don Manuel Antonio Villar Fernández. <i>«Avanzamos con humildad y prudencia»</i>.",
+    "paragraph2": "Los voluntarios de la asociación « A Orixe » siguen trabajando en la difusión y promoción de este itinerario único en Galicia: una página web, un folleto-guía, una exposición itinerante, intervenciones en escuelas, recepciones de grupos de peregrinos… Poco a poco, « A Orixe » traza su propia trayectoria a la sombra de los principales caminos de Compostela. Probablemente sea el más auténtico de todos.",
+    "paragraph3": "Porque « A Orixe » no es otro camino más, sino un regreso a los orígenes espirituales, humanos y geográficos de la peregrinación a Compostela.",
     "soundPlayerText": "El sentido profundo del camino según don Manuel.",
     "soundPlayerSubtitle": ""
   },
   "slowTourisme": {
-    "title": "« A Orixe se presta perfectamente al slow tourism »",
-    "paragraph1": "Adrian Batalla es un guía local originario de Boiro, pueblo situado en el recorrido de «A Orixe». Con un grupo de amigos apasionados por la historia y el patrimonio gallegos, quiere valorizar el camino a través de animaciones, descubrimientos y circuitos temáticos.",
-    "question": "¿Qué hace que este recorrido sea diferente de los demás caminos de Compostela?",
-    "answerPrefix": "Adrian Batalla : ",
-    "answerBody": "Su diversidad. Se pasa del mar a las colinas, de los puertos a las piedras antiguas de los pueblos, de los pescadores a los viticultores. Hay una proximidad muy fuerte con la vida local, la cultura gallega y la naturaleza. No es solo un itinerario espiritual, es un viaje de emociones y encuentros. Se puede levantar la mirada, charlar, pararse… Es el slow tourism en toda su dimensión. En él se encuentra la calma, la naturaleza, las tradiciones vivas y una verdadera desconexión.",
+    "title": "<i>« A Orixe encaja a la perfección en el concepto de turismo slow »</i>",
+    "paragraph1": "Adrián Batalla es un guía local originario de Boiro, pueblo por el que pasa la ruta de « A Orixe ». Con un grupo de amigos amantes de la historia y del patrimonio gallegos, Adrián quiere atraer la atención al camino con actividades, hallazgos y recorridos temáticos.",
+    "question": "¿Qué hace que este camino de Santiago sea diferente del resto?",
+    "answerPrefix": "Adrián Batalla: ",
+    "answerBody": "su diversidad. Se pasa del mar a los cerros, de los puertos a las piedras antiguas de los pueblos, de los pescadores a los viticultores. Tiene una fuerte proximidad con la vida local, la cultura gallega y la naturaleza. No se trata únicamente de un recorrido espiritual, sino que también es un viaje de emociones y de encuentros. Podemos alzar la mirada para disfrutar las vistas, conversar, detenernos… Es el turismo slow en todo su esplendor. Aquí encontraremos calma, naturaleza, tradiciones vivas y una verdadera desconexión.",
     "illustrationAlt": "Boceto de un pueblo costero."
   },
   "orixeInterview": {
-    "title": "Trabajáis con un grupo de amigos para desarrollar un proyecto en torno a A Orixe. ¡Contadnos todo!",
-    "paragraph1": "Este proyecto es sobre todo una pasión compartida. No buscamos en absoluto hacer negocio. Todos tenemos un trabajo. Queremos acompañar a pequeños grupos de peregrinos en nuestro tiempo libre, proponerles itinerarios enriquecidos, actividades, descubrimientos. A largo plazo nos gustaría crear nuestro propio mapa del camino A Orixe y construir un producto turístico \"slow travel\" fiel a nuestros valores. ¡A Orixe se presta perfectamente a ello!",
-    "question1": "¿Cómo podría traducirse concretamente el \"slow tourism\" en el camino « A Orixe »?",
-    "answer1": "Proponemos caminar de otra manera. Diez días de marcha en lugar de seis, para tomarse el tiempo, o incluso fines de semana de tres días a medida en una parte del recorrido. La idea es impregnarse: visitar un yacimiento arqueológico, cocinar un pescado comprado en el puerto según una receta local, escuchar una leyenda contada por un habitante… El camino se convierte en una experiencia global, no solo un itinerario.",
-    "question2": "Como guía gallego, ¿pensáis en lugares en particular?",
-    "answer2": "¡Sí! ¡Hay muchos! Los vestigios del Castro de Neixón, los castillos y leyendas gallegas, la iglesia Santa Maria a Antigua do Caraminal, el puerto de Rianxo… Y por supuesto, la iglesia de Santiago de Padrón, donde según la tradición atracó la barca del apóstol Santiago. Cada lugar cuenta una parte de la historia gallega."
+    "title": "Estás trabajando con un grupo de amigos para desarrollar un proyecto que gira en torno a A Orixe. ¿Cuál es vuestro objetivo?",
+    "paragraph1": "No buscamos hacer un negocio con esto, en absoluto, porque todos tenemos nuestro trabajo aparte. Este proyecto es, por encima de todo, una pasión compartida. En nuestro tiempo libre queremos acompañar a grupos reducidos de peregrinos, proponerles recorridos enriquecedores, actividades y descubrimientos. A largo plazo nos gustaría crear nuestro propio mapa del camino A Orixe y formar un producto turístico de \"slow travel\" que sea fiel a nuestros valores. ¡A Orixe encaja a la perfección con ese concepto!",
+    "question1": "Has hablado de \"turismo slow\". ¿Cómo podría traducirse más específicamente en el camino « A Orixe »?",
+    "answer1": "Nuestra propuesta es hacer el camino con otro enfoque. Dedicar diez días caminando en lugar de seis, para tomarse el tiempo, o incluso fines de semana de tres días personalizados en una parte del recorrido. La idea es empaparse de todo: visitar un yacimiento arqueológico, cocinar un pescado que se ha comprado en el puerto siguiendo alguna receta local, escuchar la historia de una leyenda contada por uno de los habitantes… El camino pasa a ser una experiencia global, no solo un itinerario.",
+    "question2": "¿Qué lugares te gustaría destacar en especial?",
+    "answer2": "¡Hay muchos! Las ruinas del Castro de Neixón, los castillos y leyendas gallegas, la iglesia de Santa Maria a Antiga do Caramiñal, el puerto de Rianxo… Y, por supuesto, la iglesia de Santiago de Padrón, donde, según cuenta la leyenda, atracó la barca del apóstol Santiago. Cada lugar cuenta una parte de la historia de Galicia."
   },
   "experienceDestinee": {
     "illustrationAlt": "Ilustración de un barco.",
-    "question1": "¿A quién estaría destinada esta nueva experiencia?",
-    "answer1": "A todo el mundo, de verdad. A viajeros extranjeros en busca de autenticidad, a los locales que quieren redescubrir su propia región, a los jóvenes que buscan sentido, calma, lejos del turismo de masas. Queremos que cada uno pueda vivir una aventura humana y cultural a su ritmo. El camino «A Orixe» sigue siendo poco conocido, incluso a nivel local… ¡Completamente! Y es una paradoja. Muchos habitantes no conocen este camino aunque pasa muy cerca de sus casas. Por eso queremos también hacer una promoción local, para que los gallegos se reapropien de su patrimonio y se conviertan en sus primeros embajadores.",
-    "question2": "En su opinión, ¿«A Orixe» podrá conservar esa tranquilidad que lo hace original o hay que temer una masificación como en otros recorridos?",
-    "answer2": "No creo realmente en una masificación. Por ahora, las infraestructuras de acogida son modestas y eso es lo que preserva la autenticidad del recorrido. Deseamos que se desarrolle a pequeña escala, manteniendo ese espíritu humano e íntimo. En mi opinión, el camino A Orixe nunca será un producto de masa y… ¡menos mal!"
+    "question1": "¿A quién va dirigida esta experiencia?",
+    "answer1": "A todo el mundo, de verdad. A los viajeros extranjeros que quieran encontrar autenticidad, a los residentes que quieran volver a descubrir su propia región, a los jóvenes que vayan en busca de un sentido, de calma, alejados del turismo de masas. Queremos que cada uno pueda vivir una aventura humana y cultural a su propio ritmo. El camino « A Orixe » sigue sin conocerse, incluso a un nivel más local… Sí, y es una paradoja. Muchos lugareños no conocen este camino, pero pasa muy cerca de sus casas. Por este motivo también queremos hacer una promoción local, para que los gallegos se vuelvan a apropiar de su patrimonio y se conviertan en los primeros embajadores.",
+    "question2": "En tu opinión, ¿« A Orixe » podrá conservar esta tranquilidad que define su originalidad, o debemos atenernos a una masificación como la conocemos del resto de los caminos?",
+    "answer2": "No creo que vaya a producirse una masificación, para nada. De momento las infraestructuras de albergues son modestas y eso es lo que conserva la autenticidad de la ruta. Nosotros queremos que crezca a pequeña escala, conservando este espíritu humano e íntimo. En mi opinión, el camino A Orixe no será nunca un producto de masas y… ¡mucho mejor así!"
   },
   "enBref": {
     "titlePrefix": "El camino",

@@ -2,16 +2,16 @@
 
 /* Hero */
 .type__hero-title {
-  font: var(--font-style-normal) var(--font-weight-bold) 106px/88px var(--font-family-fraunces);
+  font: var(--font-style-normal) var(--font-weight-bold) calc(106px * var(--font-scale)) / calc(88px * var(--font-scale)) var(--font-family-fraunces);
   text-align: left;
-  letter-spacing: 3.18px;
+  letter-spacing: calc(3.18px * var(--font-scale));
   color: #481706;
 }
 
 .type__hero-subtitle {
-  font: var(--font-style-normal) var(--font-weight-bold) 63px/88px var(--font-family-fraunces);
+  font: var(--font-style-normal) var(--font-weight-bold) calc(63px * var(--font-scale)) / calc(88px * var(--font-scale)) var(--font-family-fraunces);
   text-align: left;
-  letter-spacing: 1.89px;
+  letter-spacing: calc(1.89px * var(--font-scale));
   color: var(--color-orange);
 }
 
@@ -32,16 +32,16 @@
 }
 
 .type__credits {
-  font: var(--font-style-normal) var(--font-weight-normal) 16px/18px var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-normal) calc(16px * var(--font-scale)) / calc(18px * var(--font-scale)) var(--font-family-ubuntu);
 }
 
 .type__credits-link {
-  font: var(--font-style-normal) var(--font-weight-bold) 16px/18px var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-bold) calc(16px * var(--font-scale)) / calc(18px * var(--font-scale)) var(--font-family-ubuntu);
   text-decoration: underline;
 }
 
 .type__credits-bold {
-  font: var(--font-style-normal) var(--font-weight-bold) 16px/18px var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-bold) calc(16px * var(--font-scale)) / calc(18px * var(--font-scale)) var(--font-family-ubuntu);
 }
 
 /* Section */
@@ -156,7 +156,7 @@
 
 /* Footnote / small italic (e.g. testimonial footnote) */
 .type__footnote {
-  font: var(--font-style-italic) var(--font-weight-normal) 16px/25px var(--font-family-ubuntu);
+  font: var(--font-style-italic) var(--font-weight-normal) calc(16px * var(--font-scale)) / calc(25px * var(--font-scale)) var(--font-family-ubuntu);
   letter-spacing: var(--letter-spacing-normal);
   color: var(--color-teal-medium);
   text-align: left;
@@ -164,7 +164,7 @@
 
 /* Image caption (medium, 14px/36px, Ubuntu, teal, optional line) */
 .type__image-caption {
-  font: var(--font-style-normal) var(--font-weight-medium) 14px/36px var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-medium) calc(14px * var(--font-scale)) / calc(36px * var(--font-scale)) var(--font-family-ubuntu);
   letter-spacing: var(--letter-spacing-normal);
   color: var(--color-teal-medium);
   text-align: left;

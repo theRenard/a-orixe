@@ -49,26 +49,29 @@
   --font-weight-bold: 700;
   --font-weight-black: 900;
 
-  /* Font sizes */
-  --font-size-xs: 12px;
-  --font-size-sm: 18px;
-  --font-size-base: 20px;
-  --font-size-lg: 24px;
-  --font-size-xl: 27px;
-  --font-size-2xl: 30px;
-  --font-size-3xl: 35px;
-  --font-size-display: 150px;
+  /* Global font scale (1 = design size; 0.7 = 30% reduction) */
+  --font-scale: 0.8;
+
+  /* Font sizes (scaled by --font-scale) */
+  --font-size-xs: calc(12px * var(--font-scale));
+  --font-size-sm: calc(18px * var(--font-scale));
+  --font-size-base: calc(20px * var(--font-scale));
+  --font-size-lg: calc(24px * var(--font-scale));
+  --font-size-xl: calc(27px * var(--font-scale));
+  --font-size-2xl: calc(30px * var(--font-scale));
+  --font-size-3xl: calc(35px * var(--font-scale));
+  --font-size-display: calc(150px * var(--font-scale));
 
   /* Spacing (letter) */
   --letter-spacing-normal: 0px;
 
-  /* Line heights */
-  --line-height-tight: 15px;
-  --line-height-sm: 30px;
-  --line-height-base: 34px;
-  --line-height-md: 35px;
-  --line-height-text: 36px;
-  --line-height-lg: 40px;
-  --line-height-xl: 44px;
-  --line-height-display: 55px;
+  /* Line heights (scaled by --font-scale) */
+  --line-height-tight: calc(15px * var(--font-scale));
+  --line-height-sm: calc(30px * var(--font-scale));
+  --line-height-base: calc(34px * var(--font-scale));
+  --line-height-md: calc(35px * var(--font-scale));
+  --line-height-text: calc(36px * var(--font-scale));
+  --line-height-lg: calc(40px * var(--font-scale));
+  --line-height-xl: calc(44px * var(--font-scale));
+  --line-height-display: calc(55px * var(--font-scale));
 }
