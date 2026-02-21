@@ -33,7 +33,6 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
 
 <style scoped>
 .joyau-section__quote {
-  font-style: italic;
   margin: 0;
 }
 

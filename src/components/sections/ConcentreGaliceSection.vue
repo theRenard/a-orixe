@@ -9,6 +9,7 @@
           </h2>
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('concentreGalice.paragraph1')"></p>
           <p class="type__question paragraph-spacing" v-html="$t('concentreGalice.paragraph2')"></p>
+          <p class="type__section-paragraph paragraph-spacing" v-html="$t('concentreGalice.paragraph3')"></p>
         </div>
         <div class="col-right">
           <ImageCrop width="100%" height="700px" position="center 40%" :caption="$t('concentreGalice.imageCaption')"
@@ -19,9 +20,6 @@
         </div>
       </div>
     </div>
-    <div class="centered">
-      <p class="type__section-paragraph paragraph-spacing" v-html="$t('concentreGalice.paragraph3')"></p>
-    </div>
   </div>
 </section>
 </template>
@@ -29,3 +27,9 @@
 <script setup lang="ts">
 import ImageCrop from '@/components/tools/ImageCrop.vue'
 </script>
+
+<style scoped>
+.concentre-galice-section .centered--large+.centered :deep(.paragraph-spacing) {
+  margin-top: 0.75rem !important;
+}
+</style>
