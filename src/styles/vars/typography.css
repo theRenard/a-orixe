@@ -103,7 +103,8 @@
   content: '» ';
 }
 
-.type__testimonial-quote {
+.type__testimonial-block::before {
+  content: '«';
   position: absolute;
   top: -6rem;
   left: -7rem;

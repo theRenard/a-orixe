@@ -10,7 +10,6 @@ const { locale } = useI18n()
     <blockquote class="centered">
       <div>
         <p class="type__testimonial-block relative" :class="`type__testimonial-block--${locale}`">
-          <span class="type__testimonial-quote">«</span>
           <span v-html="$t('camino.quote')"></span>
         </p>
         <footer class="type__testimonial-name" v-html="$t('camino.quoteAuthor')"></footer>

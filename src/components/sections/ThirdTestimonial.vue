@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
+const { locale } = useI18n()
 </script>
 
 <template>
@@ -6,9 +9,8 @@
   <div class="container">
     <blockquote class="centered">
       <div>
-        <p class="type__testimonial-block relative">
-          <span class="type__testimonial-quote">«</span>
-          <span v-html="$t('thirdTestimonial.quote')"></span> »
+        <p class="type__testimonial-block relative" :class="`type__testimonial-block--${locale}`">
+          <span v-html="$t('thirdTestimonial.quote')"></span>
         </p>
         <footer class="type__testimonial-name" v-html="$t('thirdTestimonial.quoteAuthor')"></footer>
       </div>
