@@ -87,8 +87,20 @@
   padding-bottom: 1rem;
 }
 
-.type__testimonial-block {
+.type__testimonial-block--fr {
   font: var(--font-style-italic) var(--font-weight-bold) var(--font-size-2xl)/var(--line-height-xl) var(--font-family-ubuntu);
+}
+
+.type__testimonial-block--es {
+  font: var(--font-style-normal) var(--font-weight-bold) var(--font-size-2xl)/var(--line-height-xl) var(--font-family-ubuntu);
+}
+
+.type__testimonial-block--fr::after {
+  content: ' » ';
+}
+
+.type__testimonial-block--es::after {
+  content: '» ';
 }
 
 .type__testimonial-quote {
