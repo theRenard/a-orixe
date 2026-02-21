@@ -12,20 +12,22 @@
           {{ $t('credits.byPrefix') }}<span class="type__credits-bold">{{ $t('credits.byName') }}</span>
         </p>
         <p v-html="$t('credits.authorRole')"></p>
+        <p v-if="$t('credits.translatedByPrefix')">{{ $t('credits.translatedByPrefix') }}<span
+            class="type__credits-bold">{{ $t('credits.translatedByName') }}</span></p>
         <p>
           {{ $t('credits.publishedOnPrefix') }}<span class="type__credits-bold">{{ $t('credits.publishedOnDate')
-            }}</span>
+          }}</span>
         </p>
       </div>
       <div class="credits__col credits__col--right">
         <div class="credits__line-accent ml-auto" aria-hidden="true" />
         <p>
           {{ $t('credits.artDirectionPrefix') }}<span class="type__credits-bold">{{ $t('credits.artDirectionName')
-            }}</span>
+          }}</span>
         </p>
         <p>
           {{ $t('credits.illustrationPrefix') }}<span class="type__credits-bold">{{ $t('credits.illustrationName')
-            }}</span>
+          }}</span>
         </p>
         <p>
           {{ $t('credits.devDesignPrefix') }}<span class="type__credits-bold">{{ $t('credits.devDesignName') }}</span>

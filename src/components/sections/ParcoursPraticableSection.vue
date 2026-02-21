@@ -12,6 +12,7 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
       <div class="row-two-col">
         <div class="col-left">
           <p class="type__question" v-html="$t('parcoursPraticable.paragraph2')"></p>
+          <p class="type__question paragraph-spacing">{{ $t('parcoursPraticable.closingPhrase') }}</p>
         </div>
         <div class="col-right">
           <ImageCrop width="100%" height="600px" position="center 40%"

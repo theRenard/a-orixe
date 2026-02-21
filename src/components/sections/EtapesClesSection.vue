@@ -1,5 +1,5 @@
 <template>
-<section class="etapes-cles-section">
+<section id="etapes-cles" class="etapes-cles-section">
   <div class="container">
     <div class="centered">
       <h2 class="type__section-title type__section-title--with-line heading-spacing">

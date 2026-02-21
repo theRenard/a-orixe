@@ -19,6 +19,7 @@
     "byPrefix": "Par ",
     "byName": "Florence Antunes",
     "authorRole": "Idée originale, interviews, architecture narrative, gestion de projet.",
+    "translatedBy": "",
     "publishedOnPrefix": "Publié le : ",
     "publishedOnDate": "20 février 2026",
     "artDirectionPrefix": "Direction artistique et identité visuelle : ",
@@ -106,7 +107,8 @@
     "paragraph1": "Au prix de journées de recherches et de repérages à pied, les bénévoles s'emploient patiemment à recenser sur ce périmètre du Barbanza jusqu'à 200 éléments liés à cette tradition. Il s'agit de lieux placés sous la protection de l'Apôtre Jacques : plusieurs hôpitaux de pèlerins, des églises, des couvents, des chapelles... Ils mettent au jour une prolifération d'images du Saint, des coquilles, des portraits, des croix de pierre, etc.",
     "paragraph2": "Un faisceau d'indices conforte l'existence d'un parcours praticable dans cette péninsule et jadis emprunté par des pèlerins. La présence d'éléments significatifs de la tradition jacquaire dans ce secteur plaide également en faveur d'un chemin... qu'il reste maintenant à matérialiser.",
     "imageCaption": "Sculpture de la tradition jacquaire, coquille Saint-Jacques",
-    "photoCredit": "© David Andres Gurierrez"
+    "photoCredit": "© David Andres Gurierrez",
+    "closingPhrase": "Comment passer du mythe à un parcours tangible ?"
   },
   "labeur": {
     "heading": "LABEUR"
@@ -138,7 +140,8 @@
     "paragraph2": "Un dossier complet leur est soumis. <i>« La reconnaissance par l'Église de Compostelle a finalement été assez simple à obtenir, avec tout le travail documentaire et l'inventaire que nous avions réalisés, </i>précise le président de l'association.<i> D'autant que ce chemin rejoint un autre chemin officiel lors de la dernière étape depuis Padrón\u00a0: le chemin Portugais. Aujourd'hui, tout pèlerin ou groupe parcourant le chemin A Orixe reçoit la Compostela** sous les mêmes conditions que tout pèlerin effectuant un chemin reconnu par les autorités »</i>.",
     "documentCaption": "Lettre de reconnaissance",
     "placeholderLabel": "Document",
-    "footnote": "** La Compostela est le document qui certifie de l'arrivée au terme du pèlerinage. Elle s'obtient au bureau d'accueil du pèlerin à Santiago en présentant la credencial. Ce passeport doit être tamponné par différents lieux d'accueil (bars, restaurants, auberges, hôtels, paroisses, etc) tout au long du parcours."
+    "footnote": "** La Compostela est le document qui certifie de l'arrivée au terme du pèlerinage. Elle s'obtient au bureau d'accueil du pèlerin à Santiago en présentant la credencial. Ce passeport doit être tamponné par différents lieux d'accueil (bars, restaurants, auberges, hôtels, paroisses, etc) tout au long du parcours.",
+    "insertBetween": "Le 17 mars 2021, le téléphone sonne. « A Orixe » est officiellement un chemin de Compostelle."
   },
   "flechage": {
     "title": "Un fléchage repris deux fois par an par les bénévoles",
@@ -211,7 +214,9 @@
   "experienceDestinee": {
     "illustrationAlt": "Illustration d'un bateau.",
     "question1": "Cette nouvelle expérience, à qui serait-elle destinée ?",
-    "answer1": "À tout le monde, vraiment. Aux voyageurs étrangers en quête d'authenticité, aux locaux qui veulent redécouvrir leur propre région, aux jeunes qui cherchent du sens, du calme, loin du tourisme de masse. Nous voulons que chacun puisse vivre une aventure humaine et culturelle à son rythme. Le camino <i>« A Orixe »</i> reste encore méconnu, même localement... Complètement ! Et c'est un paradoxe. Beaucoup d'habitants ne connaissent pas ce chemin alors qu'il passe tout près de chez eux. C'est pour cela que nous voulons aussi faire une promotion locale, pour que les Galiciens se réapproprient leur patrimoine et en deviennent les premiers ambassadeurs.",
+    "answer1Intro": "À tout le monde, vraiment. Aux voyageurs étrangers en quête d'authenticité, aux locaux qui veulent redécouvrir leur propre région, aux jeunes qui cherchent du sens, du calme, loin du tourisme de masse. Nous voulons que chacun puisse vivre une aventure humaine et culturelle à son rythme.",
+    "question1b": "Le camino « A Orixe » reste encore méconnu, même localement…",
+    "answer1b": "Complètement ! Et c'est un paradoxe. Beaucoup d'habitants ne connaissent pas ce chemin alors qu'il passe tout près de chez eux. C'est pour cela que nous voulons aussi faire une promotion locale, pour que les Galiciens se réapproprient leur patrimoine et en deviennent les premiers ambassadeurs.",
     "question2": "Selon vous, <i>« A Orixe »</i> pourra-t-il conserver cette tranquillité qui en fait son originalité ou faut-il craindre une massification comme la connaissent d'autres parcours ?",
     "answer2": "Je ne crois pas vraiment à une massification. Pour l'instant, les infrastructures d'accueil sont modestes et c'est ce qui préserve l'authenticité du parcours. Nous souhaitons qu'il se développe à petite échelle, en gardant cet esprit humain et intime. A mon avis, le camino A Orixe ne sera jamais un produit de masse et... c'est tant mieux !"
   },
