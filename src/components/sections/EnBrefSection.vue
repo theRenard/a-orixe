@@ -1,6 +1,11 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import phareCorrubedo from '@/assets/illustrations/phare.png'
 import cathedrale from '@/assets/illustrations/cathedrale.png'
+
+const { locale } = useI18n()
+const routeDetailUrl = computed(() => `https://aorixe.es/${locale.value === 'es' ? 'es' : 'fr'}`)
 </script>
 
 <template>
@@ -37,8 +42,7 @@ import cathedrale from '@/assets/illustrations/cathedrale.png'
 
     <p class="en-bref-section__link-wrap paragraph-spacing">
       <span class="type__enbref-small-green">{{ $t('enBref.detailLinkText') }}</span>
-      <a href="#etapes-cles" class="type__enbref-small-green en-bref-section__link">{{ $t('enBref.detailLinkHere')
-        }}</a>
+      <a :href="routeDetailUrl" target="_blank" rel="noopener noreferrer" class="type__enbref-small-green en-bref-section__link">{{ $t('enBref.detailLinkHere') }}</a>
     </p>
   </div>
 </section>

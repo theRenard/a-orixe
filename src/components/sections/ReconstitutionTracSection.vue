@@ -17,6 +17,8 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
       <p class="type__section-paragraph paragraph-spacing" v-html="$t('reconstitutionTrac.paragraph1')"></p>
       <p class="type__section-paragraph paragraph-spacing" v-html="$t('reconstitutionTrac.paragraph2')"></p>
       <p class="type__question paragraph-spacing" v-html="$t('reconstitutionTrac.question')"></p>
+      <p class="type__section-paragraph travail-fourmi-paragraph paragraph-spacing"
+        v-html="$t('travailFourmi.paragraph')"></p>
     </div>
   </div>
 </section>

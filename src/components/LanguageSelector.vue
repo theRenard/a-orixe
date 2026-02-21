@@ -1,7 +1,17 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import { useRouter, useRoute } from 'vue-router'
 
 const { locale } = useI18n()
+const router = useRouter()
+const route = useRoute()
+
+function goToLocale(newLocale: 'fr' | 'es') {
+  if (locale.value === newLocale) return
+  const onMobilePath = route.path.endsWith('/mobile')
+  const path = onMobilePath ? `/${newLocale}/mobile` : `/${newLocale}`
+  router.push({ path, query: route.query })
+}
 </script>
 
 <template>
@@ -12,7 +22,7 @@ const { locale } = useI18n()
       :class="{ 'language-selector__option--active': locale === 'fr' }"
       aria-label="Français"
       :aria-pressed="locale === 'fr'"
-      @click="locale = 'fr'"
+      @click="goToLocale('fr')"
     >
       FR
     </button>
@@ -23,7 +33,7 @@ const { locale } = useI18n()
       :class="{ 'language-selector__option--active': locale === 'es' }"
       aria-label="Español"
       :aria-pressed="locale === 'es'"
-      @click="locale = 'es'"
+      @click="goToLocale('es')"
     >
       ES
     </button>

@@ -86,12 +86,13 @@
   text-align: left;
 }
 
-/* Green paragraph – Ubuntu 18px/30px medium #2D4B4B */
+/* Green paragraph – Ubuntu 18px/30px medium #2D4B4B, columnar width */
 .comment-est-ne-section__paragraph {
   font: normal normal var(--font-weight-medium) calc(18px * var(--font-scale)) / calc(30px * var(--font-scale)) var(--font-family-ubuntu);
   letter-spacing: 0px;
   color: var(--color-teal-dark);
   text-align: left;
+  max-width: 65ch;
 }
 
 /* Author name – Ubuntu 28px/27px bold #2D4B4B, center */

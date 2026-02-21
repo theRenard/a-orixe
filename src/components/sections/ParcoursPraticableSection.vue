@@ -5,7 +5,7 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
 <template>
 <section class="parcours-praticable-section">
   <div class="container">
-    <div class="centered">
+    <div class="centered parcours-praticable-section__first">
       <p class="type__section-paragraph paragraph-spacing" v-html="$t('parcoursPraticable.paragraph1')"></p>
     </div>
     <div class="centered--large">
@@ -25,3 +25,13 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
   </div>
 </section>
 </template>
+
+<style scoped>
+.parcours-praticable-section__first {
+  margin-top: 1rem;
+}
+
+.parcours-praticable-section__first :deep(.paragraph-spacing) {
+  margin-top: 1rem !important;
+}
+</style>

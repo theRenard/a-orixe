@@ -3,6 +3,9 @@
  * Test page for SoundPlayer: all usages from Association, Trace Route, Capsule Sonore, Coup de Cœur.
  */
 import { RouterLink } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+
+const { locale } = useI18n()
 import SoundPlayer from '@/components/tools/SoundPlayer.vue'
 import pronunciationMp3 from '@/assets/audio/audio_prononciation_a_orixe.mp3'
 import pronunciationImage from '@/assets/audio-photos/pastille-photo-saturio.webp'
@@ -20,7 +23,7 @@ import donManuelImage from '@/assets/audio-photos/pastille-photo-don-manuel.webp
     <p class="sound-player-test-page__subtitle">
       All <code>SoundPlayer</code> instances used across the site — for visual and playback testing.
     </p>
-    <RouterLink to="/" class="sound-player-test-page__back type__credits-link">← Back to site</RouterLink>
+    <RouterLink :to="`/${locale}`" class="sound-player-test-page__back type__credits-link">← Back to site</RouterLink>
   </header>
 
   <div class="sound-player-test-page__list">

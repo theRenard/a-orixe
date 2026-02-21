@@ -4,6 +4,9 @@
  * spacing/layout utilities from styles.css for mockup vs page comparison.
  */
 import { RouterLink } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+
+const { locale } = useI18n()
 
 interface StyleEntry {
   class: string
@@ -48,7 +51,7 @@ const spacingEntries: StyleEntry[] = [
       <p class="styles-reference-page__subtitle">
         Typography from <code>typography.css</code> (BEM: type__*) and spacing from <code>styles.css</code> — use for mockup vs page comparison.
       </p>
-      <RouterLink to="/" class="styles-reference-page__back type__credits-link">← Back to site</RouterLink>
+      <RouterLink :to="`/${locale}`" class="styles-reference-page__back type__credits-link">← Back to site</RouterLink>
     </header>
 
     <h2 class="styles-reference-page__section-title heading-spacing">Typography (type__*)</h2>

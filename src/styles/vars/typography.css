@@ -110,7 +110,7 @@
   color: var(--color-teal-dark);
   text-align: left;
   border-left: 4px solid var(--color-teal-dark);
-  padding-left: 2rem;
+  padding-left: 1rem;
   padding-bottom: 1rem;
   padding-top: 1rem;
 }

@@ -11,7 +11,6 @@ import SecondTestimonial from '@/components/sections/SecondTestimonial.vue'
 import AssociationSection from '@/components/sections/AssociationSection.vue'
 import ReconstitutionTracSection from '@/components/sections/ReconstitutionTracSection.vue'
 import ConcentreGaliceSection from '@/components/sections/ConcentreGaliceSection.vue'
-import TravailFourmiSection from '@/components/sections/TravailFourmiSection.vue'
 import ThirdTestimonial from '@/components/sections/ThirdTestimonial.vue'
 import FourthTestimonial from '@/components/sections/FourthTestimonial.vue'
 import ElementsJacquaireSection from '@/components/sections/ElementsJacquaireSection.vue'
@@ -49,7 +48,6 @@ import CommentEstNeRecitSection from '@/components/sections/CommentEstNeRecitSec
   <FifthTestimonial />
   <AssociationSection />
   <ReconstitutionTracSection />
-  <TravailFourmiSection />
   <ThirdTestimonial />
   <ElementsJacquaireSection />
   <ParcoursPraticableSection />
