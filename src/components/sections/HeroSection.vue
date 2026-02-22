@@ -29,7 +29,7 @@ onMounted(() => {
 </script>
 
 <template>
-<div data-block class="block">
+<div data-block data-component="HeroSection" class="block">
   <div data-block-inner class="block-inner">
     <section ref="heroSection" class="hero-section mt-4 type__credits" aria-label="Crédits">
   <div class="container">

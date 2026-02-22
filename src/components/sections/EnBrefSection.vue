@@ -29,7 +29,7 @@ onMounted(() => {
 </script>
 
 <template>
-<div data-block class="block">
+<div data-block data-component="EnBrefSection" class="block">
   <div data-block-inner class="block-inner">
     <section ref="sectionRoot" class="en-bref-section section--full-viewport">
   <div class="en-bref-section__inner container">

@@ -31,7 +31,7 @@ onMounted(() => {
 </script>
 
 <template>
-<div data-block class="block">
+<div data-block data-component="SantiagoJourneyPhotoGrid" class="block">
   <div data-block-inner class="block-inner">
     <section ref="sectionRoot" class="santiago-journey-photo-grid-section">
   <div class="container">

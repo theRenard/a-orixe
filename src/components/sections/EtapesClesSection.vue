@@ -24,7 +24,7 @@ onMounted(() => {
 </script>
 
 <template>
-<div data-block class="block">
+<div data-block data-component="EtapesClesSection" class="block">
   <div data-block-inner class="block-inner">
     <section id="etapes-cles" ref="sectionRoot" class="etapes-cles-section">
   <div class="container">

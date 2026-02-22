@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 import { useBlockScroll } from '@/composables/useBlockScroll'
 import HeroIllustration from '@/components/sections/HeroIllustration.vue'
-import HeroSection from '@/components/sections/HeroSection.vue'
 import CaminoSection from '@/components/sections/CaminoSection.vue'
 import EtapesClesSection from '@/components/sections/EtapesClesSection.vue'
 import RessentirLieuxSection from '@/components/sections/RessentirLieuxSection.vue'
@@ -49,7 +48,6 @@ useBlockScroll({
 <main ref="mainRef" class="block-viewport">
   <div ref="railRef" class="blocks-rail">
     <HeroIllustration />
-    <HeroSection />
     <CaminoSection />
     <FirstTestimonial />
     <EtapesClesSection />

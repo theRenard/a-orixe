@@ -28,7 +28,7 @@ onMounted(() => {
 </script>
 
 <template>
-<div data-block class="block">
+<div data-block data-component="TraceRouteSection" class="block">
   <div data-block-inner class="block-inner">
     <section ref="sectionRoot" class="trace-route-section">
   <div class="container">

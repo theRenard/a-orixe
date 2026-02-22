@@ -26,7 +26,7 @@ onMounted(() => {
 </script>
 
 <template>
-<div data-block class="block">
+<div data-block data-component="SantiagoJourneySection" class="block">
   <div data-block-inner class="block-inner">
     <section ref="sectionRoot" class="santiago-journey-section">
   <div class="container">

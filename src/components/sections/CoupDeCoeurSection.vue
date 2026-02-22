@@ -30,7 +30,7 @@ onMounted(() => {
 </script>
 
 <template>
-<div data-block class="block">
+<div data-block data-component="CoupDeCoeurSection" class="block">
   <div data-block-inner class="block-inner">
     <section ref="sectionRoot" class="coup-de-coeur-section">
   <div class="container">

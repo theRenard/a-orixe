@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import LanguageSelector from '@/components/LanguageSelector.vue'
 import { RouterView } from 'vue-router'
+import { useShowComponentLabels } from '@/composables/useShowComponentLabels'
+
+useShowComponentLabels()
 </script>
 
 <template>

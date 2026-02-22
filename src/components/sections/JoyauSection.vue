@@ -29,7 +29,7 @@ onMounted(() => {
 </script>
 
 <template>
-<div data-block class="block">
+<div data-block data-component="JoyauSection" class="block">
   <div data-block-inner class="block-inner">
     <section ref="sectionRoot" class="joyau-section">
   <div class="container">

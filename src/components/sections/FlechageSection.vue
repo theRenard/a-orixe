@@ -22,7 +22,7 @@ onMounted(() => {
 </script>
 
 <template>
-<div data-block class="block">
+<div data-block data-component="FlechageSection" class="block">
   <div data-block-inner class="block-inner">
     <section ref="sectionRoot" class="flechage-section">
     <div class="container">

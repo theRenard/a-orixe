@@ -18,7 +18,7 @@ onMounted(() => {
 </script>
 
 <template>
-<div data-block class="block">
+<div data-block data-component="RessentirLieuxClosingSection" class="block">
   <div data-block-inner class="block-inner">
     <section ref="sectionRoot" class="ressentir-lieux-closing-section section--half-viewport">
     <div class="container">

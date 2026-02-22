@@ -20,7 +20,7 @@ onMounted(() => {
 </script>
 
 <template>
-<div data-block class="block">
+<div data-block data-component="SecondTestimonial" class="block">
   <div data-block-inner class="block-inner">
     <section ref="sectionRoot" class="section--full-viewport with-background with-shadow second-testimonial" style="position: relative;">
       <div class="container">

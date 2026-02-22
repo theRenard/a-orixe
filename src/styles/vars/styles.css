@@ -2,6 +2,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 section.with-borders {
@@ -456,4 +457,25 @@ h2 {
   letter-spacing: 0;
   color: var(--color-orange);
   text-align: left;
+}
+
+/* Component labels: visible only in dev (body.show-component-labels) */
+body.show-component-labels [data-component] {
+  position: relative;
+}
+
+body.show-component-labels [data-component]::before {
+  content: attr(data-component);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-family: ui-monospace, monospace;
+  color: var(--color-amber-4d, #b45309);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--color-amber-4d, #b45309);
+  border-radius: 0.25rem;
+  pointer-events: none;
 }
