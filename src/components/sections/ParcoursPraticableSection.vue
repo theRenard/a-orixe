@@ -27,27 +27,27 @@ onMounted(() => {
 <template>
 <div data-block data-component="ParcoursPraticableSection" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="parcours-praticable-section section--full-viewport">
-  <div class="container">
-    <div ref="firstBlock" class="centered parcours-praticable-section__first">
-      <p class="type__section-paragraph paragraph-spacing" v-html="$t('parcoursPraticable.paragraph1')"></p>
-    </div>
-    <div class="centered--large">
-      <div class="row-two-col">
-        <div ref="leftCol" class="col-left">
-          <p class="type__question" v-html="$t('parcoursPraticable.paragraph2')"></p>
+    <section ref="sectionRoot" class="parcours-praticable-section ">
+      <div class="container">
+        <div ref="firstBlock" class="centered parcours-praticable-section__first">
+          <p class="type__section-paragraph paragraph-spacing" v-html="$t('parcoursPraticable.paragraph1')"></p>
         </div>
-        <div ref="rightCol" class="col-right">
-          <ImageCrop width="100%" height="600px" position="center 40%"
-            :caption="$t('parcoursPraticable.photoCredit')" caption-position="bottom">
-            <img src="../../assets/photos/03_florence_antunes.webp" :alt="$t('parcoursPraticable.imageCaption')"
-              loading="lazy">
-          </ImageCrop>
+        <div class="centered--large">
+          <div class="row-two-col">
+            <div ref="leftCol" class="col-left">
+              <p class="type__question" v-html="$t('parcoursPraticable.paragraph2')"></p>
+            </div>
+            <div ref="rightCol" class="col-right">
+              <ImageCrop width="100%" height="600px" position="center 40%"
+                :caption="$t('parcoursPraticable.photoCredit')" caption-position="bottom">
+                <img src="../../assets/photos/03_florence_antunes.webp" :alt="$t('parcoursPraticable.imageCaption')"
+                  loading="lazy">
+              </ImageCrop>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
   </div>
 </div>
 </template>

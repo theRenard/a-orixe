@@ -61,7 +61,7 @@ onMounted(() => {
     tl.fromTo(
       containerEl,
       { width: '0%' },
-      { width: '100%', duration: 7, ease: 'power2.inOut' },
+      { width: '100%', duration: 5, ease: 'power2.inOut' },
       0.15,
     )
     onUnmounted(() => tl.scrollTrigger?.kill())

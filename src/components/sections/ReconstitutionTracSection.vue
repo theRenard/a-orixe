@@ -1,7 +1,11 @@
 <script setup lang="ts">
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ref, onMounted, onUnmounted } from 'vue'
 import ImageCrop from '@/components/tools/ImageCrop.vue'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const sectionRoot = ref<HTMLElement | null>(null)
 const imageBlock = ref<HTMLElement | null>(null)
@@ -21,13 +25,27 @@ const { run } = useRevealAnimation({
 onMounted(() => {
   const cleanup = run()
   if (cleanup) onUnmounted(cleanup)
+
+  const img = imageBlock.value?.querySelector<HTMLElement>('.image-crop img')
+  const triggerEl = sectionRoot.value
+  if (img && triggerEl) {
+    const tl = gsap.timeline({
+      scrollTrigger: { trigger: triggerEl, start: 'top 70%', once: true },
+    })
+    tl.fromTo(
+      img,
+      { scale: 2, transformOrigin: '50% 0%' },
+      { scale: 1, duration: 2, ease: 'power2.out', transformOrigin: '50% 100%' },
+    )
+    onUnmounted(() => tl.scrollTrigger?.kill())
+  }
 })
 </script>
 
 <template>
 <div data-block data-component="ReconstitutionTracSection" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="reconstitution-trac-section section--full-viewport">
+    <section ref="sectionRoot" class="reconstitution-trac-section">
       <div class="container">
         <div ref="imageBlock">
           <ImageCrop width="100%" height="320px" position="center 50%" :caption="$t('reconstitutionTrac.imageCaption')"

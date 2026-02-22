@@ -26,17 +26,16 @@ const { run } = useRevealAnimation({
 onMounted(() => {
   const cleanup = run()
   if (cleanup) onUnmounted(cleanup)
-  const imgEl = imageBlock.value
+  const img = imageBlock.value?.querySelector<HTMLElement>('.image-crop img')
   const triggerEl = sectionRoot.value
-  if (imgEl && triggerEl) {
+  if (img && triggerEl) {
     const tl = gsap.timeline({
       scrollTrigger: { trigger: triggerEl, start: 'top 70%', once: true },
     })
     tl.fromTo(
-      imgEl,
-      { scale: 0.85, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 0.6, ease: 'power3.out' },
-      0.2,
+      img,
+      { scale: 2, transformOrigin: '50% 0%' },
+      { scale: 1, duration: 2, ease: 'power2.out', transformOrigin: '50% 100%' },
     )
     onUnmounted(() => tl.scrollTrigger?.kill())
   }
@@ -47,29 +46,30 @@ onMounted(() => {
 <div data-block data-component="RessentirLieuxSection" class="block">
   <div data-block-inner class="block-inner">
     <section ref="sectionRoot" class="ressentir-lieux-section section--full-viewport">
-  <div class="container">
-    <div class="centered">
-      <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">
-        {{ $t('ressentirLieux.title') }}
-      </h2>
-      <div ref="textBlock">
-        <p class="type__section-paragraph paragraph-spacing" v-html="$t('ressentirLieux.paragraph')"></p>
-        <p class="type__section-paragraph paragraph-spacing" v-html="$t('ressentirLieux.transition')"></p>
-        <p class="type__question paragraph-spacing" v-html="$t('ressentirLieux.question')"></p>
+      <div class="container">
+        <div class="centered">
+          <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">
+            {{ $t('ressentirLieux.title') }}
+          </h2>
+          <div ref="textBlock">
+            <p class="type__section-paragraph paragraph-spacing" v-html="$t('ressentirLieux.paragraph')"></p>
+            <p class="type__section-paragraph paragraph-spacing" v-html="$t('ressentirLieux.transition')"></p>
+            <p class="type__question paragraph-spacing" v-html="$t('ressentirLieux.question')"></p>
+          </div>
+        </div>
+        <div ref="imageBlock" class="ressentir-lieux-section__image-wrap">
+          <ImageCrop width="100%" height="300px" position="0 75%" :caption="$t('ressentirLieux.imageCaption')"
+            caption-position="top">
+            <img src="../../assets/photos/01_florence_antunes.webp" :alt="$t('ressentirLieux.imageCaption')"
+              class="ressentir-lieux-section__image" loading="lazy">
+          </ImageCrop>
+        </div>
+        <div class="centered">
+          <p ref="closingParagraph" class="type__section-paragraph paragraph-spacing"
+            v-html="$t('ressentirLieux.paragraph2')"></p>
+        </div>
       </div>
-    </div>
-    <div ref="imageBlock" class="ressentir-lieux-section__image-wrap">
-      <ImageCrop width="100%" height="300px" position="0 75%" :caption="$t('ressentirLieux.imageCaption')"
-        caption-position="top">
-        <img src="../../assets/photos/01_florence_antunes.webp" :alt="$t('ressentirLieux.imageCaption')"
-          class="ressentir-lieux-section__image" loading="lazy">
-      </ImageCrop>
-    </div>
-    <div class="centered">
-      <p ref="closingParagraph" class="type__section-paragraph paragraph-spacing" v-html="$t('ressentirLieux.paragraph2')"></p>
-    </div>
-  </div>
-</section>
+    </section>
   </div>
 </div>
 </template>
@@ -80,6 +80,6 @@ onMounted(() => {
 }
 
 .ressentir-lieux-section__image-wrap {
-  transform-origin: center center;
+  overflow: visible;
 }
 </style>
