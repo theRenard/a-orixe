@@ -19,6 +19,7 @@ import MapIllustration from '@/components/sections/MapIllustration.vue'
 import SantiagoJourneyPhotoGrid from '@/components/sections/SantiagoJourneyPhotoGrid.vue'
 import SantiagoJourneySection from '@/components/sections/SantiagoJourneySection.vue'
 import ReconnaissanceSection from '@/components/sections/ReconnaissanceSection.vue'
+import ReconnaissanceFootnoteSection from '@/components/sections/ReconnaissanceFootnoteSection.vue'
 import FlechageSection from '@/components/sections/FlechageSection.vue'
 import SignalisationSection from '@/components/sections/SignalisationSection.vue'
 import CoupDeCoeurSection from '@/components/sections/CoupDeCoeurSection.vue'
@@ -62,6 +63,7 @@ useBlockScroll({
     <SantiagoJourneyPhotoGrid />
     <SantiagoJourneySection />
     <ReconnaissanceSection />
+    <ReconnaissanceFootnoteSection />
     <FourthTestimonial />
     <FlechageSection />
     <SignalisationSection />
