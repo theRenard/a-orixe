@@ -1,32 +1,56 @@
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
 import ImageCrop from '@/components/tools/ImageCrop.vue'
+import { useRevealAnimation } from '@/composables/useRevealAnimation'
 
 const leftImage = new URL('../../assets/photos/05_florence_antunes.webp', import.meta.url).href
 const rightTopImage = new URL('../../assets/photos/06_florence_antunes.webp', import.meta.url).href
 const rightBottomImage = new URL('../../assets/photos/07_florence_antunes.webp', import.meta.url).href
+
+const sectionRoot = ref<HTMLElement | null>(null)
+const cellLeft = ref<HTMLElement | null>(null)
+const cellRightTop = ref<HTMLElement | null>(null)
+const cellRightBottom = ref<HTMLElement | null>(null)
+const caption = ref<HTMLElement | null>(null)
+const { run } = useRevealAnimation({
+  elements: [
+    { el: cellLeft, direction: 'left', delay: 0 },
+    { el: cellRightTop, direction: 'right', delay: 0.06 },
+    { el: cellRightBottom, direction: 'right', delay: 0.12 },
+    { el: caption, direction: 'left', delay: 0.18 },
+  ],
+  duration: 0.6,
+  offset: 40,
+  ease: 'power3.out',
+  scrollTrigger: { trigger: sectionRoot, start: 'top 88%', once: true },
+})
+onMounted(() => {
+  const cleanup = run()
+  if (cleanup) onUnmounted(cleanup)
+})
 </script>
 
 <template>
-<section class="santiago-journey-photo-grid-section">
+<section ref="sectionRoot" class="santiago-journey-photo-grid-section">
   <div class="container">
     <div class="santiago-journey-photo-grid align-center paragraph-spacing" role="img"
       :aria-label="$t('santiagoJourney.imageCaption')">
-      <div class="santiago-journey-photo-grid__cell santiago-journey-photo-grid__cell--left">
+      <div ref="cellLeft" class="santiago-journey-photo-grid__cell santiago-journey-photo-grid__cell--left">
         <ImageCrop width="100%" height="100%" position="center 50%">
           <img :src="leftImage" :alt="$t('santiagoJourney.imageCaption')" loading="lazy">
         </ImageCrop>
       </div>
-      <div class="santiago-journey-photo-grid__cell santiago-journey-photo-grid__cell--right-top">
+      <div ref="cellRightTop" class="santiago-journey-photo-grid__cell santiago-journey-photo-grid__cell--right-top">
         <ImageCrop width="100%" height="100%" position="center 50%">
           <img :src="rightTopImage" alt="" loading="lazy" role="presentation">
         </ImageCrop>
       </div>
-      <div class="santiago-journey-photo-grid__cell santiago-journey-photo-grid__cell--right-bottom">
+      <div ref="cellRightBottom" class="santiago-journey-photo-grid__cell santiago-journey-photo-grid__cell--right-bottom">
         <ImageCrop width="100%" height="100%" position="center 50%">
           <img :src="rightBottomImage" alt="" loading="lazy" role="presentation">
         </ImageCrop>
       </div>
-      <p class="santiago-journey-photo-grid__caption type__image-caption type__image-caption--with-line">
+      <p ref="caption" class="santiago-journey-photo-grid__caption type__image-caption type__image-caption--with-line">
         {{ $t('santiagoJourney.imageCaption') }}
       </p>
     </div>
@@ -35,6 +59,10 @@ const rightBottomImage = new URL('../../assets/photos/07_florence_antunes.webp',
 </template>
 
 <style scoped>
+.santiago-journey-photo-grid-section {
+  overflow-x: hidden;
+}
+
 .santiago-journey-photo-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

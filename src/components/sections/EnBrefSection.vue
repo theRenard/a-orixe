@@ -1,21 +1,41 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import phareCorrubedo from '@/assets/illustrations/phare.png'
 import cathedrale from '@/assets/illustrations/cathedrale.png'
+import { useRevealAnimation } from '@/composables/useRevealAnimation'
 
 const { locale } = useI18n()
 const routeDetailUrl = computed(() => `https://aorixe.es/${locale.value === 'es' ? 'es' : 'fr'}`)
+const sectionRoot = ref<HTMLElement | null>(null)
+const title = ref<HTMLElement | null>(null)
+const statsRow = ref<HTMLElement | null>(null)
+const linkWrap = ref<HTMLElement | null>(null)
+const { run } = useRevealAnimation({
+  elements: [
+    { el: title, direction: 'left', delay: 0 },
+    { el: statsRow, direction: 'right', delay: 0.1 },
+    { el: linkWrap, direction: 'left', delay: 0.2 },
+  ],
+  duration: 0.6,
+  offset: 44,
+  ease: 'power3.out',
+  scrollTrigger: { trigger: sectionRoot, start: 'top 88%', once: true },
+})
+onMounted(() => {
+  const cleanup = run()
+  if (cleanup) onUnmounted(cleanup)
+})
 </script>
 
 <template>
-<section class="en-bref-section section--full-viewport">
+<section ref="sectionRoot" class="en-bref-section section--full-viewport">
   <div class="en-bref-section__inner container">
-    <h2 class="type__section-title type__section-title--with-line heading-spacing">
+    <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">
       <span class="">{{ $t('enBref.titlePrefix') }}</span>{{ $t('enBref.titleSuffix') }}
     </h2>
 
-    <div class="en-bref-section__stats-row">
+    <div ref="statsRow" class="en-bref-section__stats-row">
       <div class="en-bref-section__stat">
         <div class="type__enbref-big">{{ $t('enBref.stat1Number') }}</div>
         <div class="type__enbref-small-orange">{{ $t('enBref.stat1Label') }}</div>
@@ -40,7 +60,7 @@ const routeDetailUrl = computed(() => `https://aorixe.es/${locale.value === 'es'
       </div>
     </div>
 
-    <p class="en-bref-section__link-wrap paragraph-spacing">
+    <p ref="linkWrap" class="en-bref-section__link-wrap paragraph-spacing">
       <span class="type__enbref-small-green">{{ $t('enBref.detailLinkText') }}</span>
       <a :href="routeDetailUrl" target="_blank" rel="noopener noreferrer" class="type__enbref-small-green en-bref-section__link">{{ $t('enBref.detailLinkHere') }}</a>
     </p>
@@ -51,6 +71,7 @@ const routeDetailUrl = computed(() => `https://aorixe.es/${locale.value === 'es'
 <style scoped>
 .en-bref-section {
   background-color: var(--color-teal-enbref-bg);
+  overflow-x: hidden;
 }
 
 .en-bref-section__inner {

@@ -1,19 +1,41 @@
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
 import espagneImage from '@/assets/illustrations/espagne_ok.webp'
+import { useRevealAnimation } from '@/composables/useRevealAnimation'
+
+const sectionRoot = ref<HTMLElement | null>(null)
+const title = ref<HTMLElement | null>(null)
+const image = ref<HTMLElement | null>(null)
+const textBlock = ref<HTMLElement | null>(null)
+const { run } = useRevealAnimation({
+  elements: [
+    { el: title, direction: 'left', delay: 0 },
+    { el: image, direction: 'right', delay: 0.08 },
+    { el: textBlock, direction: 'left', delay: 0.18 },
+  ],
+  duration: 0.6,
+  offset: 44,
+  ease: 'power3.out',
+  scrollTrigger: { trigger: sectionRoot, start: 'top 88%', once: true },
+})
+onMounted(() => {
+  const cleanup = run()
+  if (cleanup) onUnmounted(cleanup)
+})
 </script>
 
 <template>
-<section class="santiago-steps-section">
+<section ref="sectionRoot" class="santiago-steps-section">
   <div class="container">
     <div class="centered--large">
       <div class="row-two-col" style="position: relative;">
-        <h2 class="type__section-title type__section-title--with-line heading-spacing col-left" style="flex: 0 0 50%;">
+        <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing col-left" style="flex: 0 0 50%;">
           {{ $t('santiagoSteps.title') }}
         </h2>
-        <img :src="espagneImage" alt="" class="santiago-steps-section__title-img col-right" aria-hidden="true">
+        <img ref="image" :src="espagneImage" alt="" class="santiago-steps-section__title-img col-right" aria-hidden="true">
       </div>
     </div>
-    <div class="centered">
+    <div ref="textBlock" class="centered">
       <p class="type__section-paragraph paragraph-spacing" v-html="$t('santiagoSteps.paragraph1')"></p>
       <p class="type__section-paragraph paragraph-spacing" v-html="$t('santiagoSteps.paragraph2')"></p>
       <p class="type__question paragraph-spacing" v-html="$t('santiagoSteps.highlight')"></p>
@@ -23,6 +45,10 @@ import espagneImage from '@/assets/illustrations/espagne_ok.webp'
 </template>
 
 <style scoped>
+.santiago-steps-section {
+  overflow-x: hidden;
+}
+
 .santiago-steps-section__title-row {
   display: flex;
   align-items: flex-end;

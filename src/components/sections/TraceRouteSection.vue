@@ -1,21 +1,45 @@
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
 import SoundPlayer from '@/components/tools/SoundPlayer.vue'
 import audioDonManuel from '@/assets/audio/audio_don_manuel.mp3'
 import chaptersDonManuel from '@/assets/audio-refs/Horodatage-Audio-DonManuel.json'
 import donManuelImage from '@/assets/audio-photos/pastille-photo-don-manuel.webp'
+import { useRevealAnimation } from '@/composables/useRevealAnimation'
+
+const sectionRoot = ref<HTMLElement | null>(null)
+const title = ref<HTMLElement | null>(null)
+const textBlock = ref<HTMLElement | null>(null)
+const player = ref<HTMLElement | null>(null)
+const { run } = useRevealAnimation({
+  elements: [
+    { el: title, direction: 'left', delay: 0 },
+    { el: textBlock, direction: 'right', delay: 0.08 },
+    { el: player, direction: 'left', delay: 0.18 },
+  ],
+  duration: 0.6,
+  offset: 44,
+  ease: 'power3.out',
+  scrollTrigger: { trigger: sectionRoot, start: 'top 88%', once: true },
+})
+onMounted(() => {
+  const cleanup = run()
+  if (cleanup) onUnmounted(cleanup)
+})
 </script>
 
 <template>
-<section class="trace-route-section">
+<section ref="sectionRoot" class="trace-route-section">
   <div class="container">
     <div class="centered">
-      <h2 class="type__section-title type__section-title--with-line heading-spacing">
+      <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">
         {{ $t('traceRoute.title') }}
       </h2>
-      <p class="type__section-paragraph paragraph-spacing" v-html="$t('traceRoute.paragraph1')"></p>
-      <p class="type__section-paragraph paragraph-spacing" v-html="$t('traceRoute.paragraph2')"></p>
-      <p class="type__section-paragraph paragraph-spacing" v-html="$t('traceRoute.paragraph3')"></p>
-      <div class="trace-route-section__player-wrap mt-4 mb-5">
+      <div ref="textBlock">
+        <p class="type__section-paragraph paragraph-spacing" v-html="$t('traceRoute.paragraph1')"></p>
+        <p class="type__section-paragraph paragraph-spacing" v-html="$t('traceRoute.paragraph2')"></p>
+        <p class="type__section-paragraph paragraph-spacing" v-html="$t('traceRoute.paragraph3')"></p>
+      </div>
+      <div ref="player" class="trace-route-section__player-wrap mt-4 mb-5">
         <SoundPlayer :src="audioDonManuel" :image="donManuelImage" :chapters="chaptersDonManuel">
           <span class="trace-route-section__player-line1">{{ $t('traceRoute.soundPlayerText') }}</span>
           <span class="trace-route-section__player-line2">{{ $t('traceRoute.soundPlayerSubtitle') }}</span>
@@ -27,6 +51,10 @@ import donManuelImage from '@/assets/audio-photos/pastille-photo-don-manuel.webp
 </template>
 
 <style scoped>
+.trace-route-section {
+  overflow-x: hidden;
+}
+
 .trace-route-section__player-wrap {
   display: flex;
   flex-direction: column;

@@ -1,23 +1,53 @@
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
 import PilgrimsHorizontalChart from '@/components/tools/PilgrimsHorizontalChart.vue'
+import { useRevealAnimation } from '@/composables/useRevealAnimation'
+
+const sectionRoot = ref<HTMLElement | null>(null)
+const title = ref<HTMLElement | null>(null)
+const chart = ref<HTMLElement | null>(null)
+const textBlock = ref<HTMLElement | null>(null)
+const { run } = useRevealAnimation({
+  elements: [
+    { el: title, direction: 'left', delay: 0 },
+    { el: chart, direction: 'right', delay: 0.1 },
+    { el: textBlock, direction: 'left', delay: 0.2 },
+  ],
+  duration: 0.6,
+  offset: 44,
+  ease: 'power3.out',
+  scrollTrigger: { trigger: sectionRoot, start: 'top 88%', once: true },
+})
+onMounted(() => {
+  const cleanup = run()
+  if (cleanup) onUnmounted(cleanup)
+})
 </script>
 
 <template>
-<section class="pilgrims-stats-section">
+<section ref="sectionRoot" class="pilgrims-stats-section">
   <div class="container">
     <div class="centered">
-      <h2 class="type__section-title type__section-title--with-line heading-spacing">
+      <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">
         {{ $t('pilgrimsStats.title') }}
       </h2>
-      <PilgrimsHorizontalChart class="pilgrims-stats-section__chart mt-4 align-center" />
-      <p class="type__section-paragraph paragraph-spacing" v-html="$t('pilgrimsStats.paragraph1')"></p>
-      <p class="type__section-paragraph paragraph-spacing" v-html="$t('pilgrimsStats.paragraph2')"></p>
+      <div ref="chart">
+        <PilgrimsHorizontalChart class="pilgrims-stats-section__chart mt-4 align-center" />
+      </div>
+      <div ref="textBlock">
+        <p class="type__section-paragraph paragraph-spacing" v-html="$t('pilgrimsStats.paragraph1')"></p>
+        <p class="type__section-paragraph paragraph-spacing" v-html="$t('pilgrimsStats.paragraph2')"></p>
+      </div>
     </div>
   </div>
 </section>
 </template>
 
 <style scoped>
+.pilgrims-stats-section {
+  overflow-x: hidden;
+}
+
 .pilgrims-stats-section__chart {
   display: block;
 }

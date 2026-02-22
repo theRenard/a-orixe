@@ -1,17 +1,37 @@
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
 import mapImage from '@/assets/illustrations/map.webp'
 import mapLineImage from '@/assets/illustrations/map_line.webp'
+import { useRevealAnimation } from '@/composables/useRevealAnimation'
+
+const sectionRoot = ref<HTMLElement | null>(null)
+const bg = ref<HTMLElement | null>(null)
+const { run } = useRevealAnimation({
+  elements: [{ el: bg, direction: 'left' }],
+  duration: 0.8,
+  offset: 40,
+  ease: 'power3.out',
+  scrollTrigger: { trigger: sectionRoot, start: 'top 88%', once: true },
+})
+onMounted(() => {
+  const cleanup = run()
+  if (cleanup) onUnmounted(cleanup)
+})
 </script>
 
 <template>
-<section class="map-illustration section--full-viewport mt-4 image-section" role="img"
+<section ref="sectionRoot" class="map-illustration section--full-viewport mt-4 image-section" role="img"
   :aria-label="$t('carteEtapesSantiago.caption')">
-  <img class="map-illustration__bg" :src="mapImage" alt="" />
+  <img ref="bg" class="map-illustration__bg" :src="mapImage" alt="" />
   <div class="map-illustration__line" :style="{ backgroundImage: `url(${mapLineImage})` }" aria-hidden="true" />
 </section>
 </template>
 
 <style scoped>
+.map-illustration {
+  overflow-x: hidden;
+}
+
 .image-section {
   min-height: auto !important;
 }

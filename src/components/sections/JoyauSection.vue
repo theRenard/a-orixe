@@ -1,27 +1,53 @@
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
 import ImageCrop from '@/components/tools/ImageCrop.vue'
+import { useRevealAnimation } from '@/composables/useRevealAnimation'
+
+const sectionRoot = ref<HTMLElement | null>(null)
+const quote = ref<HTMLElement | null>(null)
+const caption = ref<HTMLElement | null>(null)
+const cell1 = ref<HTMLElement | null>(null)
+const cell2 = ref<HTMLElement | null>(null)
+const cell3 = ref<HTMLElement | null>(null)
+const { run } = useRevealAnimation({
+  elements: [
+    { el: quote, direction: 'left', delay: 0 },
+    { el: caption, direction: 'right', delay: 0.06 },
+    { el: cell1, direction: 'left', delay: 0.12 },
+    { el: cell2, direction: 'left', delay: 0.18 },
+    { el: cell3, direction: 'right', delay: 0.24 },
+  ],
+  duration: 0.6,
+  offset: 40,
+  ease: 'power3.out',
+  scrollTrigger: { trigger: sectionRoot, start: 'top 88%', once: true },
+})
+onMounted(() => {
+  const cleanup = run()
+  if (cleanup) onUnmounted(cleanup)
+})
 </script>
 
 <template>
-<section class="joyau-section">
+<section ref="sectionRoot" class="joyau-section">
   <div class="container">
     <div class="centered">
-      <p class="type__section-paragraph joyau-section__quote paragraph-spacing" v-html="$t('joyau.paragraph')"></p>
+      <p ref="quote" class="type__section-paragraph joyau-section__quote paragraph-spacing" v-html="$t('joyau.paragraph')"></p>
     </div>
-    <p class="joyau-section__caption type__image-caption type__image-caption--with-line" v-html="$t('joyau.caption')">
+    <p ref="caption" class="joyau-section__caption type__image-caption type__image-caption--with-line" v-html="$t('joyau.caption')">
     </p>
     <div class="joyau-section__grid">
-      <div class="joyau-section__cell">
+      <div ref="cell1" class="joyau-section__cell">
         <ImageCrop width="100%" height="600px" position="center 50%">
           <img src="../../assets/photos/10_florence_antunes.webp" :alt="$t('joyau.caption')" loading="lazy">
         </ImageCrop>
       </div>
-      <div class="joyau-section__cell">
+      <div ref="cell2" class="joyau-section__cell">
         <ImageCrop width="100%" height="600px" position="center 50%">
           <img src="../../assets/photos/11_florence_antunes.webp" :alt="$t('joyau.caption')" loading="lazy">
         </ImageCrop>
       </div>
-      <div class="joyau-section__cell">
+      <div ref="cell3" class="joyau-section__cell">
         <ImageCrop width="100%" height="600px" position="center 50%">
           <img src="../../assets/photos/12_florence_antunes.webp" :alt="$t('joyau.caption')" loading="lazy">
         </ImageCrop>
@@ -32,6 +58,10 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
 </template>
 
 <style scoped>
+.joyau-section {
+  overflow-x: hidden;
+}
+
 .joyau-section__quote {
   margin: 0;
 }

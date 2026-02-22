@@ -1,14 +1,45 @@
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
+import { useRevealAnimation } from '@/composables/useRevealAnimation'
+
+const sectionRoot = ref<HTMLElement | null>(null)
+const title = ref<HTMLElement | null>(null)
+const content = ref<HTMLElement | null>(null)
+const { run } = useRevealAnimation({
+  elements: [
+    { el: title, direction: 'right', delay: 0 },
+    { el: content, direction: 'left', delay: 0.1 },
+  ],
+  duration: 0.6,
+  offset: 44,
+  ease: 'power3.out',
+  scrollTrigger: { trigger: sectionRoot, start: 'top 88%', once: true },
+})
+onMounted(() => {
+  const cleanup = run()
+  if (cleanup) onUnmounted(cleanup)
+})
+</script>
+
 <template>
-  <section class="deconnexion-section">
+  <section ref="sectionRoot" class="deconnexion-section">
     <div class="container">
       <div class="centered">
-        <h2 class="type__section-title type__section-title--with-line heading-spacing">
+        <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">
           {{ $t('deconnexion.title') }}
         </h2>
-        <p class="type__section-paragraph paragraph-spacing" v-html="$t('deconnexion.paragraph1')"></p>
-        <p class="type__section-paragraph paragraph-spacing" v-html="$t('deconnexion.paragraph2')"></p>
-        <p class="type__question paragraph-spacing" v-html="$t('deconnexion.highlight')"></p>
+        <div ref="content">
+          <p class="type__section-paragraph paragraph-spacing" v-html="$t('deconnexion.paragraph1')"></p>
+          <p class="type__section-paragraph paragraph-spacing" v-html="$t('deconnexion.paragraph2')"></p>
+          <p class="type__question paragraph-spacing" v-html="$t('deconnexion.highlight')"></p>
+        </div>
       </div>
     </div>
   </section>
 </template>
+
+<style scoped>
+.deconnexion-section {
+  overflow-x: hidden;
+}
+</style>

@@ -1,9 +1,33 @@
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
+import ImageCrop from '@/components/tools/ImageCrop.vue'
+import { useRevealAnimation } from '@/composables/useRevealAnimation'
+
+const sectionRoot = ref<HTMLElement | null>(null)
+const leftCol = ref<HTMLElement | null>(null)
+const rightCol = ref<HTMLElement | null>(null)
+const { run } = useRevealAnimation({
+  elements: [
+    { el: leftCol, direction: 'left', delay: 0 },
+    { el: rightCol, direction: 'right', delay: 0.1 },
+  ],
+  duration: 0.6,
+  offset: 44,
+  ease: 'power3.out',
+  scrollTrigger: { trigger: sectionRoot, start: 'top 88%', once: true },
+})
+onMounted(() => {
+  const cleanup = run()
+  if (cleanup) onUnmounted(cleanup)
+})
+</script>
+
 <template>
-<section class="concentre-galice-section">
+<section ref="sectionRoot" class="concentre-galice-section">
   <div class="container">
     <div class="centered--large">
       <div class="row-two-col paragraph-spacing">
-        <div class="col-left">
+        <div ref="leftCol" class="col-left">
           <h2 class="type__section-title type__section-title--with-line heading-spacing">
             {{ $t('concentreGalice.title') }}
           </h2>
@@ -11,7 +35,7 @@
           <p class="type__question paragraph-spacing" v-html="$t('concentreGalice.paragraph2')"></p>
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('concentreGalice.paragraph3')"></p>
         </div>
-        <div class="col-right">
+        <div ref="rightCol" class="col-right">
           <ImageCrop width="100%" height="700px" position="center 40%" :caption="$t('concentreGalice.imageCaption')"
             caption-position="bottom">
             <img class="paragraph-spacing" src="@/assets/photos/04_florence_antunes.webp"
@@ -24,11 +48,11 @@
 </section>
 </template>
 
-<script setup lang="ts">
-import ImageCrop from '@/components/tools/ImageCrop.vue'
-</script>
-
 <style scoped>
+.concentre-galice-section {
+  overflow-x: hidden;
+}
+
 .concentre-galice-section .centered--large+.centered :deep(.paragraph-spacing) {
   margin-top: 0.75rem !important;
 }

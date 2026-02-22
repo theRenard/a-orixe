@@ -1,9 +1,34 @@
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
+import { useRevealAnimation } from '@/composables/useRevealAnimation'
+
+const sectionRoot = ref<HTMLElement | null>(null)
+const paragraph = ref<HTMLElement | null>(null)
+const { run } = useRevealAnimation({
+  elements: [{ el: paragraph, direction: 'left' }],
+  duration: 0.65,
+  offset: 40,
+  ease: 'power3.out',
+  scrollTrigger: { trigger: sectionRoot, start: 'top 88%', once: true },
+})
+onMounted(() => {
+  const cleanup = run()
+  if (cleanup) onUnmounted(cleanup)
+})
+</script>
+
 <template>
-  <section class="ressentir-lieux-closing-section section--half-viewport">
+  <section ref="sectionRoot" class="ressentir-lieux-closing-section section--half-viewport">
     <div class="container">
       <div class="centered">
-        <p class="type__section-paragraph paragraph-spacing" v-html="$t('ressentirLieux.paragraph2')"></p>
+        <p ref="paragraph" class="type__section-paragraph paragraph-spacing" v-html="$t('ressentirLieux.paragraph2')"></p>
       </div>
     </div>
   </section>
 </template>
+
+<style scoped>
+.ressentir-lieux-closing-section {
+  overflow-x: hidden;
+}
+</style>

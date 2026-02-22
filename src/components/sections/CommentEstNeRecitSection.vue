@@ -1,9 +1,32 @@
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
+import { useRevealAnimation } from '@/composables/useRevealAnimation'
+
+const sectionRoot = ref<HTMLElement | null>(null)
+const author = ref<HTMLElement | null>(null)
+const content = ref<HTMLElement | null>(null)
+const { run } = useRevealAnimation({
+  elements: [
+    { el: author, direction: 'left', delay: 0 },
+    { el: content, direction: 'right', delay: 0.12 },
+  ],
+  duration: 0.6,
+  offset: 44,
+  ease: 'power3.out',
+  scrollTrigger: { trigger: sectionRoot, start: 'top 88%', once: true },
+})
+onMounted(() => {
+  const cleanup = run()
+  if (cleanup) onUnmounted(cleanup)
+})
+</script>
+
 <template>
-<section class="section--full-viewport comment-est-ne-section">
+<section ref="sectionRoot" class="section--full-viewport comment-est-ne-section">
   <div class="container">
     <div class="comment-est-ne-section__inner paragraph-spacing">
       <div class="comment-est-ne-section__grid">
-        <aside class="comment-est-ne-section__author">
+        <aside ref="author" class="comment-est-ne-section__author">
           <img src="@/assets/photos/florenceantunes-portrait.webp" alt="" class="comment-est-ne-section__avatar"
             width="280" height="280">
           <h3 class="comment-est-ne-section__author-name">
@@ -18,7 +41,7 @@
             {{ $t('commentEstNeRecit.authorWebsite') }}
           </a>
         </aside>
-        <div class="comment-est-ne-section__content mt-5">
+        <div ref="content" class="comment-est-ne-section__content mt-5">
           <h2 class="comment-est-ne-section__title heading-spacing">
             {{ $t('commentEstNeRecit.title') }}
           </h2>
@@ -33,6 +56,7 @@
 
 <style scoped>
 .comment-est-ne-section {
+  overflow-x: hidden;
   background-color: var(--color-white);
   /* padding: 4rem 0 5rem; */
 }
