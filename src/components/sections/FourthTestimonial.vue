@@ -33,16 +33,16 @@ const { locale } = useI18n()
 .fourth-testimonial__bird {
   position: absolute;
   top: 0;
-  right: 2rem;
-  width: 120px;
+  right: var(--space-3);
+  width: calc(var(--fluid-base) * 7.5);
   height: auto;
   display: block;
 }
 
 @media (max-width: 768px) {
   .fourth-testimonial__bird {
-    width: 80px;
-    right: 1rem;
+    width: calc(var(--fluid-base) * 5);
+    right: var(--space-2);
   }
 }
 </style>

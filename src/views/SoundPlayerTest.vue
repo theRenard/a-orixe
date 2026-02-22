@@ -75,32 +75,32 @@ import donManuelImage from '@/assets/audio-photos/pastille-photo-don-manuel.webp
 
 <style scoped>
 .sound-player-test-page {
-  padding: 2rem 1.5rem;
+  padding: var(--space-3) var(--space-3);
   max-width: 56rem;
   margin: 0 auto;
 }
 
 .sound-player-test-page__header {
-  margin-bottom: 2.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--color-teal-light, #a2cfcd);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 0.0625rem solid var(--color-teal-light, #a2cfcd);
 }
 
 .sound-player-test-page__title {
-  margin: 0 0 0.5rem;
+  margin: 0 0 var(--space-1);
 }
 
 .sound-player-test-page__subtitle {
   font-family: var(--font-family-ubuntu);
-  font-size: var(--font-size-sm);
+  font-size: var(--text-sm);
   color: var(--color-gray);
-  margin: 0 0 1rem;
+  margin: 0 0 var(--space-2);
 }
 
 .sound-player-test-page__subtitle code {
   background: var(--color-tan, #f5dfbb);
-  padding: 0.15rem 0.4rem;
-  border-radius: 4px;
+  padding: var(--space-1) var(--space-1);
+  border-radius: 0.25rem;
   font-size: 0.9em;
 }
 
@@ -115,39 +115,39 @@ import donManuelImage from '@/assets/audio-photos/pastille-photo-don-manuel.webp
 .sound-player-test-page__list {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: var(--space-3);
 }
 
 .sound-player-test-page__card {
   background: var(--color-cream, #fffdfa);
-  border: 1px solid var(--color-teal-light, #a2cfcd);
-  border-radius: 8px;
-  padding: 1.25rem 1.5rem;
+  border: 0.0625rem solid var(--color-teal-light, #a2cfcd);
+  border-radius: 0.5rem;
+  padding: var(--space-3) var(--space-3);
 }
 
 .sound-player-test-page__card-title {
   font-family: var(--font-family-fraunces);
-  font-size: 1.25rem;
+  font-size: var(--text-lg);
   color: var(--color-teal-dark, #2d4b4b);
-  margin: 0 0 0.5rem;
+  margin: 0 0 var(--space-1);
 }
 
 .sound-player-test-page__card-desc {
   font-family: var(--font-family-ubuntu);
-  font-size: var(--font-size-sm);
+  font-size: var(--text-sm);
   color: var(--color-gray);
-  margin: 0 0 1rem;
+  margin: 0 0 var(--space-2);
 }
 
 .sound-player-test-page__card-desc code {
   background: var(--color-blue-tint, #f8fbff);
-  padding: 0.1rem 0.35rem;
-  border-radius: 4px;
+  padding: var(--space-1) var(--space-1);
+  border-radius: 0.25rem;
   font-size: 0.9em;
 }
 
 .sound-player-test-page__player-wrap {
-  margin-top: 0.5rem;
+  margin-top: var(--space-1);
 }
 
 .sound-player-test-page__player-wrap--centered {
@@ -159,7 +159,7 @@ import donManuelImage from '@/assets/audio-photos/pastille-photo-don-manuel.webp
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.15rem;
+  gap: var(--space-1);
 }
 
 .sound-player-test-page__line2 {

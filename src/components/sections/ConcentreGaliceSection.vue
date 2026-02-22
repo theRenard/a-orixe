@@ -12,7 +12,7 @@
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('concentreGalice.paragraph3')"></p>
         </div>
         <div class="col-right">
-          <ImageCrop width="100%" height="700px" position="center 40%" :caption="$t('concentreGalice.imageCaption')"
+          <ImageCrop width="100%" height="43.75rem" position="center 40%" :caption="$t('concentreGalice.imageCaption')"
             caption-position="bottom">
             <img class="paragraph-spacing" src="@/assets/photos/04_florence_antunes.webp"
               :alt="$t('concentreGalice.imageCaption')" loading="lazy">
@@ -30,6 +30,6 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
 
 <style scoped>
 .concentre-galice-section .centered--large+.centered :deep(.paragraph-spacing) {
-  margin-top: 0.75rem !important;
+  margin-top: var(--space-2) !important;
 }
 </style>

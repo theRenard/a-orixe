@@ -39,11 +39,11 @@ const rightBottomImage = new URL('../../assets/photos/07_florence_antunes.webp',
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 1rem;
+  gap: var(--space-2);
   aspect-ratio: 16 / 10;
   max-width: 80%;
   overflow: hidden;
-  border-radius: 2px;
+  border-radius: 0.125rem;
 }
 
 .santiago-journey-photo-grid__cell {

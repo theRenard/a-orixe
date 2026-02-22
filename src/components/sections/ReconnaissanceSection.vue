@@ -11,7 +11,7 @@
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('reconnaissance.paragraph2')"></p>
         </div>
         <div class="col-right">
-          <ImageCrop width="100%" height="600px" position="center" :caption="$t('reconnaissance.documentCaption')"
+          <ImageCrop width="100%" height="37.5rem" position="center" :caption="$t('reconnaissance.documentCaption')"
             caption-position="bottom">
             <img class="paragraph-spacing" src="@/assets/photos/lettrereconnaissancechemin.webp"
               :alt="$t('reconnaissance.documentCaption')" loading="lazy">
@@ -33,10 +33,10 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
 
 <style scoped>
 .reconnaissance-section__text :deep(.paragraph-spacing) {
-  margin-top: 0.75rem;
+  margin-top: var(--space-2) !important;
 }
 
 .reconnaissance-section__row+.centered {
-  margin-top: 0.5rem;
+  margin-top: var(--space-1);
 }
 </style>

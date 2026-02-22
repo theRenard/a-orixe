@@ -32,17 +32,16 @@
 
 <style scoped>
 .pilgrims-horizontal-chart {
-  margin: 0;
-  padding: 0;
-  width: 500px;
   margin: 0 auto;
+  padding: 0;
+  width: 31.25rem;
 }
 
 .pilgrims-horizontal-chart__row {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 0.75rem;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
 }
 
 .pilgrims-horizontal-chart__row:last-child {
@@ -58,21 +57,21 @@
 }
 
 .pilgrims-horizontal-chart__name {
-  font: var(--font-style-normal) var(--font-weight-bold) 1.3rem/1.3rem var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-bold) var(--text-lg) / 1.3 var(--font-family-ubuntu);
   color: var(--color-black, #2d4b4b);
 }
 
 .pilgrims-horizontal-chart__pct {
-  font: var(--font-style-normal) var(--font-weight-bold) 1.3rem/1.3rem var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-bold) var(--text-lg) / 1.3 var(--font-family-ubuntu);
   color: var(--color-black, #2d4b4b);
-  margin-top: 0.05rem;
+  margin-top: var(--space-1);
 }
 
 .pilgrims-horizontal-chart__track {
   flex: 1;
   min-width: 0;
-  max-width: 320px;
-  height: 60px;
+  max-width: 20rem;
+  height: calc(var(--fluid-base) * 3.75);
   background-color: #d9edee;
 }
 
@@ -94,8 +93,8 @@
 
 /* Bar 3: 0,14% – thin vertical line */
 .pilgrims-horizontal-chart__row--3 .pilgrims-horizontal-chart__fill--line {
-  width: 2px;
-  min-width: 2px;
+  width: 0.125rem;
+  min-width: 0.125rem;
   background-color: #df5e3e;
 }
 </style>

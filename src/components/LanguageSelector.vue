@@ -44,7 +44,7 @@ function goToLocale(newLocale: 'fr' | 'es') {
 .language-selector {
   position: fixed;
   top: 0;
-  right: 200px;
+  right: 12.5rem;
   z-index: 100;
   display: flex;
   align-items: center;
@@ -54,13 +54,13 @@ function goToLocale(newLocale: 'fr' | 'es') {
   background-origin: padding-box;
   opacity: 1;
   font-family: var(--font-family-ubuntu);
-  font-size: var(--font-size-sm);
+  font-size: var(--text-sm);
   line-height: 1;
-  padding: 7px;
-  gap: 0.4rem;
-  height: 35px;
-  width: 75px;
-  border-bottom: 3px solid var(--color-orange);
+  padding: var(--space-1);
+  gap: var(--space-1);
+  height: calc(var(--fluid-base) * 2.25);
+  width: calc(var(--fluid-base) * 4.75);
+  border-bottom: 0.1875rem solid var(--color-orange);
 }
 
 .language-selector__option {

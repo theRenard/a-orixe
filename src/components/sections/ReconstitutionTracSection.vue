@@ -5,7 +5,7 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
 <template>
 <section class="reconstitution-trac-section">
   <div class="container">
-    <ImageCrop width="100%" height="320px" position="center 50%" :caption="$t('reconstitutionTrac.imageCaption')"
+    <ImageCrop width="100%" height="20rem" position="center 50%" :caption="$t('reconstitutionTrac.imageCaption')"
       caption-position="bottom">
       <img src="../../assets/photos/02_miguel_angel_soutullo_alvarez.webp" :alt="$t('reconstitutionTrac.imageCaption')"
         class="reconstitution-trac-section__image" loading="lazy">

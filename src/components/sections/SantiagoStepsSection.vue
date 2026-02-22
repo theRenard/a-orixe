@@ -27,7 +27,7 @@ import espagneImage from '@/assets/illustrations/espagne_ok.webp'
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: var(--space-3);
 }
 
 .santiago-steps-section__title-text {
@@ -37,10 +37,9 @@ import espagneImage from '@/assets/illustrations/espagne_ok.webp'
 
 .santiago-steps-section__title-img-wrap {
   flex-shrink: 0;
-  /* Double border: outer 5px dark, inner 2px light */
-  border: 5px solid var(--santiago-steps-border-outer, #b25d2e);
-  box-shadow: inset 0 0 0 2px var(--santiago-steps-border-inner, #e68e54);
-  border-radius: 2px;
+  border: 0.3125rem solid var(--santiago-steps-border-outer, #b25d2e);
+  box-shadow: inset 0 0 0 0.125rem var(--santiago-steps-border-inner, #e68e54);
+  border-radius: 0.125rem;
   padding: 0;
   line-height: 0;
   display: inline-flex;
@@ -50,13 +49,13 @@ import espagneImage from '@/assets/illustrations/espagne_ok.webp'
 
 .santiago-steps-section__title-img {
   display: block;
-  height: 370px;
+  height: 23.125rem;
   width: auto;
   object-fit: contain;
-  border: 3px solid var(--color-orange);
-  padding: 20px;
+  border: 0.1875rem solid var(--color-orange);
+  padding: var(--space-3);
   position: absolute;
-  right: 1rem;
+  right: var(--space-2);
   bottom: 0;
 }
 </style>

@@ -8,7 +8,7 @@ import capsuleSonoreImage from '@/assets/photos/13_florence_antunes.webp'
 <template>
 <section class="capsule-sonore-section">
   <div class="container">
-    <ImageCrop width="100%" height="600px" position="center 50%">
+    <ImageCrop width="100%" height="37.5rem" position="center 50%">
       <img :src="capsuleSonoreImage" :alt="$t('capsuleSonore.imageCaption')" class="capsule-sonore-section__image mt-3"
         loading="lazy">
     </ImageCrop>

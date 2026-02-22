@@ -7,12 +7,12 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
   <div class="container">
     <div class="signalisation-section__grid">
       <div class="signalisation-section__cell">
-        <ImageCrop width="100%" height="600px" position="center 50%">
+        <ImageCrop width="100%" height="37.5rem" position="center 50%">
           <img src="../../assets/photos/08_florence_antunes.webp" :alt="$t('signalisation.caption')" loading="lazy">
         </ImageCrop>
       </div>
       <div class="signalisation-section__cell">
-        <ImageCrop width="100%" height="600px" position="center 50%">
+        <ImageCrop width="100%" height="37.5rem" position="center 50%">
           <img src="../../assets/photos/09_florence_antunes.webp" :alt="$t('signalisation.caption')" loading="lazy">
         </ImageCrop>
       </div>
@@ -28,7 +28,7 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
 .signalisation-section__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: var(--space-2);
   max-width: 100%;
 }
 

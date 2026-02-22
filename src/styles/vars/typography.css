@@ -1,22 +1,22 @@
-/* Typography – BEM block: type (uses design-tokens.css) */
+/* Typography – BEM block: type (uses design-tokens fluid scale) */
 
 /* Hero */
 .type__hero-title {
-  font: var(--font-style-normal) var(--font-weight-bold) calc(106px * var(--font-scale)) / calc(88px * var(--font-scale)) var(--font-family-fraunces);
+  font: var(--font-style-normal) var(--font-weight-bold) var(--text-xxl) / 1.2 var(--font-family-fraunces);
   text-align: left;
-  letter-spacing: calc(3.18px * var(--font-scale));
+  letter-spacing: var(--letter-spacing-normal);
   color: #481706;
 }
 
 .type__hero-subtitle {
-  font: var(--font-style-normal) var(--font-weight-bold) calc(63px * var(--font-scale)) / calc(88px * var(--font-scale)) var(--font-family-fraunces);
+  font: var(--font-style-normal) var(--font-weight-bold) var(--text-xl) / 1.2 var(--font-family-fraunces);
   text-align: left;
-  letter-spacing: calc(1.89px * var(--font-scale));
+  letter-spacing: var(--letter-spacing-normal);
   color: var(--color-orange);
 }
 
 .type__hero-synopsis {
-  font: var(--font-style-normal) var(--font-weight-bold) var(--font-size-xl)/var(--line-height-md) var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-bold) var(--text-xl) / 1.35 var(--font-family-ubuntu);
   letter-spacing: var(--letter-spacing-normal);
   color: var(--color-black);
   text-align: left;
@@ -32,16 +32,16 @@
 }
 
 .type__credits {
-  font: var(--font-style-normal) var(--font-weight-normal) calc(16px * var(--font-scale)) / calc(18px * var(--font-scale)) var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-normal) var(--text-sm) / 1.2 var(--font-family-ubuntu);
 }
 
 .type__credits-link {
-  font: var(--font-style-normal) var(--font-weight-bold) calc(16px * var(--font-scale)) / calc(18px * var(--font-scale)) var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-bold) var(--text-sm) / 1.2 var(--font-family-ubuntu);
   text-decoration: underline;
 }
 
 .type__credits-bold {
-  font: var(--font-style-normal) var(--font-weight-bold) calc(16px * var(--font-scale)) / calc(18px * var(--font-scale)) var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-bold) var(--text-sm) / 1.2 var(--font-family-ubuntu);
 }
 
 /* Section */
@@ -52,7 +52,7 @@
 }
 
 .type__section-title {
-  font: var(--font-style-normal) var(--font-weight-bold) var(--font-size-3xl)/var(--line-height-lg) var(--font-family-fraunces);
+  font: var(--font-style-normal) var(--font-weight-bold) var(--text-xxl) / 1.2 var(--font-family-fraunces);
   color: var(--color-orange);
 }
 
@@ -61,18 +61,18 @@
   display: block;
   width: 15%;
   min-width: 8rem;
-  height: 4px;
+  height: 0.25rem;
   background: var(--color-orange);
-  margin: 0 0 1.5rem;
+  margin: 0 0 var(--space-3);
 }
 
 .type__section-paragraph {
-  font: var(--font-style-normal) var(--font-weight-normal) var(--font-size-lg)/var(--line-height-base) var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-normal) var(--text-lg) / 1.4 var(--font-family-ubuntu);
   color: var(--color-black);
 }
 
 .type__section-paragraph--italic {
-  font: var(--font-style-italic) var(--font-weight-normal) var(--font-size-lg)/var(--line-height-base) var(--font-family-ubuntu);
+  font: var(--font-style-italic) var(--font-weight-normal) var(--text-lg) / 1.4 var(--font-family-ubuntu);
 }
 
 /* Testimonial */
@@ -84,15 +84,15 @@
 }
 
 .type__testimonial-block {
-  padding-bottom: 1rem;
+  padding-bottom: var(--space-2);
 }
 
 .type__testimonial-block--fr {
-  font: var(--font-style-italic) var(--font-weight-bold) var(--font-size-2xl)/var(--line-height-xl) var(--font-family-ubuntu);
+  font: var(--font-style-italic) var(--font-weight-bold) var(--text-xl) / 1.35 var(--font-family-ubuntu);
 }
 
 .type__testimonial-block--es {
-  font: var(--font-style-normal) var(--font-weight-bold) var(--font-size-2xl)/var(--line-height-xl) var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-bold) var(--text-xl) / 1.35 var(--font-family-ubuntu);
 }
 
 .type__testimonial-block--fr::after {
@@ -108,24 +108,24 @@
   position: absolute;
   top: -6rem;
   left: -7rem;
-  font: var(--font-style-italic) var(--font-weight-light) 6em/0.85 var(--font-family-ubuntu);
+  font: var(--font-style-italic) var(--font-weight-light) var(--text-xxl) / 0.85 var(--font-family-ubuntu);
   color: var(--color-teal-light);
 }
 
 .type__testimonial-name {
-  font: var(--font-style-normal) var(--font-weight-normal) var(--font-size-lg)/var(--line-height-base) var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-normal) var(--text-lg) / 1.4 var(--font-family-ubuntu);
 }
 
 /* Question */
 .type__question {
-  font: var(--font-style-normal) var(--font-weight-bold) var(--font-size-lg)/var(--line-height-base) var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-bold) var(--text-lg) / 1.4 var(--font-family-ubuntu);
   letter-spacing: var(--letter-spacing-normal);
   color: var(--color-teal-dark);
   text-align: left;
-  border-left: 4px solid var(--color-teal-dark);
-  padding-left: 1rem;
-  padding-bottom: 1rem;
-  padding-top: 1rem;
+  border-left: 0.25rem solid var(--color-teal-dark);
+  padding-left: var(--space-2);
+  padding-bottom: var(--space-2);
+  padding-top: var(--space-2);
 }
 
 /* Interview: shared base */
@@ -138,7 +138,7 @@
 }
 
 .type__interview-title {
-  font: var(--font-style-normal) var(--font-weight-bold) var(--font-size-3xl)/var(--line-height-lg) var(--font-family-fraunces);
+  font: var(--font-style-normal) var(--font-weight-bold) var(--text-xxl) / 1.2 var(--font-family-fraunces);
   color: var(--color-brown-dark);
 }
 
@@ -147,37 +147,37 @@
   display: block;
   width: 15%;
   min-width: 8rem;
-  height: 4px;
+  height: 0.25rem;
   background: var(--color-brown-dark);
-  margin: 0 0 1.5rem;
+  margin: 0 0 var(--space-3);
 }
 
 .type__interview-subtitle {
-  font: var(--font-style-normal) var(--font-weight-bold) var(--font-size-xl)/var(--line-height-md) var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-bold) var(--text-xl) / 1.35 var(--font-family-ubuntu);
   color: var(--color-brown-dark);
 }
 
 .type__interview-question {
-  font: var(--font-style-normal) var(--font-weight-bold) var(--font-size-lg)/var(--line-height-base) var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-bold) var(--text-lg) / 1.4 var(--font-family-ubuntu);
   color: var(--color-brown-dark);
 }
 
 .type__interview-answer {
-  font: var(--font-style-normal) var(--font-weight-normal) var(--font-size-lg)/var(--line-height-base) var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-normal) var(--text-lg) / 1.4 var(--font-family-ubuntu);
   color: var(--color-orange);
 }
 
 /* Footnote / small italic (e.g. testimonial footnote) */
 .type__footnote {
-  font: var(--font-style-italic) var(--font-weight-normal) calc(16px * var(--font-scale)) / calc(25px * var(--font-scale)) var(--font-family-ubuntu);
+  font: var(--font-style-italic) var(--font-weight-normal) var(--text-sm) / 1.5 var(--font-family-ubuntu);
   letter-spacing: var(--letter-spacing-normal);
   color: var(--color-teal-medium);
   text-align: left;
 }
 
-/* Image caption (medium, 14px/36px, Ubuntu, teal, optional line) */
+/* Image caption (medium, xs/sm size, Ubuntu, teal, optional line) */
 .type__image-caption {
-  font: var(--font-style-normal) var(--font-weight-medium) calc(14px * var(--font-scale)) / calc(36px * var(--font-scale)) var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-medium) var(--text-xs) / 1.4 var(--font-family-ubuntu);
   letter-spacing: var(--letter-spacing-normal);
   color: var(--color-teal-medium);
   text-align: left;
@@ -187,16 +187,16 @@
 .type__image-caption--with-line {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--space-2);
 }
 
 .type__image-caption--with-line::before {
   content: '';
   flex-shrink: 0;
-  width: 35px;
-  min-width: 35px;
-  height: 2px;
+  width: calc(var(--fluid-base) * 2);
+  min-width: calc(var(--fluid-base) * 2);
+  height: 0.125rem;
   background: var(--color-teal-medium);
   position: relative;
-  top: 3px;
+  top: 0.2rem;
 }

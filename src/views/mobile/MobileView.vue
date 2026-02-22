@@ -16,7 +16,7 @@ import CommentEstNeRecitSection from '@/components/sections/CommentEstNeRecitSec
 .mobile-view {
   width: 100%;
   min-height: 100vh;
-  padding: 0 1rem;
+  padding: 0 var(--space-2);
   box-sizing: border-box;
 }
 </style>

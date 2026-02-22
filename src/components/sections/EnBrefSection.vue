@@ -54,21 +54,21 @@ const routeDetailUrl = computed(() => `https://aorixe.es/${locale.value === 'es'
 }
 
 .en-bref-section__inner {
-  max-width: 1000px;
+  max-width: 62.5rem;
   margin: 0 auto;
 }
 
 .en-bref-section__title {
-  font: normal var(--font-weight-bold) calc(38px * var(--font-scale)) / 1.2 var(--font-family-fraunces);
+  font: normal var(--font-weight-bold) var(--text-xxl) / 1.2 var(--font-family-fraunces);
   color: var(--color-orange);
   text-align: left;
 }
 
 .en-bref-section__title-underline {
   display: inline-block;
-  border-bottom: 2px solid var(--color-orange);
-  padding-bottom: 2px;
-  margin-bottom: 2px;
+  border-bottom: 0.125rem solid var(--color-orange);
+  padding-bottom: 0.125rem;
+  margin-bottom: 0.125rem;
 }
 
 .en-bref-section__stats-row {
@@ -76,8 +76,8 @@ const routeDetailUrl = computed(() => `https://aorixe.es/${locale.value === 'es'
   flex-wrap: nowrap;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 3rem;
-  margin-bottom: 2.5rem;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
 }
 
 .en-bref-section__stat {
@@ -90,15 +90,14 @@ const routeDetailUrl = computed(() => `https://aorixe.es/${locale.value === 'es'
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  /* gap: 1rem; */
 }
 
 .en-bref-section__icon {
   flex-shrink: 0;
-  width: 100px;
-  height: 100px;
+  width: calc(var(--fluid-base) * 6);
+  height: calc(var(--fluid-base) * 6);
   object-fit: contain;
-  margin-right: 1rem;
+  margin-right: var(--space-2);
 }
 
 .en-bref-section__icon--svg {
@@ -106,12 +105,12 @@ const routeDetailUrl = computed(() => `https://aorixe.es/${locale.value === 'es'
 }
 
 .en-bref-section__icon--svg :deep(svg) {
-  width: 48px;
-  height: 48px;
+  width: calc(var(--fluid-base) * 3);
+  height: calc(var(--fluid-base) * 3);
 }
 
 .en-bref-section__link-wrap {
-  font: normal var(--font-weight-normal) calc(20px * var(--font-scale)) / calc(40px * var(--font-scale)) var(--font-family-ubuntu);
+  font: normal var(--font-weight-normal) var(--text-md) / 1.4 var(--font-family-ubuntu);
   color: var(--color-teal-dark);
   text-align: center;
   margin: 0;

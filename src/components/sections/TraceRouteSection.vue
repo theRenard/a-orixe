@@ -38,7 +38,7 @@ import donManuelImage from '@/assets/audio-photos/pastille-photo-don-manuel.webp
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.15rem;
+  gap: var(--space-1);
 }
 
 .trace-route-section__player-wrap :deep(.trace-route-section__player-line2) {

@@ -6,9 +6,34 @@
  * Fonts: Ubuntu and Fraunces are loaded from Google Fonts in index.html
  * (preconnect + stylesheet link). Weights: Ubuntu 300, 400, 500, 700 + italic 400;
  * Fraunces 400, 700 + italics.
+ *
+ * Fluid design system: typography and spacing scale from a single --fluid-base (clamp).
  */
 
 :root {
+  /* Fluid base: single scale for typography and spacing */
+  --fluid-base: clamp(1rem, 0.9vw + 0.5rem, 1.25rem);
+
+  /* Typography scale (all derived from --fluid-base) */
+  --text-xs: calc(var(--fluid-base) * 0.75);
+  --text-sm: calc(var(--fluid-base) * 0.875);
+  --text-md: var(--fluid-base);
+  --text-lg: calc(var(--fluid-base) * 1.5);
+  --text-xl: calc(var(--fluid-base) * 2.5);
+  --text-xxl: calc(var(--fluid-base) * 3.5);
+
+  /* Spacing scale */
+  --space-1: calc(var(--fluid-base) * 0.5);
+  --space-2: calc(var(--fluid-base) * 1);
+  --space-3: calc(var(--fluid-base) * 2);
+  --space-4: calc(var(--fluid-base) * 3);
+  --space-5: calc(var(--fluid-base) * 4);
+  --space-6: calc(var(--fluid-base) * 5);
+  --space-7: calc(var(--fluid-base) * 6);
+  --space-8: calc(var(--fluid-base) * 7);
+  --space-9: calc(var(--fluid-base) * 8);
+  --space-10: calc(var(--fluid-base) * 9);
+
   /* Colors */
   --color-teal-dark: #2d4b4b;
   --color-teal-medium: #609897;
@@ -49,29 +74,11 @@
   --font-weight-bold: 700;
   --font-weight-black: 900;
 
-  /* Global font scale (1 = design size; 0.7 = 30% reduction) */
-  --font-scale: 0.7;
+  /* Letter spacing */
+  --letter-spacing-normal: 0;
+}
 
-  /* Font sizes (scaled by --font-scale) */
-  --font-size-xs: calc(12px * var(--font-scale));
-  --font-size-sm: calc(18px * var(--font-scale));
-  --font-size-base: calc(20px * var(--font-scale));
-  --font-size-lg: calc(24px * var(--font-scale));
-  --font-size-xl: calc(27px * var(--font-scale));
-  --font-size-2xl: calc(30px * var(--font-scale));
-  --font-size-3xl: calc(35px * var(--font-scale));
-  --font-size-display: calc(150px * var(--font-scale));
-
-  /* Spacing (letter) */
-  --letter-spacing-normal: 0px;
-
-  /* Line heights (scaled by --font-scale) */
-  --line-height-tight: calc(15px * var(--font-scale));
-  --line-height-sm: calc(30px * var(--font-scale));
-  --line-height-base: calc(34px * var(--font-scale));
-  --line-height-md: calc(35px * var(--font-scale));
-  --line-height-text: calc(36px * var(--font-scale));
-  --line-height-lg: calc(40px * var(--font-scale));
-  --line-height-xl: calc(44px * var(--font-scale));
-  --line-height-display: calc(55px * var(--font-scale));
+/* Root font-size: clamp so rem units scale with viewport */
+html {
+  font-size: clamp(14px, 0.8vw, 22px);
 }

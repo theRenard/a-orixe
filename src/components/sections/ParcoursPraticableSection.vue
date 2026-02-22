@@ -14,7 +14,7 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
           <p class="type__question" v-html="$t('parcoursPraticable.paragraph2')"></p>
         </div>
         <div class="col-right">
-          <ImageCrop width="100%" height="600px" position="center 40%"
+          <ImageCrop width="100%" height="37.5rem" position="center 40%"
             :caption="$t('parcoursPraticable.photoCredit')" caption-position="bottom">
             <img src="../../assets/photos/03_florence_antunes.webp" :alt="$t('parcoursPraticable.imageCaption')"
               loading="lazy">
@@ -28,10 +28,10 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
 
 <style scoped>
 .parcours-praticable-section__first {
-  margin-top: 1rem;
+  margin-top: var(--space-2);
 }
 
 .parcours-praticable-section__first :deep(.paragraph-spacing) {
-  margin-top: 1rem !important;
+  margin-top: var(--space-2) !important;
 }
 </style>

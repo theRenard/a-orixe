@@ -12,17 +12,17 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
     </p>
     <div class="joyau-section__grid">
       <div class="joyau-section__cell">
-        <ImageCrop width="100%" height="600px" position="center 50%">
+        <ImageCrop width="100%" height="37.5rem" position="center 50%">
           <img src="../../assets/photos/10_florence_antunes.webp" :alt="$t('joyau.caption')" loading="lazy">
         </ImageCrop>
       </div>
       <div class="joyau-section__cell">
-        <ImageCrop width="100%" height="600px" position="center 50%">
+        <ImageCrop width="100%" height="37.5rem" position="center 50%">
           <img src="../../assets/photos/11_florence_antunes.webp" :alt="$t('joyau.caption')" loading="lazy">
         </ImageCrop>
       </div>
       <div class="joyau-section__cell">
-        <ImageCrop width="100%" height="600px" position="center 50%">
+        <ImageCrop width="100%" height="37.5rem" position="center 50%">
           <img src="../../assets/photos/12_florence_antunes.webp" :alt="$t('joyau.caption')" loading="lazy">
         </ImageCrop>
       </div>
@@ -39,7 +39,7 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
 .joyau-section__grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 1rem;
+  gap: var(--space-2);
   max-width: 100%;
 }
 
@@ -51,7 +51,7 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
 
 .joyau-section__cell {
   overflow: hidden;
-  border-radius: 2px;
+  border-radius: 0.125rem;
 }
 
 .joyau-section__cell :deep(img) {

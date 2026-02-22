@@ -47,9 +47,9 @@ const barColors = [
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  gap: 2rem;
-  height: 200px;
-  padding: 0 1rem;
+  gap: var(--space-3);
+  height: 12.5rem;
+  padding: 0 var(--space-2);
 }
 
 .pilgrims-chart__bar-wrap {
@@ -57,21 +57,21 @@ const barColors = [
   flex-direction: column;
   align-items: center;
   flex: 1;
-  max-width: 140px;
+  max-width: 8.75rem;
   height: 100%;
 }
 
 .pilgrims-chart__bar {
   width: 100%;
-  max-width: 80px;
-  min-height: 4px;
-  border-radius: 2px 2px 0 0;
+  max-width: 5rem;
+  min-height: 0.25rem;
+  border-radius: 0.125rem 0.125rem 0 0;
   transition: height 0.3s ease;
 }
 
 .pilgrims-chart__label {
-  margin: 0.75rem 0 0;
-  font: var(--font-style-normal) var(--font-weight-normal) var(--font-size-base)/var(--line-height-base) var(--font-family-ubuntu);
+  margin: var(--space-2) 0 0;
+  font: var(--font-style-normal) var(--font-weight-normal) var(--text-md) / 1.4 var(--font-family-ubuntu);
   color: var(--color-black);
   text-align: center;
 }
@@ -83,6 +83,6 @@ const barColors = [
 
 .pilgrims-chart__pct {
   display: block;
-  margin-top: 0.25rem;
+  margin-top: var(--space-1);
 }
 </style>

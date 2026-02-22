@@ -40,20 +40,20 @@
 
 <style scoped>
 .credits {
-  margin-top: 100px;
+  margin-top: var(--space-10);
   width: 100%;
 }
 
 .credits__inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem 3rem;
+  gap: var(--space-3) var(--space-4);
 }
 
 .credits__col {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: var(--space-1);
 }
 
 .credits__col--left {
@@ -66,8 +66,8 @@
 
 .credits__line-accent {
   width: 8rem;
-  height: 4px;
+  height: 0.25rem;
   background: var(--color-orange);
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-1);
 }
 </style>

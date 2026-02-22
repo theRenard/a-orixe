@@ -7,7 +7,7 @@ const props = withDefaults(
     caption?: string
     captionPosition?: 'top' | 'bottom'
   }>(),
-  { width: '100%', height: '300px', position: 'center' }
+  { width: '100%', height: '18.75rem', position: 'center' }
 )
 
 function toCssSize(value: string | number): string {
