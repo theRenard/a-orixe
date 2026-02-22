@@ -25,7 +25,9 @@ onMounted(() => {
 </script>
 
 <template>
-<section ref="sectionRoot" class="reconstitution-trac-section">
+<div data-block class="block">
+  <div data-block-inner class="block-inner">
+    <section ref="sectionRoot" class="reconstitution-trac-section">
   <div class="container">
     <div ref="imageBlock">
       <ImageCrop width="100%" height="320px" position="center 50%" :caption="$t('reconstitutionTrac.imageCaption')"
@@ -48,6 +50,8 @@ onMounted(() => {
     </div>
   </div>
 </section>
+  </div>
+</div>
 </template>
 
 <style scoped>

@@ -29,7 +29,9 @@ onMounted(() => {
 </script>
 
 <template>
-<section ref="sectionRoot" class="en-bref-section section--full-viewport">
+<div data-block class="block">
+  <div data-block-inner class="block-inner">
+    <section ref="sectionRoot" class="en-bref-section section--full-viewport">
   <div class="en-bref-section__inner container">
     <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">
       <span class="">{{ $t('enBref.titlePrefix') }}</span>{{ $t('enBref.titleSuffix') }}
@@ -66,6 +68,8 @@ onMounted(() => {
     </p>
   </div>
 </section>
+  </div>
+</div>
 </template>
 
 <style scoped>

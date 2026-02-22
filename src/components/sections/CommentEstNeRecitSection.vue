@@ -22,7 +22,9 @@ onMounted(() => {
 </script>
 
 <template>
-<section ref="sectionRoot" class="section--full-viewport comment-est-ne-section">
+<div data-block class="block">
+  <div data-block-inner class="block-inner">
+    <section ref="sectionRoot" class="section--full-viewport comment-est-ne-section">
   <div class="container">
     <div class="comment-est-ne-section__inner paragraph-spacing">
       <div class="comment-est-ne-section__grid">
@@ -52,6 +54,8 @@ onMounted(() => {
     </div>
   </div>
 </section>
+  </div>
+</div>
 </template>
 
 <style scoped>

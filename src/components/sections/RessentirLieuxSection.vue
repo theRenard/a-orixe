@@ -25,7 +25,9 @@ onMounted(() => {
 </script>
 
 <template>
-<section ref="sectionRoot" class="ressentir-lieux-section">
+<div data-block class="block">
+  <div data-block-inner class="block-inner">
+    <section ref="sectionRoot" class="ressentir-lieux-section">
   <div class="container">
     <div class="centered">
       <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">
@@ -46,6 +48,8 @@ onMounted(() => {
     </div>
   </div>
 </section>
+  </div>
+</div>
 </template>
 
 <style scoped>

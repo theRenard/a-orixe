@@ -31,7 +31,9 @@ onMounted(() => {
 </script>
 
 <template>
-<section ref="sectionRoot" class="santiago-journey-photo-grid-section">
+<div data-block class="block">
+  <div data-block-inner class="block-inner">
+    <section ref="sectionRoot" class="santiago-journey-photo-grid-section">
   <div class="container">
     <div class="santiago-journey-photo-grid align-center paragraph-spacing" role="img"
       :aria-label="$t('santiagoJourney.imageCaption')">
@@ -56,6 +58,8 @@ onMounted(() => {
     </div>
   </div>
 </section>
+  </div>
+</div>
 </template>
 
 <style scoped>

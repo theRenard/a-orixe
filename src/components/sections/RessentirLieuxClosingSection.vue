@@ -18,13 +18,17 @@ onMounted(() => {
 </script>
 
 <template>
-  <section ref="sectionRoot" class="ressentir-lieux-closing-section section--half-viewport">
+<div data-block class="block">
+  <div data-block-inner class="block-inner">
+    <section ref="sectionRoot" class="ressentir-lieux-closing-section section--half-viewport">
     <div class="container">
       <div class="centered">
         <p ref="paragraph" class="type__section-paragraph paragraph-spacing" v-html="$t('ressentirLieux.paragraph2')"></p>
       </div>
     </div>
   </section>
+  </div>
+</div>
 </template>
 
 <style scoped>

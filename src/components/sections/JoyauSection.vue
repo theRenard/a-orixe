@@ -29,7 +29,9 @@ onMounted(() => {
 </script>
 
 <template>
-<section ref="sectionRoot" class="joyau-section">
+<div data-block class="block">
+  <div data-block-inner class="block-inner">
+    <section ref="sectionRoot" class="joyau-section">
   <div class="container">
     <div class="centered">
       <p ref="quote" class="type__section-paragraph joyau-section__quote paragraph-spacing" v-html="$t('joyau.paragraph')"></p>
@@ -55,6 +57,8 @@ onMounted(() => {
     </div>
   </div>
 </section>
+  </div>
+</div>
 </template>
 
 <style scoped>

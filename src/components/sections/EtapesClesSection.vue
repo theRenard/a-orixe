@@ -24,7 +24,9 @@ onMounted(() => {
 </script>
 
 <template>
-<section id="etapes-cles" ref="sectionRoot" class="etapes-cles-section">
+<div data-block class="block">
+  <div data-block-inner class="block-inner">
+    <section id="etapes-cles" ref="sectionRoot" class="etapes-cles-section">
   <div class="container">
     <div class="centered">
       <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">
@@ -36,6 +38,8 @@ onMounted(() => {
       loading="lazy" style="width: 60vw;">
   </div>
 </section>
+  </div>
+</div>
 </template>
 
 <style scoped>

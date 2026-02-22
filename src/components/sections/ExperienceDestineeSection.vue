@@ -23,7 +23,9 @@ onMounted(() => {
 </script>
 
 <template>
-<section ref="sectionRoot" class="experience-destinee-section">
+<div data-block class="block">
+  <div data-block-inner class="block-inner">
+    <section ref="sectionRoot" class="experience-destinee-section">
   <div class="container">
     <div class="centered">
       <img ref="illustration" :src="bateauIllustration" :alt="$t('experienceDestinee.illustrationAlt')"
@@ -49,6 +51,8 @@ onMounted(() => {
     </div>
   </div>
 </section>
+  </div>
+</div>
 </template>
 
 <style scoped>

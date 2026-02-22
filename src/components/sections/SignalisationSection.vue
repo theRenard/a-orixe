@@ -25,7 +25,9 @@ onMounted(() => {
 </script>
 
 <template>
-<section ref="sectionRoot" class="signalisation-section mt-3 mb-3">
+<div data-block class="block">
+  <div data-block-inner class="block-inner">
+    <section ref="sectionRoot" class="signalisation-section mt-3 mb-3">
   <div class="container">
     <div class="signalisation-section__grid">
       <div ref="cell1" class="signalisation-section__cell">
@@ -44,6 +46,8 @@ onMounted(() => {
     </p>
   </div>
 </section>
+  </div>
+</div>
 </template>
 
 <style scoped>

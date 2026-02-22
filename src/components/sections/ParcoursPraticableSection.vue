@@ -25,7 +25,9 @@ onMounted(() => {
 </script>
 
 <template>
-<section ref="sectionRoot" class="parcours-praticable-section">
+<div data-block class="block">
+  <div data-block-inner class="block-inner">
+    <section ref="sectionRoot" class="parcours-praticable-section">
   <div class="container">
     <div ref="firstBlock" class="centered parcours-praticable-section__first">
       <p class="type__section-paragraph paragraph-spacing" v-html="$t('parcoursPraticable.paragraph1')"></p>
@@ -46,6 +48,8 @@ onMounted(() => {
     </div>
   </div>
 </section>
+  </div>
+</div>
 </template>
 
 <style scoped>

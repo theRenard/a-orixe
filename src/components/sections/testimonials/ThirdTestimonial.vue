@@ -20,18 +20,22 @@ onMounted(() => {
 </script>
 
 <template>
-<section ref="sectionRoot" class="section--full-viewport with-background with-shadow third-testimonial">
-  <div class="container">
-    <blockquote class="centered">
-      <div ref="blockquoteInner">
-        <p class="type__testimonial-block relative" :class="`type__testimonial-block--${locale}`">
-          <span v-html="$t('thirdTestimonial.quote')"></span>
-        </p>
-        <footer class="type__testimonial-name" v-html="$t('thirdTestimonial.quoteAuthor')"></footer>
+<div data-block class="block">
+  <div data-block-inner class="block-inner">
+    <section ref="sectionRoot" class="section--full-viewport with-background with-shadow third-testimonial">
+      <div class="container">
+        <blockquote class="centered">
+          <div ref="blockquoteInner">
+            <p class="type__testimonial-block relative" :class="`type__testimonial-block--${locale}`">
+              <span v-html="$t('thirdTestimonial.quote')"></span>
+            </p>
+            <footer class="type__testimonial-name" v-html="$t('thirdTestimonial.quoteAuthor')"></footer>
+          </div>
+        </blockquote>
       </div>
-    </blockquote>
+    </section>
   </div>
-</section>
+</div>
 </template>
 
 <style scoped>

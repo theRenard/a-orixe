@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useBlockScroll } from '@/composables/useBlockScroll'
-import mouseIcon from '@/assets/icons/computer-mouse-icon.svg'
 import HeroIllustration from '@/components/sections/HeroIllustration.vue'
 import HeroSection from '@/components/sections/HeroSection.vue'
 import CaminoSection from '@/components/sections/CaminoSection.vue'
@@ -49,47 +48,40 @@ useBlockScroll({
 <template>
 <main ref="mainRef" class="block-viewport">
   <div ref="railRef" class="blocks-rail">
-    <div data-block class="block block--first">
-      <div data-block-inner class="block-inner">
-        <HeroIllustration />
-        <div class="scroll-indicator" aria-hidden="true">
-          <img :src="mouseIcon" alt="" class="scroll-indicator__icon" />
-        </div>
-      </div>
-    </div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><HeroSection /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><CaminoSection /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><FirstTestimonial /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><EtapesClesSection /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><SecondTestimonial /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><RessentirLieuxSection /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><RessentirLieuxClosingSection /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><FifthTestimonial /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><AssociationSection /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><ReconstitutionTracSection /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><ThirdTestimonial /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><ElementsJacquaireSection /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><ParcoursPraticableSection /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><MapIllustration /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><SantiagoStepsSection /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><ConcentreGaliceSection /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><SantiagoJourneyPhotoGrid /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><SantiagoJourneySection /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><ReconnaissanceSection /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><FourthTestimonial /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><FlechageSection /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><SignalisationSection /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><CoupDeCoeurSection /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><JoyauSection /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><DeconnexionSection /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><CapsuleSonoreSection /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><PilgrimsStatsSection /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><TraceRouteSection /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><SlowTourismeSection /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><OrixeInterviewSection /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><ExperienceDestineeSection /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><EnBrefSection /></div></div>
-    <div data-block class="block"><div data-block-inner class="block-inner"><CommentEstNeRecitSection /></div></div>
+    <HeroIllustration />
+    <HeroSection />
+    <CaminoSection />
+    <FirstTestimonial />
+    <EtapesClesSection />
+    <SecondTestimonial />
+    <RessentirLieuxSection />
+    <RessentirLieuxClosingSection />
+    <FifthTestimonial />
+    <AssociationSection />
+    <ReconstitutionTracSection />
+    <ThirdTestimonial />
+    <ElementsJacquaireSection />
+    <ParcoursPraticableSection />
+    <MapIllustration />
+    <SantiagoStepsSection />
+    <ConcentreGaliceSection />
+    <SantiagoJourneyPhotoGrid />
+    <SantiagoJourneySection />
+    <ReconnaissanceSection />
+    <FourthTestimonial />
+    <FlechageSection />
+    <SignalisationSection />
+    <CoupDeCoeurSection />
+    <JoyauSection />
+    <DeconnexionSection />
+    <CapsuleSonoreSection />
+    <PilgrimsStatsSection />
+    <TraceRouteSection />
+    <SlowTourismeSection />
+    <OrixeInterviewSection />
+    <ExperienceDestineeSection />
+    <EnBrefSection />
+    <CommentEstNeRecitSection />
   </div>
 </main>
 </template>
@@ -105,44 +97,16 @@ useBlockScroll({
   will-change: transform;
 }
 
-.block {
+/* Block and block-inner live inside each section component; rail only needs to stack them */
+:deep([data-block]) {
   height: 100vh;
   flex-shrink: 0;
 }
 
-.block-inner {
+:deep([data-block-inner]) {
   height: 100%;
   min-height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
-}
-
-.block--first .block-inner {
-  position: relative;
-}
-
-.scroll-indicator {
-  position: absolute;
-  bottom: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  pointer-events: none;
-}
-
-.scroll-indicator__icon {
-  display: block;
-  width: 2rem;
-  height: auto;
-  animation: scroll-jump 1.2s cubic-bezier(0.33, 1, 0.68, 1) infinite;
-}
-
-@keyframes scroll-jump {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-0.6rem);
-  }
 }
 </style>

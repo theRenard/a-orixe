@@ -26,7 +26,9 @@ onMounted(() => {
 </script>
 
 <template>
-<section ref="sectionRoot" class="capsule-sonore-section">
+<div data-block class="block">
+  <div data-block-inner class="block-inner">
+    <section ref="sectionRoot" class="capsule-sonore-section">
   <div class="container">
     <div ref="imageBlock">
       <ImageCrop width="100%" height="600px" position="center 50%">
@@ -41,6 +43,8 @@ onMounted(() => {
     </div>
   </div>
 </section>
+  </div>
+</div>
 </template>
 
 <style scoped>

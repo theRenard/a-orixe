@@ -20,25 +20,29 @@ onMounted(() => {
 </script>
 
 <template>
-<section ref="sectionRoot" class="section--full-viewport with-background with-shadow second-testimonial" style="position: relative;">
-  <div class="container">
-    <blockquote class="centered">
-      <div ref="blockquoteInner">
-        <p class="type__testimonial-block relative" :class="`type__testimonial-block--${locale}`">
-          <span v-html="$t('secondTestimonial.quote')"></span>
-        </p>
-        <footer class="type__testimonial-name" v-html="$t('secondTestimonial.quoteAuthor')"></footer>
+<div data-block class="block">
+  <div data-block-inner class="block-inner">
+    <section ref="sectionRoot" class="section--full-viewport with-background with-shadow second-testimonial" style="position: relative;">
+      <div class="container">
+        <blockquote class="centered">
+          <div ref="blockquoteInner">
+            <p class="type__testimonial-block relative" :class="`type__testimonial-block--${locale}`">
+              <span v-html="$t('secondTestimonial.quote')"></span>
+            </p>
+            <footer class="type__testimonial-name" v-html="$t('secondTestimonial.quoteAuthor')"></footer>
+          </div>
+        </blockquote>
+        <img src="@/assets/illustrations/phare.webp" :alt="$t('secondTestimonial.quote')"
+          class="second-testimonial__image ml-auto" loading="lazy">
       </div>
-    </blockquote>
-    <img src="@/assets/illustrations/phare.webp" :alt="$t('secondTestimonial.quote')"
-      class="second-testimonial__image ml-auto" loading="lazy">
+      <div class="container mb-2" style="position: absolute; bottom: 0; left: 0; right: 0;">
+        <div class="centered">
+          <p class="type__footnote paragraph-spacing" v-html="$t('secondTestimonial.footnote')"></p>
+        </div>
+      </div>
+    </section>
   </div>
-  <div class="container mb-2" style="position: absolute; bottom: 0; left: 0; right: 0;">
-    <div class="centered">
-      <p class="type__footnote paragraph-spacing" v-html="$t('secondTestimonial.footnote')"></p>
-    </div>
-  </div>
-</section>
+</div>
 </template>
 
 <style scoped>

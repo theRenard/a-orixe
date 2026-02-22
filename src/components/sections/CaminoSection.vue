@@ -26,7 +26,9 @@ onMounted(() => {
 </script>
 
 <template>
-<section ref="sectionRoot" class="camino-section">
+<div data-block class="block">
+  <div data-block-inner class="block-inner">
+    <section ref="sectionRoot" class="camino-section">
   <div class="container">
     <div class="centered">
       <p ref="synopsis" class="type__hero-synopsis paragraph-spacing" v-html="$t('camino.paragraph')"></p>
@@ -38,6 +40,8 @@ onMounted(() => {
     </div>
   </div>
 </section>
+  </div>
+</div>
 </template>
 
 <style scoped>

@@ -20,24 +20,28 @@ onMounted(() => {
 </script>
 
 <template>
-  <section ref="sectionRoot" class="section--full-viewport with-background with-shadow fourth-testimonial">
-    <div class="container fourth-testimonial__container">
-      <img
-        src="@/assets/illustrations/mouette.webp"
-        :alt="$t('fourthTestimonial.quote')"
-        class="fourth-testimonial__bird"
-        loading="lazy"
-      >
-      <blockquote class="centered">
-        <div ref="blockquoteInner">
-          <p class="type__testimonial-block relative" :class="`type__testimonial-block--${locale}`">
-            <span v-html="$t('fourthTestimonial.quote')"></span>
-          </p>
-          <footer class="type__testimonial-name" v-html="$t('fourthTestimonial.quoteAuthor')"></footer>
-        </div>
-      </blockquote>
-    </div>
-  </section>
+<div data-block class="block">
+  <div data-block-inner class="block-inner">
+    <section ref="sectionRoot" class="section--full-viewport with-background with-shadow fourth-testimonial">
+      <div class="container fourth-testimonial__container">
+        <img
+          src="@/assets/illustrations/mouette.webp"
+          :alt="$t('fourthTestimonial.quote')"
+          class="fourth-testimonial__bird"
+          loading="lazy"
+        >
+        <blockquote class="centered">
+          <div ref="blockquoteInner">
+            <p class="type__testimonial-block relative" :class="`type__testimonial-block--${locale}`">
+              <span v-html="$t('fourthTestimonial.quote')"></span>
+            </p>
+            <footer class="type__testimonial-name" v-html="$t('fourthTestimonial.quoteAuthor')"></footer>
+          </div>
+        </blockquote>
+      </div>
+    </section>
+  </div>
+</div>
 </template>
 
 <style scoped>

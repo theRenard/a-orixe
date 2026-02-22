@@ -29,7 +29,9 @@ onMounted(() => {
 </script>
 
 <template>
-<section ref="sectionRoot" class="association-section">
+<div data-block class="block">
+  <div data-block-inner class="block-inner">
+    <section ref="sectionRoot" class="association-section">
   <div class="container">
     <div class="centered">
       <div ref="block1">
@@ -45,6 +47,8 @@ onMounted(() => {
     </div>
   </div>
 </section>
+  </div>
+</div>
 </template>
 
 <style scoped>

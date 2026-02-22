@@ -29,7 +29,9 @@ onMounted(() => {
 </script>
 
 <template>
-<section ref="heroSection" class="hero-section mt-4 type__credits" aria-label="Crédits">
+<div data-block class="block">
+  <div data-block-inner class="block-inner">
+    <section ref="heroSection" class="hero-section mt-4 type__credits" aria-label="Crédits">
   <div class="container">
     <h1 ref="heroTitle" class="type__hero-title">
       {{ $t('hero.title') }}
@@ -66,6 +68,8 @@ onMounted(() => {
     </div>
   </div>
 </section>
+  </div>
+</div>
 </template>
 
 <style scoped>

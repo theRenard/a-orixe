@@ -20,11 +20,15 @@ onMounted(() => {
 </script>
 
 <template>
-<section ref="sectionRoot" class="map-illustration section--full-viewport mt-4 image-section" role="img"
-  :aria-label="$t('carteEtapesSantiago.caption')">
-  <img ref="bg" class="map-illustration__bg" :src="mapImage" alt="" />
-  <div class="map-illustration__line" :style="{ backgroundImage: `url(${mapLineImage})` }" aria-hidden="true" />
-</section>
+<div data-block class="block">
+  <div data-block-inner class="block-inner">
+    <section ref="sectionRoot" class="map-illustration section--full-viewport mt-4 image-section" role="img"
+      :aria-label="$t('carteEtapesSantiago.caption')">
+      <img ref="bg" class="map-illustration__bg" :src="mapImage" alt="" />
+      <div class="map-illustration__line" :style="{ backgroundImage: `url(${mapLineImage})` }" aria-hidden="true" />
+    </section>
+  </div>
+</div>
 </template>
 
 <style scoped>
