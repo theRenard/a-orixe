@@ -6,8 +6,12 @@ import { useRevealAnimation } from '@/composables/useRevealAnimation'
 const { locale } = useI18n()
 const sectionRoot = ref<HTMLElement | null>(null)
 const blockquoteInner = ref<HTMLElement | null>(null)
+const imageRef = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
-  elements: [{ el: blockquoteInner, direction: 'left' }],
+  elements: [
+    { el: blockquoteInner, direction: 'left' },
+    { el: imageRef, direction: 'right', delay: 0.1 },
+  ],
   duration: 0.65,
   offset: 40,
   ease: 'power3.out',
@@ -25,6 +29,7 @@ onMounted(() => {
     <section ref="sectionRoot" class="section--full-viewport with-background with-shadow fourth-testimonial">
       <div class="container fourth-testimonial__container">
         <img
+          ref="imageRef"
           src="@/assets/illustrations/mouette.webp"
           :alt="$t('fourthTestimonial.quote')"
           class="fourth-testimonial__bird"
