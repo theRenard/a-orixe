@@ -1,12 +1,46 @@
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
+import { useRevealAnimation } from '@/composables/useRevealAnimation'
+
+const heroSection = ref<HTMLElement | null>(null)
+const heroTitle = ref<HTMLElement | null>(null)
+const heroSubtitle = ref<HTMLElement | null>(null)
+const creditsLeft = ref<HTMLElement | null>(null)
+const creditsRight = ref<HTMLElement | null>(null)
+
+const { run } = useRevealAnimation({
+  elements: [
+    { el: heroTitle, direction: 'left', delay: 0 },
+    { el: heroSubtitle, direction: 'left', delay: 0.1 },
+    { el: creditsLeft, direction: 'left', delay: 0.25 },
+    { el: creditsRight, direction: 'right', delay: 0.25 },
+  ],
+  duration: 0.6,
+  offset: 48,
+  scrollTrigger: {
+    trigger: heroSection,
+    start: 'top 85%',
+    once: true,
+  },
+})
+
+onMounted(() => {
+  const cleanup = run()
+  if (cleanup) {
+    onUnmounted(cleanup)
+  }
+})
+</script>
+
 <template>
-<section class="mt-4 type__credits" aria-label="Crédits">
+<section ref="heroSection" class="hero-section mt-4 type__credits" aria-label="Crédits">
   <div class="container">
-    <h1 class="type__hero-title">
+    <h1 ref="heroTitle" class="type__hero-title">
       {{ $t('hero.title') }}
     </h1>
-    <p class="type__hero-subtitle mt-0 " v-html="$t('hero.subtitle')"></p>
+    <p ref="heroSubtitle" class="type__hero-subtitle mt-0 " v-html="$t('hero.subtitle')"></p>
     <div class="container credits__inner paragraph-spacing">
-      <div class="credits__col credits__col--left">
+      <div ref="creditsLeft" class="credits__col credits__col--left">
         <div class="credits__line-accent" aria-hidden="true" />
         <p>
           {{ $t('credits.byPrefix') }}<span class="type__credits-bold">{{ $t('credits.byName') }}</span>
@@ -16,18 +50,18 @@
             class="type__credits-bold">{{ $t('credits.translatedByName') }}</span></p>
         <p>
           {{ $t('credits.publishedOnPrefix') }}<span class="type__credits-bold">{{ $t('credits.publishedOnDate')
-          }}</span>
+            }}</span>
         </p>
       </div>
-      <div class="credits__col credits__col--right">
+      <div ref="creditsRight" class="credits__col credits__col--right">
         <div class="credits__line-accent ml-auto" aria-hidden="true" />
         <p>
           {{ $t('credits.artDirectionPrefix') }}<span class="type__credits-bold">{{ $t('credits.artDirectionName')
-          }}</span>
+            }}</span>
         </p>
         <p>
           {{ $t('credits.illustrationPrefix') }}<span class="type__credits-bold">{{ $t('credits.illustrationName')
-          }}</span>
+            }}</span>
         </p>
         <p>
           {{ $t('credits.devDesignPrefix') }}<span class="type__credits-bold">{{ $t('credits.devDesignName') }}</span>
@@ -39,6 +73,10 @@
 </template>
 
 <style scoped>
+.hero-section {
+  overflow-x: hidden;
+}
+
 .credits {
   margin-top: 100px;
   width: 100%;
