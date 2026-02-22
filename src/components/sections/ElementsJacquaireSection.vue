@@ -26,7 +26,7 @@ onMounted(() => {
 <template>
 <div data-block data-component="ElementsJacquaireSection" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="elements-jacquaire-section">
+    <section ref="sectionRoot" class="elements-jacquaire-section section--full-viewport">
   <div class="container">
     <img ref="image" src="../../assets/illustrations/benevoles_ok.webp" :alt="$t('elementsJacquaire.title')"
       class="elements-jacquaire-section__image ma" loading="lazy" width="50%" height="auto">

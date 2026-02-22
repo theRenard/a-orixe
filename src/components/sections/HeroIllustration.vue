@@ -56,7 +56,7 @@ onMounted(() => {
 <template>
 <div data-block data-component="HeroIllustration" class="block block--first">
   <div ref="blockInnerRef" data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="hero-block" aria-label="Hero">
+    <section ref="sectionRoot" class="hero-block section--full-viewport" aria-label="Hero">
       <div ref="bg" class="hero-block__illustration"
         :style="{ backgroundImage: `url(${heroImage})`, height: `${illustrationHeightVh}vh` }" role="img"
         :aria-label="$t('hero.illustrationAlt')" />

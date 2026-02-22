@@ -27,7 +27,7 @@ onMounted(() => {
 <template>
 <div data-block data-component="ReconnaissanceSection" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="reconnaissance-section">
+    <section ref="sectionRoot" class="reconnaissance-section section--full-viewport">
   <div class="container">
     <div class="centered--large">
       <div class="row-two-col paragraph-spacing reconnaissance-section__row">

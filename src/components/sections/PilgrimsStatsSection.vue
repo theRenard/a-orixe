@@ -27,7 +27,7 @@ onMounted(() => {
 <template>
 <div data-block data-component="PilgrimsStatsSection" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="pilgrims-stats-section">
+    <section ref="sectionRoot" class="pilgrims-stats-section section--full-viewport">
   <div class="container">
     <div class="centered">
       <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">

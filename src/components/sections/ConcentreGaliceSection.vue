@@ -25,7 +25,7 @@ onMounted(() => {
 <template>
 <div data-block data-component="ConcentreGaliceSection" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="concentre-galice-section">
+    <section ref="sectionRoot" class="concentre-galice-section section--full-viewport">
   <div class="container">
     <div class="centered--large">
       <div class="row-two-col paragraph-spacing">

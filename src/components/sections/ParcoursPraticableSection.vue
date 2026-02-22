@@ -27,7 +27,7 @@ onMounted(() => {
 <template>
 <div data-block data-component="ParcoursPraticableSection" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="parcours-praticable-section">
+    <section ref="sectionRoot" class="parcours-praticable-section section--full-viewport">
   <div class="container">
     <div ref="firstBlock" class="centered parcours-praticable-section__first">
       <p class="type__section-paragraph paragraph-spacing" v-html="$t('parcoursPraticable.paragraph1')"></p>

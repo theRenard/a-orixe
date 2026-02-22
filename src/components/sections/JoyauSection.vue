@@ -33,7 +33,7 @@ onMounted(() => {
 <template>
 <div data-block data-component="JoyauSection" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="joyau-section">
+    <section ref="sectionRoot" class="joyau-section section--full-viewport">
   <div class="container">
     <div class="centered">
       <p ref="paragraph1" class="type__section-paragraph paragraph-spacing" v-html="$t('joyau.paragraph1')"></p>

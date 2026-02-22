@@ -26,7 +26,7 @@ onMounted(() => {
 <template>
 <div data-block data-component="EtapesClesSection" class="block">
   <div data-block-inner class="block-inner">
-    <section id="etapes-cles" ref="sectionRoot" class="etapes-cles-section">
+    <section id="etapes-cles" ref="sectionRoot" class="etapes-cles-section section--full-viewport">
   <div class="container">
     <div class="centered">
       <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">

@@ -27,7 +27,7 @@ onMounted(() => {
 <template>
 <div data-block data-component="SantiagoStepsSection" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="santiago-steps-section">
+    <section ref="sectionRoot" class="santiago-steps-section section--full-viewport">
   <div class="container">
     <div class="centered--large">
       <div class="row-two-col" style="position: relative;">

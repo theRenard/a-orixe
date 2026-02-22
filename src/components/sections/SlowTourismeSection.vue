@@ -27,7 +27,7 @@ onMounted(() => {
 <template>
 <div data-block data-component="SlowTourismeSection" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="slow-tourisme-section">
+    <section ref="sectionRoot" class="slow-tourisme-section section--full-viewport">
   <div class="container">
     <div class="centered">
       <h2 ref="title" class="type__interview-title slow-tourisme-section__headline heading-spacing">

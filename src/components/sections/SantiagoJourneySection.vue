@@ -28,7 +28,7 @@ onMounted(() => {
 <template>
 <div data-block data-component="SantiagoJourneySection" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="santiago-journey-section">
+    <section ref="sectionRoot" class="santiago-journey-section section--full-viewport">
   <div class="container">
     <div class="centered">
       <p ref="paragraph" class="type__section-paragraph paragraph-spacing" v-html="$t('santiagoJourney.paragraph')"></p>

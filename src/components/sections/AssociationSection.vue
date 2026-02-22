@@ -31,7 +31,7 @@ onMounted(() => {
 <template>
 <div data-block data-component="AssociationSection" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="association-section">
+    <section ref="sectionRoot" class="association-section section--full-viewport">
   <div class="container">
     <div class="centered">
       <div ref="block1">

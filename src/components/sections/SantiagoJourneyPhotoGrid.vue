@@ -33,7 +33,7 @@ onMounted(() => {
 <template>
 <div data-block data-component="SantiagoJourneyPhotoGrid" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="santiago-journey-photo-grid-section">
+    <section ref="sectionRoot" class="santiago-journey-photo-grid-section section--full-viewport">
   <div class="container">
     <div class="santiago-journey-photo-grid align-center paragraph-spacing" role="img"
       :aria-label="$t('santiagoJourney.imageCaption')">

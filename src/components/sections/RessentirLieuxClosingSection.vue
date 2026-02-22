@@ -20,7 +20,7 @@ onMounted(() => {
 <template>
 <div data-block data-component="RessentirLieuxClosingSection" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="ressentir-lieux-closing-section section--half-viewport">
+    <section ref="sectionRoot" class="ressentir-lieux-closing-section section--full-viewport">
     <div class="container">
       <div class="centered">
         <p ref="paragraph" class="type__section-paragraph paragraph-spacing" v-html="$t('ressentirLieux.paragraph2')"></p>

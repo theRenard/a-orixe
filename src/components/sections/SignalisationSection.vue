@@ -27,7 +27,7 @@ onMounted(() => {
 <template>
 <div data-block data-component="SignalisationSection" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="signalisation-section mt-3 mb-3">
+    <section ref="sectionRoot" class="signalisation-section section--full-viewport mt-3 mb-3">
   <div class="container">
     <div class="signalisation-section__grid">
       <div ref="cell1" class="signalisation-section__cell">

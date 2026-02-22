@@ -27,7 +27,7 @@ onMounted(() => {
 <template>
 <div data-block data-component="ReconstitutionTracSection" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="reconstitution-trac-section">
+    <section ref="sectionRoot" class="reconstitution-trac-section section--full-viewport">
       <div class="container">
         <div ref="imageBlock">
           <ImageCrop width="100%" height="320px" position="center 50%" :caption="$t('reconstitutionTrac.imageCaption')"

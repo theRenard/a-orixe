@@ -50,7 +50,7 @@ onMounted(() => {
 <div data-block data-component="MapIllustration" class="block">
   <div data-block-inner class="block-inner">
     <section ref="sectionRoot" class="map-illustration-section">
-      <div class="map-illustration section--full-viewport mt-4 image-section" role="img"
+      <div class="map-illustration section--full-viewport image-section" role="img"
         :aria-label="$t('carteEtapesSantiago.caption')">
         <img ref="bg" class="map-illustration__bg" :src="mapImage" alt="" />
         <div ref="lineContainer" class="map-illustration__line-container">
