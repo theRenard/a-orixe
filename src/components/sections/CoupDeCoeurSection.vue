@@ -10,13 +10,11 @@ const sectionRoot = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
 const block1 = ref<HTMLElement | null>(null)
 const player = ref<HTMLElement | null>(null)
-const block2 = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
     { el: title, direction: 'left', delay: 0 },
     { el: block1, direction: 'right', delay: 0.08 },
     { el: player, direction: 'left', delay: 0.18 },
-    { el: block2, direction: 'right', delay: 0.26 },
   ],
   duration: 0.6,
   offset: 44,
@@ -46,7 +44,6 @@ onMounted(() => {
         <SoundPlayer :src="audioSabela" :text="$t('coupDeCoeur.soundPlayerText')" :image="sabelaImage"
           :chapters="chaptersSabela" class="align-center paragraph-spacing" />
       </div>
-      <p ref="block2" class="type__section-paragraph paragraph-spacing" v-html="$t('coupDeCoeur.paragraph2')"></p>
     </div>
   </div>
 </section>

@@ -4,6 +4,7 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 
 const sectionRoot = ref<HTMLElement | null>(null)
+const paragraph1 = ref<HTMLElement | null>(null)
 const quote = ref<HTMLElement | null>(null)
 const caption = ref<HTMLElement | null>(null)
 const cell1 = ref<HTMLElement | null>(null)
@@ -11,11 +12,12 @@ const cell2 = ref<HTMLElement | null>(null)
 const cell3 = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
-    { el: quote, direction: 'left', delay: 0 },
-    { el: caption, direction: 'right', delay: 0.06 },
-    { el: cell1, direction: 'left', delay: 0.12 },
-    { el: cell2, direction: 'left', delay: 0.18 },
-    { el: cell3, direction: 'right', delay: 0.24 },
+    { el: paragraph1, direction: 'left', delay: 0 },
+    { el: quote, direction: 'left', delay: 0.06 },
+    { el: caption, direction: 'right', delay: 0.12 },
+    { el: cell1, direction: 'left', delay: 0.18 },
+    { el: cell2, direction: 'left', delay: 0.24 },
+    { el: cell3, direction: 'right', delay: 0.3 },
   ],
   duration: 0.6,
   offset: 40,
@@ -34,7 +36,8 @@ onMounted(() => {
     <section ref="sectionRoot" class="joyau-section">
   <div class="container">
     <div class="centered">
-      <p ref="quote" class="type__section-paragraph joyau-section__quote paragraph-spacing" v-html="$t('joyau.paragraph')"></p>
+      <p ref="paragraph1" class="type__section-paragraph paragraph-spacing" v-html="$t('joyau.paragraph1')"></p>
+      <p ref="quote" class="type__section-paragraph joyau-section__quote paragraph-spacing" v-html="$t('joyau.paragraph2')"></p>
     </div>
     <p ref="caption" class="joyau-section__caption type__image-caption type__image-caption--with-line" v-html="$t('joyau.caption')">
     </p>
