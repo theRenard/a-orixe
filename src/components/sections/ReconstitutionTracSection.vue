@@ -28,28 +28,28 @@ onMounted(() => {
 <div data-block data-component="ReconstitutionTracSection" class="block">
   <div data-block-inner class="block-inner">
     <section ref="sectionRoot" class="reconstitution-trac-section">
-  <div class="container">
-    <div ref="imageBlock">
-      <ImageCrop width="100%" height="320px" position="center 50%" :caption="$t('reconstitutionTrac.imageCaption')"
-        caption-position="bottom">
-        <img src="../../assets/photos/02_miguel_angel_soutullo_alvarez.webp" :alt="$t('reconstitutionTrac.imageCaption')"
-          class="reconstitution-trac-section__image" loading="lazy">
-      </ImageCrop>
-    </div>
-    <div class="centered">
-      <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">
-        {{ $t('reconstitutionTrac.title') }}
-      </h2>
-      <div ref="textBlock">
-        <p class="type__section-paragraph paragraph-spacing" v-html="$t('reconstitutionTrac.paragraph1')"></p>
-        <p class="type__section-paragraph paragraph-spacing" v-html="$t('reconstitutionTrac.paragraph2')"></p>
-        <p class="type__question paragraph-spacing" v-html="$t('reconstitutionTrac.question')"></p>
-        <p class="type__section-paragraph travail-fourmi-paragraph paragraph-spacing"
-          v-html="$t('travailFourmi.paragraph')"></p>
+      <div class="container">
+        <div ref="imageBlock">
+          <ImageCrop width="100%" height="320px" position="center 50%" :caption="$t('reconstitutionTrac.imageCaption')"
+            caption-position="bottom">
+            <img src="../../assets/photos/02_miguel_angel_soutullo_alvarez.webp"
+              :alt="$t('reconstitutionTrac.imageCaption')" class="reconstitution-trac-section__image" loading="lazy">
+          </ImageCrop>
+        </div>
+        <div class="centered">
+          <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">
+            {{ $t('reconstitutionTrac.title') }}
+          </h2>
+          <div ref="textBlock">
+            <p class="type__section-paragraph paragraph-spacing" v-html="$t('reconstitutionTrac.paragraph1')"></p>
+            <p class="type__section-paragraph paragraph-spacing" v-html="$t('reconstitutionTrac.paragraph2')"></p>
+            <p class="type__question paragraph-spacing" v-html="$t('reconstitutionTrac.question')"></p>
+            <p class="type__section-paragraph travail-fourmi-paragraph paragraph-spacing"
+              v-html="$t('travailFourmi.paragraph')"></p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
   </div>
 </div>
 </template>

@@ -1,17 +1,22 @@
 <script setup lang="ts">
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ref, onMounted, onUnmounted } from 'vue'
 import ImageCrop from '@/components/tools/ImageCrop.vue'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const sectionRoot = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
 const textBlock = ref<HTMLElement | null>(null)
 const imageBlock = ref<HTMLElement | null>(null)
+const closingParagraph = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
     { el: title, direction: 'left', delay: 0 },
     { el: textBlock, direction: 'right', delay: 0.1 },
-    { el: imageBlock, direction: 'left', delay: 0.2 },
+    { el: closingParagraph, direction: 'left', delay: 0.35 },
   ],
   duration: 0.6,
   offset: 44,
@@ -21,6 +26,20 @@ const { run } = useRevealAnimation({
 onMounted(() => {
   const cleanup = run()
   if (cleanup) onUnmounted(cleanup)
+  const imgEl = imageBlock.value
+  const triggerEl = sectionRoot.value
+  if (imgEl && triggerEl) {
+    const tl = gsap.timeline({
+      scrollTrigger: { trigger: triggerEl, start: 'top 70%', once: true },
+    })
+    tl.fromTo(
+      imgEl,
+      { scale: 0.85, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 0.6, ease: 'power3.out' },
+      0.2,
+    )
+    onUnmounted(() => tl.scrollTrigger?.kill())
+  }
 })
 </script>
 
@@ -39,12 +58,15 @@ onMounted(() => {
         <p class="type__question paragraph-spacing" v-html="$t('ressentirLieux.question')"></p>
       </div>
     </div>
-    <div ref="imageBlock">
+    <div ref="imageBlock" class="ressentir-lieux-section__image-wrap">
       <ImageCrop width="100%" height="300px" position="0 75%" :caption="$t('ressentirLieux.imageCaption')"
         caption-position="top">
         <img src="../../assets/photos/01_florence_antunes.webp" :alt="$t('ressentirLieux.imageCaption')"
           class="ressentir-lieux-section__image" loading="lazy">
       </ImageCrop>
+    </div>
+    <div class="centered">
+      <p ref="closingParagraph" class="type__section-paragraph paragraph-spacing" v-html="$t('ressentirLieux.paragraph2')"></p>
     </div>
   </div>
 </section>
@@ -55,5 +77,9 @@ onMounted(() => {
 <style scoped>
 .ressentir-lieux-section {
   overflow-x: hidden;
+}
+
+.ressentir-lieux-section__image-wrap {
+  transform-origin: center center;
 }
 </style>

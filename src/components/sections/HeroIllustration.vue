@@ -5,15 +5,33 @@ import mouseIcon from '@/assets/icons/computer-mouse-icon.svg'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 
 const sectionRoot = ref<HTMLElement | null>(null)
+const blockInnerRef = ref<HTMLElement | null>(null)
 const bg = ref<HTMLElement | null>(null)
 const heroTitle = ref<HTMLElement | null>(null)
 const heroSubtitle = ref<HTMLElement | null>(null)
 const creditsLeft = ref<HTMLElement | null>(null)
 const creditsRight = ref<HTMLElement | null>(null)
 
+/** Illustration height in vh: 100 at top, 50 after scrolling (over first ~200px). */
+const illustrationHeightVh = ref(100)
+const SCROLL_THRESHOLD_PX = 200
+
+/** Hide mouse icon as soon as user scrolls. */
+const showScrollIndicator = ref(true)
+const SCROLL_INDICATOR_HIDE_PX = 10
+
+function onBlockScroll() {
+  const el = blockInnerRef.value
+  if (!el) return
+  const scrollTop = el.scrollTop
+  const progress = Math.min(1, scrollTop / SCROLL_THRESHOLD_PX)
+  illustrationHeightVh.value = 100 - progress * 50
+  showScrollIndicator.value = scrollTop <= SCROLL_INDICATOR_HIDE_PX
+}
+
 const { run } = useRevealAnimation({
   elements: [
-    { el: bg, direction: 'left', delay: 0 },
+    // { el: bg, direction: 'left', delay: 0 },
     { el: heroTitle, direction: 'left', delay: 0.1 },
     { el: heroSubtitle, direction: 'left', delay: 0.2 },
     { el: creditsLeft, direction: 'left', delay: 0.35 },
@@ -27,20 +45,21 @@ const { run } = useRevealAnimation({
 onMounted(() => {
   const cleanup = run()
   if (cleanup) onUnmounted(cleanup)
+  const el = blockInnerRef.value
+  if (el) {
+    el.addEventListener('scroll', onBlockScroll, { passive: true })
+    onUnmounted(() => el.removeEventListener('scroll', onBlockScroll))
+  }
 })
 </script>
 
 <template>
 <div data-block data-component="HeroIllustration" class="block block--first">
-  <div data-block-inner class="block-inner">
+  <div ref="blockInnerRef" data-block-inner class="block-inner">
     <section ref="sectionRoot" class="hero-block" aria-label="Hero">
-      <div
-        ref="bg"
-        class="hero-block__illustration"
-        :style="{ backgroundImage: `url(${heroImage})` }"
-        role="img"
-        :aria-label="$t('hero.illustrationAlt')"
-      />
+      <div ref="bg" class="hero-block__illustration"
+        :style="{ backgroundImage: `url(${heroImage})`, height: `${illustrationHeightVh}vh` }" role="img"
+        :aria-label="$t('hero.illustrationAlt')" />
       <div class="hero-block__content mt-4 type__credits">
         <div class="container">
           <h1 ref="heroTitle" class="type__hero-title">
@@ -57,26 +76,30 @@ onMounted(() => {
               <p v-if="$t('credits.translatedByPrefix')">{{ $t('credits.translatedByPrefix') }}<span
                   class="type__credits-bold">{{ $t('credits.translatedByName') }}</span></p>
               <p>
-                {{ $t('credits.publishedOnPrefix') }}<span class="type__credits-bold">{{ $t('credits.publishedOnDate') }}</span>
+                {{ $t('credits.publishedOnPrefix') }}<span class="type__credits-bold">{{ $t('credits.publishedOnDate')
+                  }}</span>
               </p>
             </div>
             <div ref="creditsRight" class="credits__col credits__col--right">
               <div class="credits__line-accent ml-auto" aria-hidden="true" />
               <p>
-                {{ $t('credits.artDirectionPrefix') }}<span class="type__credits-bold">{{ $t('credits.artDirectionName') }}</span>
+                {{ $t('credits.artDirectionPrefix') }}<span class="type__credits-bold">{{ $t('credits.artDirectionName')
+                  }}</span>
               </p>
               <p>
-                {{ $t('credits.illustrationPrefix') }}<span class="type__credits-bold">{{ $t('credits.illustrationName') }}</span>
+                {{ $t('credits.illustrationPrefix') }}<span class="type__credits-bold">{{ $t('credits.illustrationName')
+                  }}</span>
               </p>
               <p>
-                {{ $t('credits.devDesignPrefix') }}<span class="type__credits-bold">{{ $t('credits.devDesignName') }}</span>
+                {{ $t('credits.devDesignPrefix') }}<span class="type__credits-bold">{{ $t('credits.devDesignName')
+                  }}</span>
               </p>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <div class="scroll-indicator" aria-hidden="true">
+    <div class="scroll-indicator" :class="{ 'scroll-indicator--hidden': !showScrollIndicator }" aria-hidden="true">
       <img :src="mouseIcon" alt="" class="scroll-indicator__icon" />
     </div>
   </div>
@@ -92,10 +115,11 @@ onMounted(() => {
 
 .hero-block__illustration {
   width: 100%;
-  min-height: 100vh;
+  min-height: 50vh;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  transition: height 0.25s ease-out;
 }
 
 .hero-block__content {
@@ -112,6 +136,15 @@ onMounted(() => {
   left: 50%;
   transform: translateX(-50%);
   pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.25s ease-out;
+}
+
+.scroll-indicator--hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.25s ease-out, visibility 0.25s;
 }
 
 .scroll-indicator__icon {
@@ -122,10 +155,12 @@ onMounted(() => {
 }
 
 @keyframes scroll-jump {
+
   0%,
   100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-0.6rem);
   }

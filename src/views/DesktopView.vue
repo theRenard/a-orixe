@@ -5,7 +5,6 @@ import HeroIllustration from '@/components/sections/HeroIllustration.vue'
 import CaminoSection from '@/components/sections/CaminoSection.vue'
 import EtapesClesSection from '@/components/sections/EtapesClesSection.vue'
 import RessentirLieuxSection from '@/components/sections/RessentirLieuxSection.vue'
-import RessentirLieuxClosingSection from '@/components/sections/RessentirLieuxClosingSection.vue'
 import FifthTestimonial from '@/components/sections/testimonials/FifthTestimonial.vue'
 import FirstTestimonial from '@/components/sections/testimonials/FirstTestimonial.vue'
 import SecondTestimonial from '@/components/sections/testimonials/SecondTestimonial.vue'
@@ -52,7 +51,6 @@ useBlockScroll({
     <EtapesClesSection />
     <SecondTestimonial />
     <RessentirLieuxSection />
-    <RessentirLieuxClosingSection />
     <FifthTestimonial />
     <AssociationSection />
     <ReconstitutionTracSection />
