@@ -17,7 +17,6 @@ import FourthTestimonial from '@/components/sections/testimonials/FourthTestimon
 import ElementsJacquaireSection from '@/components/sections/ElementsJacquaireSection.vue'
 import ParcoursPraticableSection from '@/components/sections/ParcoursPraticableSection.vue'
 import MapIllustration from '@/components/sections/MapIllustration.vue'
-import SantiagoStepsSection from '@/components/sections/SantiagoStepsSection.vue'
 import SantiagoJourneyPhotoGrid from '@/components/sections/SantiagoJourneyPhotoGrid.vue'
 import SantiagoJourneySection from '@/components/sections/SantiagoJourneySection.vue'
 import ReconnaissanceSection from '@/components/sections/ReconnaissanceSection.vue'
@@ -61,7 +60,6 @@ useBlockScroll({
     <ElementsJacquaireSection />
     <ParcoursPraticableSection />
     <MapIllustration />
-    <SantiagoStepsSection />
     <ConcentreGaliceSection />
     <SantiagoJourneyPhotoGrid />
     <SantiagoJourneySection />
