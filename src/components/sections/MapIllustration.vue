@@ -1,18 +1,22 @@
 <script setup lang="ts">
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ref, onMounted, onUnmounted } from 'vue'
 import mapImage from '@/assets/illustrations/map.webp'
 import mapLineImage from '@/assets/illustrations/map_line.webp'
 import espagneImage from '@/assets/illustrations/espagne_ok.webp'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 
+gsap.registerPlugin(ScrollTrigger)
+
 const sectionRoot = ref<HTMLElement | null>(null)
 const bg = ref<HTMLElement | null>(null)
+const lineContainer = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
 const stepsImage = ref<HTMLElement | null>(null)
 const textBlock = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
-    { el: bg, direction: 'left', delay: 0 },
     { el: title, direction: 'left', delay: 0.1 },
     { el: stepsImage, direction: 'right', delay: 0.18 },
     { el: textBlock, direction: 'left', delay: 0.28 },
@@ -25,6 +29,20 @@ const { run } = useRevealAnimation({
 onMounted(() => {
   const cleanup = run()
   if (cleanup) onUnmounted(cleanup)
+  const containerEl = lineContainer.value
+  const triggerEl = sectionRoot.value
+  if (containerEl && triggerEl) {
+    const tl = gsap.timeline({
+      scrollTrigger: { trigger: triggerEl, start: 'top 70%', once: true },
+    })
+    tl.fromTo(
+      containerEl,
+      { width: '0%' },
+      { width: '100%', duration: 7, ease: 'power2.inOut' },
+      0.15,
+    )
+    onUnmounted(() => tl.scrollTrigger?.kill())
+  }
 })
 </script>
 
@@ -35,7 +53,9 @@ onMounted(() => {
       <div class="map-illustration section--full-viewport mt-4 image-section" role="img"
         :aria-label="$t('carteEtapesSantiago.caption')">
         <img ref="bg" class="map-illustration__bg" :src="mapImage" alt="" />
-        <div class="map-illustration__line" :style="{ backgroundImage: `url(${mapLineImage})` }" aria-hidden="true" />
+        <div ref="lineContainer" class="map-illustration__line-container">
+          <div class="map-illustration__line" :style="{ backgroundImage: `url(${mapLineImage})` }" aria-hidden="true" />
+        </div>
       </div>
       <div class="container">
         <div class="centered--large">
@@ -43,7 +63,8 @@ onMounted(() => {
             <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing col-left">
               {{ $t('santiagoSteps.title') }}
             </h2>
-            <img ref="stepsImage" :src="espagneImage" alt="" class="map-illustration-section__steps-img col-right" aria-hidden="true">
+            <img ref="stepsImage" :src="espagneImage" alt="" class="map-illustration-section__steps-img col-right"
+              aria-hidden="true">
           </div>
         </div>
         <div ref="textBlock" class="centered">
@@ -77,6 +98,13 @@ onMounted(() => {
   width: 100%;
   height: auto;
   vertical-align: middle;
+}
+
+.map-illustration__line-container {
+  position: absolute;
+  inset: 0;
+  width: 0;
+  overflow: hidden;
 }
 
 .map-illustration__line {

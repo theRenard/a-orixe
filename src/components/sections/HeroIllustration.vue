@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import heroImage from '@/assets/illustrations/illu_principale_ok.webp'
-import mouseIcon from '@/assets/icons/computer-mouse-icon.svg'
+import mouseIcon from '@/assets/icons/scroll_down_2.webp'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 
 const sectionRoot = ref<HTMLElement | null>(null)
@@ -77,22 +77,22 @@ onMounted(() => {
                   class="type__credits-bold">{{ $t('credits.translatedByName') }}</span></p>
               <p>
                 {{ $t('credits.publishedOnPrefix') }}<span class="type__credits-bold">{{ $t('credits.publishedOnDate')
-                  }}</span>
+                }}</span>
               </p>
             </div>
             <div ref="creditsRight" class="credits__col credits__col--right">
               <div class="credits__line-accent ml-auto" aria-hidden="true" />
               <p>
                 {{ $t('credits.artDirectionPrefix') }}<span class="type__credits-bold">{{ $t('credits.artDirectionName')
-                  }}</span>
+                }}</span>
               </p>
               <p>
                 {{ $t('credits.illustrationPrefix') }}<span class="type__credits-bold">{{ $t('credits.illustrationName')
-                  }}</span>
+                }}</span>
               </p>
               <p>
                 {{ $t('credits.devDesignPrefix') }}<span class="type__credits-bold">{{ $t('credits.devDesignName')
-                  }}</span>
+                }}</span>
               </p>
             </div>
           </div>
@@ -132,7 +132,7 @@ onMounted(() => {
 
 .scroll-indicator {
   position: absolute;
-  bottom: 1.5rem;
+  bottom: 2.5rem;
   left: 50%;
   transform: translateX(-50%);
   pointer-events: none;
@@ -149,21 +149,8 @@ onMounted(() => {
 
 .scroll-indicator__icon {
   display: block;
-  width: 2rem;
+  width: 4rem;
   height: auto;
-  animation: scroll-jump 1.2s cubic-bezier(0.33, 1, 0.68, 1) infinite;
-}
-
-@keyframes scroll-jump {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-0.6rem);
-  }
 }
 
 .credits__inner {

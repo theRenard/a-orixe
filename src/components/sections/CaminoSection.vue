@@ -28,18 +28,18 @@ onMounted(() => {
 <template>
 <div data-block data-component="CaminoSection" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="camino-section">
-  <div class="container">
-    <div class="centered">
-      <p ref="synopsis" class="type__hero-synopsis paragraph-spacing" v-html="$t('camino.paragraph')"></p>
-      <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">
-        {{ $t('camino.title') }}
-      </h2>
-      <p ref="block1" class="type__section-paragraph paragraph-spacing" v-html="$t('camino.paragraph1')"></p>
-      <p ref="block2" class="type__section-paragraph paragraph-spacing" v-html="$t('camino.paragraph2')"></p>
-    </div>
-  </div>
-</section>
+    <section ref="sectionRoot" class="camino-section section--full-viewport">
+      <div class="container">
+        <div class="centered">
+          <p ref="synopsis" class="type__hero-synopsis paragraph-spacing" v-html="$t('camino.paragraph')"></p>
+          <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">
+            {{ $t('camino.title') }}
+          </h2>
+          <p ref="block1" class="type__section-paragraph paragraph-spacing" v-html="$t('camino.paragraph1')"></p>
+          <p ref="block2" class="type__section-paragraph paragraph-spacing" v-html="$t('camino.paragraph2')"></p>
+        </div>
+      </div>
+    </section>
   </div>
 </div>
 </template>
