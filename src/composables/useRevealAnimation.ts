@@ -10,7 +10,7 @@ export type RevealDirection = 'left' | 'right'
 export interface ScrollTriggerRevealOptions {
   /** Element that triggers the animation when it enters the viewport. Defaults to the first animated element's parent. */
   trigger?: Ref<Element | null | undefined> | Element
-  /** When to start the animation. Default "top 85%" = when trigger's top hits 85% down the viewport. */
+  /** When to start the animation. Default "top 70%" = when trigger's top hits 70% down the viewport. */
   start?: string
   /** When to end the scrub (only used if scrub is set). */
   end?: string
@@ -108,11 +108,11 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
 
     const stConfig =
       scrollTriggerOpt === true
-        ? { once: true, start: 'top 85%' as const }
+        ? { once: true, start: 'top 70%' as const }
         : scrollTriggerOpt
           ? {
               once: scrollTriggerOpt.once ?? true,
-              start: scrollTriggerOpt.start ?? 'top 85%',
+              start: scrollTriggerOpt.start ?? 'top 70%',
               end: scrollTriggerOpt.end,
               trigger: scrollTriggerOpt.trigger,
             }

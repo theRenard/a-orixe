@@ -17,11 +17,7 @@ const { run } = useRevealAnimation({
   ],
   duration: 0.6,
   offset: 48,
-  scrollTrigger: {
-    trigger: heroSection,
-    start: 'top 85%',
-    once: true,
-  },
+  scrollTrigger: { trigger: heroSection },
 })
 
 onMounted(() => {

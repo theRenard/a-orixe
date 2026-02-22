@@ -5,19 +5,13 @@ import { useRevealAnimation } from '@/composables/useRevealAnimation'
 
 const { locale } = useI18n()
 const sectionRoot = ref<HTMLElement | null>(null)
-const quoteBlock = ref<HTMLElement | null>(null)
-const image = ref<HTMLElement | null>(null)
-const footnote = ref<HTMLElement | null>(null)
+const blockquoteInner = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
-  elements: [
-    { el: quoteBlock, direction: 'left', delay: 0 },
-    { el: image, direction: 'right', delay: 0.1 },
-    { el: footnote, direction: 'left', delay: 0.18 },
-  ],
-  duration: 0.6,
+  elements: [{ el: blockquoteInner, direction: 'left' }],
+  duration: 0.65,
   offset: 40,
   ease: 'power3.out',
-  scrollTrigger: { trigger: sectionRoot, start: 'top 88%', once: true },
+  scrollTrigger: { trigger: blockquoteInner, start: 'top 80%' },
 })
 onMounted(() => {
   const cleanup = run()
@@ -29,19 +23,19 @@ onMounted(() => {
 <section ref="sectionRoot" class="section--full-viewport with-background with-shadow second-testimonial" style="position: relative;">
   <div class="container">
     <blockquote class="centered">
-      <div ref="quoteBlock">
+      <div ref="blockquoteInner">
         <p class="type__testimonial-block relative" :class="`type__testimonial-block--${locale}`">
           <span v-html="$t('secondTestimonial.quote')"></span>
         </p>
         <footer class="type__testimonial-name" v-html="$t('secondTestimonial.quoteAuthor')"></footer>
       </div>
     </blockquote>
-    <img ref="image" src="../../assets/illustrations/phare.webp" :alt="$t('secondTestimonial.quote')"
+    <img src="@/assets/illustrations/phare.webp" :alt="$t('secondTestimonial.quote')"
       class="second-testimonial__image ml-auto" loading="lazy">
   </div>
   <div class="container mb-2" style="position: absolute; bottom: 0; left: 0; right: 0;">
     <div class="centered">
-      <p ref="footnote" class="type__footnote paragraph-spacing" v-html="$t('secondTestimonial.footnote')"></p>
+      <p class="type__footnote paragraph-spacing" v-html="$t('secondTestimonial.footnote')"></p>
     </div>
   </div>
 </section>

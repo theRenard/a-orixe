@@ -5,17 +5,13 @@ import { useRevealAnimation } from '@/composables/useRevealAnimation'
 
 const { locale } = useI18n()
 const sectionRoot = ref<HTMLElement | null>(null)
-const bird = ref<HTMLElement | null>(null)
 const blockquoteInner = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
-  elements: [
-    { el: bird, direction: 'right', delay: 0 },
-    { el: blockquoteInner, direction: 'left', delay: 0.1 },
-  ],
-  duration: 0.6,
+  elements: [{ el: blockquoteInner, direction: 'left' }],
+  duration: 0.65,
   offset: 40,
   ease: 'power3.out',
-  scrollTrigger: { trigger: sectionRoot, start: 'top 88%', once: true },
+  scrollTrigger: { trigger: blockquoteInner, start: 'top 80%' },
 })
 onMounted(() => {
   const cleanup = run()
@@ -27,8 +23,7 @@ onMounted(() => {
   <section ref="sectionRoot" class="section--full-viewport with-background with-shadow fourth-testimonial">
     <div class="container fourth-testimonial__container">
       <img
-        ref="bird"
-        src="../../assets/illustrations/mouette.webp"
+        src="@/assets/illustrations/mouette.webp"
         :alt="$t('fourthTestimonial.quote')"
         class="fourth-testimonial__bird"
         loading="lazy"

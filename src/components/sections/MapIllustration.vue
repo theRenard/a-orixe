@@ -11,7 +11,7 @@ const { run } = useRevealAnimation({
   duration: 0.8,
   offset: 40,
   ease: 'power3.out',
-  scrollTrigger: { trigger: sectionRoot, start: 'top 88%', once: true },
+  scrollTrigger: { trigger: sectionRoot },
 })
 onMounted(() => {
   const cleanup = run()

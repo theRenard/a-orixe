@@ -7,11 +7,11 @@ const { locale } = useI18n()
 const sectionRoot = ref<HTMLElement | null>(null)
 const blockquoteInner = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
-  elements: [{ el: blockquoteInner, direction: 'right' }],
+  elements: [{ el: blockquoteInner, direction: 'left' }],
   duration: 0.65,
   offset: 40,
   ease: 'power3.out',
-  scrollTrigger: { trigger: sectionRoot, start: 'top 88%', once: true },
+  scrollTrigger: { trigger: blockquoteInner, start: 'top 80%' },
 })
 onMounted(() => {
   const cleanup = run()
