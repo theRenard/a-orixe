@@ -31,7 +31,7 @@ onMounted(() => {
           <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">
             {{ $t('flechage.title') }}
           </h2>
-          <div ref="content">
+          <div>
             <p class="type__section-paragraph paragraph-spacing" v-html="$t('flechage.paragraph1')"></p>
             <p ref="question" class="type__question paragraph-spacing" v-html="$t('flechage.highlight')"></p>
             <p class="type__section-paragraph paragraph-spacing" v-html="$t('flechage.paragraph2')"></p>

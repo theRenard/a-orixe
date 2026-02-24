@@ -10,7 +10,7 @@ const question = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
     { el: leftCol, direction: 'left', delay: 0 },
-    { el: rightCol, direction: 'right', delay: 0.1 },
+    { el: rightCol, direction: 'right', delay: 0.1, rotation: 12 },
     { el: question, direction: 'down', delay: 0.2 },
   ],
   offset: 44,

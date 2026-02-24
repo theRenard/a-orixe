@@ -24,8 +24,8 @@ onMounted(() => {
     <section ref="sectionRoot" class="reconnaissance-section section--full-viewport">
       <div class="container">
         <div class="centered">
-          <div ref="leftCol" class="paragraph-spacing reconnaissance-section__row">
-            <h2 class="type__section-title type__section-title--with-line heading-spacing">
+          <div class="paragraph-spacing reconnaissance-section__row">
+            <h2 ref="leftCol" class="type__section-title type__section-title--with-line heading-spacing">
               {{ $t('reconnaissance.title') }}
             </h2>
             <p class="type__section-paragraph paragraph-spacing" v-html="$t('reconnaissance.paragraph1')"></p>

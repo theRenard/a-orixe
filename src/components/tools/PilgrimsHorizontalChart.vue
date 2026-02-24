@@ -19,9 +19,9 @@ onMounted(() => {
   const tl = gsap.timeline({
     scrollTrigger: { trigger: chart, start: 'top 80%', once: true },
   })
-  tl.fromTo(fill1, { width: '0%' }, { width: '46%', duration: 0.8, ease: 'power2.out' }, 0)
-  tl.fromTo(fill2, { width: '0%' }, { width: '19%', duration: 0.8, ease: 'power2.out' }, 0.1)
-  tl.fromTo(fill3, { width: 0 }, { width: 2, duration: 0.5, ease: 'power2.out' }, 0.2)
+  tl.fromTo(fill1, { width: '0%' }, { width: '46%', duration: 2, ease: 'power2.out' }, 0)
+  tl.fromTo(fill2, { width: '0%' }, { width: '19%', duration: 2, ease: 'power2.out' }, 0.1)
+  tl.fromTo(fill3, { width: 0 }, { width: 2, duration: 2, ease: 'power2.out' }, 0.2)
   onUnmounted(() => tl.scrollTrigger?.kill())
 })
 </script>
@@ -52,7 +52,8 @@ onMounted(() => {
       <span class="pilgrims-horizontal-chart__pct">{{ $t('pilgrimsStats.chart.bar3Pct') }}</span>
     </div>
     <div class="pilgrims-horizontal-chart__track">
-      <div ref="fill3Ref" class="pilgrims-horizontal-chart__fill pilgrims-horizontal-chart__fill--line pilgrims-horizontal-chart__fill--animated" />
+      <div ref="fill3Ref"
+        class="pilgrims-horizontal-chart__fill pilgrims-horizontal-chart__fill--line pilgrims-horizontal-chart__fill--animated" />
     </div>
   </div>
 </figure>

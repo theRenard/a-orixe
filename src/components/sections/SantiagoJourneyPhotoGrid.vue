@@ -15,7 +15,7 @@ const cellRightBottom = ref<HTMLElement | null>(null)
 const caption = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
-    { el: photoGrid, direction: 'down', delay: 0, rotation: 12 },
+    { el: photoGrid, direction: 'down', delay: 0, scale: 0.5, rotation: 12 },
     { el: cellLeft, direction: 'left', delay: 0.06 },
     { el: cellRightTop, direction: 'right', delay: 0.12 },
     { el: cellRightBottom, direction: 'right', delay: 0.18 },

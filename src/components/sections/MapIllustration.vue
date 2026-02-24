@@ -57,12 +57,8 @@ onMounted(() => {
     const tl = gsap.timeline({
       scrollTrigger: { trigger: triggerEl, start: 'top 70%', once: true },
     })
-    tl.fromTo(
-      containerEl,
-      { width: '0%' },
-      { width: '100%', duration: 20, ease: 'power2.inOut' },
-      0.15,
-    )
+    tl.to(containerEl, { width: '25%', duration: 0, ease: 'power2.inOut' }, 0)
+    tl.to(containerEl, { width: '100%', duration: 10, ease: 'power2.inOut' }, 0.15)
     onUnmounted(() => tl.scrollTrigger?.kill())
   }
 })
@@ -130,13 +126,16 @@ onMounted(() => {
 }
 
 /* Line width is set in px to match map so it doesn’t scale as container grows */
+/* Line is full map width in px; container acts as mask and reveals it by animating width */
 .map-illustration__line {
   position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
+  /* width from :style (lineStyle) so the image never shrinks; container clips it */
+  min-width: 100%;
   background-size: cover;
-  background-position: center;
+  background-position: left center;
   background-repeat: no-repeat;
   pointer-events: none;
 }

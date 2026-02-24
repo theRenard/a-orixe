@@ -31,7 +31,7 @@ onMounted(() => {
           <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">
             {{ $t('deconnexion.title') }}
           </h2>
-          <div ref="content">
+          <div>
             <p class="type__section-paragraph paragraph-spacing" v-html="$t('deconnexion.paragraph1')"></p>
             <p class="type__section-paragraph paragraph-spacing" v-html="$t('deconnexion.paragraph2')"></p>
             <p ref="question" class="type__question paragraph-spacing" v-html="$t('deconnexion.highlight')"></p>
