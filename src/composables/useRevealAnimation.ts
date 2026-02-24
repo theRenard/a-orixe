@@ -27,6 +27,10 @@ export interface RevealElementConfig {
   delay?: number
   /** Override duration for this element (seconds) */
   duration?: number
+  /** Override horizontal offset (px) for this element */
+  offset?: number
+  /** Initial rotation in degrees; animates to 0 (e.g. -15 for slight counter-clockwise entrance) */
+  rotation?: number
 }
 
 export interface UseRevealAnimationOptions {
@@ -92,7 +96,7 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
   function run(): (() => void) | void {
     if (typeof window === 'undefined') return
 
-    const targets: Array<{ el: Element; direction: RevealDirection; delay?: number; duration?: number }> = []
+    const targets: Array<{ el: Element; direction: RevealDirection; delay?: number; duration?: number; offset?: number; rotation?: number }> = []
     for (const config of elements) {
       const el = resolveEl(config)
       if (!el) continue
@@ -101,6 +105,8 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
         direction: config.direction ?? 'left',
         delay: config.delay,
         duration: config.duration,
+        offset: config.offset,
+        rotation: config.rotation,
       })
     }
 
@@ -139,16 +145,18 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
 
     const timeline = gsap.timeline(timelineVars)
 
-    targets.forEach(({ el, direction, delay: elDelay, duration: elDuration }, i) => {
-      const fromX = direction === 'left' ? -offset : offset
+    targets.forEach(({ el, direction, delay: elDelay, duration: elDuration, offset: elOffset, rotation: elRotation }, i) => {
+      const dist = elOffset ?? offset
+      const fromX = direction === 'left' ? -dist : dist
       const d = elDuration ?? duration
       const startAt = elDelay != null ? elDelay : i * stagger
-      timeline.fromTo(
-        el,
-        { x: fromX, opacity: 0 },
-        { x: 0, opacity: 1, duration: d },
-        startAt,
-      )
+      const fromVars: gsap.TweenVars = { x: fromX, opacity: 0 }
+      const toVars: gsap.TweenVars = { x: 0, opacity: 1, duration: d }
+      if (elRotation != null && elRotation !== 0) {
+        fromVars.rotation = elRotation
+        toVars.rotation = 0
+      }
+      timeline.fromTo(el, fromVars, toVars, startAt)
     })
 
     if (stConfig && timeline.scrollTrigger) {

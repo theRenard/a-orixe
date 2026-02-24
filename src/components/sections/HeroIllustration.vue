@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, nextTick } from 'vue'
+import gsap from 'gsap'
 import heroImage from '@/assets/illustrations/illu_principale_ok.webp'
 import mouseIcon from '@/assets/icons/scroll_down_2.webp'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
@@ -20,6 +21,21 @@ const SCROLL_THRESHOLD_PX = 200
 const showScrollIndicator = ref(true)
 const SCROLL_INDICATOR_HIDE_PX = 10
 
+/** Run the reveal animation when user has scrolled this far inside the hero block. */
+const REVEAL_TRIGGER_PX = 50
+let revealDone = false
+
+const { run } = useRevealAnimation({
+  elements: [
+    { el: heroTitle, direction: 'down', delay: 0.1 },
+    { el: heroSubtitle, direction: 'down', delay: 0.2 },
+    { el: creditsLeft, direction: 'left', delay: 0.35, offset: 80 },
+    { el: creditsRight, direction: 'right', delay: 0.35, offset: 80 },
+  ],
+  offset: 48,
+  ease: 'power3.out',
+})
+
 function onBlockScroll() {
   const el = blockInnerRef.value
   if (!el) return
@@ -27,23 +43,22 @@ function onBlockScroll() {
   const progress = Math.min(1, scrollTop / SCROLL_THRESHOLD_PX)
   illustrationHeightVh.value = 100 - progress * 50
   showScrollIndicator.value = scrollTop <= SCROLL_INDICATOR_HIDE_PX
+
+  if (!revealDone && scrollTop >= REVEAL_TRIGGER_PX) {
+    revealDone = true
+    run()
+  }
 }
 
-const { run } = useRevealAnimation({
-  elements: [
-    // { el: bg, direction: 'left', delay: 0 },
-    { el: heroTitle, direction: 'left', delay: 0.1 },
-    { el: heroSubtitle, direction: 'left', delay: 0.2 },
-    { el: creditsLeft, direction: 'left', delay: 0.35 },
-    { el: creditsRight, direction: 'right', delay: 0.35 },
-  ],
-  offset: 48,
-  ease: 'power3.out',
-  scrollTrigger: { trigger: sectionRoot },
-})
+function setRevealInitialState() {
+  const left = creditsLeft.value
+  const right = creditsRight.value
+  if (left) gsap.set(left, { x: -80, opacity: 0 })
+  if (right) gsap.set(right, { x: 80, opacity: 0 })
+}
+
 onMounted(() => {
-  const cleanup = run()
-  if (cleanup) onUnmounted(cleanup)
+  nextTick(setRevealInitialState)
   const el = blockInnerRef.value
   if (el) {
     el.addEventListener('scroll', onBlockScroll, { passive: true })
@@ -55,11 +70,11 @@ onMounted(() => {
 <template>
 <div data-block data-component="HeroIllustration" class="block block--first">
   <div ref="blockInnerRef" data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="hero-block section--full-viewport" aria-label="Hero">
+    <section class="hero-block section--full-viewport" aria-label="Hero">
       <div ref="bg" class="hero-block__illustration"
         :style="{ backgroundImage: `url(${heroImage})`, height: `${illustrationHeightVh}vh` }" role="img"
         :aria-label="$t('hero.illustrationAlt')" />
-      <div class="hero-block__content mt-4 type__credits">
+      <div ref="sectionRoot" class="hero-block__content mt-4 type__credits">
         <div class="container">
           <h1 ref="heroTitle" class="type__hero-title">
             {{ $t('hero.title') }}
@@ -76,22 +91,22 @@ onMounted(() => {
                   class="type__credits-bold">{{ $t('credits.translatedByName') }}</span></p>
               <p>
                 {{ $t('credits.publishedOnPrefix') }}<span class="type__credits-bold">{{ $t('credits.publishedOnDate')
-                }}</span>
+                  }}</span>
               </p>
             </div>
             <div ref="creditsRight" class="credits__col credits__col--right">
               <div class="credits__line-accent ml-auto" aria-hidden="true" />
               <p>
                 {{ $t('credits.artDirectionPrefix') }}<span class="type__credits-bold">{{ $t('credits.artDirectionName')
-                }}</span>
+                  }}</span>
               </p>
               <p>
                 {{ $t('credits.illustrationPrefix') }}<span class="type__credits-bold">{{ $t('credits.illustrationName')
-                }}</span>
+                  }}</span>
               </p>
               <p>
                 {{ $t('credits.devDesignPrefix') }}<span class="type__credits-bold">{{ $t('credits.devDesignName')
-                }}</span>
+                  }}</span>
               </p>
             </div>
           </div>
