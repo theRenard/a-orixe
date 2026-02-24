@@ -62,8 +62,7 @@ onMounted(() => {
           </ImageCrop>
         </div>
         <div class="centered">
-          <p class="type__section-paragraph paragraph-spacing"
-            v-html="$t('ressentirLieux.paragraph2')"></p>
+          <p class="type__section-paragraph paragraph-spacing" v-html="$t('ressentirLieux.paragraph2')"></p>
         </div>
       </div>
     </section>

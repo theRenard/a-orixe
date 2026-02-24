@@ -102,6 +102,18 @@ export function useBlockScroll(input: UseBlockScrollInput) {
     nextTick(() => ScrollTrigger.update())
   }
 
+  function onContainerClick(e: MouseEvent) {
+    if ((e.target as HTMLElement).closest('a[href], button')) return
+    const target = (e.target as HTMLElement).closest<HTMLElement>('[data-component][id]')
+    if (!target) return
+    e.preventDefault()
+    e.stopPropagation()
+    const url = new URL(window.location.href)
+    url.hash = target.id
+    history.replaceState(null, '', url.toString())
+    goToBlockFromHash()
+  }
+
   function applyRailTransform() {
     const rail = getRail()
     if (!rail) return
@@ -216,13 +228,26 @@ export function useBlockScroll(input: UseBlockScrollInput) {
       if (rail) gsap.set(rail, { y: -currentBlockIndex.value * window.innerHeight })
       ScrollTrigger.refresh()
       // Run refresh again after children have mounted and created their ScrollTriggers
-      setTimeout(() => ScrollTrigger.refresh(), 0)
+      setTimeout(() => {
+        ScrollTrigger.refresh()
+        goToBlockFromHash()
+        syncHashToBlock()
+      }, 0)
     })
+    window.addEventListener('hashchange', goToBlockFromHash)
+    const container = containerRef.value
+    if (container) container.addEventListener('click', onContainerClick)
+  })
+
+  watch(currentBlockIndex, () => {
+    syncHashToBlock()
   })
 
   onUnmounted(() => {
     window.removeEventListener('wheel', onWheel)
     window.removeEventListener('keydown', onKeyDown)
+    window.removeEventListener('hashchange', goToBlockFromHash)
+    containerRef.value?.removeEventListener('click', onContainerClick)
     if (rafId != null) cancelAnimationFrame(rafId)
     teardownProxy?.()
   })

@@ -26,19 +26,19 @@ onMounted(() => {
 <div data-block data-component="FlechageSection" class="block">
   <div data-block-inner class="block-inner">
     <section ref="sectionRoot" class="flechage-section section--full-viewport">
-    <div class="container">
-      <div class="centered">
-        <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">
-          {{ $t('flechage.title') }}
-        </h2>
-        <div ref="content">
-          <p class="type__section-paragraph paragraph-spacing" v-html="$t('flechage.paragraph1')"></p>
-          <p ref="question" class="type__question paragraph-spacing" v-html="$t('flechage.highlight')"></p>
-          <p class="type__section-paragraph paragraph-spacing" v-html="$t('flechage.paragraph2')"></p>
+      <div class="container">
+        <div class="centered">
+          <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">
+            {{ $t('flechage.title') }}
+          </h2>
+          <div ref="content">
+            <p class="type__section-paragraph paragraph-spacing" v-html="$t('flechage.paragraph1')"></p>
+            <p ref="question" class="type__question paragraph-spacing" v-html="$t('flechage.highlight')"></p>
+            <p class="type__section-paragraph paragraph-spacing" v-html="$t('flechage.paragraph2')"></p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
   </div>
 </div>
 </template>
@@ -48,4 +48,3 @@ onMounted(() => {
   overflow-x: hidden;
 }
 </style>
-

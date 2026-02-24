@@ -27,13 +27,8 @@ onMounted(() => {
   <div data-block-inner class="block-inner">
     <section ref="sectionRoot" class="section--full-viewport with-background with-shadow fourth-testimonial">
       <div class="container fourth-testimonial__container">
-        <img
-          ref="imageRef"
-          src="@/assets/illustrations/mouette.webp"
-          :alt="$t('fourthTestimonial.quote')"
-          class="fourth-testimonial__bird"
-          loading="lazy"
-        >
+        <img ref="imageRef" src="@/assets/illustrations/mouette.webp" :alt="$t('fourthTestimonial.quote')"
+          class="fourth-testimonial__bird" loading="lazy">
         <blockquote class="centered">
           <div ref="blockquoteInner">
             <p class="type__testimonial-block relative" :class="`type__testimonial-block--${locale}`">

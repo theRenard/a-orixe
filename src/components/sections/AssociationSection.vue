@@ -27,21 +27,21 @@ onMounted(() => {
 <div data-block data-component="AssociationSection" class="block">
   <div data-block-inner class="block-inner">
     <section ref="sectionRoot" class="association-section section--full-viewport">
-  <div class="container">
-    <div class="centered">
-      <div>
-        <p class="type__section-paragraph paragraph-spacing" v-html="$t('association.paragraph1')"></p>
-        <p ref="question" class="type__question paragraph-spacing" v-html="$t('association.blockquote')"></p>
+      <div class="container">
+        <div class="centered">
+          <div>
+            <p class="type__section-paragraph paragraph-spacing" v-html="$t('association.paragraph1')"></p>
+            <p ref="question" class="type__question paragraph-spacing" v-html="$t('association.blockquote')"></p>
+          </div>
+          <p class="type__section-paragraph col-left" v-html="$t('association.paragraph2')"></p>
+          <p class="type__section-paragraph paragraph-spacing" v-html="$t('association.paragraph3')"></p>
+          <div ref="player">
+            <SoundPlayer :src="pronunciationMp3" :text="$t('association.soundPlayerText')" :image="pronunciationImage"
+              class="paragraph-spacing align-center" />
+          </div>
+        </div>
       </div>
-      <p class="type__section-paragraph col-left" v-html="$t('association.paragraph2')"></p>
-      <p class="type__section-paragraph paragraph-spacing" v-html="$t('association.paragraph3')"></p>
-      <div ref="player">
-        <SoundPlayer :src="pronunciationMp3" :text="$t('association.soundPlayerText')" :image="pronunciationImage"
-          class="paragraph-spacing align-center" />
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
   </div>
 </div>
 </template>

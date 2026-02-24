@@ -26,16 +26,16 @@ onMounted(() => {
 <div data-block data-component="SantiagoJourneySection" class="block">
   <div data-block-inner class="block-inner">
     <section ref="sectionRoot" class="santiago-journey-section section--full-viewport">
-  <div class="container">
-    <div class="centered">
-      <p class="type__section-paragraph paragraph-spacing" v-html="$t('santiagoJourney.paragraph')"></p>
-      <div ref="player">
-        <SoundPlayer :src="audioAdrian" :text="$t('santiagoJourney.soundPlayerQuote')" :image="adrianImage"
-          :chapters="chaptersAdrian" class="paragraph-spacing align-center" />
+      <div class="container">
+        <div class="centered">
+          <p class="type__section-paragraph paragraph-spacing" v-html="$t('santiagoJourney.paragraph')"></p>
+          <div ref="player">
+            <SoundPlayer :src="audioAdrian" :text="$t('santiagoJourney.soundPlayerQuote')" :image="adrianImage"
+              :chapters="chaptersAdrian" class="paragraph-spacing align-center" />
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
   </div>
 </div>
 </template>

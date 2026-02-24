@@ -25,31 +25,31 @@ onMounted(() => {
 <div data-block data-component="ExperienceDestineeSection" class="block">
   <div data-block-inner class="block-inner">
     <section ref="sectionRoot" class="experience-destinee-section section--full-viewport">
-  <div class="container">
-    <div class="centered">
-      <img ref="illustration" :src="bateauIllustration" :alt="$t('experienceDestinee.illustrationAlt')"
-        class="experience-destinee-section__illustration paragraph-spacing" loading="lazy">
-      <div ref="content">
-        <p class="type__interview-question mb-0 experience-destinee-section__block paragraph-spacing"
-          v-html="$t('experienceDestinee.question1')"></p>
-        <template v-if="$te('experienceDestinee.answer1Intro')">
-          <p class="type__interview-answer mt-0 experience-destinee-section__block paragraph-spacing"
-            v-html="$t('experienceDestinee.answer1Intro')"></p>
-          <p class="type__interview-question mb-0 experience-destinee-section__block paragraph-spacing"
-            v-html="$t('experienceDestinee.question1b')"></p>
-          <p class="type__interview-answer mt-0 experience-destinee-section__block paragraph-spacing"
-            v-html="$t('experienceDestinee.answer1b')"></p>
-        </template>
-        <p v-else class="type__interview-answer mt-0 experience-destinee-section__block paragraph-spacing"
-          v-html="$t('experienceDestinee.answer1')"></p>
-        <p class="type__interview-question mb-0 experience-destinee-section__block paragraph-spacing"
-          v-html="$t('experienceDestinee.question2')"></p>
-        <p class="type__interview-answer mt-0 experience-destinee-section__block paragraph-spacing"
-          v-html="$t('experienceDestinee.answer2')"></p>
+      <div class="container">
+        <div class="centered">
+          <img ref="illustration" :src="bateauIllustration" :alt="$t('experienceDestinee.illustrationAlt')"
+            class="experience-destinee-section__illustration paragraph-spacing" loading="lazy">
+          <div ref="content">
+            <p class="type__interview-question mb-0 experience-destinee-section__block paragraph-spacing"
+              v-html="$t('experienceDestinee.question1')"></p>
+            <template v-if="$te('experienceDestinee.answer1Intro')">
+              <p class="type__interview-answer mt-0 experience-destinee-section__block paragraph-spacing"
+                v-html="$t('experienceDestinee.answer1Intro')"></p>
+              <p class="type__interview-question mb-0 experience-destinee-section__block paragraph-spacing"
+                v-html="$t('experienceDestinee.question1b')"></p>
+              <p class="type__interview-answer mt-0 experience-destinee-section__block paragraph-spacing"
+                v-html="$t('experienceDestinee.answer1b')"></p>
+            </template>
+            <p v-else class="type__interview-answer mt-0 experience-destinee-section__block paragraph-spacing"
+              v-html="$t('experienceDestinee.answer1')"></p>
+            <p class="type__interview-question mb-0 experience-destinee-section__block paragraph-spacing"
+              v-html="$t('experienceDestinee.question2')"></p>
+            <p class="type__interview-answer mt-0 experience-destinee-section__block paragraph-spacing"
+              v-html="$t('experienceDestinee.answer2')"></p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
   </div>
 </div>
 </template>

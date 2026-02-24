@@ -24,17 +24,17 @@ onMounted(() => {
 <div data-block data-component="ElementsJacquaireSection" class="block">
   <div data-block-inner class="block-inner">
     <section ref="sectionRoot" class="elements-jacquaire-section section--full-viewport">
-  <div class="container">
-    <img ref="image" src="../../assets/illustrations/benevoles_ok.webp" :alt="$t('elementsJacquaire.title')"
-      class="elements-jacquaire-section__image ma" loading="lazy" width="50%" height="auto">
-    <div class="centered">
-      <h2 ref="title" class="type__section-title elements-jacquaire-section__title heading-spacing">
-        {{ $t('elementsJacquaire.title') }}
-      </h2>
-      <p class="type__section-paragraph paragraph-spacing" v-html="$t('elementsJacquaire.paragraph')"></p>
-    </div>
-  </div>
-</section>
+      <div class="container">
+        <img ref="image" src="../../assets/illustrations/benevoles_ok.webp" :alt="$t('elementsJacquaire.title')"
+          class="elements-jacquaire-section__image ma" loading="lazy" width="50%" height="auto">
+        <div class="centered">
+          <h2 ref="title" class="type__section-title elements-jacquaire-section__title heading-spacing">
+            {{ $t('elementsJacquaire.title') }}
+          </h2>
+          <p class="type__section-paragraph paragraph-spacing" v-html="$t('elementsJacquaire.paragraph')"></p>
+        </div>
+      </div>
+    </section>
   </div>
 </div>
 </template>

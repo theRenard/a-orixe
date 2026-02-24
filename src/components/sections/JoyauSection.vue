@@ -29,32 +29,33 @@ onMounted(() => {
 <div data-block data-component="JoyauSection" class="block">
   <div data-block-inner class="block-inner">
     <section ref="sectionRoot" class="joyau-section section--full-viewport">
-  <div class="container">
-    <div class="centered">
-      <p class="type__section-paragraph paragraph-spacing" v-html="$t('joyau.paragraph1')"></p>
-      <p class="type__section-paragraph joyau-section__quote paragraph-spacing" v-html="$t('joyau.paragraph2')"></p>
-    </div>
-    <p ref="caption" class="joyau-section__caption type__image-caption type__image-caption--with-line" v-html="$t('joyau.caption')">
-    </p>
-    <div class="joyau-section__grid">
-      <div ref="cell1" class="joyau-section__cell">
-        <ImageCrop width="100%" height="600px" position="center 50%">
-          <img src="../../assets/photos/10_florence_antunes.webp" :alt="$t('joyau.caption')" loading="lazy">
-        </ImageCrop>
+      <div class="container">
+        <div class="centered">
+          <p class="type__section-paragraph paragraph-spacing" v-html="$t('joyau.paragraph1')"></p>
+          <p class="type__section-paragraph joyau-section__quote paragraph-spacing" v-html="$t('joyau.paragraph2')"></p>
+        </div>
+        <p ref="caption" class="joyau-section__caption type__image-caption type__image-caption--with-line"
+          v-html="$t('joyau.caption')">
+        </p>
+        <div class="joyau-section__grid">
+          <div ref="cell1" class="joyau-section__cell">
+            <ImageCrop width="100%" height="600px" position="center 50%">
+              <img src="../../assets/photos/10_florence_antunes.webp" :alt="$t('joyau.caption')" loading="lazy">
+            </ImageCrop>
+          </div>
+          <div ref="cell2" class="joyau-section__cell">
+            <ImageCrop width="100%" height="600px" position="center 50%">
+              <img src="../../assets/photos/11_florence_antunes.webp" :alt="$t('joyau.caption')" loading="lazy">
+            </ImageCrop>
+          </div>
+          <div ref="cell3" class="joyau-section__cell">
+            <ImageCrop width="100%" height="600px" position="center 50%">
+              <img src="../../assets/photos/12_florence_antunes.webp" :alt="$t('joyau.caption')" loading="lazy">
+            </ImageCrop>
+          </div>
+        </div>
       </div>
-      <div ref="cell2" class="joyau-section__cell">
-        <ImageCrop width="100%" height="600px" position="center 50%">
-          <img src="../../assets/photos/11_florence_antunes.webp" :alt="$t('joyau.caption')" loading="lazy">
-        </ImageCrop>
-      </div>
-      <div ref="cell3" class="joyau-section__cell">
-        <ImageCrop width="100%" height="600px" position="center 50%">
-          <img src="../../assets/photos/12_florence_antunes.webp" :alt="$t('joyau.caption')" loading="lazy">
-        </ImageCrop>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
   </div>
 </div>
 </template>
