@@ -14,7 +14,7 @@ const { run } = useRevealAnimation({
   ],
   offset: 40,
   ease: 'power3.out',
-  scrollTrigger: { trigger: blockquoteInner, start: 'top 80%' },
+  scrollTrigger: { trigger: sectionRoot },
 })
 onMounted(() => {
   const cleanup = run()
@@ -25,7 +25,8 @@ onMounted(() => {
 <template>
 <div data-block data-component="SecondTestimonial" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="section--full-viewport with-background with-shadow second-testimonial" style="position: relative;">
+    <section ref="sectionRoot" class="section--full-viewport with-background with-shadow second-testimonial"
+      style="position: relative;">
       <div class="container">
         <blockquote class="centered">
           <div ref="blockquoteInner">

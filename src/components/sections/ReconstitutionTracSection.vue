@@ -10,10 +10,12 @@ gsap.registerPlugin(ScrollTrigger)
 const sectionRoot = ref<HTMLElement | null>(null)
 const imageBlock = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
+const question = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
     { el: imageBlock, direction: 'left', delay: 0 },
     { el: title, direction: 'right', delay: 0.1 },
+    { el: question, direction: 'down', delay: 0.2 },
   ],
   offset: 44,
   ease: 'power3.out',
@@ -58,7 +60,7 @@ onMounted(() => {
           <div>
             <p class="type__section-paragraph paragraph-spacing" v-html="$t('reconstitutionTrac.paragraph1')"></p>
             <p class="type__section-paragraph paragraph-spacing" v-html="$t('reconstitutionTrac.paragraph2')"></p>
-            <p class="type__question paragraph-spacing" v-html="$t('reconstitutionTrac.question')"></p>
+            <p ref="question" class="type__question paragraph-spacing" v-html="$t('reconstitutionTrac.question')"></p>
             <p class="type__section-paragraph travail-fourmi-paragraph paragraph-spacing"
               v-html="$t('travailFourmi.paragraph')"></p>
           </div>

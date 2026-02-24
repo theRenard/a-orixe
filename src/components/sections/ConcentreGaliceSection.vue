@@ -6,10 +6,12 @@ import { useRevealAnimation } from '@/composables/useRevealAnimation'
 const sectionRoot = ref<HTMLElement | null>(null)
 const leftCol = ref<HTMLElement | null>(null)
 const rightCol = ref<HTMLElement | null>(null)
+const question = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
     { el: leftCol, direction: 'left', delay: 0 },
     { el: rightCol, direction: 'right', delay: 0.1 },
+    { el: question, direction: 'down', delay: 0.2 },
   ],
   offset: 44,
   ease: 'power3.out',
@@ -33,7 +35,7 @@ onMounted(() => {
             {{ $t('concentreGalice.title') }}
           </h2>
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('concentreGalice.paragraph1')"></p>
-          <p class="type__question paragraph-spacing" v-html="$t('concentreGalice.paragraph2')"></p>
+          <p ref="question" class="type__question paragraph-spacing" v-html="$t('concentreGalice.paragraph2')"></p>
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('concentreGalice.paragraph3')"></p>
         </div>
         <div ref="rightCol" class="col-right">

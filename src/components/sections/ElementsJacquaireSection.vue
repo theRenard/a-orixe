@@ -7,7 +7,7 @@ const image = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
-    { el: image, direction: 'left', delay: 0 },
+    { el: image, direction: 'down', delay: 0, scale: 0.7 },
     { el: title, direction: 'right', delay: 0.1 },
   ],
   offset: 44,

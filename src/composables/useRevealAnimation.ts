@@ -31,6 +31,8 @@ export interface RevealElementConfig {
   offset?: number
   /** Initial rotation in degrees; animates to 0 (e.g. -15 for slight counter-clockwise entrance) */
   rotation?: number
+  /** Initial scale; animates to 1 (e.g. 0.7 for zoom-in entrance) */
+  scale?: number
 }
 
 export interface UseRevealAnimationOptions {
@@ -111,7 +113,7 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
   function run(): (() => void) | void {
     if (typeof window === 'undefined') return
 
-    const targets: Array<{ el: Element; direction: RevealDirection; delay?: number; duration?: number; offset?: number; rotation?: number }> = []
+    const targets: Array<{ el: Element; direction: RevealDirection; delay?: number; duration?: number; offset?: number; rotation?: number; scale?: number }> = []
     for (const config of elements) {
       const el = resolveEl(config)
       if (!el) continue
@@ -122,6 +124,7 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
         duration: config.duration,
         offset: config.offset,
         rotation: config.rotation,
+        scale: config.scale,
       })
     }
 
@@ -160,7 +163,7 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
 
     const timeline = gsap.timeline(timelineVars)
 
-    targets.forEach(({ el, direction, delay: elDelay, duration: elDuration, offset: elOffset, rotation: elRotation }, i) => {
+    targets.forEach(({ el, direction, delay: elDelay, duration: elDuration, offset: elOffset, rotation: elRotation, scale: elScale }, i) => {
       const dist = elOffset ?? offset
       const d = elDuration ?? duration
       const startAt = elDelay != null ? elDelay : i * stagger
@@ -178,6 +181,10 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
       if (elRotation != null && elRotation !== 0) {
         fromVars.rotation = elRotation
         toVars.rotation = 0
+      }
+      if (elScale != null && elScale !== 1) {
+        fromVars.scale = elScale
+        toVars.scale = 1
       }
       timeline.fromTo(el, fromVars, toVars, startAt)
     })

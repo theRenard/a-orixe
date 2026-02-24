@@ -5,10 +5,12 @@ import { useRevealAnimation } from '@/composables/useRevealAnimation'
 const sectionRoot = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
 const content = ref<HTMLElement | null>(null)
+const question = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
     { el: title, direction: 'right', delay: 0 },
     { el: content, direction: 'left', delay: 0.1 },
+    { el: question, direction: 'down', delay: 0.2 },
   ],
   offset: 44,
   ease: 'power3.out',
@@ -32,7 +34,7 @@ onMounted(() => {
         <div ref="content">
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('deconnexion.paragraph1')"></p>
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('deconnexion.paragraph2')"></p>
-          <p class="type__question paragraph-spacing" v-html="$t('deconnexion.highlight')"></p>
+          <p ref="question" class="type__question paragraph-spacing" v-html="$t('deconnexion.highlight')"></p>
         </div>
       </div>
     </div>

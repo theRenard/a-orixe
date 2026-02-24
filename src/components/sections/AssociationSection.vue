@@ -6,10 +6,12 @@ import pronunciationImage from '@/assets/audio-photos/pastille-photo-saturio.web
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 
 const sectionRoot = ref<HTMLElement | null>(null)
+const question = ref<HTMLElement | null>(null)
 const player = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
-    { el: player, direction: 'right', delay: 0 },
+    { el: question, direction: 'down', delay: 0 },
+    { el: player, direction: 'down', delay: 0.1 },
   ],
   offset: 44,
   ease: 'power3.out',
@@ -29,7 +31,7 @@ onMounted(() => {
     <div class="centered">
       <div>
         <p class="type__section-paragraph paragraph-spacing" v-html="$t('association.paragraph1')"></p>
-        <p class="type__question paragraph-spacing" v-html="$t('association.blockquote')"></p>
+        <p ref="question" class="type__question paragraph-spacing" v-html="$t('association.blockquote')"></p>
       </div>
       <p class="type__section-paragraph col-left" v-html="$t('association.paragraph2')"></p>
       <p class="type__section-paragraph paragraph-spacing" v-html="$t('association.paragraph3')"></p>

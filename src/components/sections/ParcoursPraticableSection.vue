@@ -7,11 +7,13 @@ const sectionRoot = ref<HTMLElement | null>(null)
 const firstBlock = ref<HTMLElement | null>(null)
 const leftCol = ref<HTMLElement | null>(null)
 const rightCol = ref<HTMLElement | null>(null)
+const question = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
     { el: firstBlock, direction: 'left', delay: 0 },
     { el: leftCol, direction: 'left', delay: 0.1 },
-    { el: rightCol, direction: 'right', delay: 0.1 },
+    { el: rightCol, direction: 'right', delay: 0.1, rotation: 8 },
+    { el: question, direction: 'down', delay: 0.2 },
   ],
   offset: 44,
   ease: 'power3.out',
@@ -26,7 +28,7 @@ onMounted(() => {
 <template>
 <div data-block data-component="ParcoursPraticableSection" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="parcours-praticable-section ">
+    <section ref="sectionRoot" class="parcours-praticable-section section--full-viewport">
       <div class="container">
         <div ref="firstBlock" class="centered parcours-praticable-section__first">
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('parcoursPraticable.paragraph1')"></p>
@@ -34,7 +36,7 @@ onMounted(() => {
         <div class="centered--large">
           <div class="row-two-col">
             <div ref="leftCol" class="col-left">
-              <p class="type__question" v-html="$t('parcoursPraticable.paragraph2')"></p>
+              <p ref="question" class="type__question" v-html="$t('parcoursPraticable.paragraph2')"></p>
             </div>
             <div ref="rightCol" class="col-right">
               <ImageCrop width="100%" height="600px" position="center 40%"

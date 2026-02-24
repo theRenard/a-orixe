@@ -32,10 +32,12 @@ const lineStyle = computed(() => {
 })
 const title = ref<HTMLElement | null>(null)
 const stepsImage = ref<HTMLElement | null>(null)
+const question = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
     { el: title, direction: 'left', delay: 0.1 },
-    { el: stepsImage, direction: 'right', delay: 0.18 },
+    { el: stepsImage, direction: 'right', delay: 0.18, rotation: 8 },
+    { el: question, direction: 'down', delay: 0.26 },
   ],
   offset: 44,
   ease: 'power3.out',
@@ -90,7 +92,7 @@ onMounted(() => {
         <div class="centered">
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('santiagoSteps.paragraph1')"></p>
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('santiagoSteps.paragraph2')"></p>
-          <p class="type__question paragraph-spacing" v-html="$t('santiagoSteps.highlight')"></p>
+          <p ref="question" class="type__question paragraph-spacing" v-html="$t('santiagoSteps.highlight')"></p>
         </div>
       </div>
     </section>
