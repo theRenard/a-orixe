@@ -46,7 +46,8 @@ useBlockScroll({
 
 <template>
 <main ref="mainRef" class="block-viewport">
-  <ReadProgressBar :viewport-ref="(mainRef as unknown as { value: HTMLElement | null })" :rail-ref="(railRef as unknown as { value: HTMLElement | null })" />
+  <ReadProgressBar :viewport-ref="(mainRef as unknown as { value: HTMLElement | null })"
+    :rail-ref="(railRef as unknown as { value: HTMLElement | null })" />
   <div ref="railRef" class="blocks-rail">
     <HeroIllustration />
     <CaminoSection />

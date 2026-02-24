@@ -180,7 +180,9 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
       }
       if (elRotation != null && elRotation !== 0) {
         fromVars.rotation = elRotation
+        fromVars.transformOrigin = '50% 50%'
         toVars.rotation = 0
+        toVars.transformOrigin = '50% 50%'
       }
       if (elScale != null && elScale !== 1) {
         fromVars.scale = elScale

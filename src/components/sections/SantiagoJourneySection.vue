@@ -10,7 +10,7 @@ const sectionRoot = ref<HTMLElement | null>(null)
 const player = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
-    { el: player, direction: 'down', delay: 0 },
+    { el: player, direction: 'right', delay: 0 },
   ],
   offset: 44,
   ease: 'power3.out',

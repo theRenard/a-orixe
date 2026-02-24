@@ -12,7 +12,7 @@ const playerBlock = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
     { el: imageBlock, direction: 'left', delay: 0 },
-    { el: playerBlock, direction: 'down', delay: 0.1 },
+    { el: playerBlock, direction: 'right', delay: 0.1 },
   ],
   offset: 44,
   ease: 'power3.out',

@@ -8,16 +8,18 @@ const rightTopImage = new URL('../../assets/photos/06_florence_antunes.webp', im
 const rightBottomImage = new URL('../../assets/photos/07_florence_antunes.webp', import.meta.url).href
 
 const sectionRoot = ref<HTMLElement | null>(null)
+const photoGrid = ref<HTMLElement | null>(null)
 const cellLeft = ref<HTMLElement | null>(null)
 const cellRightTop = ref<HTMLElement | null>(null)
 const cellRightBottom = ref<HTMLElement | null>(null)
 const caption = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
-    { el: cellLeft, direction: 'left', delay: 0 },
-    { el: cellRightTop, direction: 'right', delay: 0.06 },
-    { el: cellRightBottom, direction: 'right', delay: 0.12 },
-    { el: caption, direction: 'left', delay: 0.18 },
+    { el: photoGrid, direction: 'down', delay: 0, rotation: 12 },
+    { el: cellLeft, direction: 'left', delay: 0.06 },
+    { el: cellRightTop, direction: 'right', delay: 0.12 },
+    { el: cellRightBottom, direction: 'right', delay: 0.18 },
+    { el: caption, direction: 'left', delay: 0.24 },
   ],
   offset: 40,
   ease: 'power3.out',
@@ -34,7 +36,7 @@ onMounted(() => {
   <div data-block-inner class="block-inner">
     <section ref="sectionRoot" class="santiago-journey-photo-grid-section section--full-viewport">
   <div class="container">
-    <div class="santiago-journey-photo-grid align-center paragraph-spacing" role="img"
+    <div ref="photoGrid" class="santiago-journey-photo-grid align-center paragraph-spacing" role="img"
       :aria-label="$t('santiagoJourney.imageCaption')">
       <div ref="cellLeft" class="santiago-journey-photo-grid__cell santiago-journey-photo-grid__cell--left">
         <ImageCrop width="100%" height="100%" position="center 50%">

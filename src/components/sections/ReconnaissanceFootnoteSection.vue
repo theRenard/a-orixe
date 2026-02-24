@@ -1,11 +1,16 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
+import ImageCrop from '@/components/tools/ImageCrop.vue'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 
 const sectionRoot = ref<HTMLElement | null>(null)
+const image = ref<HTMLElement | null>(null)
 const content = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
-  elements: [{ el: content, direction: 'left', delay: 0 }],
+  elements: [
+    { el: image, direction: 'right', delay: 0 },
+    { el: content, direction: 'left', delay: 0.1 },
+  ],
   offset: 44,
   ease: 'power3.out',
   scrollTrigger: { trigger: sectionRoot },
@@ -21,6 +26,13 @@ onMounted(() => {
   <div data-block-inner class="block-inner">
     <section ref="sectionRoot" class="reconnaissance-footnote-section section--full-viewport">
       <div class="container">
+        <div ref="image" class="centered paragraph-spacing">
+          <ImageCrop width="100%" height="600px" position="center" :caption="$t('reconnaissance.documentCaption')"
+            caption-position="bottom">
+            <img class="paragraph-spacing" src="@/assets/photos/lettrereconnaissancechemin.webp"
+              :alt="$t('reconnaissance.documentCaption')" loading="lazy">
+          </ImageCrop>
+        </div>
         <div ref="content" class="centered">
           <p class="type__section-paragraph paragraph-spacing">{{ $t('reconnaissance.insertBetween') }}</p>
         </div>
