@@ -37,7 +37,6 @@ const { run } = useRevealAnimation({
     { el: creditsLeft, direction: 'left', delay: 0.35 },
     { el: creditsRight, direction: 'right', delay: 0.35 },
   ],
-  duration: 0.6,
   offset: 48,
   ease: 'power3.out',
   scrollTrigger: { trigger: sectionRoot },

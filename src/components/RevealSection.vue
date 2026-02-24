@@ -5,12 +5,10 @@ import { useRevealAnimation, type RevealDirection } from '@/composables/useRevea
 const props = withDefaults(
   defineProps<{
     direction?: RevealDirection
-    duration?: number
     offset?: number
   }>(),
   {
     direction: 'left',
-    duration: 0.65,
     offset: 48,
   },
 )
@@ -18,7 +16,6 @@ const props = withDefaults(
 const root = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [{ el: root, direction: props.direction }],
-  duration: props.duration,
   offset: props.offset,
   ease: 'power3.out',
   scrollTrigger: { trigger: root },

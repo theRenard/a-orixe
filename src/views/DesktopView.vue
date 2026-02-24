@@ -33,6 +33,7 @@ import OrixeInterviewSection from '@/components/sections/OrixeInterviewSection.v
 import ExperienceDestineeSection from '@/components/sections/ExperienceDestineeSection.vue'
 import EnBrefSection from '@/components/sections/EnBrefSection.vue'
 import CommentEstNeRecitSection from '@/components/sections/CommentEstNeRecitSection.vue'
+import ReadProgressBar from '@/components/ReadProgressBar.vue'
 
 const mainRef = ref<HTMLElement | null>(null)
 const railRef = ref<HTMLElement | null>(null)
@@ -45,6 +46,7 @@ useBlockScroll({
 
 <template>
 <main ref="mainRef" class="block-viewport">
+  <ReadProgressBar :viewport-ref="mainRef" :rail-ref="railRef" />
   <div ref="railRef" class="blocks-rail">
     <HeroIllustration />
     <CaminoSection />

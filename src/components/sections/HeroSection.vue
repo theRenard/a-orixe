@@ -15,7 +15,6 @@ const { run } = useRevealAnimation({
     { el: creditsLeft, direction: 'left', delay: 0.25 },
     { el: creditsRight, direction: 'right', delay: 0.25 },
   ],
-  duration: 0.6,
   offset: 48,
   scrollTrigger: { trigger: heroSection },
 })

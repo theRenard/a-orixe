@@ -13,7 +13,6 @@ const { run } = useRevealAnimation({
     { el: content, direction: 'right', delay: 0.1 },
     { el: illustration, direction: 'left', delay: 0.2 },
   ],
-  duration: 0.6,
   offset: 44,
   ease: 'power3.out',
   scrollTrigger: { trigger: sectionRoot },

@@ -12,7 +12,6 @@ const { run } = useRevealAnimation({
     { el: blockquoteInner, direction: 'left' },
     { el: imageRef, direction: 'right', delay: 0.1 },
   ],
-  duration: 0.65,
   offset: 40,
   ease: 'power3.out',
   scrollTrigger: { trigger: blockquoteInner, start: 'top 80%' },

@@ -39,7 +39,6 @@ const { run } = useRevealAnimation({
     { el: stepsImage, direction: 'right', delay: 0.18 },
     { el: textBlock, direction: 'left', delay: 0.28 },
   ],
-  duration: 0.6,
   offset: 44,
   ease: 'power3.out',
   scrollTrigger: { trigger: sectionRoot },
@@ -61,7 +60,7 @@ onMounted(() => {
     tl.fromTo(
       containerEl,
       { width: '0%' },
-      { width: '100%', duration: 5, ease: 'power2.inOut' },
+      { width: '100%', duration: 20, ease: 'power2.inOut' },
       0.15,
     )
     onUnmounted(() => tl.scrollTrigger?.kill())

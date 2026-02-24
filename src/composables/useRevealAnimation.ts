@@ -46,7 +46,7 @@ export interface UseRevealAnimationOptions {
   scrollTrigger?: boolean | ScrollTriggerRevealOptions
 }
 
-const DEFAULT_DURATION = 0.6
+const DEFAULT_DURATION = 2
 const DEFAULT_OFFSET = 60
 const DEFAULT_EASE = 'power2.out'
 
@@ -111,11 +111,11 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
         ? { once: true, start: 'top 70%' as const }
         : scrollTriggerOpt
           ? {
-              once: scrollTriggerOpt.once ?? true,
-              start: scrollTriggerOpt.start ?? 'top 70%',
-              end: scrollTriggerOpt.end,
-              trigger: scrollTriggerOpt.trigger,
-            }
+            once: scrollTriggerOpt.once ?? true,
+            start: scrollTriggerOpt.start ?? 'top 70%',
+            end: scrollTriggerOpt.end,
+            trigger: scrollTriggerOpt.trigger,
+          }
           : null
 
     const timelineVars: gsap.TimelineVars = { defaults: { ease } }
@@ -123,9 +123,9 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
       const firstTarget = targets[0]
       const triggerEl = firstTarget
         ? resolveTrigger(
-            { ...stConfig, trigger: stConfig.trigger },
-            firstTarget.el,
-          )
+          { ...stConfig, trigger: stConfig.trigger },
+          firstTarget.el,
+        )
         : null
       if (triggerEl) {
         timelineVars.scrollTrigger = {

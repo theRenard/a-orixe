@@ -6,7 +6,6 @@ const sectionRoot = ref<HTMLElement | null>(null)
 const content = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [{ el: content, direction: 'left', delay: 0 }],
-  duration: 0.6,
   offset: 44,
   ease: 'power3.out',
   scrollTrigger: { trigger: sectionRoot },
