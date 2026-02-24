@@ -8,13 +8,11 @@ import { useRevealAnimation } from '@/composables/useRevealAnimation'
 
 const sectionRoot = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
-const block1 = ref<HTMLElement | null>(null)
 const player = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
     { el: title, direction: 'left', delay: 0 },
-    { el: block1, direction: 'right', delay: 0.08 },
-    { el: player, direction: 'left', delay: 0.18 },
+    { el: player, direction: 'left', delay: 0.08 },
   ],
   offset: 44,
   ease: 'power3.out',
@@ -35,7 +33,7 @@ onMounted(() => {
       <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">
         {{ $t('coupDeCoeur.title') }}
       </h2>
-      <div ref="block1">
+      <div>
         <p class="type__section-paragraph paragraph-spacing" v-html="$t('coupDeCoeur.paragraph1')"></p>
         <p class="type__section-paragraph col-left" v-html="$t('coupDeCoeur.quote')"></p>
       </div>

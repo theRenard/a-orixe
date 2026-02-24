@@ -9,7 +9,7 @@ const blockquoteInner = ref<HTMLElement | null>(null)
 const imageRef = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
-    { el: blockquoteInner, direction: 'left' },
+    { el: blockquoteInner, direction: 'down' },
     { el: imageRef, direction: 'right', delay: 0.1 },
   ],
   offset: 40,

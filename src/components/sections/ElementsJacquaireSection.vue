@@ -5,12 +5,10 @@ import { useRevealAnimation } from '@/composables/useRevealAnimation'
 const sectionRoot = ref<HTMLElement | null>(null)
 const image = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
-const paragraph = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
     { el: image, direction: 'left', delay: 0 },
     { el: title, direction: 'right', delay: 0.1 },
-    { el: paragraph, direction: 'left', delay: 0.18 },
   ],
   offset: 44,
   ease: 'power3.out',
@@ -33,7 +31,7 @@ onMounted(() => {
       <h2 ref="title" class="type__section-title elements-jacquaire-section__title heading-spacing">
         {{ $t('elementsJacquaire.title') }}
       </h2>
-      <p ref="paragraph" class="type__section-paragraph paragraph-spacing" v-html="$t('elementsJacquaire.paragraph')"></p>
+      <p class="type__section-paragraph paragraph-spacing" v-html="$t('elementsJacquaire.paragraph')"></p>
     </div>
   </div>
 </section>

@@ -4,7 +4,7 @@ import type { Ref } from 'vue'
 
 gsap.registerPlugin(ScrollTrigger)
 
-export type RevealDirection = 'left' | 'right'
+export type RevealDirection = 'left' | 'right' | 'up' | 'down'
 
 /** When the timeline should start relative to the trigger element entering the viewport. */
 export interface ScrollTriggerRevealOptions {
@@ -54,6 +54,21 @@ const DEFAULT_DURATION = 2
 const DEFAULT_OFFSET = 60
 const DEFAULT_EASE = 'power2.out'
 
+/**
+ * Global default for ScrollTrigger "once" behaviour.
+ * When false, animations reset when the block is scrolled past and play again when the user comes back.
+ * Set via setRevealAnimationOnceDefault(false) (e.g. in main.ts or App.vue).
+ */
+let revealAnimationOnceDefault = true
+
+export function setRevealAnimationOnceDefault(once: boolean): void {
+  revealAnimationOnceDefault = once
+}
+
+export function getRevealAnimationOnceDefault(): boolean {
+  return revealAnimationOnceDefault
+}
+
 function resolveEl(
   config: RevealElementConfig,
 ): Element | null {
@@ -74,7 +89,7 @@ function resolveTrigger(
 }
 
 /**
- * Composable for GSAP reveal animations: elements enter from left or right
+ * Composable for GSAP reveal animations: elements enter from left, right, up, or down
  * and fade in from opacity 0. Run only on the client (use inside onMounted).
  * Use scrollTrigger to start the animation when the section enters the viewport.
  */
@@ -114,10 +129,10 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
 
     const stConfig =
       scrollTriggerOpt === true
-        ? { once: true, start: 'top 70%' as const }
+        ? { once: revealAnimationOnceDefault, start: 'top 70%' as const }
         : scrollTriggerOpt
           ? {
-            once: scrollTriggerOpt.once ?? true,
+            once: scrollTriggerOpt.once ?? revealAnimationOnceDefault,
             start: scrollTriggerOpt.start ?? 'top 70%',
             end: scrollTriggerOpt.end,
             trigger: scrollTriggerOpt.trigger,
@@ -147,11 +162,19 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
 
     targets.forEach(({ el, direction, delay: elDelay, duration: elDuration, offset: elOffset, rotation: elRotation }, i) => {
       const dist = elOffset ?? offset
-      const fromX = direction === 'left' ? -dist : dist
       const d = elDuration ?? duration
       const startAt = elDelay != null ? elDelay : i * stagger
-      const fromVars: gsap.TweenVars = { x: fromX, opacity: 0 }
-      const toVars: gsap.TweenVars = { x: 0, opacity: 1, duration: d }
+      const fromVars: gsap.TweenVars = { opacity: 0 }
+      const toVars: gsap.TweenVars = { opacity: 1, duration: d }
+      if (direction === 'left' || direction === 'right') {
+        const fromX = direction === 'left' ? -dist : dist
+        fromVars.x = fromX
+        toVars.x = 0
+      } else {
+        const fromY = direction === 'up' ? -dist : dist
+        fromVars.y = fromY
+        toVars.y = 0
+      }
       if (elRotation != null && elRotation !== 0) {
         fromVars.rotation = elRotation
         toVars.rotation = 0

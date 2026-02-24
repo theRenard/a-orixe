@@ -7,12 +7,10 @@ import adrianImage from '@/assets/audio-photos/pastille-photo-adrian.webp'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 
 const sectionRoot = ref<HTMLElement | null>(null)
-const paragraph = ref<HTMLElement | null>(null)
 const player = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
-    { el: paragraph, direction: 'left', delay: 0 },
-    { el: player, direction: 'right', delay: 0.1 },
+    { el: player, direction: 'right', delay: 0 },
   ],
   offset: 44,
   ease: 'power3.out',
@@ -30,7 +28,7 @@ onMounted(() => {
     <section ref="sectionRoot" class="santiago-journey-section section--full-viewport">
   <div class="container">
     <div class="centered">
-      <p ref="paragraph" class="type__section-paragraph paragraph-spacing" v-html="$t('santiagoJourney.paragraph')"></p>
+      <p class="type__section-paragraph paragraph-spacing" v-html="$t('santiagoJourney.paragraph')"></p>
       <div ref="player">
         <SoundPlayer :src="audioAdrian" :text="$t('santiagoJourney.soundPlayerQuote')" :image="adrianImage"
           :chapters="chaptersAdrian" class="paragraph-spacing align-center" />

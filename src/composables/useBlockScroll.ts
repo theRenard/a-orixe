@@ -206,6 +206,7 @@ export function useBlockScroll(input: UseBlockScrollInput) {
     if (typeof window === 'undefined') return
     setupScrollProxy()
     window.addEventListener('wheel', onWheel, { passive: false })
+    window.addEventListener('keydown', onKeyDown)
     rafId = window.requestAnimationFrame(function raf() {
       ScrollTrigger.update()
       rafId = window.requestAnimationFrame(raf)
@@ -221,6 +222,7 @@ export function useBlockScroll(input: UseBlockScrollInput) {
 
   onUnmounted(() => {
     window.removeEventListener('wheel', onWheel)
+    window.removeEventListener('keydown', onKeyDown)
     if (rafId != null) cancelAnimationFrame(rafId)
     teardownProxy?.()
   })

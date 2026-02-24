@@ -7,7 +7,7 @@ const { locale } = useI18n()
 const sectionRoot = ref<HTMLElement | null>(null)
 const blockquoteInner = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
-  elements: [{ el: blockquoteInner, direction: 'left' }],
+  elements: [{ el: blockquoteInner, direction: 'down' }],
   offset: 40,
   ease: 'power3.out',
   scrollTrigger: { trigger: blockquoteInner, start: 'top 80%' },

@@ -6,12 +6,10 @@ import { useRevealAnimation } from '@/composables/useRevealAnimation'
 const sectionRoot = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
 const image = ref<HTMLElement | null>(null)
-const textBlock = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
     { el: title, direction: 'left', delay: 0 },
     { el: image, direction: 'right', delay: 0.08 },
-    { el: textBlock, direction: 'left', delay: 0.18 },
   ],
   offset: 44,
   ease: 'power3.out',
@@ -36,7 +34,7 @@ onMounted(() => {
         <img ref="image" :src="espagneImage" alt="" class="santiago-steps-section__title-img col-right" aria-hidden="true">
       </div>
     </div>
-    <div ref="textBlock" class="centered">
+    <div class="centered">
       <p class="type__section-paragraph paragraph-spacing" v-html="$t('santiagoSteps.paragraph1')"></p>
       <p class="type__section-paragraph paragraph-spacing" v-html="$t('santiagoSteps.paragraph2')"></p>
       <p class="type__question paragraph-spacing" v-html="$t('santiagoSteps.highlight')"></p>

@@ -6,16 +6,10 @@ import pronunciationImage from '@/assets/audio-photos/pastille-photo-saturio.web
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 
 const sectionRoot = ref<HTMLElement | null>(null)
-const block1 = ref<HTMLElement | null>(null)
-const block2 = ref<HTMLElement | null>(null)
-const block3 = ref<HTMLElement | null>(null)
 const player = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
-    { el: block1, direction: 'left', delay: 0 },
-    { el: block2, direction: 'right', delay: 0.1 },
-    { el: block3, direction: 'left', delay: 0.2 },
-    { el: player, direction: 'right', delay: 0.3 },
+    { el: player, direction: 'right', delay: 0 },
   ],
   offset: 44,
   ease: 'power3.out',
@@ -33,12 +27,12 @@ onMounted(() => {
     <section ref="sectionRoot" class="association-section section--full-viewport">
   <div class="container">
     <div class="centered">
-      <div ref="block1">
+      <div>
         <p class="type__section-paragraph paragraph-spacing" v-html="$t('association.paragraph1')"></p>
         <p class="type__question paragraph-spacing" v-html="$t('association.blockquote')"></p>
       </div>
-      <p ref="block2" class="type__section-paragraph col-left" v-html="$t('association.paragraph2')"></p>
-      <p ref="block3" class="type__section-paragraph paragraph-spacing" v-html="$t('association.paragraph3')"></p>
+      <p class="type__section-paragraph col-left" v-html="$t('association.paragraph2')"></p>
+      <p class="type__section-paragraph paragraph-spacing" v-html="$t('association.paragraph3')"></p>
       <div ref="player">
         <SoundPlayer :src="pronunciationMp3" :text="$t('association.soundPlayerText')" :image="pronunciationImage"
           class="paragraph-spacing align-center" />
