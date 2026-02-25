@@ -148,7 +148,7 @@ onUnmounted(() => {
   border: 3px solid var(--color-teal-medium);
   border-radius: 50px;
   font-family: var(--font-family-ubuntu);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   color: var(--color-teal-dark);
   letter-spacing: var(--letter-spacing-normal);

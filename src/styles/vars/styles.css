@@ -80,8 +80,13 @@ h2 {
 }
 
 .col-left {
+  display: flex;
+  flex-direction: column;
   flex: 0 0 40%;
   min-width: 0;
+  align-content: center;
+  justify-content: center;
+  /* background-color: red; */
 }
 
 .col-right {

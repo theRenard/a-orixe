@@ -54,7 +54,7 @@
 
   /* Font sizes (scaled by --font-scale) */
   --font-size-xs: calc(12px * var(--font-scale));
-  --font-size-sm: calc(18px * var(--font-scale));
+  --font-size-sm: calc(16px * var(--font-scale));
   --font-size-base: calc(20px * var(--font-scale));
   --font-size-lg: calc(24px * var(--font-scale));
   --font-size-xl: calc(27px * var(--font-scale));

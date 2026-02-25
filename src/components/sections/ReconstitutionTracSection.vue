@@ -15,7 +15,7 @@ const { run } = useRevealAnimation({
   elements: [
     { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
     { el: imageBlock, direction: 'left', delay: 0 },
-    { el: title, direction: 'right', delay: 0.1 },
+    { el: title, direction: 'left', delay: 0.1 },
     { el: question, direction: 'down', delay: 0.2 },
   ],
   offset: 44,

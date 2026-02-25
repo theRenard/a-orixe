@@ -40,7 +40,7 @@ onMounted(() => {
               <p ref="question" class="type__question" v-html="$t('parcoursPraticable.paragraph2')"></p>
             </div>
             <div ref="rightCol" class="col-right">
-              <ImageCrop width="100%" height="600px" position="center 40%"
+              <ImageCrop width="30rem" height="40rem" position="center 40%"
                 :caption="$t('parcoursPraticable.photoCredit')" caption-position="bottom">
                 <img src="../../assets/photos/03_florence_antunes.webp" :alt="$t('parcoursPraticable.imageCaption')"
                   loading="lazy">

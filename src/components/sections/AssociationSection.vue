@@ -12,7 +12,7 @@ const { run } = useRevealAnimation({
   elements: [
     { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
     { el: question, direction: 'down', delay: 0 },
-    { el: player, direction: 'left', delay: 0.1 },
+    { el: player, direction: 'down', delay: 0.1 },
   ],
   offset: 44,
   ease: 'power3.out',

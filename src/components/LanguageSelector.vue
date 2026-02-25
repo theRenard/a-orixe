@@ -54,7 +54,7 @@ function goToLocale(newLocale: 'fr' | 'es') {
   background-origin: padding-box;
   opacity: 1;
   font-family: var(--font-family-ubuntu);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-base);
   line-height: 1;
   padding: 7px;
   gap: 0.4rem;

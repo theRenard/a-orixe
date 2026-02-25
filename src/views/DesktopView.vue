@@ -56,14 +56,14 @@ useBlockScroll({
     <CaminoSection />
     <FirstTestimonial />
     <EtapesClesSection />
-    -->
-    <RessentirLieuxSection />
     <SecondTestimonial data-validate="ok" />
-    <FifthTestimonial />
-    <AssociationSection />
-    <ReconstitutionTracSection />
-    <ThirdTestimonial />
-    <ElementsJacquaireSection />
+    <RessentirLieuxSection data-validate="KO" />
+    <FifthTestimonial data-validate="ok" />
+    <AssociationSection data-validate="ok" />
+    <ReconstitutionTracSection data-validate="KO" />
+    <ThirdTestimonial data-validate="ok" />
+    -->
+    <ElementsJacquaireSection data-validate="ok" />
     <ParcoursPraticableSection />
     <MapIllustration />
     <ConcentreGaliceSection />

@@ -22,7 +22,7 @@ const { run } = useRevealAnimation({
     { el: image, direction: 'down', scale: 3, transformOrigin: 'center top' },
     { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
     { el: titleBlock, direction: 'down', delay: 1 },
-    { el: title, direction: 'right', delay: 1.1 },
+    { el: title, direction: 'left', delay: 1.1 },
     { el: question, direction: 'down', delay: 1.1 },
   ],
   offset: 44,
