@@ -9,6 +9,9 @@
  */
 
 :root {
+  /* Fixed design width: proportions scale with viewport width only (design for 1920px) */
+  --design-width: 1920;
+
   /* Colors */
   --color-teal-dark: #2d4b4b;
   --color-teal-medium: #609897;
@@ -52,26 +55,31 @@
   /* Global font scale (1 = design size; 0.7 = 30% reduction) */
   --font-scale: 1;
 
-  /* Font sizes (scaled by --font-scale) */
-  --font-size-xs: calc(12px * var(--font-scale));
-  --font-size-sm: calc(16px * var(--font-scale));
-  --font-size-base: calc(20px * var(--font-scale));
-  --font-size-lg: calc(24px * var(--font-scale));
-  --font-size-xl: calc(27px * var(--font-scale));
-  --font-size-2xl: calc(30px * var(--font-scale));
-  --font-size-3xl: calc(35px * var(--font-scale));
-  --font-size-display: calc(150px * var(--font-scale));
+  /* Font sizes (rem so they scale with root; --font-scale applied) */
+  --font-size-xs: calc(0.75rem * var(--font-scale));
+  --font-size-sm: calc(1rem * var(--font-scale));
+  --font-size-base: calc(1.25rem * var(--font-scale));
+  --font-size-lg: calc(1.5rem * var(--font-scale));
+  --font-size-xl: calc(1.6875rem * var(--font-scale));
+  --font-size-2xl: calc(1.875rem * var(--font-scale));
+  --font-size-3xl: calc(2.1875rem * var(--font-scale));
+  --font-size-display: calc(9.375rem * var(--font-scale));
 
   /* Spacing (letter) */
   --letter-spacing-normal: 0px;
 
-  /* Line heights (scaled by --font-scale) */
-  --line-height-tight: calc(15px * var(--font-scale));
-  --line-height-sm: calc(30px * var(--font-scale));
-  --line-height-base: calc(34px * var(--font-scale));
-  --line-height-md: calc(35px * var(--font-scale));
-  --line-height-text: calc(36px * var(--font-scale));
-  --line-height-lg: calc(40px * var(--font-scale));
-  --line-height-xl: calc(44px * var(--font-scale));
-  --line-height-display: calc(55px * var(--font-scale));
+  /* Line heights (rem so they scale with root; --font-scale applied) */
+  --line-height-tight: calc(0.9375rem * var(--font-scale));
+  --line-height-sm: calc(1.875rem * var(--font-scale));
+  --line-height-base: calc(2.125rem * var(--font-scale));
+  --line-height-md: calc(2.1875rem * var(--font-scale));
+  --line-height-text: calc(2.25rem * var(--font-scale));
+  --line-height-lg: calc(2.5rem * var(--font-scale));
+  --line-height-xl: calc(2.75rem * var(--font-scale));
+  --line-height-display: calc(3.4375rem * var(--font-scale));
+}
+
+/* Root font-size scales with viewport width so all rem (spacing, typography) scale proportionally */
+html {
+  font-size: calc(16 * 100vw / var(--design-width));
 }

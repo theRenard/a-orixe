@@ -114,21 +114,21 @@ onMounted(() => {
 }
 
 .en-bref-section__inner {
-  max-width: 1000px;
+  max-width: 62.5rem;
   margin: 0 auto;
 }
 
 .en-bref-section__title {
-  font: normal var(--font-weight-bold) calc(38px * var(--font-scale)) / 1.2 var(--font-family-fraunces);
+  font: normal var(--font-weight-bold) calc(2.375rem * var(--font-scale)) / 1.2 var(--font-family-fraunces);
   color: var(--color-orange);
   text-align: left;
 }
 
 .en-bref-section__title-underline {
   display: inline-block;
-  border-bottom: 2px solid var(--color-orange);
-  padding-bottom: 2px;
-  margin-bottom: 2px;
+  border-bottom: 0.125rem solid var(--color-orange);
+  padding-bottom: 0.125rem;
+  margin-bottom: 0.125rem;
 }
 
 .en-bref-section__stats-row {
@@ -155,8 +155,8 @@ onMounted(() => {
 
 .en-bref-section__icon {
   flex-shrink: 0;
-  width: 100px;
-  height: 100px;
+  width: 6.25rem;
+  height: 6.25rem;
   object-fit: contain;
   margin-right: 1rem;
 }
@@ -170,12 +170,12 @@ onMounted(() => {
 }
 
 .en-bref-section__icon--svg :deep(svg) {
-  width: 48px;
-  height: 48px;
+  width: 3rem;
+  height: 3rem;
 }
 
 .en-bref-section__link-wrap {
-  font: normal var(--font-weight-normal) calc(20px * var(--font-scale)) / calc(40px * var(--font-scale)) var(--font-family-ubuntu);
+  font: normal var(--font-weight-normal) calc(1.25rem * var(--font-scale)) / calc(2.5rem * var(--font-scale)) var(--font-family-ubuntu);
   color: var(--color-teal-dark);
   text-align: center;
   margin: 0;

@@ -73,7 +73,7 @@ onMounted(() => {
 
 .comment-est-ne-section__grid {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 17.5rem 1fr;
   gap: 3rem 4rem;
   align-items: start;
 }
@@ -99,8 +99,8 @@ onMounted(() => {
 }
 
 .comment-est-ne-section__avatar {
-  width: 280px;
-  height: 280px;
+  width: 17.5rem;
+  height: 17.5rem;
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 1.25rem;
@@ -108,16 +108,16 @@ onMounted(() => {
 
 /* Big green heading – Fraunces 35px/30px bold #2D4B4B */
 .comment-est-ne-section__title {
-  font: normal normal var(--font-weight-bold) calc(35px * var(--font-scale)) / calc(30px * var(--font-scale)) var(--font-family-fraunces);
-  letter-spacing: 0px;
+  font: normal normal var(--font-weight-bold) calc(2.1875rem * var(--font-scale)) / calc(1.875rem * var(--font-scale)) var(--font-family-fraunces);
+  letter-spacing: 0;
   color: var(--color-teal-dark);
   text-align: left;
 }
 
 /* Green paragraph – Ubuntu 18px/30px medium #2D4B4B, columnar width */
 .comment-est-ne-section__paragraph {
-  font: normal normal var(--font-weight-medium) calc(18px * var(--font-scale)) / calc(30px * var(--font-scale)) var(--font-family-ubuntu);
-  letter-spacing: 0px;
+  font: normal normal var(--font-weight-medium) calc(1.125rem * var(--font-scale)) / calc(1.875rem * var(--font-scale)) var(--font-family-ubuntu);
+  letter-spacing: 0;
   color: var(--color-teal-dark);
   text-align: left;
   max-width: 65ch;
@@ -125,8 +125,8 @@ onMounted(() => {
 
 /* Author name – Ubuntu 28px/27px bold #2D4B4B, center */
 .comment-est-ne-section__author-name {
-  font: normal normal var(--font-weight-bold) calc(28px * var(--font-scale)) / calc(27px * var(--font-scale)) var(--font-family-ubuntu);
-  letter-spacing: 0px;
+  font: normal normal var(--font-weight-bold) calc(1.75rem * var(--font-scale)) / calc(1.6875rem * var(--font-scale)) var(--font-family-ubuntu);
+  letter-spacing: 0;
   color: var(--color-teal-dark);
   text-align: center;
   margin: 0 0 0.5rem;
@@ -134,8 +134,8 @@ onMounted(() => {
 
 /* Author role – Ubuntu 19px/27px normal #609897, center */
 .comment-est-ne-section__author-role {
-  font: normal normal var(--font-weight-normal) calc(19px * var(--font-scale)) / calc(27px * var(--font-scale)) var(--font-family-ubuntu);
-  letter-spacing: 0px;
+  font: normal normal var(--font-weight-normal) calc(1.1875rem * var(--font-scale)) / calc(1.6875rem * var(--font-scale)) var(--font-family-ubuntu);
+  letter-spacing: 0;
   color: var(--color-teal-medium);
   text-align: center;
 }
@@ -143,8 +143,8 @@ onMounted(() => {
 /* Author email & website – bold, underline, dark greenish-grey #3C4C4A */
 .comment-est-ne-section__author-email,
 .comment-est-ne-section__author-website {
-  font: normal normal var(--font-weight-bold) calc(19px * var(--font-scale)) / calc(27px * var(--font-scale)) var(--font-family-ubuntu);
-  letter-spacing: 0px;
+  font: normal normal var(--font-weight-bold) calc(1.1875rem * var(--font-scale)) / calc(1.6875rem * var(--font-scale)) var(--font-family-ubuntu);
+  letter-spacing: 0;
   color: #3c4c4a;
   text-align: center;
   text-decoration: underline;

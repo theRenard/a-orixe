@@ -44,7 +44,7 @@ function goToLocale(newLocale: 'fr' | 'es') {
 .language-selector {
   position: fixed;
   top: 0;
-  right: 200px;
+  right: 12.5rem;
   z-index: 100;
   display: flex;
   align-items: center;
@@ -56,11 +56,11 @@ function goToLocale(newLocale: 'fr' | 'es') {
   font-family: var(--font-family-ubuntu);
   font-size: var(--font-size-base);
   line-height: 1;
-  padding: 7px;
+  padding: 0.4375rem;
   gap: 0.4rem;
-  height: 35px;
-  width: 75px;
-  border-bottom: 3px solid var(--color-orange);
+  height: 2.1875rem;
+  width: 4.6875rem;
+  border-bottom: 0.1875rem solid var(--color-orange);
 }
 
 .language-selector__option {
