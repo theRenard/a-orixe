@@ -7,6 +7,7 @@ const author = ref<HTMLElement | null>(null)
 const content = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
+    { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
     { el: author, direction: 'left', delay: 0 },
     { el: content, direction: 'right', delay: 0.12 },
   ],

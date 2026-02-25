@@ -9,6 +9,7 @@ const rightCol = ref<HTMLElement | null>(null)
 const question = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
+    { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
     { el: leftCol, direction: 'left', delay: 0 },
     { el: rightCol, direction: 'right', delay: 0.1, rotation: 12 },
     { el: question, direction: 'down', delay: 0.2 },

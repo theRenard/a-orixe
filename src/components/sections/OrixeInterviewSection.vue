@@ -8,6 +8,7 @@ const block2 = ref<HTMLElement | null>(null)
 const block3 = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
+    { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
     { el: block1, direction: 'left', delay: 0 },
     { el: block2, direction: 'right', delay: 0.1 },
     { el: block3, direction: 'left', delay: 0.2 },

@@ -6,6 +6,7 @@ const sectionRoot = ref<HTMLElement | null>(null)
 const leftCol = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
+    { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
     { el: leftCol, direction: 'left', delay: 0 },
   ],
   offset: 44,

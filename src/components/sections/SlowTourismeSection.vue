@@ -9,6 +9,7 @@ const content = ref<HTMLElement | null>(null)
 const illustration = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
+    { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
     { el: title, direction: 'left', delay: 0 },
     { el: content, direction: 'right', delay: 0.1 },
     { el: illustration, direction: 'left', delay: 0.2 },

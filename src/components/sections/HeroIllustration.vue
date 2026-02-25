@@ -27,6 +27,7 @@ let revealDone = false
 
 const { run } = useRevealAnimation({
   elements: [
+    { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
     { el: heroTitle, direction: 'down', delay: 0.1 },
     { el: heroSubtitle, direction: 'down', delay: 0.2 },
     { el: creditsLeft, direction: 'left', delay: 0.35, offset: 80 },

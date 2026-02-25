@@ -4,7 +4,9 @@ import { useRevealAnimation } from '@/composables/useRevealAnimation'
 
 const sectionRoot = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
-  elements: [],
+  elements: [
+    { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
+  ],
   offset: 40,
   ease: 'power3.out',
   scrollTrigger: { trigger: sectionRoot },

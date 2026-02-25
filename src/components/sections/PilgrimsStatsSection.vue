@@ -9,6 +9,7 @@ const chart = ref<HTMLElement | null>(null)
 const textBlock = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
+    { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
     // { el: title, direction: 'left', delay: 0 },
     // { el: chart, direction: 'right', delay: 0.1 },
     // { el: textBlock, direction: 'left', delay: 0.2 },

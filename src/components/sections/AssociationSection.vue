@@ -10,6 +10,7 @@ const question = ref<HTMLElement | null>(null)
 const player = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
+    { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
     { el: question, direction: 'down', delay: 0 },
     { el: player, direction: 'left', delay: 0.1 },
   ],

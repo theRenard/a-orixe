@@ -11,6 +11,7 @@ const imageBlock = ref<HTMLElement | null>(null)
 const playerBlock = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
+    { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
     { el: imageBlock, direction: 'left', delay: 0 },
     { el: playerBlock, direction: 'right', delay: 0.1 },
   ],

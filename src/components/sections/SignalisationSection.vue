@@ -9,6 +9,7 @@ const cell2 = ref<HTMLElement | null>(null)
 const caption = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
+    { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
     { el: cell1, direction: 'left', delay: 0 },
     { el: cell2, direction: 'right', delay: 0.08 },
     { el: caption, direction: 'left', delay: 0.16 },
