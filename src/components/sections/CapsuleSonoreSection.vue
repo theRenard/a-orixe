@@ -28,7 +28,7 @@ onMounted(() => {
 <template>
 <div data-block data-component="CapsuleSonoreSection" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="capsule-sonore-section section--full-viewport">
+    <section ref="sectionRoot" class="capsule-sonore-section">
       <div class="container">
         <div ref="imageBlock">
           <ImageCrop width="70rem" height="50rem" position="center 50%">

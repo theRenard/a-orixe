@@ -55,12 +55,11 @@ useBlockScroll({
     :rail-ref="(railRef as unknown as { value: HTMLElement | null })" />
   <div ref="railRef" class="blocks-rail">
     <!--
-      -->
-    <HeroIllustration />
-    <CaminoSection />
-    <FirstTestimonial />
-    <EtapesClesSection />
-    <SecondTestimonial />
+      <HeroIllustration />
+      <CaminoSection />
+      <FirstTestimonial />
+      <EtapesClesSection />
+      <SecondTestimonial />
     <RessentirLieuxSection />
     <FifthTestimonial />
     <AssociationSection />
@@ -73,6 +72,7 @@ useBlockScroll({
     <SantiagoJourneyPhotoGrid />
     <SantiagoJourneySection />
     <ReconnaissanceSection />
+    -->
     <ReconnaissanceFootnoteSection />
     <FourthTestimonial />
     <FlechageSection />
