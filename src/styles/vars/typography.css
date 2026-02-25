@@ -59,8 +59,7 @@
 .type__section-title--with-line::before {
   content: '';
   display: block;
-  width: 15%;
-  min-width: 8rem;
+  width: 8rem;
   height: 0.25rem;
   background: var(--color-orange);
   margin: 0 0 1.5rem;
