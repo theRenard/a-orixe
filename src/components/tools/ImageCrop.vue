@@ -18,22 +18,25 @@ function toCssSize(value: string | number): string {
 
 <template>
 <div class="image-crop-container">
-  <p v-if="props.captionPosition === 'top'" class="type__image-caption type__image-caption--with-line">{{ props.caption
-    }}</p>
-
+  <p v-if="props.captionPosition === 'top'" class="type__image-caption type__image-caption--with-line">{{ props.caption }}</p>
+  <div class="image-crop" :style="{
+    width: toCssSize(width),
+    height: toCssSize(height),
+    '--image-crop-position': props.position,
+  }">
+    <slot />
+  </div>
+  <p v-if="props.captionPosition === 'bottom'" class="type__image-caption type__image-caption--with-line">{{ props.caption }}</p>
 </div>
-<div class="image-crop" :style="{
-  width: toCssSize(width),
-  height: toCssSize(height),
-  '--image-crop-position': props.position,
-}">
-  <slot />
-</div>
-<p v-if="props.captionPosition === 'bottom'" class="type__image-caption type__image-caption--with-line">{{
-  props.caption }}</p>
 </template>
 
 <style scoped>
+.image-crop-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .image-crop {
   overflow: hidden;
   display: block;

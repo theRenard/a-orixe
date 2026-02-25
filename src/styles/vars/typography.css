@@ -180,6 +180,7 @@
   letter-spacing: var(--letter-spacing-normal);
   color: var(--color-teal-medium);
   text-align: left;
+  align-self: flex-start; /* keep left-aligned when inside flex containers */
   opacity: 1;
 }
 

@@ -31,7 +31,7 @@ onMounted(() => {
           <p class="type__section-paragraph paragraph-spacing">{{ $t('reconnaissance.insertBetween') }}</p>
         </div>
         <div ref="image" class="centered paragraph-spacing mr-3">
-          <ImageCrop width="38rem" height="auto" position="center 50%" :caption="$t('reconnaissance.documentCaption')"
+          <ImageCrop width="35rem" height="auto" position="center 50%" :caption="$t('reconnaissance.documentCaption')"
             caption-position="bottom">
             <img src="@/assets/photos/lettrereconnaissancechemin.webp"
               :alt="$t('reconnaissance.documentCaption')" loading="lazy">
@@ -44,6 +44,13 @@ onMounted(() => {
 </template>
 
 <style scoped>
+
+.image-crop-container {
+  width: 35rem;
+  height: auto;
+  margin: 0 auto;
+}
+
 .reconnaissance-footnote-section {
   overflow-x: hidden;
 }
