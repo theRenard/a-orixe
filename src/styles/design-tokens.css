@@ -50,7 +50,7 @@
   --font-weight-black: 900;
 
   /* Global font scale (1 = design size; 0.7 = 30% reduction) */
-  --font-scale: 0.7;
+  --font-scale: 1;
 
   /* Font sizes (scaled by --font-scale) */
   --font-size-xs: calc(12px * var(--font-scale));

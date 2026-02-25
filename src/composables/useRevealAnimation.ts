@@ -10,7 +10,7 @@ export type RevealDirection = 'left' | 'right' | 'up' | 'down'
 export interface ScrollTriggerRevealOptions {
   /** Element that triggers the animation when it enters the viewport. Defaults to the first animated element's parent. */
   trigger?: Ref<Element | null | undefined> | Element
-  /** When to start the animation. Default "top 70%" = when trigger's top hits 70% down the viewport. */
+  /** When to start the animation. Default "top bottom" = when trigger's top hits the viewport bottom (section starts to be visible). */
   start?: string
   /** When to end the scrub (only used if scrub is set). */
   end?: string
@@ -168,11 +168,11 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
 
     const stConfig =
       scrollTriggerOpt === true
-        ? { once: true, start: 'top 70%' as const }
+        ? { once: true, start: 'top bottom' as const }
         : scrollTriggerOpt
           ? {
             once: scrollTriggerOpt.once ?? true,
-            start: scrollTriggerOpt.start ?? 'top 70%',
+            start: scrollTriggerOpt.start ?? 'top bottom',
             end: scrollTriggerOpt.end,
             trigger: scrollTriggerOpt.trigger,
           }
@@ -220,6 +220,11 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
         (elScale != null && elScale !== 1) ||
         (elRotation != null && elRotation !== 0) ||
         (elSteps?.some((s) => 'scale' in s.to || 'rotation' in s.to) ?? false)
+      const needsTransformOrigin =
+        hasScaleOrRotation || elTransformOrigin != null || (elSteps?.some((s) => s.transformOrigin != null) ?? false)
+      if (needsTransformOrigin) {
+        gsap.set(el, { transformOrigin: origin, force3D: hasScaleOrRotation })
+      }
 
       function buildInitialFrom(): gsap.TweenVars {
         const fromVars: gsap.TweenVars = { opacity: elOpacity ?? 0 }
@@ -281,6 +286,10 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
             step.rotation != null ||
             step.transformOrigin != null
           if (stepHasTransform) {
+            timeline.add(
+              () => { gsap.set(el, { transformOrigin: stepOrigin, force3D: true }) },
+              position,
+            )
             mergedTo.transformOrigin = stepOrigin
             mergedTo.force3D = true
           } else {

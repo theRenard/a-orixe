@@ -1,13 +1,13 @@
 ---
 name: a-orixe
-description: Provides context for the a-orixe Vue 3 long-page site: pre-rendered with vite-ssg (single-page), GSAP + Lenis, fr/es i18n, GitHub Pages (theRenard). Use when working in this codebase or when editing Vue/i18n/animation/deploy files.
+description: Provides context for the a-orixe Vue 3 long-page site: pre-rendered with vite-ssg (single-page), GSAP animations, fr/es i18n, GitHub Pages (theRenard). Use when working in this codebase or when editing Vue/i18n/animation/deploy files.
 ---
 
 # a-orixe project
 
 ## Context
 
-This skill applies when working in the **a-orixe** repository: a **single long-page website** with Vue 3, **pre-rendered** (vite-ssg single-page), **GSAP** for animations and **Lenis** for smooth scroll, and bilingual content (French / Spanish). Hosted on GitHub Pages at **https://theRenard.github.io/a-orixe/**. The agent should follow project conventions and structure defined in CLAUDE.md and Cursor rules.
+This skill applies when working in the **a-orixe** repository: a **single long-page website** with Vue 3, **pre-rendered** (vite-ssg single-page), **GSAP** for animations, and bilingual content (French / Spanish). Hosted on GitHub Pages at **https://theRenard.github.io/a-orixe/**. The agent should follow project conventions and structure defined in CLAUDE.md and Cursor rules.
 
 ## What to use
 

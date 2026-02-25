@@ -40,7 +40,10 @@ const railRef = ref<HTMLElement | null>(null)
 useBlockScroll({
   containerRef: mainRef,
   railRef,
-  options: { transitionDuration: 0.5 },
+  options: {
+    transitionDuration: 1,
+    scrollThresholdPx: 240,
+  },
 })
 </script>
 
@@ -53,12 +56,12 @@ useBlockScroll({
     <CaminoSection />
     <FirstTestimonial />
     <EtapesClesSection />
-    <SecondTestimonial />
+    -->
     <RessentirLieuxSection />
+    <SecondTestimonial data-validate="ok" />
     <FifthTestimonial />
     <AssociationSection />
     <ReconstitutionTracSection />
-    -->
     <ThirdTestimonial />
     <ElementsJacquaireSection />
     <ParcoursPraticableSection />

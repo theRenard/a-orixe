@@ -1,14 +1,8 @@
 <script setup lang="ts">
 import LanguageSelector from '@/components/LanguageSelector.vue'
 import { RouterView } from 'vue-router'
-import { useLenis } from '@/composables/useLenis'
 import { useShowComponentLabels } from '@/composables/useShowComponentLabels'
 
-// useLenis({
-//   // smoothWheel: false,
-//   lerp: 0.1,
-//   duration: 2,
-// })
 useShowComponentLabels()
 </script>
 

@@ -35,7 +35,7 @@ const stepsImage = ref<HTMLElement | null>(null)
 const question = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
-    { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
+    // { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
     { el: title, direction: 'left', delay: 0.1 },
     { el: stepsImage, direction: 'right', delay: 0.18, rotation: 12 },
     { el: question, direction: 'down', delay: 0.26 },

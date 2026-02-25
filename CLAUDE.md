@@ -15,7 +15,6 @@ Single long-page website with Vue 3, programmatic animations, and bilingual cont
 - **Build**: Vite.
 - **i18n**: vue-i18n — locales `fr` and `es`; all user-facing text must use i18n.
 - **Animations**: **GSAP** (timelines, ScrollTrigger for scroll-driven effects). Use in composables or inside `onMounted` / `<ClientOnly>` so it runs only on the client (GSAP relies on `window`).
-- **Smooth scroll**: **Lenis** — smooth scrolling for the long page. Initialise in `onMounted` or a composable (client-only); integrate with GSAP ScrollTrigger via `lenis.on('scroll', () => ScrollTrigger.update())` if using both.
 - **Styling**: To be decided (plain CSS/SCSS, or a light UI/CSS framework). No `@import` in SCSS — use `@use`.
 - **TypeScript**: Preferred for `.ts`/`.vue` logic.
 - **Tooling**: ESLint, Prettier (align with Vue/TS).
@@ -91,4 +90,4 @@ The site is **pre-rendered at build time** so the initial HTML contains content 
 - **GitHub Pages**: always set `base` in Vite to the repo name with leading/trailing slash: `'/a-orixe/'`.
 - **i18n**: set initial locale and fallback (e.g. `fr` as default, `es` as second); ensure all UI strings go through `$t` in templates; use `$i18n.locale` for locale in templates. Use `useI18n()` only when you need `t` or `locale` in `<script>` (e.g. in composables or for reactive logic).
 - **Pre-render**: Entry must export `createApp` (vite-ssg); do not call `app.mount('#app')` directly. Use `<ClientOnly>` for any block that breaks during SSG (e.g. heavy scroll/window usage) and provide a placeholder if needed.
-- **GSAP**: Use in composables or `onMounted`; for scroll-driven animations use ScrollTrigger. Run only on the client (wrap in `<ClientOnly>` or call from `onMounted`) to avoid SSG errors. **Lenis**: Initialise smooth scroll in `onMounted` or a composable (e.g. `useLenis`); call `lenis.destroy()` in `onUnmounted`. If using GSAP ScrollTrigger, sync with `lenis.on('scroll', () => ScrollTrigger.update())`. Keep animations performant (prefer transform/opacity).
+- **GSAP**: Use in composables or `onMounted`; for scroll-driven animations use ScrollTrigger. Run only on the client (wrap in `<ClientOnly>` or call from `onMounted`) to avoid SSG errors. Keep animations performant (prefer transform/opacity).

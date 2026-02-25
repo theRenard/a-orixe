@@ -106,6 +106,7 @@ export function useBlockScroll(input: UseBlockScrollInput) {
     const rail = getRail()
     if (!rail) return
     const y = -currentBlockIndex.value * window.innerHeight
+    ScrollTrigger.update()
     gsap.to(rail, {
       y,
       duration: transitionDuration,
@@ -146,6 +147,7 @@ export function useBlockScroll(input: UseBlockScrollInput) {
         accumulatedDelta = 0
         cooldownUntil = now + cooldownMs
         currentBlockIndex.value++
+        ScrollTrigger.update()
         applyRailTransform()
       } else if (currentBlockIndex.value >= blocks.length - 1) {
         e.preventDefault()
@@ -168,6 +170,7 @@ export function useBlockScroll(input: UseBlockScrollInput) {
         accumulatedDelta = 0
         cooldownUntil = now + cooldownMs
         currentBlockIndex.value = topBlockIndex
+        ScrollTrigger.update()
         applyRailTransform()
       } else if (currentBlockIndex.value > topBlockIndex) {
         e.preventDefault()
