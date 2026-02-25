@@ -62,8 +62,6 @@ onMounted(() => {
             <p class="type__section-paragraph paragraph-spacing" v-html="$t('reconstitutionTrac.paragraph1')"></p>
             <p class="type__section-paragraph paragraph-spacing" v-html="$t('reconstitutionTrac.paragraph2')"></p>
             <p ref="question" class="type__question paragraph-spacing" v-html="$t('reconstitutionTrac.question')"></p>
-            <p class="type__section-paragraph travail-fourmi-paragraph paragraph-spacing"
-              v-html="$t('travailFourmi.paragraph')"></p>
           </div>
         </div>
       </div>

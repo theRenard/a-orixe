@@ -53,6 +53,10 @@ h2 {
   margin: 0;
 }
 
+i {
+  display: inline;
+}
+
 .heading-spacing {
   margin-top: 2.5rem !important;
   margin-bottom: 2.5rem !important;
@@ -75,7 +79,7 @@ h2 {
 .row-two-col {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
+  align-items: center;
   gap: 1.5rem;
 }
 

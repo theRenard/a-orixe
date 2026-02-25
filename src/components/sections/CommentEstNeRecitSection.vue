@@ -43,7 +43,7 @@ onMounted(() => {
                 {{ $t('commentEstNeRecit.authorWebsite') }}
               </a>
             </aside>
-            <div ref="content" class="comment-est-ne-section__content mt-5">
+            <div ref="content" class="comment-est-ne-section__content mt-4">
               <h2 class="comment-est-ne-section__title heading-spacing">
                 {{ $t('commentEstNeRecit.title') }}
               </h2>

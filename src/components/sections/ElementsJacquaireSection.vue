@@ -33,7 +33,7 @@ onMounted(() => {
     <section ref="sectionRoot" class="elements-jacquaire-section section--full-viewport">
       <div class="container">
         <img ref="image" src="../../assets/illustrations/benevoles_ok.webp" :alt="$t('elementsJacquaire.title')"
-          class="elements-jacquaire-section__image ma" loading="lazy" width="60%" height="auto">
+          class="elements-jacquaire-section__image ma" loading="lazy" width="50%" height="auto">
         <div ref="contentBlock" class="centered">
           <h2 ref="title" class="type__section-title type__section-title--with-line elements-jacquaire-section__title heading-spacing">
             {{ $t('elementsJacquaire.title') }}
@@ -51,10 +51,10 @@ onMounted(() => {
   overflow-x: hidden;
 }
 
-.elements-jacquaire-section__image {
+/* .elements-jacquaire-section__image {
   display: block;
   max-width: 100%;
   height: auto;
   opacity: 0;
-}
+} */
 </style>

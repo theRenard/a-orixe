@@ -10,9 +10,9 @@ const caption = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
     { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
-    { el: cell1, direction: 'left', delay: 0 },
-    { el: cell2, direction: 'right', delay: 0.08 },
-    { el: caption, direction: 'left', delay: 0.16 },
+    { el: cell1, direction: 'left', delay: 0, rotation: -12, transformOrigin: 'left bottom' },
+    { el: cell2, direction: 'right', delay: 0.08, rotation: 12, transformOrigin: 'right bottom' },
+    // { el: caption, direction: 'left', delay: 0.16, rotation: 12 },
   ],
   offset: 44,
   ease: 'power3.out',
@@ -31,12 +31,12 @@ onMounted(() => {
       <div class="container">
         <div class="signalisation-section__grid">
           <div ref="cell1" class="signalisation-section__cell">
-            <ImageCrop width="100%" height="37.5rem" position="center 50%">
+            <ImageCrop width="100%" height="40vw" position="center 50%">
               <img src="../../assets/photos/08_florence_antunes.webp" :alt="$t('signalisation.caption')" loading="lazy">
             </ImageCrop>
           </div>
           <div ref="cell2" class="signalisation-section__cell">
-            <ImageCrop width="100%" height="37.5rem" position="center 50%">
+            <ImageCrop width="100%" height="40vw" position="center 50%">
               <img src="../../assets/photos/09_florence_antunes.webp" :alt="$t('signalisation.caption')" loading="lazy">
             </ImageCrop>
           </div>

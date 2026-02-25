@@ -21,7 +21,14 @@ onMounted(() => {
 <template>
 <div data-block data-component="FifthTestimonial" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="fifth-testimonial section--full-viewport with-background with-shadow">
+    <section ref="sectionRoot" class="fifth-testimonial section--half-viewport">
+      <div class="container">
+        <div class="centered">
+          <p class="type__section-paragraph paragraph-spacing" v-html="$t('ressentirLieux.paragraph2')"></p>
+        </div>
+      </div>
+    </section>
+    <section ref="sectionRoot" class="fifth-testimonial section--half-viewport with-background with-shadow">
       <div class="container">
         <blockquote class="centered">
           <div ref="blockquoteInner">

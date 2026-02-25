@@ -141,6 +141,7 @@ onUnmounted(() => {
 <style scoped>
 .sound-player {
   display: inline-flex;
+  position: relative;
   align-items: center;
   gap: 1rem;
   padding: 0.5rem 0.5rem;
@@ -155,6 +156,8 @@ onUnmounted(() => {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   max-width: 30rem;
+  width: 30rem;
+  min-width: 30rem;
   height: 5rem;
   position: relative;
   z-index: 1;
@@ -227,6 +230,8 @@ onUnmounted(() => {
 .sound-player-widget {
   display: block;
   max-width: 30rem;
+  min-width: 30rem;
+  width: 30rem;
   position: relative;
 }
 

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
+import ImageCrop from '@/components/tools/ImageCrop.vue'
 
 const sectionRoot = ref<HTMLElement | null>(null)
 const image = ref<HTMLElement | null>(null)
@@ -26,13 +27,16 @@ onMounted(() => {
   <div data-block-inner class="block-inner">
     <section ref="sectionRoot" class="reconnaissance-footnote-section section--full-viewport">
       <div class="container">
-        <div ref="image" class="centered paragraph-spacing">
-          <img class="paragraph-spacing" src="@/assets/photos/lettrereconnaissancechemin.webp"
-            :alt="$t('reconnaissance.documentCaption')" loading="lazy">
-        </div>
         <div ref="content" class="centered">
           <p class="type__section-paragraph paragraph-spacing">{{ $t('reconnaissance.insertBetween') }}</p>
         </div>
+        <div ref="image" class="centered paragraph-spacing mr-3">
+          <ImageCrop width="38rem" height="auto" position="center 50%" :caption="$t('reconnaissance.documentCaption')"
+            caption-position="bottom">
+            <img src="@/assets/photos/lettrereconnaissancechemin.webp"
+              :alt="$t('reconnaissance.documentCaption')" loading="lazy">
+          </ImageCrop>
+          </div>
       </div>
     </section>
   </div>

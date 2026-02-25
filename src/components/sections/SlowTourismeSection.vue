@@ -7,11 +7,14 @@ const sectionRoot = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
 const content = ref<HTMLElement | null>(null)
 const illustration = ref<HTMLElement | null>(null)
+const question = ref<HTMLElement | null>(null)
+const answer = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
     { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
     { el: title, direction: 'left', delay: 0 },
-    { el: content, direction: 'right', delay: 0.1 },
+    { el: question, direction: 'left', delay: 0.1 },
+    { el: answer, direction: 'left', delay: 0.1 },
     { el: illustration, direction: 'left', delay: 0.2 },
   ],
   offset: 44,
@@ -36,9 +39,9 @@ onMounted(() => {
           <div ref="content">
             <p class="type__interview-subtitle slow-tourisme-section__intro paragraph-spacing"
               v-html="$t('slowTourisme.paragraph1')"></p>
-            <p class="type__interview-question slow-tourisme-section__question paragraph-spacing"
+            <p ref="question" class="type__interview-question slow-tourisme-section__question paragraph-spacing mb-0"
               v-html="$t('slowTourisme.question')"></p>
-            <p class="type__interview-answer slow-tourisme-section__answer paragraph-spacing">
+            <p ref="answer" class="type__interview-answer slow-tourisme-section__answer paragraph-spacing mt-0">
               <span class="type__interview-question" v-html="$t('slowTourisme.answerPrefix')"></span>
               <span v-html="$t('slowTourisme.answerBody')"></span>
             </p>

@@ -27,7 +27,7 @@ export interface UseBlockScrollInput {
  * Block-based navigation: scroll (wheel) is only a trigger.
  * - User can scroll within a block if it has [data-block-inner] with overflow (content taller than viewport).
  * - At the end of a block, scroll down advances to the next block.
- * - Scrolling up (when at top of block) goes back to the first block (top) only, not to the previous block.
+ * - Scrolling up (when at top of block) goes to the previous block.
  * Call only on the client (e.g. after mount).
  */
 export function useBlockScroll(input: UseBlockScrollInput) {
@@ -161,18 +161,18 @@ export function useBlockScroll(input: UseBlockScrollInput) {
         accumulatedDelta = 0
         return
       }
-      // At top of block: accumulate wheel delta, then jump to top (first block) only — never to previous block
+      // At top of block: accumulate wheel delta, then go to previous block
       if (accumulatedDelta > 0) accumulatedDelta = 0
       accumulatedDelta += deltaY
-      const topBlockIndex = 0
-      if (accumulatedDelta <= -scrollThresholdPx && currentBlockIndex.value > topBlockIndex) {
+      const prevBlockIndex = currentBlockIndex.value - 1
+      if (accumulatedDelta <= -scrollThresholdPx && prevBlockIndex >= 0) {
         e.preventDefault()
         accumulatedDelta = 0
         cooldownUntil = now + cooldownMs
-        currentBlockIndex.value = topBlockIndex
+        currentBlockIndex.value = prevBlockIndex
         ScrollTrigger.update()
         applyRailTransform()
-      } else if (currentBlockIndex.value > topBlockIndex) {
+      } else if (currentBlockIndex.value > 0) {
         e.preventDefault()
       }
     }

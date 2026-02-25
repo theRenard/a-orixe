@@ -21,7 +21,17 @@ onMounted(() => {
 <template>
 <div data-block data-component="ThirdTestimonial" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="section--full-viewport with-background with-shadow third-testimonial">
+    <section ref="sectionRoot" class="section--half-viewport with-shadow">
+      <div class="container">
+        <div class="centered">
+          <div>
+            <p class="type__section-paragraph travail-fourmi-paragraph paragraph-spacing"
+              v-html="$t('travailFourmi.paragraph')"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section ref="sectionRoot" class="section--half-viewport with-background with-shadow third-testimonial">
       <div class="container">
         <blockquote class="centered">
           <div ref="blockquoteInner">

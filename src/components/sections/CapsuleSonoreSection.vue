@@ -11,9 +11,9 @@ const imageBlock = ref<HTMLElement | null>(null)
 const playerBlock = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
-    { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
-    { el: imageBlock, direction: 'left', delay: 0 },
-    { el: playerBlock, direction: 'right', delay: 0.1 },
+    // { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
+    { el: imageBlock, direction: 'up', delay: 0, scale: 3, duration: 4, transformOrigin: 'bottom center' },
+    { el: playerBlock, direction: 'down', delay: 0.1 },
   ],
   offset: 44,
   ease: 'power3.out',
@@ -31,9 +31,9 @@ onMounted(() => {
     <section ref="sectionRoot" class="capsule-sonore-section section--full-viewport">
       <div class="container">
         <div ref="imageBlock">
-          <ImageCrop width="100%" height="37.5rem" position="center 50%">
+          <ImageCrop width="70rem" height="50rem" position="center 50%">
             <img :src="capsuleSonoreImage" :alt="$t('capsuleSonore.imageCaption')"
-              class="capsule-sonore-section__image mt-3" loading="lazy">
+              class="capsule-sonore-section__image" loading="lazy">
           </ImageCrop>
         </div>
         <div ref="playerBlock" class="centered">
