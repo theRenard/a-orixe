@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import DesktopView from '@/views/DesktopView.vue'
 import StylesPage from '@/views/StylesPage.vue'
 import SoundPlayerTest from '@/views/SoundPlayerTest.vue'
@@ -10,7 +10,7 @@ import { i18n } from '@/i18n'
 type LocaleMeta = 'fr' | 'es'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
