@@ -118,23 +118,10 @@ onMounted(() => {
   margin: 0 auto;
 }
 
-.en-bref-section__title {
-  font: normal var(--font-weight-bold) calc(2.375rem * var(--font-scale)) / 1.2 var(--font-family-fraunces);
-  color: var(--color-orange);
-  text-align: left;
-}
-
-.en-bref-section__title-underline {
-  display: inline-block;
-  border-bottom: 0.125rem solid var(--color-orange);
-  padding-bottom: 0.125rem;
-  margin-bottom: 0.125rem;
-}
-
 .en-bref-section__stats-row {
   display: flex;
   flex-wrap: nowrap;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   margin-bottom: 2.5rem;
   gap: 6rem;
@@ -148,7 +135,7 @@ onMounted(() => {
 
 .en-bref-section__place {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -172,24 +159,10 @@ onMounted(() => {
 
 .first-place {
   width: 22.5rem;
-  align-items: center;
 }
 
 .second-place {
   width: 22.5rem;
-  align-items: center;
-}
-
-.en-bref-section__stat-number {
-}
-
-.en-bref-section__icon--svg {
-  color: var(--color-orange);
-}
-
-.en-bref-section__icon--svg :deep(svg) {
-  width: 3rem;
-  height: 3rem;
 }
 
 .en-bref-section__link-wrap {
