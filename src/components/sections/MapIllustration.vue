@@ -57,8 +57,8 @@ onMounted(() => {
     const tl = gsap.timeline({
       scrollTrigger: { trigger: triggerEl, start: 'top 70%', once: true },
     })
-    tl.to(containerEl, { width: '25%', duration: 0, ease: 'power2.inOut' }, 0)
-    tl.to(containerEl, { width: '100%', duration: 10, ease: 'power2.inOut' }, 0.15)
+    tl.to(containerEl, { width: '27%', duration: 0, ease: 'linear' }, 0)
+    tl.to(containerEl, { width: '100%', duration: 5, ease: 'linear' }, 0.15)
     onUnmounted(() => tl.scrollTrigger?.kill())
   }
 })

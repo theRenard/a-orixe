@@ -7,7 +7,12 @@ const image = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
 const { run } = useRevealAnimation({
   elements: [
-    { el: image, direction: 'down', delay: 0, scale: 0.7 },
+    { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
+    { el: image, direction: 'left', delay: 0, steps: [
+      { to: { scale: 1.5 }, duration: 0, opacity: 0 },
+      // { to: { scale: 0.9 }, duration: 2, opacity: 1 },
+      { to: { scale: 1 }, duration: 2, opacity: 1 }
+    ]},
     { el: title, direction: 'right', delay: 0.1 },
   ],
   offset: 44,
@@ -28,7 +33,7 @@ onMounted(() => {
         <img ref="image" src="../../assets/illustrations/benevoles_ok.webp" :alt="$t('elementsJacquaire.title')"
           class="elements-jacquaire-section__image ma" loading="lazy" width="50%" height="auto">
         <div class="centered">
-          <h2 ref="title" class="type__section-title elements-jacquaire-section__title heading-spacing">
+          <h2 ref="title" class="type__section-title type__section-title--with-line elements-jacquaire-section__title heading-spacing">
             {{ $t('elementsJacquaire.title') }}
           </h2>
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('elementsJacquaire.paragraph')"></p>
@@ -48,5 +53,6 @@ onMounted(() => {
   display: block;
   max-width: 100%;
   height: auto;
+  opacity: 0;
 }
 </style>

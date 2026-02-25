@@ -18,6 +18,30 @@ export interface ScrollTriggerRevealOptions {
   once?: boolean
 }
 
+/** One step in a multi-step reveal: animate to the given values over the given duration. */
+export interface RevealStep {
+  /** Target values for this step (e.g. scale, opacity, x, y, rotation). Omitted props keep previous step's end values. */
+  to: gsap.TweenVars
+  /** Duration of this step in seconds */
+  duration: number
+  /** Optional ease for this step (defaults to timeline ease) */
+  ease?: string
+  /** Delay in seconds before this step starts (gap after the previous step). */
+  delay?: number
+  /** Target opacity for this step (shorthand; same as including opacity in to). */
+  opacity?: number
+  /** Target scale for this step (shorthand; same as including scale in to). */
+  scale?: number
+  /** Target rotation in degrees for this step (shorthand; same as including rotation in to). */
+  rotation?: number
+  /** Target x in px for this step (shorthand; same as including x in to). */
+  x?: number
+  /** Target y in px for this step (shorthand; same as including y in to). */
+  y?: number
+  /** Transform origin for this step (overrides element default; e.g. '50% 50%', 'center bottom'). */
+  transformOrigin?: string
+}
+
 export interface RevealElementConfig {
   /** Template ref or raw element to animate */
   el: Ref<Element | null | undefined> | Element
@@ -25,7 +49,7 @@ export interface RevealElementConfig {
   direction?: RevealDirection
   /** Delay in seconds before this element starts */
   delay?: number
-  /** Override duration for this element (seconds) */
+  /** Override duration for this element (seconds). Ignored when steps is set. */
   duration?: number
   /** Override horizontal offset (px) for this element */
   offset?: number
@@ -33,6 +57,12 @@ export interface RevealElementConfig {
   rotation?: number
   /** Initial scale; animates to 1 (e.g. 0.7 for zoom-in entrance) */
   scale?: number
+  /** Transform origin for this element (e.g. '50% 50%', 'center bottom', 'left top'). Defaults to '50% 50%' when rotation/scale are used. */
+  transformOrigin?: string
+  /** Initial opacity; animates to 1 (e.g. 0 for fade-in, 0.5 for subtle reveal). Default 0. */
+  opacity?: number
+  /** When set, run multiple sequential tweens for this element (e.g. scale 0.1 → 1.2 → 1). Each step has its own duration and optional ease. */
+  steps?: RevealStep[]
 }
 
 export interface UseRevealAnimationOptions {
@@ -75,6 +105,13 @@ function resolveTrigger(
   return (raw as Ref<Element | null | undefined>).value ?? null
 }
 
+function mergeTweenVars(
+  base: gsap.TweenVars,
+  overrides: gsap.TweenVars,
+): gsap.TweenVars {
+  return { ...base, ...overrides }
+}
+
 /**
  * Composable for GSAP reveal animations: elements enter from left, right, up, or down
  * and fade in from opacity 0. Run only on the client (use inside onMounted).
@@ -98,7 +135,18 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
   function run(): (() => void) | void {
     if (typeof window === 'undefined') return
 
-    const targets: Array<{ el: Element; direction: RevealDirection; delay?: number; duration?: number; offset?: number; rotation?: number; scale?: number }> = []
+    const targets: Array<{
+      el: Element
+      direction: RevealDirection
+      delay?: number
+      duration?: number
+      offset?: number
+      rotation?: number
+      scale?: number
+      opacity?: number
+      transformOrigin?: string
+      steps?: RevealStep[]
+    }> = []
     for (const config of elements) {
       const el = resolveEl(config)
       if (!el) continue
@@ -110,6 +158,9 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
         offset: config.offset,
         rotation: config.rotation,
         scale: config.scale,
+        opacity: config.opacity,
+        transformOrigin: config.transformOrigin,
+        steps: config.steps?.length ? config.steps : undefined,
       })
     }
 
@@ -148,32 +199,132 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
 
     const timeline = gsap.timeline(timelineVars)
 
-    targets.forEach(({ el, direction, delay: elDelay, duration: elDuration, offset: elOffset, rotation: elRotation, scale: elScale }, i) => {
+    targets.forEach((target, i) => {
+      const {
+        el,
+        direction,
+        delay: elDelay,
+        duration: elDuration,
+        offset: elOffset,
+        rotation: elRotation,
+        scale: elScale,
+        opacity: elOpacity,
+        transformOrigin: elTransformOrigin,
+        steps: elSteps,
+      } = target
       const dist = elOffset ?? offset
       const d = elDuration ?? duration
       const startAt = elDelay != null ? elDelay : i * stagger
-      const fromVars: gsap.TweenVars = { opacity: 0 }
-      const toVars: gsap.TweenVars = { opacity: 1, duration: d }
-      if (direction === 'left' || direction === 'right') {
-        const fromX = direction === 'left' ? -dist : dist
-        fromVars.x = fromX
-        toVars.x = 0
+      const origin = elTransformOrigin ?? '50% 50%'
+      const hasScaleOrRotation =
+        (elScale != null && elScale !== 1) ||
+        (elRotation != null && elRotation !== 0) ||
+        (elSteps?.some((s) => 'scale' in s.to || 'rotation' in s.to) ?? false)
+
+      function buildInitialFrom(): gsap.TweenVars {
+        const fromVars: gsap.TweenVars = { opacity: elOpacity ?? 0 }
+        if (direction === 'left' || direction === 'right') {
+          fromVars.x = direction === 'left' ? -dist : dist
+        } else {
+          fromVars.y = direction === 'up' ? -dist : dist
+        }
+        if (elRotation != null && elRotation !== 0) {
+          fromVars.rotation = elRotation
+          fromVars.transformOrigin = origin
+        }
+        if (elScale != null && elScale !== 1) {
+          fromVars.scale = elScale
+          fromVars.transformOrigin = origin
+          fromVars.force3D = true
+        }
+        if (elTransformOrigin != null && elRotation == null && (elScale == null || elScale === 1)) {
+          fromVars.transformOrigin = origin
+        }
+        return fromVars
+      }
+
+      function applyOriginAndForce3D(vars: gsap.TweenVars): void {
+        if (hasScaleOrRotation) {
+          vars.transformOrigin = origin
+          vars.force3D = true
+        }
+      }
+
+      if (elSteps?.length) {
+        const revealEndDefaults: gsap.TweenVars = {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          rotation: 0,
+          scale: 1,
+        }
+        applyOriginAndForce3D(revealEndDefaults)
+
+        let position = startAt
+        let prevEndState: gsap.TweenVars = { ...revealEndDefaults }
+
+        for (const [stepIndex, step] of elSteps.entries()) {
+          if (step.delay != null) position += step.delay
+          const mergedTo = mergeTweenVars(
+            stepIndex === 0 ? revealEndDefaults : prevEndState,
+            step.to,
+          )
+          if (step.opacity != null) mergedTo.opacity = step.opacity
+          if (step.scale != null) mergedTo.scale = step.scale
+          if (step.rotation != null) mergedTo.rotation = step.rotation
+          if (step.x != null) mergedTo.x = step.x
+          if (step.y != null) mergedTo.y = step.y
+          const stepOrigin = step.transformOrigin ?? origin
+          const stepHasTransform =
+            hasScaleOrRotation ||
+            step.scale != null ||
+            step.rotation != null ||
+            step.transformOrigin != null
+          if (stepHasTransform) {
+            mergedTo.transformOrigin = stepOrigin
+            mergedTo.force3D = true
+          } else {
+            applyOriginAndForce3D(mergedTo)
+          }
+          const fromVars: gsap.TweenVars =
+            stepIndex === 0 ? buildInitialFrom() : { ...prevEndState }
+          if (stepHasTransform) {
+            fromVars.transformOrigin = stepOrigin
+            fromVars.force3D = true
+          } else {
+            applyOriginAndForce3D(fromVars)
+          }
+          const toVars: gsap.TweenVars = {
+            ...mergedTo,
+            duration: step.duration,
+            ease: step.ease ?? ease,
+          }
+          timeline.fromTo(el, fromVars, toVars, position)
+          position += step.duration
+          prevEndState = { ...mergedTo }
+        }
       } else {
-        const fromY = direction === 'up' ? -dist : dist
-        fromVars.y = fromY
-        toVars.y = 0
+        const fromVars = buildInitialFrom()
+        const toVars: gsap.TweenVars = { opacity: 1, duration: d }
+        if (direction === 'left' || direction === 'right') {
+          toVars.x = 0
+        } else {
+          toVars.y = 0
+        }
+        if (elRotation != null && elRotation !== 0) {
+          toVars.rotation = 0
+          toVars.transformOrigin = origin
+        }
+        if (elScale != null && elScale !== 1) {
+          toVars.scale = 1
+          toVars.transformOrigin = origin
+          toVars.force3D = true
+        }
+        if (elTransformOrigin != null && elRotation == null && (elScale == null || elScale === 1)) {
+          toVars.transformOrigin = origin
+        }
+        timeline.fromTo(el, fromVars, toVars, startAt)
       }
-      if (elRotation != null && elRotation !== 0) {
-        fromVars.rotation = elRotation
-        fromVars.transformOrigin = '50% 50%'
-        toVars.rotation = 0
-        toVars.transformOrigin = '50% 50%'
-      }
-      if (elScale != null && elScale !== 1) {
-        fromVars.scale = elScale
-        toVars.scale = 1
-      }
-      timeline.fromTo(el, fromVars, toVars, startAt)
     })
 
     if (stConfig && timeline.scrollTrigger) {

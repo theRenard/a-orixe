@@ -49,7 +49,7 @@ useBlockScroll({
   <ReadProgressBar :viewport-ref="(mainRef as unknown as { value: HTMLElement | null })"
     :rail-ref="(railRef as unknown as { value: HTMLElement | null })" />
   <div ref="railRef" class="blocks-rail">
-    <HeroIllustration />
+    <!-- <HeroIllustration />
     <CaminoSection />
     <FirstTestimonial />
     <EtapesClesSection />
@@ -58,6 +58,7 @@ useBlockScroll({
     <FifthTestimonial />
     <AssociationSection />
     <ReconstitutionTracSection />
+    -->
     <ThirdTestimonial />
     <ElementsJacquaireSection />
     <ParcoursPraticableSection />
