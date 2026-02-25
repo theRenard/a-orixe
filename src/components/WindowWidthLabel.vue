@@ -7,6 +7,8 @@ function updateWidth() {
   widthPx.value = window.innerWidth
 }
 
+const isDev = import.meta.env.DEV
+
 onMounted(() => {
   updateWidth()
   window.addEventListener('resize', updateWidth)
@@ -18,7 +20,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="window-width-label" aria-live="polite">
+  <div v-if="isDev" class="window-width-label" aria-live="polite">
     {{ widthPx }}px
   </div>
 </template>
