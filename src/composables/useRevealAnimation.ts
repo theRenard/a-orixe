@@ -56,21 +56,6 @@ const DEFAULT_DURATION = 2
 const DEFAULT_OFFSET = 60
 const DEFAULT_EASE = 'power2.out'
 
-/**
- * Global default for ScrollTrigger "once" behaviour.
- * When false, animations reset when the block is scrolled past and play again when the user comes back.
- * Set via setRevealAnimationOnceDefault(false) (e.g. in main.ts or App.vue).
- */
-let revealAnimationOnceDefault = true
-
-export function setRevealAnimationOnceDefault(once: boolean): void {
-  revealAnimationOnceDefault = once
-}
-
-export function getRevealAnimationOnceDefault(): boolean {
-  return revealAnimationOnceDefault
-}
-
 function resolveEl(
   config: RevealElementConfig,
 ): Element | null {
@@ -132,10 +117,10 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
 
     const stConfig =
       scrollTriggerOpt === true
-        ? { once: revealAnimationOnceDefault, start: 'top 70%' as const }
+        ? { once: true, start: 'top 70%' as const }
         : scrollTriggerOpt
           ? {
-            once: scrollTriggerOpt.once ?? revealAnimationOnceDefault,
+            once: scrollTriggerOpt.once ?? true,
             start: scrollTriggerOpt.start ?? 'top 70%',
             end: scrollTriggerOpt.end,
             trigger: scrollTriggerOpt.trigger,
