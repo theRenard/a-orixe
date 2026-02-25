@@ -70,24 +70,24 @@ onMounted(() => {
         </h2>
 
         <div ref="statsRow" class="en-bref-section__stats-row">
-          <div class="en-bref-section__stat">
+          <div class="en-bref-section__stat first-stat">
             <div ref="stat1El" class="type__enbref-big en-bref-section__stat-number">{{ $t('enBref.stat1Number') }}
             </div>
             <div class="type__enbref-small-orange">{{ $t('enBref.stat1Label') }}</div>
           </div>
-          <div class="en-bref-section__stat">
+          <div class="en-bref-section__stat second-stat">
             <div ref="stat2El" class="type__enbref-big en-bref-section__stat-number">{{ $t('enBref.stat2Number') }}
             </div>
             <div class="type__enbref-small-orange">{{ $t('enBref.stat2Label') }}</div>
           </div>
-          <div class="en-bref-section__place">
+          <div class="en-bref-section__place first-place">
             <img :src="phareCorrubedo" :alt="$t('enBref.departurePlace')" class="en-bref-section__icon">
             <div>
               <div class="type__enbref-small-orange--left">{{ $t('enBref.departureLabel') }}</div>
               <div class="type__enbref-small-green">{{ $t('enBref.departurePlace') }}</div>
             </div>
           </div>
-          <div class="en-bref-section__place">
+          <div class="en-bref-section__place second-place">
             <img :src="cathedrale" :alt="$t('enBref.arrivalPlace')" class="en-bref-section__icon">
             <div>
               <div class="type__enbref-small-orange--left">{{ $t('enBref.arrivalLabel') }}</div>
@@ -114,7 +114,7 @@ onMounted(() => {
 }
 
 .en-bref-section__inner {
-  max-width: 62.5rem;
+  min-width: 70rem;
   margin: 0 auto;
 }
 
@@ -136,8 +136,8 @@ onMounted(() => {
   flex-wrap: nowrap;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 3rem;
   margin-bottom: 2.5rem;
+  gap: 6rem;
 }
 
 .en-bref-section__stat {
@@ -150,7 +150,6 @@ onMounted(() => {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  /* gap: 1rem; */
 }
 
 .en-bref-section__icon {
@@ -161,8 +160,27 @@ onMounted(() => {
   margin-right: 1rem;
 }
 
+.first-stat {
+  width: 8.5rem;
+  justify-content: center;
+}
+
+.second-stat {
+  width: 20.5rem;
+  justify-content: center;
+}
+
+.first-place {
+  width: 22.5rem;
+  align-items: center;
+}
+
+.second-place {
+  width: 22.5rem;
+  align-items: center;
+}
+
 .en-bref-section__stat-number {
-  width: 10rem;
 }
 
 .en-bref-section__icon--svg {

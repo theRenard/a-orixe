@@ -27,16 +27,16 @@ onMounted(() => {
 <template>
 <div data-block data-component="SignalisationSection" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="signalisation-section section--full-viewport mt-3 mb-3">
+    <section ref="sectionRoot" class="signalisation-section section--full-viewport">
       <div class="container">
         <div class="signalisation-section__grid">
           <div ref="cell1" class="signalisation-section__cell">
-            <ImageCrop width="100%" height="600px" position="center 50%">
+            <ImageCrop width="100%" height="37.5rem" position="center 50%">
               <img src="../../assets/photos/08_florence_antunes.webp" :alt="$t('signalisation.caption')" loading="lazy">
             </ImageCrop>
           </div>
           <div ref="cell2" class="signalisation-section__cell">
-            <ImageCrop width="100%" height="600px" position="center 50%">
+            <ImageCrop width="100%" height="37.5rem" position="center 50%">
               <img src="../../assets/photos/09_florence_antunes.webp" :alt="$t('signalisation.caption')" loading="lazy">
             </ImageCrop>
           </div>

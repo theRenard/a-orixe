@@ -55,10 +55,9 @@ useBlockScroll({
     :rail-ref="(railRef as unknown as { value: HTMLElement | null })" />
   <div ref="railRef" class="blocks-rail">
     <!--
-      -->
-    <HeroIllustration />
-    <CaminoSection />
-    <FirstTestimonial />
+      <HeroIllustration />
+      <CaminoSection />
+      <FirstTestimonial />
     <EtapesClesSection />
     <SecondTestimonial data-validate="ok" />
     <RessentirLieuxSection data-validate="KO" />
@@ -83,6 +82,7 @@ useBlockScroll({
     <CapsuleSonoreSection />
     <PilgrimsStatsSection />
     <TraceRouteSection />
+    -->
     <SlowTourismeSection />
     <OrixeInterviewSection />
     <ExperienceDestineeSection />

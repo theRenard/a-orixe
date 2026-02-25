@@ -146,7 +146,7 @@ onUnmounted(() => {
   padding: 0.5rem 0.5rem;
   background: var(--color-cream);
   border: 3px solid var(--color-teal-medium);
-  border-radius: 50px;
+  border-radius: 3rem;
   font-family: var(--font-family-ubuntu);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
@@ -154,7 +154,7 @@ onUnmounted(() => {
   letter-spacing: var(--letter-spacing-normal);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  max-width: 480px;
+  max-width: 30rem;
   height: 5rem;
   position: relative;
   z-index: 1;
@@ -176,7 +176,7 @@ onUnmounted(() => {
   flex-shrink: 0;
   padding: 0;
   border: 3px solid var(--color-teal-dark);
-  border-radius: 50%;
+  border-radius: 5rem;
   overflow: hidden;
   position: relative;
   margin-right: calc(-0.5rem - 3px);
@@ -197,7 +197,7 @@ onUnmounted(() => {
   height: 3.5rem;
   flex-shrink: 0;
   border: 3px solid var(--color-teal-medium);
-  border-radius: 50%;
+  border-radius: 5rem;
   background: var(--color-cream);
   color: var(--color-teal-medium);
   position: relative;
@@ -226,7 +226,7 @@ onUnmounted(() => {
 /* Wrapper when transcript is shown: single rounded card */
 .sound-player-widget {
   display: block;
-  max-width: 480px;
+  max-width: 30rem;
   position: relative;
 }
 
@@ -246,9 +246,9 @@ onUnmounted(() => {
   line-height: 1.4;
   padding: 1rem 1.25rem;
   text-align: left;
-  border-radius: 50px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+  border-radius: 3rem;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
   position: absolute;
   top: 0;
   left: 0;

@@ -31,7 +31,7 @@ onMounted(() => {
     <section ref="sectionRoot" class="capsule-sonore-section section--full-viewport">
       <div class="container">
         <div ref="imageBlock">
-          <ImageCrop width="100%" height="600px" position="center 50%">
+          <ImageCrop width="100%" height="37.5rem" position="center 50%">
             <img :src="capsuleSonoreImage" :alt="$t('capsuleSonore.imageCaption')"
               class="capsule-sonore-section__image mt-3" loading="lazy">
           </ImageCrop>

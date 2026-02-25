@@ -40,17 +40,17 @@ onMounted(() => {
         </p>
         <div class="joyau-section__grid">
           <div ref="cell1" class="joyau-section__cell">
-            <ImageCrop width="100%" height="600px" position="center 50%">
+            <ImageCrop width="100%" height="27.5rem" position="center 50%">
               <img src="../../assets/photos/10_florence_antunes.webp" :alt="$t('joyau.caption')" loading="lazy">
             </ImageCrop>
           </div>
           <div ref="cell2" class="joyau-section__cell">
-            <ImageCrop width="100%" height="600px" position="center 50%">
+            <ImageCrop width="100%" height="27.5rem" position="center 50%">
               <img src="../../assets/photos/11_florence_antunes.webp" :alt="$t('joyau.caption')" loading="lazy">
             </ImageCrop>
           </div>
           <div ref="cell3" class="joyau-section__cell">
-            <ImageCrop width="100%" height="600px" position="center 50%">
+            <ImageCrop width="100%" height="27.5rem" position="center 50%">
               <img src="../../assets/photos/12_florence_antunes.webp" :alt="$t('joyau.caption')" loading="lazy">
             </ImageCrop>
           </div>
