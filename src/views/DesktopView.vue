@@ -34,6 +34,7 @@ import ExperienceDestineeSection from '@/components/sections/ExperienceDestineeS
 import EnBrefSection from '@/components/sections/EnBrefSection.vue'
 import CommentEstNeRecitSection from '@/components/sections/CommentEstNeRecitSection.vue'
 import ReadProgressBar from '@/components/ReadProgressBar.vue'
+import WindowWidthLabel from '@/components/WindowWidthLabel.vue'
 
 const mainRef = ref<HTMLElement | null>(null)
 const railRef = ref<HTMLElement | null>(null)
@@ -49,6 +50,7 @@ useBlockScroll({
 
 <template>
 <main ref="mainRef" class="block-viewport">
+  <WindowWidthLabel />
   <ReadProgressBar :viewport-ref="(mainRef as unknown as { value: HTMLElement | null })"
     :rail-ref="(railRef as unknown as { value: HTMLElement | null })" />
   <div ref="railRef" class="blocks-rail">
