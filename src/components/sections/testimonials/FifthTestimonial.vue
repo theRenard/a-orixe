@@ -1,20 +1,27 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, inject } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
+import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
 
 const { locale } = useI18n()
 const sectionRoot = ref<HTMLElement | null>(null)
 const blockquoteInner = ref<HTMLElement | null>(null)
+const registerBlockEnter = inject<((index: number, play: () => void) => void) | undefined>('blockScroll/registerBlockEnter')
+const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
 const { run } = useRevealAnimation({
   elements: [{ el: blockquoteInner, direction: 'down' }],
   offset: 40,
   ease: 'power3.out',
-  scrollTrigger: { trigger: blockquoteInner, start: 'top 80%' },
+  runOnMount: false,
 })
+let myBlockIndex = -1
 onMounted(() => {
-  const cleanup = run()
-  if (cleanup) onUnmounted(cleanup)
+  myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
+  registerBlockEnter?.(myBlockIndex, () => run())
+})
+onUnmounted(() => {
+  unregisterBlockEnter?.(myBlockIndex)
 })
 </script>
 

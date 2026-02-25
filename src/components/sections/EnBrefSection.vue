@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
+import { ref, computed, onMounted, onUnmounted, nextTick, inject } from 'vue'
 import { useI18n } from 'vue-i18n'
 import phareCorrubedo from '@/assets/illustrations/phare.png'
 import cathedrale from '@/assets/illustrations/cathedrale.png'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
+import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -17,6 +18,8 @@ const statsRow = ref<HTMLElement | null>(null)
 const linkWrap = ref<HTMLElement | null>(null)
 const stat1El = ref<HTMLElement | null>(null)
 const stat2El = ref<HTMLElement | null>(null)
+const registerBlockEnter = inject<((index: number, play: () => void) => void) | undefined>('blockScroll/registerBlockEnter')
+const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
 const { run } = useRevealAnimation({
   elements: [
     { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
@@ -26,11 +29,12 @@ const { run } = useRevealAnimation({
   ],
   offset: 44,
   ease: 'power3.out',
-  scrollTrigger: { trigger: sectionRoot },
+  runOnMount: false,
 })
+let myBlockIndex = -1
 onMounted(() => {
-  const cleanup = run()
-  if (cleanup) onUnmounted(cleanup)
+  myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
+  registerBlockEnter?.(myBlockIndex, () => run())
   nextTick(() => {
     const triggerEl = sectionRoot.value
     const el1 = stat1El.value
@@ -57,6 +61,9 @@ onMounted(() => {
     }, 0.35)
     onUnmounted(() => tl.scrollTrigger?.kill())
   })
+})
+onUnmounted(() => {
+  unregisterBlockEnter?.(myBlockIndex)
 })
 </script>
 

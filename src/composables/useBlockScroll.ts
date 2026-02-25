@@ -13,6 +13,8 @@ export interface UseBlockScrollOptions {
   scrollThresholdPx?: number
   /** Cooldown (ms) after advancing during which wheel is ignored. Default 500 */
   cooldownMs?: number
+  /** Called when the block changes (next or previous) with the new block index. */
+  onBlockChange?: (index: number) => void
 }
 
 export interface UseBlockScrollInput {
@@ -37,9 +39,12 @@ export function useBlockScroll(input: UseBlockScrollInput) {
     transitionEase = 'power2.out',
     scrollThresholdPx = 120,
     cooldownMs = 500,
+    onBlockChange,
   } = opts
 
   const currentBlockIndex = ref(0)
+  /** Cached scroll position so the proxy returns the value from the current frame during the rail tween (ScrollTrigger then fires when section enters viewport). */
+  let currentScrollTop = 0
   let rafId: number
   let teardownProxy: (() => void) | null = null
   let accumulatedDelta = 0
@@ -94,25 +99,32 @@ export function useBlockScroll(input: UseBlockScrollInput) {
     const blocks = getBlockElements()
     if (index < 0 || index >= blocks.length) return
     currentBlockIndex.value = index
+    const vh = window.innerHeight
+    currentScrollTop = index * vh
     const rail = getRail()
-    if (rail) {
-      const y = -index * window.innerHeight
-      gsap.set(rail, { y })
-    }
+    if (rail) gsap.set(rail, { y: -index * vh })
     nextTick(() => ScrollTrigger.update())
   }
 
   function applyRailTransform() {
     const rail = getRail()
     if (!rail) return
-    const y = -currentBlockIndex.value * window.innerHeight
+    const vh = window.innerHeight
+    const y = -currentBlockIndex.value * vh
     ScrollTrigger.update()
     gsap.to(rail, {
       y,
       duration: transitionDuration,
       ease: transitionEase,
-      onUpdate: () => ScrollTrigger.update(),
-      onComplete: () => ScrollTrigger.refresh(),
+      onUpdate: function () {
+        const railY = gsap.getProperty(rail, 'y') as number
+        currentScrollTop = typeof railY === 'number' ? -railY : currentBlockIndex.value * vh
+        ScrollTrigger.update()
+      },
+      onComplete: () => {
+        currentScrollTop = currentBlockIndex.value * vh
+        ScrollTrigger.refresh()
+      },
     })
   }
 
@@ -147,6 +159,7 @@ export function useBlockScroll(input: UseBlockScrollInput) {
         accumulatedDelta = 0
         cooldownUntil = now + cooldownMs
         currentBlockIndex.value++
+        onBlockChange?.(currentBlockIndex.value)
         ScrollTrigger.update()
         applyRailTransform()
       } else if (currentBlockIndex.value >= blocks.length - 1) {
@@ -170,6 +183,7 @@ export function useBlockScroll(input: UseBlockScrollInput) {
         accumulatedDelta = 0
         cooldownUntil = now + cooldownMs
         currentBlockIndex.value = prevBlockIndex
+        onBlockChange?.(currentBlockIndex.value)
         ScrollTrigger.update()
         applyRailTransform()
       } else if (currentBlockIndex.value > 0) {
@@ -182,8 +196,9 @@ export function useBlockScroll(input: UseBlockScrollInput) {
     const container = containerRef.value
     if (!container) return
     // ScrollTrigger's default scroller is typically document.body (or window); proxy both so triggers see our block-based "scroll".
+    // Use cached currentScrollTop (updated in tween onUpdate) so ScrollTrigger sees smooth scroll during the transition and fires when the section enters the viewport.
     const vh = window.innerHeight
-    const getScrollTop = () => currentBlockIndex.value * vh
+    const getScrollTop = () => currentScrollTop
     const getScrollHeight = () => getBlockElements().length * vh
     const getRect = () => ({
       top: 0,
@@ -216,7 +231,11 @@ export function useBlockScroll(input: UseBlockScrollInput) {
     })
     nextTick(() => {
       const rail = getRail()
-      if (rail) gsap.set(rail, { y: -currentBlockIndex.value * window.innerHeight })
+      const vh = window.innerHeight
+      if (rail) {
+        gsap.set(rail, { y: -currentBlockIndex.value * vh })
+        currentScrollTop = currentBlockIndex.value * vh
+      }
       ScrollTrigger.refresh()
       // Run refresh again after children have mounted and created their ScrollTriggers
       setTimeout(() => ScrollTrigger.refresh(), 0)

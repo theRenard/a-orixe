@@ -1,13 +1,16 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, inject } from 'vue'
 import SoundPlayer from '@/components/tools/SoundPlayer.vue'
 import pronunciationMp3 from '@/assets/audio/audio_prononciation_a_orixe.mp3'
 import pronunciationImage from '@/assets/audio-photos/pastille-photo-saturio.webp'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
+import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
 
 const sectionRoot = ref<HTMLElement | null>(null)
 const question = ref<HTMLElement | null>(null)
 const player = ref<HTMLElement | null>(null)
+const registerBlockEnter = inject<((index: number, play: () => void) => void) | undefined>('blockScroll/registerBlockEnter')
+const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
 const { run } = useRevealAnimation({
   elements: [
     { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
@@ -16,11 +19,15 @@ const { run } = useRevealAnimation({
   ],
   offset: 44,
   ease: 'power3.out',
-  scrollTrigger: { trigger: sectionRoot },
+  runOnMount: false,
 })
+let myBlockIndex = -1
 onMounted(() => {
-  const cleanup = run()
-  if (cleanup) onUnmounted(cleanup)
+  myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
+  registerBlockEnter?.(myBlockIndex, () => run())
+})
+onUnmounted(() => {
+  unregisterBlockEnter?.(myBlockIndex)
 })
 </script>
 

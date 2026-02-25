@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, inject } from 'vue'
 import bateauIllustration from '@/assets/illustrations/bateau.webp'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
+import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
 
 const sectionRoot = ref<HTMLElement | null>(null)
 const illustration = ref<HTMLElement | null>(null)
@@ -13,6 +14,8 @@ const answer1b = ref<HTMLElement | null>(null)
 const answer1 = ref<HTMLElement | null>(null)
 const question2 = ref<HTMLElement | null>(null)
 const answer2 = ref<HTMLElement | null>(null)
+const registerBlockEnter = inject<((index: number, play: () => void) => void) | undefined>('blockScroll/registerBlockEnter')
+const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
 const { run } = useRevealAnimation({
   elements: [
     { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
@@ -28,11 +31,15 @@ const { run } = useRevealAnimation({
   ],
   offset: 44,
   ease: 'power3.out',
-  scrollTrigger: { trigger: sectionRoot },
+  runOnMount: false,
 })
+let myBlockIndex = -1
 onMounted(() => {
-  const cleanup = run()
-  if (cleanup) onUnmounted(cleanup)
+  myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
+  registerBlockEnter?.(myBlockIndex, () => run())
+})
+onUnmounted(() => {
+  unregisterBlockEnter?.(myBlockIndex)
 })
 </script>
 

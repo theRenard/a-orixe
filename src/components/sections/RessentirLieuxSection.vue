@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, inject } from 'vue'
 import ImageCrop from '@/components/tools/ImageCrop.vue'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
+import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -13,6 +14,8 @@ const image = ref<HTMLElement | null>(null)
 const question = ref<HTMLElement | null>(null)
 const imageBlock = ref<HTMLElement | null>(null)
 const titleBlock = ref<HTMLElement | null>(null)
+const registerBlockEnter = inject<((index: number, play: () => void) => void) | undefined>('blockScroll/registerBlockEnter')
+const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
 const { run } = useRevealAnimation({
   elements: [
     { el: imageBlock, delay: 0, steps: [
@@ -27,11 +30,15 @@ const { run } = useRevealAnimation({
   ],
   offset: 44,
   ease: 'power3.out',
-  scrollTrigger: { trigger: sectionRoot, start: 'top 10%' },
+  runOnMount: false,
 })
+let myBlockIndex = -1
 onMounted(() => {
-  const cleanup = run()
-  if (cleanup) onUnmounted(cleanup)
+  myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
+  registerBlockEnter?.(myBlockIndex, () => run())
+})
+onUnmounted(() => {
+  unregisterBlockEnter?.(myBlockIndex)
 })
 </script>
 

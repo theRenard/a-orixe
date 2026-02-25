@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, provide, nextTick } from 'vue'
 import { useBlockScroll } from '@/composables/useBlockScroll'
 import HeroIllustration from '@/components/sections/HeroIllustration.vue'
 import CaminoSection from '@/components/sections/CaminoSection.vue'
@@ -38,13 +38,31 @@ import WindowWidthLabel from '@/components/WindowWidthLabel.vue'
 
 const mainRef = ref<HTMLElement | null>(null)
 const railRef = ref<HTMLElement | null>(null)
+
+const blockEnterCallbacks = new Map<number, () => void>()
+function registerBlockEnter(index: number, play: () => void) {
+  blockEnterCallbacks.set(index, play)
+}
+function unregisterBlockEnter(index: number) {
+  blockEnterCallbacks.delete(index)
+}
+provide('blockScroll/registerBlockEnter', registerBlockEnter)
+provide('blockScroll/unregisterBlockEnter', unregisterBlockEnter)
+
 useBlockScroll({
   containerRef: mainRef,
   railRef,
   options: {
     transitionDuration: 1,
     scrollThresholdPx: 240,
+    onBlockChange(index) {
+      blockEnterCallbacks.get(index)?.()
+    },
   },
+})
+
+nextTick(() => {
+  setTimeout(() => blockEnterCallbacks.get(0)?.(), 0)
 })
 </script>
 
@@ -55,11 +73,12 @@ useBlockScroll({
     :rail-ref="(railRef as unknown as { value: HTMLElement | null })" />
   <div ref="railRef" class="blocks-rail">
     <!--
-      <HeroIllustration />
-      <CaminoSection />
-      <FirstTestimonial />
-      <EtapesClesSection />
-      <SecondTestimonial />
+      -->
+    <HeroIllustration />
+    <CaminoSection />
+    <FirstTestimonial />
+    <EtapesClesSection />
+    <SecondTestimonial />
     <RessentirLieuxSection />
     <FifthTestimonial />
     <AssociationSection />
@@ -72,7 +91,6 @@ useBlockScroll({
     <SantiagoJourneyPhotoGrid />
     <SantiagoJourneySection />
     <ReconnaissanceSection />
-    -->
     <ReconnaissanceFootnoteSection />
     <FourthTestimonial />
     <FlechageSection />

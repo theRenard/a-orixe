@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, nextTick } from 'vue'
+import { ref, onMounted, onUnmounted, nextTick, inject } from 'vue'
 import gsap from 'gsap'
 import heroImage from '@/assets/illustrations/illu_principale_ok.webp'
 import mouseIcon from '@/assets/icons/scroll_down_2.webp'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
+import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
 
 const sectionRoot = ref<HTMLElement | null>(null)
 const blockInnerRef = ref<HTMLElement | null>(null)
@@ -12,6 +13,9 @@ const heroTitle = ref<HTMLElement | null>(null)
 const heroSubtitle = ref<HTMLElement | null>(null)
 const creditsLeft = ref<HTMLElement | null>(null)
 const creditsRight = ref<HTMLElement | null>(null)
+
+const registerBlockEnter = inject<((index: number, play: () => void) => void) | undefined>('blockScroll/registerBlockEnter')
+const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
 
 /** Illustration height in vh: 100 at top, 50 after scrolling (over first ~200px). */
 const illustrationHeightVh = ref(100)
@@ -35,6 +39,7 @@ const { run } = useRevealAnimation({
   ],
   offset: 48,
   ease: 'power3.out',
+  runOnMount: false,
 })
 
 function onBlockScroll() {
@@ -58,13 +63,24 @@ function setRevealInitialState() {
   if (right) gsap.set(right, { x: 80, opacity: 0 })
 }
 
+let myBlockIndex = -1
 onMounted(() => {
+  myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
+  registerBlockEnter?.(myBlockIndex, () => {
+    if (!revealDone) {
+      revealDone = true
+      run()
+    }
+  })
   nextTick(setRevealInitialState)
   const el = blockInnerRef.value
   if (el) {
     el.addEventListener('scroll', onBlockScroll, { passive: true })
     onUnmounted(() => el.removeEventListener('scroll', onBlockScroll))
   }
+})
+onUnmounted(() => {
+  unregisterBlockEnter?.(myBlockIndex)
 })
 </script>
 
