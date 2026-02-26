@@ -8,6 +8,19 @@
  * Fraunces 400, 700 + italics.
  */
 
+@media (min-width: 48rem) {
+  :root {
+    --font-scale: 1;
+  }
+}
+
+@media (max-width: 47.99rem) {
+  :root {
+    --font-scale: 2;
+  }
+}
+
+
 :root {
   /* Fixed design width: proportions scale with viewport width only (design for 1920px) */
   --design-width: 1920;
@@ -51,9 +64,6 @@
   --font-weight-medium: 500;
   --font-weight-bold: 700;
   --font-weight-black: 900;
-
-  /* Global font scale (1 = design size; 0.7 = 30% reduction) */
-  --font-scale: 1;
 
   /* Font sizes (rem so they scale with root; --font-scale applied) */
   --font-size-xs: calc(0.75rem * var(--font-scale));

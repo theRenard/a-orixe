@@ -1,0 +1,73 @@
+/**
+ * Mobile (narrow viewport) styles.
+ * Base styles for viewports below 48rem. Add mobile-specific overrides here.
+ */
+
+/* Add mobile styles below */
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+  /* background-color: green; */
+}
+
+section.with-borders {
+  border-top: 3px solid var(--color-amber-4d);
+  border-bottom: 3px solid var(--color-amber-4d);
+}
+
+section.with-background {
+  background-color: var(--color-white-off);
+}
+
+section.section--full-viewport {
+  /* min-width: 100vw;
+  min-height: 100vh; */
+}
+
+.block-viewport {
+  height: auto;
+  min-height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.blocks-rail {
+  display: block;
+}
+
+/* Block and block-inner: narrow viewport */
+[data-block] {
+  /* min-height: 100dvh;
+  flex-shrink: 0; */
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+  /* padding-top: 10rem;
+  padding-bottom: 10rem; */
+}
+
+[data-block-inner] {
+  /* height: 100%;
+  min-height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden; */
+}
+
+.container {
+  max-width: 70vw;
+  margin: 0 auto;
+}
+
+.centered {
+  padding: 0;
+}
+
+.centered--large {
+  padding: 0;
+  padding-left: 0;
+}

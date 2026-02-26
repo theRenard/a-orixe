@@ -1,6 +1,6 @@
 /**
  * Responsive foundation (modern-responsive-architecture.md)
- * Mobile-first: base styles for narrow viewports; enhance with min-width media queries.
+ * Shared :root variables only. Viewport-specific rules live in mobile.css and desktop.css.
  * Viewport "wide" breakpoint: 48rem — block-scroll layout and composable use this.
  */
 
@@ -19,29 +19,6 @@
   --space-2: clamp(1rem, 2vw, 2rem);
   --space-3: clamp(1.5rem, 3vw, 2.5rem);
   --space-4: clamp(2rem, 4vw, 3rem);
-}
-
-/* Base (narrow) overrides — no media needed; these are the default */
-.centered {
-  padding: 0 1rem;
-}
-
-.container {
-  max-width: 90vw;
-  margin-inline: auto;
-}
-
-section.section--full-viewport,
-section.section--half-viewport {
-  min-height: unset;
-}
-
-/* Wide viewport enhancements: optional overrides when min-width: 48rem */
-@media (min-width: 48rem) {
-  .container {
-    max-width: min(90vw, 70rem);
-    background-color: red;
-  }
 }
 
 /* Capability media: use where relevant in components */

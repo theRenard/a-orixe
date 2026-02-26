@@ -72,8 +72,7 @@ nextTick(() => {
 <template>
 <main ref="mainRef" class="block-viewport">
   <WindowWidthLabel v-if="isWide" />
-  <ReadProgressBar v-if="isWide"
-    :viewport-ref="(mainRef as unknown as { value: HTMLElement | null })"
+  <ReadProgressBar v-if="isWide" :viewport-ref="(mainRef as unknown as { value: HTMLElement | null })"
     :rail-ref="(railRef as unknown as { value: HTMLElement | null })" />
   <div ref="railRef" class="blocks-rail">
     <!--
@@ -113,47 +112,3 @@ nextTick(() => {
   </div>
 </main>
 </template>
-
-<style scoped>
-/* Mobile-first: base = single scrollable column */
-.block-viewport {
-  height: auto;
-  min-height: 100dvh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  position: relative;
-}
-
-.blocks-rail {
-  display: block;
-}
-
-/* Block and block-inner: narrow viewport */
-:deep([data-block]) {
-  min-height: 100dvh;
-  flex-shrink: 0;
-}
-
-:deep([data-block-inner]) {
-  height: 100%;
-  min-height: 100dvh;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-/* Wide viewport: fixed viewport and block-scroll layout */
-@media (min-width: 48rem) {
-  .block-viewport {
-    height: 100dvh;
-    overflow: hidden;
-  }
-
-  .blocks-rail {
-    will-change: transform;
-  }
-
-  :deep([data-block]) {
-    height: 100dvh;
-  }
-}
-</style>

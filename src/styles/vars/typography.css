@@ -1,4 +1,15 @@
 /* Typography – BEM block: type (uses design-tokens.css) */
+.heading-spacing {
+  margin-top: 2.5rem !important;
+  margin-bottom: 2.5rem !important;
+}
+
+/* Language selector */
+.type__language-selector {
+  font: var(--font-style-normal) var(--font-weight-normal) calc(1.25rem * var(--font-scale)) / calc(2.1875rem * var(--font-scale)) var(--font-family-ubuntu);
+  color: var(--color-black);
+  text-align: left;
+}
 
 /* Hero */
 .type__hero-title {
@@ -180,7 +191,8 @@
   letter-spacing: var(--letter-spacing-normal);
   color: var(--color-teal-medium);
   text-align: left;
-  align-self: flex-start; /* keep left-aligned when inside flex containers */
+  align-self: flex-start;
+  /* keep left-aligned when inside flex containers */
   opacity: 1;
 }
 
