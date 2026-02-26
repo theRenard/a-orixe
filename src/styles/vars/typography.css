@@ -116,8 +116,8 @@
 .type__testimonial-block::before {
   content: '«';
   position: absolute;
-  top: -6rem;
-  left: -7rem;
+  top: calc(-6rem * var(--font-scale));
+  left: calc(-7rem * var(--font-scale));
   font: var(--font-style-italic) var(--font-weight-light) 6em/0.85 var(--font-family-ubuntu);
   color: var(--color-teal-light);
 }
