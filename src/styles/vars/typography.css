@@ -138,6 +138,7 @@
 
 .type__interview-title {
   font: var(--font-style-normal) var(--font-weight-bold) var(--font-size-3xl)/var(--line-height-lg) var(--font-family-fraunces);
+  letter-spacing: -0.02em;
   color: var(--color-brown-dark);
 }
 
@@ -159,6 +160,7 @@
 .type__interview-question {
   font: var(--font-style-normal) var(--font-weight-bold) var(--font-size-lg)/var(--line-height-base) var(--font-family-ubuntu);
   color: var(--color-brown-dark);
+  letter-spacing: -0.02em;
 }
 
 .type__interview-answer {
@@ -180,7 +182,8 @@
   letter-spacing: var(--letter-spacing-normal);
   color: var(--color-teal-medium);
   text-align: left;
-  align-self: flex-start; /* keep left-aligned when inside flex containers */
+  align-self: flex-start;
+  /* keep left-aligned when inside flex containers */
   opacity: 1;
 }
 

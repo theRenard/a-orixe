@@ -17,7 +17,7 @@ const unregisterBlockEnter = inject<((index: number) => void) | undefined>('bloc
 const { run } = useRevealAnimation({
   elements: [
     { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
-    { el: imageBlock, direction: 'left', delay: 0 },
+    { el: imageBlock, direction: 'up', delay: 0, scale: 3, duration: 4, transformOrigin: 'bottom center' },
     { el: title, direction: 'left', delay: 0.1 },
     { el: question, direction: 'down', delay: 0.2 },
   ],
@@ -29,20 +29,6 @@ let myBlockIndex = -1
 onMounted(() => {
   myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
   registerBlockEnter?.(myBlockIndex, () => run())
-
-  const img = imageBlock.value?.querySelector<HTMLElement>('.image-crop img')
-  const triggerEl = sectionRoot.value
-  if (img && triggerEl) {
-    const tl = gsap.timeline({
-      scrollTrigger: { trigger: triggerEl, start: 'top 70%', once: true },
-    })
-    tl.fromTo(
-      img,
-      { scale: 2, transformOrigin: '50% 0%' },
-      { scale: 1, duration: 2, ease: 'power2.out', transformOrigin: '50% 100%' },
-    )
-    onUnmounted(() => tl.scrollTrigger?.kill())
-  }
 })
 onUnmounted(() => {
   unregisterBlockEnter?.(myBlockIndex)
