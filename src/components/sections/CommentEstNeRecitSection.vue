@@ -85,18 +85,6 @@ onUnmounted(() => {
   align-items: start;
 }
 
-@media (max-width: 768px) {
-  .comment-est-ne-section__grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    text-align: center;
-  }
-
-  .comment-est-ne-section__content {
-    text-align: left;
-  }
-}
-
 .comment-est-ne-section__author {
   display: flex;
   flex-direction: column;
