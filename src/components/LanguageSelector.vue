@@ -8,9 +8,7 @@ const route = useRoute()
 
 function goToLocale(newLocale: 'fr' | 'es') {
   if (locale.value === newLocale) return
-  const onMobilePath = route.path.endsWith('/mobile')
-  const path = onMobilePath ? `/${newLocale}/mobile` : `/${newLocale}`
-  router.push({ path, query: route.query })
+  router.push({ path: `/${newLocale}`, query: route.query })
 }
 </script>
 
