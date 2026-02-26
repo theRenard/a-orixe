@@ -47,7 +47,7 @@ function onBlockScroll() {
   if (!el) return
   const scrollTop = el.scrollTop
   const progress = Math.min(1, scrollTop / SCROLL_THRESHOLD_PX)
-  illustrationHeightVh.value = 100 - progress * 50
+  illustrationHeightVh.value = 100 - progress * 0.05
   showScrollIndicator.value = scrollTop <= SCROLL_INDICATOR_HIDE_PX
 
   if (!revealDone && scrollTop >= REVEAL_TRIGGER_PX) {
@@ -108,22 +108,22 @@ onUnmounted(() => {
                   class="type__credits-bold">{{ $t('credits.translatedByName') }}</span></p>
               <p>
                 {{ $t('credits.publishedOnPrefix') }}<span class="type__credits-bold">{{ $t('credits.publishedOnDate')
-                }}</span>
+                  }}</span>
               </p>
             </div>
             <div ref="creditsRight" class="credits__col credits__col--right">
               <div class="credits__line-accent ml-auto" aria-hidden="true" />
               <p>
                 {{ $t('credits.artDirectionPrefix') }}<span class="type__credits-bold">{{ $t('credits.artDirectionName')
-                }}</span>
+                  }}</span>
               </p>
               <p>
                 {{ $t('credits.illustrationPrefix') }}<span class="type__credits-bold">{{ $t('credits.illustrationName')
-                }}</span>
+                  }}</span>
               </p>
               <p>
                 {{ $t('credits.devDesignPrefix') }}<span class="type__credits-bold">{{ $t('credits.devDesignName')
-                }}</span>
+                  }}</span>
               </p>
             </div>
           </div>

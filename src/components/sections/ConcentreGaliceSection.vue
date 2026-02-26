@@ -47,13 +47,15 @@ onUnmounted(() => {
             </div>
             <div ref="rightCol" class="col-right">
               <ImageCrop width="100%" height="700px" position="center 40%" :caption="$t('concentreGalice.imageCaption')"
-              caption-position="bottom">
-              <img class="paragraph-spacing" src="@/assets/photos/04_florence_antunes.webp"
-              :alt="$t('concentreGalice.imageCaption')" loading="lazy">
-            </ImageCrop>
+                caption-position="bottom">
+                <img class="paragraph-spacing" src="@/assets/photos/04_florence_antunes.webp"
+                  :alt="$t('concentreGalice.imageCaption')" loading="lazy">
+              </ImageCrop>
+            </div>
           </div>
+        </div>
+        <div class="centered">
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('concentreGalice.paragraph3')"></p>
-          </div>
         </div>
       </div>
     </section>
