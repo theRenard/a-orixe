@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, provide, nextTick } from 'vue'
 import { useBlockScroll } from '@/composables/useBlockScroll'
+import { useMobileDetection } from '@/composables/useMobileDetection'
 import HeroIllustration from '@/components/sections/HeroIllustration.vue'
 import CaminoSection from '@/components/sections/CaminoSection.vue'
 import EtapesClesSection from '@/components/sections/EtapesClesSection.vue'
@@ -38,6 +39,7 @@ import WindowWidthLabel from '@/components/WindowWidthLabel.vue'
 
 const mainRef = ref<HTMLElement | null>(null)
 const railRef = ref<HTMLElement | null>(null)
+const { isWide } = useMobileDetection()
 
 const blockEnterCallbacks = new Map<number, () => void>()
 function registerBlockEnter(index: number, play: () => void) {
@@ -52,6 +54,7 @@ provide('blockScroll/unregisterBlockEnter', unregisterBlockEnter)
 useBlockScroll({
   containerRef: mainRef,
   railRef,
+  enabled: isWide,
   options: {
     transitionDuration: 1,
     scrollThresholdPx: 240,
@@ -68,8 +71,9 @@ nextTick(() => {
 
 <template>
 <main ref="mainRef" class="block-viewport">
-  <WindowWidthLabel />
-  <ReadProgressBar :viewport-ref="(mainRef as unknown as { value: HTMLElement | null })"
+  <WindowWidthLabel v-if="isWide" />
+  <ReadProgressBar v-if="isWide"
+    :viewport-ref="(mainRef as unknown as { value: HTMLElement | null })"
     :rail-ref="(railRef as unknown as { value: HTMLElement | null })" />
   <div ref="railRef" class="blocks-rail">
     <!--
@@ -111,26 +115,45 @@ nextTick(() => {
 </template>
 
 <style scoped>
+/* Mobile-first: base = single scrollable column */
 .block-viewport {
-  height: 100vh;
-  overflow: hidden;
+  height: auto;
+  min-height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
   position: relative;
 }
 
 .blocks-rail {
-  will-change: transform;
+  display: block;
 }
 
-/* Block and block-inner live inside each section component; rail only needs to stack them */
+/* Block and block-inner: narrow viewport */
 :deep([data-block]) {
-  height: 100vh;
+  min-height: 100dvh;
   flex-shrink: 0;
 }
 
 :deep([data-block-inner]) {
   height: 100%;
-  min-height: 100vh;
+  min-height: 100dvh;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+/* Wide viewport: fixed viewport and block-scroll layout */
+@media (min-width: 48rem) {
+  .block-viewport {
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  .blocks-rail {
+    will-change: transform;
+  }
+
+  :deep([data-block]) {
+    height: 100dvh;
+  }
 }
 </style>

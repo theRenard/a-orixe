@@ -19,12 +19,15 @@ Single long-page website with Vue 3, programmatic animations, and bilingual cont
 - **TypeScript**: Preferred for `.ts`/`.vue` logic.
 - **Tooling**: ESLint, Prettier (align with Vue/TS).
 
-## Mobile route and redirect
+## Responsive design
 
-- **Default**: `/` shows the desktop layout (full sections, hero illustration, etc.).
-- **Mobile**: `/mobile` shows the mobile layout; live under `src/views/mobile/` (e.g. `MobileView.vue`).
-- **Redirect logic**: A router guard uses `useMobileDetection` (viewport width ≤768px or mobile user-agent) to send small screens to `/mobile` and desktop to `/`. Implemented in `src/composables/useMobileDetection.ts` (native `matchMedia` + `navigator.userAgent`); no extra dependency.
-- **Override for testing**: `?desktop=1` on any path forces desktop; `?mobile=1` forces mobile.
+- **Single view**: One layout for all viewports; routes are `/`, `/fr`, `/es` (no separate mobile route or redirect).
+- **Mobile-first**: Base styles target narrow viewports; enhance with `@media (min-width: 48rem)`. See `modern-responsive-architecture.md` for the full standard.
+- **Breakpoint**: 48rem (wide). Use in CSS as `@media (min-width: 48rem)`; in JS via `useMobileDetection()` or `BREAKPOINT_WIDE_REM` in `src/composables/useMobileDetection.ts`. No user-agent sniffing for layout.
+- **Foundation**: [src/styles/responsive.css](src/styles/responsive.css) provides fluid type/spacing scales and `--breakpoint-wide`; imported globally.
+- **Layout**: CSS controls layout (scrollable column by default; fixed viewport + block-scroll at 48rem). JS (`useMobileDetection()`) is used only for behavior (e.g. enabling block-scroll when viewport is wide).
+- **Viewport units**: Use `100dvh` instead of `100vh` for full-height blocks.
+- **Capability media**: Where relevant, use `@media (hover: hover)` for hover-only interactions and `@media (prefers-reduced-motion: reduce)` to respect reduced motion.
 
 ## Key directories
 
@@ -35,10 +38,8 @@ Single long-page website with Vue 3, programmatic animations, and bilingual cont
 │   ├── components/      # Vue components (sections, UI bits)
 │   ├── composables/     # Reusable logic (e.g. useMobileDetection)
 │   ├── locales/         # i18n: fr.json, es.json (or .ts)
-│   ├── styles/          # Global SCSS (variables, mixins)
-│   ├── views/
-│   │   ├── mobile/      # Mobile route view and mobile-only components
-│   │   └── ...
+│   ├── styles/          # Global CSS (design-tokens, responsive.css, vars)
+│   ├── views/           # DesktopView (main), StylesPage, etc.
 │   ├── App.vue
 │   └── main.ts
 ├── public/
@@ -50,7 +51,7 @@ Single long-page website with Vue 3, programmatic animations, and bilingual cont
 ## Conventions
 
 - **Components**: PascalCase; one main component per section on the long page when it makes sense.
-- **New sections**: Add every new section at the end of the page — i.e. register it last in `src/views/DesktopView.vue` (and in the mobile view if applicable), so it appears at the bottom of the long scroll.
+- **New sections**: Add every new section at the end of the page — i.e. register it last in `src/views/DesktopView.vue`, so it appears at the bottom of the long scroll.
 - **i18n**: Keys by feature/section (e.g. `hero.title`, `footer.copyright`). Never hardcode fr/es strings in templates or components. In templates use the global `$t('key')` for translations and `$i18n.locale` for the current locale; do not use `useI18n()` and `t` in components solely for template translations.
 - **Animations**: Prefer composables (e.g. `useScrollReveal`) that wrap the animation library; keep animation logic out of raw template code when possible.
 - **Script/style**: `<script setup lang="ts">`; scoped styles; SCSS with `@use` only.
