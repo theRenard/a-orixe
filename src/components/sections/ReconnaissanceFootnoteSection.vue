@@ -37,13 +37,15 @@ onUnmounted(() => {
         <div ref="content" class="centered">
           <p class="type__section-paragraph paragraph-spacing">{{ $t('reconnaissance.insertBetween') }}</p>
         </div>
-        <div ref="image" class="centered paragraph-spacing mr-3">
-          <ImageCrop width="35rem" height="auto" position="center 50%" :caption="$t('reconnaissance.documentCaption')"
-            caption-position="bottom">
-            <img src="@/assets/photos/lettrereconnaissancechemin.webp"
-              :alt="$t('reconnaissance.documentCaption')" loading="lazy">
-          </ImageCrop>
+        <div ref="image" class="centered paragraph-spacing">
+          <div class="image-crop-container">
+            <ImageCrop width="35rem" height="auto" position="center 50%" :caption="$t('reconnaissance.documentCaption')"
+              caption-position="bottom">
+              <img src="@/assets/photos/lettrereconnaissancechemin.webp" :alt="$t('reconnaissance.documentCaption')"
+                loading="lazy">
+            </ImageCrop>
           </div>
+        </div>
       </div>
     </section>
   </div>
@@ -51,7 +53,6 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-
 .image-crop-container {
   width: 35rem;
   height: auto;

@@ -12,12 +12,14 @@ const sectionRoot = ref<HTMLElement | null>(null)
 const imageBlock = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
 const question = ref<HTMLElement | null>(null)
+const image = ref<HTMLElement | null>(null)
 const registerBlockEnter = inject<((index: number, play: () => void) => void) | undefined>('blockScroll/registerBlockEnter')
 const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
 const { run } = useRevealAnimation({
   elements: [
     { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
-    { el: imageBlock, direction: 'up', delay: 0, scale: 3, duration: 4, transformOrigin: 'bottom center' },
+    { el: imageBlock, direction: 'up', delay: 0, scale: 4, duration: 4, transformOrigin: 'bottom center' },
+    { el: image, direction: 'down', delay: 0.1, scale: 3, duration: 4, transformOrigin: 'top center' },
     { el: title, direction: 'left', delay: 0.1 },
     { el: question, direction: 'down', delay: 0.2 },
   ],
@@ -41,9 +43,9 @@ onUnmounted(() => {
     <section ref="sectionRoot" class="reconstitution-trac-section">
       <div class="container">
         <div ref="imageBlock">
-          <ImageCrop width="100%" height="320px" position="center 50%" :caption="$t('reconstitutionTrac.imageCaption')"
-            caption-position="bottom">
-            <img src="../../assets/photos/02_miguel_angel_soutullo_alvarez.webp"
+          <ImageCrop ref="imageCrop" width="100%" height="320px" position="center 50%"
+            :caption="$t('reconstitutionTrac.imageCaption')" caption-position="bottom">
+            <img ref="image" src="../../assets/photos/02_miguel_angel_soutullo_alvarez.webp"
               :alt="$t('reconstitutionTrac.imageCaption')" class="reconstitution-trac-section__image" loading="lazy">
           </ImageCrop>
         </div>
