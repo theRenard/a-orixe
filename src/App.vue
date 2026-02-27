@@ -2,8 +2,21 @@
 import LanguageSelector from '@/components/LanguageSelector.vue'
 import { RouterView } from 'vue-router'
 import { useShowComponentLabels } from '@/composables/useShowComponentLabels'
+import { useHead } from '@unhead/vue'
+import { useI18n } from 'vue-i18n'
 
 useShowComponentLabels()
+
+const { t } = useI18n()
+useHead({
+  title: () => t('meta.title'),
+  meta: [
+    {
+      name: 'description',
+      content: () => t('meta.description'),
+    },
+  ],
+})
 </script>
 
 <template>
