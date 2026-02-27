@@ -37,7 +37,7 @@ onUnmounted(() => {
           <div class="comment-est-ne-section__grid">
             <aside ref="author" class="comment-est-ne-section__author">
               <img src="@/assets/photos/florenceantunes-portrait.webp" alt="" class="comment-est-ne-section__avatar"
-                width="280" height="280">
+                style="width: calc(20rem * var(--font-scale)); height: auto">
               <h3 class="comment-est-ne-section__author-name">
                 {{ $t('commentEstNeRecit.authorName') }}
               </h3>
@@ -78,11 +78,32 @@ onUnmounted(() => {
   padding: 0 2rem;
 }
 
+/* Mobile: single column, content (title + paragraph) before author (presentation) */
 .comment-est-ne-section__grid {
   display: grid;
-  grid-template-columns: 17.5rem 1fr;
-  gap: 3rem 4rem;
+  grid-template-columns: 1fr;
+  gap: 3rem;
   align-items: start;
+}
+
+.comment-est-ne-section__content {
+  order: 1;
+}
+
+.comment-est-ne-section__author {
+  order: 2;
+}
+
+@media (min-width: 48rem) {
+  .comment-est-ne-section__grid {
+    grid-template-columns: 17.5rem 1fr;
+    gap: 3rem 4rem;
+  }
+
+  .comment-est-ne-section__content,
+  .comment-est-ne-section__author {
+    order: unset;
+  }
 }
 
 .comment-est-ne-section__author {

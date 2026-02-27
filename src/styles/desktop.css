@@ -82,36 +82,6 @@
     max-width: 60%;
   }
 
-
-  /* En bref section: infographic-style types (from design) */
-  .type__enbref-big {
-    font: normal var(--font-weight-black, 900) calc(8.125rem * var(--font-scale)) / calc(8.125rem * var(--font-scale)) var(--font-family-fraunces);
-    letter-spacing: 0;
-    color: var(--color-teal-dark);
-    text-align: center;
-  }
-
-  .type__enbref-small-green {
-    font: normal var(--font-weight-bold) calc(1.5rem * var(--font-scale)) / calc(1.875rem * var(--font-scale)) var(--font-family-fraunces);
-    letter-spacing: 0;
-    color: var(--color-teal-dark);
-    text-align: left;
-  }
-
-  .type__enbref-small-orange {
-    font: normal var(--font-weight-bold) calc(1.25rem * var(--font-scale)) / calc(2.5rem * var(--font-scale)) var(--font-family-ubuntu);
-    letter-spacing: 0;
-    color: var(--color-orange);
-    text-align: center;
-  }
-
-  .type__enbref-small-orange--left {
-    font: normal var(--font-weight-bold) calc(1.25rem * var(--font-scale)) / calc(2.5rem * var(--font-scale)) var(--font-family-ubuntu);
-    letter-spacing: 0;
-    color: var(--color-orange);
-    text-align: left;
-  }
-
   /* Component labels: visible only in dev (body.show-component-labels) */
   body.show-component-labels [data-component] {
     position: relative;

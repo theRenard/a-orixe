@@ -121,17 +121,35 @@ onUnmounted(() => {
 }
 
 .en-bref-section__inner {
-  min-width: calc(70rem * var(--font-scale));
   margin: 0 auto;
+  text-align: center;
+  min-width: 0;
 }
 
+@media (min-width: 48rem) {
+  .en-bref-section__inner {
+    min-width: calc(70rem * var(--font-scale));
+    text-align: left;
+  }
+}
+
+/* Mobile: four blocks in a single column, centered */
 .en-bref-section__stats-row {
   display: flex;
-  flex-wrap: nowrap;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   margin-bottom: calc(2.5rem * var(--font-scale));
-  gap: calc(6rem * var(--font-scale));
+  gap: calc(2rem * var(--font-scale));
+}
+
+@media (min-width: 48rem) {
+  .en-bref-section__stats-row {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: calc(6rem * var(--font-scale));
+  }
 }
 
 .en-bref-section__stat {
@@ -143,7 +161,21 @@ onUnmounted(() => {
 .en-bref-section__place {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+}
+
+.en-bref-section__place>div {
+  text-align: center;
+}
+
+@media (min-width: 48rem) {
+  .en-bref-section__place {
+    justify-content: space-between;
+  }
+
+  .en-bref-section__place>div {
+    text-align: left;
+  }
 }
 
 .en-bref-section__icon {
@@ -154,22 +186,39 @@ onUnmounted(() => {
   margin-right: calc(1rem * var(--font-scale));
 }
 
-.first-stat {
-  width: calc(8.5rem * var(--font-scale));
-  justify-content: center;
-}
-
-.second-stat {
-  width: calc(20.5rem * var(--font-scale));
-  justify-content: center;
-}
-
-.first-place {
-  width: calc(22.5rem * var(--font-scale));
-}
-
+/* Mobile: blocks centered in column, max 50vw per block; desktop: fixed widths */
+.first-stat,
+.second-stat,
+.first-place,
 .second-place {
-  width: calc(22.5rem * var(--font-scale));
+  justify-content: center;
+  max-width: 42vw;
+  min-width: 42vw;
+}
+
+@media (min-width: 48rem) {
+
+  .first-stat,
+  .second-stat,
+  .first-place,
+  .second-place {
+    max-width: unset;
+    min-width: unset;
+  }
+
+  .first-stat {
+    width: calc(8.5rem * var(--font-scale));
+  }
+
+  .second-stat {
+    width: calc(20.5rem * var(--font-scale));
+  }
+
+  .first-place,
+  .second-place {
+    width: calc(22.5rem * var(--font-scale));
+    justify-content: space-between;
+  }
 }
 
 .en-bref-section__link-wrap {
@@ -182,5 +231,34 @@ onUnmounted(() => {
 .en-bref-section__link {
   color: var(--color-orange);
   text-decoration: underline;
+}
+
+/* En bref section: infographic-style types (from design) */
+.type__enbref-big {
+  font: normal var(--font-weight-black, 900) calc(8.125rem * var(--font-scale)) / calc(8.125rem * var(--font-scale)) var(--font-family-fraunces);
+  letter-spacing: 0;
+  color: var(--color-teal-dark);
+  text-align: center;
+}
+
+.type__enbref-small-green {
+  font: normal var(--font-weight-bold) calc(1.5rem * var(--font-scale)) / calc(1.875rem * var(--font-scale)) var(--font-family-fraunces);
+  letter-spacing: 0;
+  color: var(--color-teal-dark);
+  text-align: left;
+}
+
+.type__enbref-small-orange {
+  font: normal var(--font-weight-bold) calc(1.25rem * var(--font-scale)) / calc(2.5rem * var(--font-scale)) var(--font-family-ubuntu);
+  letter-spacing: 0;
+  color: var(--color-orange);
+  text-align: center;
+}
+
+.type__enbref-small-orange--left {
+  font: normal var(--font-weight-bold) calc(1.25rem * var(--font-scale)) / calc(2.5rem * var(--font-scale)) var(--font-family-ubuntu);
+  letter-spacing: 0;
+  color: var(--color-orange);
+  text-align: left;
 }
 </style>
