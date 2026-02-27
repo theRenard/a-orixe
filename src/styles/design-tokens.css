@@ -11,12 +11,14 @@
 @media (min-width: 48rem) {
   :root {
     --font-scale: 1;
+    --font-scale-small: 1;
   }
 }
 
 @media (max-width: 47.99rem) {
   :root {
-    --font-scale: 2;
+    --font-scale: 2.75;
+    --font-scale-small: 1.5;
   }
 }
 

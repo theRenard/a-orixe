@@ -20,7 +20,7 @@
 }
 
 .type__hero-subtitle {
-  font: var(--font-style-normal) var(--font-weight-bold) calc(3.9375rem * var(--font-scale)) / calc(5.5rem * var(--font-scale)) var(--font-family-fraunces);
+  font: var(--font-style-normal) var(--font-weight-bold) calc(3.9375rem * var(--font-scale)) / calc(4.5rem * var(--font-scale)) var(--font-family-fraunces);
   text-align: left;
   letter-spacing: calc(0.118125rem * var(--font-scale));
   color: var(--color-orange);

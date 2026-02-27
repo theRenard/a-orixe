@@ -15,9 +15,17 @@
     min-height: 100vh;
   }
 
+  section.testimonial {
+    padding: 0;
+  }
+
   /* Half-viewport section: ~50vh height, content centered vertically */
   section.section--half-viewport {
     min-height: 50vh;
+  }
+
+  .container {
+    max-width: 70vw;
   }
 
   .centered {

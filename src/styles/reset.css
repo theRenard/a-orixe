@@ -421,8 +421,8 @@ p {
 }
 
 .paragraph-spacing {
-  margin-top: 2.5rem !important;
-  margin-bottom: 2.5rem !important;
+  margin-top: calc(2.5rem * var(--font-scale)) !important;
+  margin-bottom: calc(2.5rem * var(--font-scale)) !important;
 }
 
 /* Headings: no default margin; use .heading-spacing for vertical rhythm */

@@ -38,7 +38,7 @@ onUnmounted(() => {
         </div>
       </div>
     </section>
-    <section ref="sectionRoot" class="section--half-viewport with-background with-shadow third-testimonial">
+    <section ref="sectionRoot" class="testimonial section--half-viewport with-background with-shadow third-testimonial">
       <div class="container">
         <blockquote class="centered">
           <div ref="blockquoteInner">

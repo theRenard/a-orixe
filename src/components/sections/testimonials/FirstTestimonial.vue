@@ -28,7 +28,7 @@ onUnmounted(() => {
 <template>
 <div data-block data-component="FirstTestimonial" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="section--full-viewport with-background with-shadow">
+    <section ref="sectionRoot" class="testimonial section--full-viewport with-background with-shadow">
       <div class="container">
         <blockquote class="centered">
           <div ref="blockquoteInner">

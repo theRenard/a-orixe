@@ -131,7 +131,8 @@ onUnmounted(() => {
       <img :src="image" alt="" class="sound-player__image" />
     </span>
   </button>
-  <div v-if="transcriptionActive && currentChapterText && isPlaying" class="sound-player__transcript" aria-live="polite">
+  <div v-if="transcriptionActive && currentChapterText && isPlaying" class="sound-player__transcript"
+    aria-live="polite">
 
     <span class="sound-player__transcript-chapter" v-html="currentChapterText"></span>
   </div>
@@ -143,22 +144,22 @@ onUnmounted(() => {
   display: inline-flex;
   position: relative;
   align-items: center;
-  gap: 1rem;
-  padding: 0.5rem 0.5rem;
+  gap: calc(1rem * var(--font-scale));
+  padding: calc(0.5rem * var(--font-scale)) calc(0.5rem * var(--font-scale));
   background: var(--color-cream);
   border: 3px solid var(--color-teal-medium);
-  border-radius: 3rem;
+  border-radius: calc(3rem * var(--font-scale));
   font-family: var(--font-family-ubuntu);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
+  font-size: calc(var(--font-size-sm));
+  font-weight: calc(var(--font-weight-medium) * var(--font-scale));
   color: var(--color-teal-dark);
-  letter-spacing: var(--letter-spacing-normal);
+  letter-spacing: calc(var(--letter-spacing-normal) * var(--font-scale));
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  max-width: 30rem;
-  width: 30rem;
-  min-width: 30rem;
-  height: 5rem;
+  max-width: calc(30rem * var(--font-scale));
+  width: calc(30rem * var(--font-scale));
+  min-width: calc(30rem * var(--font-scale));
+  height: calc(5rem * var(--font-scale));
   position: relative;
   z-index: 1;
 }
@@ -174,15 +175,15 @@ onUnmounted(() => {
 
 .sound-player__image-wrap {
   margin-left: auto;
-  width: 5rem;
-  height: 5rem;
+  width: calc(5rem * var(--font-scale));
+  height: calc(5rem * var(--font-scale));
   flex-shrink: 0;
   padding: 0;
   border: 3px solid var(--color-teal-dark);
-  border-radius: 5rem;
+  border-radius: calc(5rem * var(--font-scale)) / calc(5rem * var(--font-scale));
   overflow: hidden;
   position: relative;
-  margin-right: calc(-0.5rem - 3px);
+  margin-right: calc(-0.5rem - 3px * var(--font-scale));
 }
 
 .sound-player__image {
@@ -196,47 +197,47 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: calc(3.5rem * var(--font-scale));
+  height: calc(3.5rem * var(--font-scale));
   flex-shrink: 0;
   border: 3px solid var(--color-teal-medium);
-  border-radius: 5rem;
+  border-radius: calc(5rem * var(--font-scale));
   background: var(--color-cream);
   color: var(--color-teal-medium);
   position: relative;
 }
 
 .sound-player__svg {
-  width: 3.16rem;
-  height: 3.16rem;
+  width: calc(3.16rem * var(--font-scale));
+  height: calc(3.16rem * var(--font-scale)) / calc(3.16rem * var(--font-scale));
 }
 
 .sound-player__text {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.15rem;
+  gap: calc(0.15rem * var(--font-scale));
   line-height: 1.2;
-  margin-right: 0.25rem;
+  margin-right: calc(0.25rem * var(--font-scale));
   text-align: left;
 }
 
 .sound-player__line2 {
-  font-size: 0.875em;
+  font-size: calc(0.875em * var(--font-scale));
   font-weight: var(--font-weight-normal);
 }
 
 /* Wrapper when transcript is shown: single rounded card */
 .sound-player-widget {
   display: block;
-  max-width: 30rem;
-  min-width: 30rem;
-  width: 30rem;
+  max-width: calc(30rem * var(--font-scale));
+  min-width: calc(30rem * var(--font-scale));
+  width: calc(30rem * var(--font-scale));
   position: relative;
 }
 
 .sound-player-widget--with-chapters .sound-player {
-  border-radius: 1.25rem 1.25rem 0 0;
+  border-radius: calc(1.25rem * var(--font-scale)) calc(1.25rem * var(--font-scale)) 0 0;
   border: none;
   max-width: none;
 }
@@ -246,14 +247,14 @@ onUnmounted(() => {
   background: var(--color-teal-medium);
   color: var(--color-white);
   font-family: var(--font-family-ubuntu);
-  font-size: var(--font-size-sm);
+  font-size: calc(var(--font-size-sm) * var(--font-scale));
   font-weight: var(--font-weight-normal);
   line-height: 1.4;
-  padding: 1rem 1.25rem;
+  padding: calc(1rem * var(--font-scale)) calc(1.25rem * var(--font-scale));
   text-align: left;
-  border-radius: 3rem;
+  border-radius: calc(3rem * var(--font-scale));
   border-bottom-left-radius: 2rem;
-  border-bottom-right-radius: 2rem;
+  border-bottom-right-radius: calc(2rem * var(--font-scale));
   position: absolute;
   top: 0;
   left: 0;
@@ -271,5 +272,9 @@ onUnmounted(() => {
   color: var(--color-white); */
   display: inline-block;
   /* padding-bottom: 1rem; */
+}
+
+@media (max-width: 47.99rem) {
+  .sound-player__transcript {}
 }
 </style>

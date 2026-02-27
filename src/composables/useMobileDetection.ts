@@ -1,4 +1,4 @@
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, onBeforeMount } from 'vue'
 
 /**
  * Viewport-based detection for behavior (e.g. enabling block-scroll).
@@ -63,10 +63,10 @@ export function shouldUseMobileVersion(_options: MobileDetectionOptions = {}): b
  * Use only for behavior (e.g. whether to enable block-scroll), not for layout.
  */
 export function useMobileDetection(_options: MobileDetectionOptions = {}) {
-  const isWide = ref(false)
+  const isWide = ref(true)
   const isMobile = computed(() => !isWide.value)
 
-  onMounted(() => {
+  onBeforeMount(() => {
     if (import.meta.env.SSR || typeof window === 'undefined') return
     const mq = window.matchMedia(WIDE_MEDIA_QUERY)
     const update = () => {

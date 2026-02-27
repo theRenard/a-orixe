@@ -32,7 +32,7 @@ onUnmounted(() => {
 <template>
 <div data-block data-component="FourthTestimonial" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="section--full-viewport with-background with-shadow fourth-testimonial">
+    <section ref="sectionRoot" class="testimonial section--full-viewport with-background with-shadow fourth-testimonial">
       <div class="container fourth-testimonial__container">
         <img ref="imageRef" src="@/assets/illustrations/mouette.webp" :alt="$t('fourthTestimonial.quote')"
           class="fourth-testimonial__bird" loading="lazy">

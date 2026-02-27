@@ -32,7 +32,7 @@ onUnmounted(() => {
 <template>
 <div data-block data-component="SecondTestimonial" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="section--full-viewport with-background with-shadow second-testimonial"
+    <section ref="sectionRoot" class="testimonial section--full-viewport with-background with-shadow second-testimonial"
       style="position: relative;">
       <div class="container">
         <blockquote class="centered">
@@ -66,5 +66,11 @@ onUnmounted(() => {
   max-width: 100%;
   height: auto;
   align-self: flex-end;
+}
+
+@media (max-width: 47.99rem) {
+  .second-testimonial__image {
+    margin-top: 20rem;
+  }
 }
 </style>

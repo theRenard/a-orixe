@@ -12,10 +12,12 @@ const unregisterBlockEnter = inject<((index: number) => void) | undefined>('bloc
 const { run } = useRevealAnimation({
   elements: [
     { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
-    { el: image, direction: 'left', delay: 0, steps: [
-      { to: { scale: 2 }, duration: 0, opacity: 0 },
-      { to: { scale: 1 }, duration: 2, opacity: 1 }
-    ]},
+    {
+      el: image, direction: 'left', delay: 0, steps: [
+        { to: { scale: 2 }, duration: 0, opacity: 0 },
+        { to: { scale: 1 }, duration: 2, opacity: 1 }
+      ]
+    },
     { el: contentBlock, direction: 'left', delay: 0.5 },
     { el: title, direction: 'left', delay: 0.7 },
   ],
@@ -39,9 +41,11 @@ onUnmounted(() => {
     <section ref="sectionRoot" class="elements-jacquaire-section section--full-viewport">
       <div class="container">
         <img ref="image" src="../../assets/illustrations/benevoles_ok.webp" :alt="$t('elementsJacquaire.title')"
-          class="elements-jacquaire-section__image ma" loading="lazy" width="50%" height="auto">
+          class="elements-jacquaire-section__image ma" loading="lazy" height="auto"
+          style="width: calc(50% * var(--font-scale-small));">
         <div ref="contentBlock" class="centered">
-          <h2 ref="title" class="type__section-title type__section-title--with-line elements-jacquaire-section__title heading-spacing">
+          <h2 ref="title"
+            class="type__section-title type__section-title--with-line elements-jacquaire-section__title heading-spacing">
             {{ $t('elementsJacquaire.title') }}
           </h2>
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('elementsJacquaire.paragraph')"></p>

@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, nextTick, inject } from 'vue'
+import { ref, onMounted, onUnmounted, nextTick, inject, watch } from 'vue'
 import gsap from 'gsap'
 import heroImage from '@/assets/illustrations/illu_principale_ok.webp'
 import mouseIcon from '@/assets/icons/scroll_down_2.webp'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
+import { useMobileDetection } from '@/composables/useMobileDetection'
+
+const { isMobile, isWide } = useMobileDetection()
 
 const sectionRoot = ref<HTMLElement | null>(null)
 const blockInnerRef = ref<HTMLElement | null>(null)
@@ -18,7 +21,7 @@ const registerBlockEnter = inject<((index: number, play: () => void) => void) | 
 const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
 
 /** Illustration height in vh: 100 at top, 50 after scrolling (over first ~200px). */
-const illustrationHeightVh = ref(100)
+const illustrationHeightVh = ref(isWide ? 100 : 75)
 const SCROLL_THRESHOLD_PX = 200
 
 /** Hide mouse icon as soon as user scrolls. */
@@ -35,7 +38,7 @@ const { run } = useRevealAnimation({
     { el: heroTitle, direction: 'down', delay: 0.1 },
     { el: heroSubtitle, direction: 'down', delay: 0.2 },
     { el: creditsLeft, direction: 'left', delay: 0.35, offset: 80 },
-    { el: creditsRight, direction: 'right', delay: 0.35, offset: 80 },
+    { el: creditsRight, direction: isMobile ? 'left' : 'right', delay: 0.35, offset: 80 },
   ],
   offset: 48,
   ease: 'power3.out',
@@ -64,6 +67,11 @@ function setRevealInitialState() {
 }
 
 let myBlockIndex = -1
+
+watch(isWide, (newVal) => {
+  illustrationHeightVh.value = newVal ? 100 : 75
+}, { immediate: true })
+
 onMounted(() => {
   myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
   registerBlockEnter?.(myBlockIndex, () => {
@@ -85,7 +93,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-<div data-block data-component="HeroIllustration" class="block block--first">
+<div :data-wide="isWide" :data-mobile="isMobile" data-block data-component="HeroIllustration"
+  class="block block--first">
   <div ref="blockInnerRef" data-block-inner class="block-inner">
     <section class="hero-block section--full-viewport" aria-label="Hero">
       <div ref="bg" class="hero-block__illustration"
@@ -98,7 +107,8 @@ onUnmounted(() => {
           </h1>
           <p ref="heroSubtitle" class="type__hero-subtitle mt-0" v-html="$t('hero.subtitle')"></p>
           <div class="container credits__inner paragraph-spacing">
-            <div ref="creditsLeft" class="credits__col credits__col--left">
+            <div ref="creditsLeft" :class="{ 'pb-2': isMobile, 'pt-2': isMobile }"
+              class="credits__col credits__col--left">
               <div class="credits__line-accent" aria-hidden="true" />
               <p>
                 {{ $t('credits.byPrefix') }}<span class="type__credits-bold">{{ $t('credits.byName') }}</span>
@@ -108,29 +118,31 @@ onUnmounted(() => {
                   class="type__credits-bold">{{ $t('credits.translatedByName') }}</span></p>
               <p>
                 {{ $t('credits.publishedOnPrefix') }}<span class="type__credits-bold">{{ $t('credits.publishedOnDate')
-                  }}</span>
+                }}</span>
               </p>
             </div>
-            <div ref="creditsRight" class="credits__col credits__col--right">
-              <div class="credits__line-accent ml-auto" aria-hidden="true" />
+            <div ref="creditsRight" :class="{ 'pb-2': isMobile, 'pt-2': isMobile }"
+              class="credits__col credits__col--right">
+              <div :class="{ 'ml-auto': isWide }" class="credits__line-accent" aria-hidden="true" />
               <p>
                 {{ $t('credits.artDirectionPrefix') }}<span class="type__credits-bold">{{ $t('credits.artDirectionName')
-                  }}</span>
+                }}</span>
               </p>
               <p>
                 {{ $t('credits.illustrationPrefix') }}<span class="type__credits-bold">{{ $t('credits.illustrationName')
-                  }}</span>
+                }}</span>
               </p>
               <p>
                 {{ $t('credits.devDesignPrefix') }}<span class="type__credits-bold">{{ $t('credits.devDesignName')
-                  }}</span>
+                }}</span>
               </p>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <div class="scroll-indicator" :class="{ 'scroll-indicator--hidden': !showScrollIndicator }" aria-hidden="true">
+    <div v-if="isWide" class="scroll-indicator" :class="{ 'scroll-indicator--hidden': !showScrollIndicator }"
+      aria-hidden="true">
       <img :src="mouseIcon" alt="" class="scroll-indicator__icon" />
     </div>
   </div>
@@ -185,9 +197,9 @@ onUnmounted(() => {
 }
 
 .credits__inner {
-  display: grid;
+  /* display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem 3rem;
+  gap: 2rem 3rem; */
 }
 
 .credits__col {
@@ -201,7 +213,7 @@ onUnmounted(() => {
 }
 
 .credits__col--right {
-  text-align: right;
+  text-align: left;
 }
 
 .credits__line-accent {
@@ -209,5 +221,19 @@ onUnmounted(() => {
   height: 4px;
   background: var(--color-orange);
   margin-bottom: 0.5rem;
+}
+
+@media (min-width: 48rem) {
+
+  .credits__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem 3rem;
+  }
+
+  .credits__col--right {
+    text-align: right;
+  }
+
 }
 </style>
