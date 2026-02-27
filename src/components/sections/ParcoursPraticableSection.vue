@@ -13,8 +13,8 @@ const registerBlockEnter = inject<((index: number, play: () => void) => void) | 
 const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
 const { run } = useRevealAnimation({
   elements: [
-    { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
-    { el: firstBlock, direction: 'left', delay: 0 },
+    // { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
+    // { el: firstBlock, direction: 'left', delay: 0 },
     { el: leftCol, direction: 'left', delay: 0.1 },
     { el: rightCol, direction: 'right', delay: 0.1, rotation: 15, transformOrigin: 'left bottom' },
     { el: question, direction: 'down', delay: 0.2 },

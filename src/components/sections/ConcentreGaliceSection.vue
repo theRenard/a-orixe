@@ -4,7 +4,6 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
 
-const sectionRoot = ref<HTMLElement | null>(null)
 const leftCol = ref<HTMLElement | null>(null)
 const rightCol = ref<HTMLElement | null>(null)
 const question = ref<HTMLElement | null>(null)
@@ -12,7 +11,6 @@ const registerBlockEnter = inject<((index: number, play: () => void) => void) | 
 const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
 const { run } = useRevealAnimation({
   elements: [
-    { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
     { el: leftCol, direction: 'left', delay: 0 },
     { el: rightCol, direction: 'right', delay: 0.1, rotation: 12 },
     { el: question, direction: 'down', delay: 0.2 },
@@ -23,7 +21,7 @@ const { run } = useRevealAnimation({
 })
 let myBlockIndex = -1
 onMounted(() => {
-  myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
+  myBlockIndex = getBlockIndexFromElement(leftCol.value)
   registerBlockEnter?.(myBlockIndex, () => run())
 })
 onUnmounted(() => {
@@ -46,7 +44,7 @@ onUnmounted(() => {
               <p ref="question" class="type__question paragraph-spacing" v-html="$t('concentreGalice.paragraph2')"></p>
             </div>
             <div ref="rightCol" class="col-right">
-              <ImageCrop width="100%" height="700px" position="center 40%" :caption="$t('concentreGalice.imageCaption')"
+              <ImageCrop width="100%" height="600px" position="center 30%" :caption="$t('concentreGalice.imageCaption')"
                 caption-position="bottom">
                 <img class="paragraph-spacing" src="@/assets/photos/04_florence_antunes.webp"
                   :alt="$t('concentreGalice.imageCaption')" loading="lazy">

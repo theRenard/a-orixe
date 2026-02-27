@@ -14,7 +14,7 @@ const unregisterBlockEnter = inject<((index: number) => void) | undefined>('bloc
 const { run } = useRevealAnimation({
   elements: [
     { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
-    { el: player, direction: 'right', delay: 0 },
+    { el: player, direction: 'left', delay: 0 },
   ],
   offset: 44,
   ease: 'power3.out',

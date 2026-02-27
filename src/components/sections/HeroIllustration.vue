@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, nextTick, inject, watch } from 'vue'
+import { ref, onMounted, onUnmounted, nextTick, watch, inject } from 'vue'
 import gsap from 'gsap'
 import heroImage from '@/assets/illustrations/illu_principale_ok.webp'
 import mouseIcon from '@/assets/icons/scroll_down_2.webp'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
+import { useMobileDetection } from '@/composables/useMobileDetection.ts'
 import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
-import { useMobileDetection } from '@/composables/useMobileDetection'
 
-const { isMobile, isWide } = useMobileDetection()
+const { isWide, isMobile } = useMobileDetection()
 
 const sectionRoot = ref<HTMLElement | null>(null)
 const blockInnerRef = ref<HTMLElement | null>(null)
@@ -16,12 +16,11 @@ const heroTitle = ref<HTMLElement | null>(null)
 const heroSubtitle = ref<HTMLElement | null>(null)
 const creditsLeft = ref<HTMLElement | null>(null)
 const creditsRight = ref<HTMLElement | null>(null)
-
 const registerBlockEnter = inject<((index: number, play: () => void) => void) | undefined>('blockScroll/registerBlockEnter')
 const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
 
 /** Illustration height in vh: 100 at top, 50 after scrolling (over first ~200px). */
-const illustrationHeightVh = ref(isWide ? 100 : 75)
+const illustrationHeightVh = ref(isWide.value ? 100 : 75)
 const SCROLL_THRESHOLD_PX = 200
 
 /** Hide mouse icon as soon as user scrolls. */
@@ -38,7 +37,7 @@ const { run } = useRevealAnimation({
     { el: heroTitle, direction: 'down', delay: 0.1 },
     { el: heroSubtitle, direction: 'down', delay: 0.2 },
     { el: creditsLeft, direction: 'left', delay: 0.35, offset: 80 },
-    { el: creditsRight, direction: isMobile ? 'left' : 'right', delay: 0.35, offset: 80 },
+    { el: creditsRight, direction: 'right', delay: 0.35, offset: 80 },
   ],
   offset: 48,
   ease: 'power3.out',
@@ -50,7 +49,7 @@ function onBlockScroll() {
   if (!el) return
   const scrollTop = el.scrollTop
   const progress = Math.min(1, scrollTop / SCROLL_THRESHOLD_PX)
-  illustrationHeightVh.value = 100 - progress * 0.05
+  illustrationHeightVh.value = 100 - progress * 0.5
   showScrollIndicator.value = scrollTop <= SCROLL_INDICATOR_HIDE_PX
 
   if (!revealDone && scrollTop >= REVEAL_TRIGGER_PX) {
@@ -59,6 +58,8 @@ function onBlockScroll() {
   }
 }
 
+let myBlockIndex = -1
+
 function setRevealInitialState() {
   const left = creditsLeft.value
   const right = creditsRight.value
@@ -66,20 +67,10 @@ function setRevealInitialState() {
   if (right) gsap.set(right, { x: 80, opacity: 0 })
 }
 
-let myBlockIndex = -1
-
-watch(isWide, (newVal) => {
-  illustrationHeightVh.value = newVal ? 100 : 75
-}, { immediate: true })
-
 onMounted(() => {
   myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
-  registerBlockEnter?.(myBlockIndex, () => {
-    if (!revealDone) {
-      revealDone = true
-      run()
-    }
-  })
+  registerBlockEnter?.(myBlockIndex, () => run())
+  unregisterBlockEnter?.(myBlockIndex)
   nextTick(setRevealInitialState)
   const el = blockInnerRef.value
   if (el) {
@@ -87,8 +78,13 @@ onMounted(() => {
     onUnmounted(() => el.removeEventListener('scroll', onBlockScroll))
   }
 })
-onUnmounted(() => {
-  unregisterBlockEnter?.(myBlockIndex)
+
+watch(isWide, () => {
+  if (isWide.value) {
+    illustrationHeightVh.value = 100
+  } else {
+    illustrationHeightVh.value = 75
+  }
 })
 </script>
 

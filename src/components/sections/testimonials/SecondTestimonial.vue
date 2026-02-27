@@ -12,8 +12,8 @@ const registerBlockEnter = inject<((index: number, play: () => void) => void) | 
 const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
 const { run } = useRevealAnimation({
   elements: [
-    { el: blockquoteInner, direction: 'down' },
-    { el: imageRef, direction: 'right', delay: 0.1 },
+    { el: blockquoteInner, direction: 'down', delay: 1 },
+    { el: imageRef, direction: 'right', delay: 1.1 },
   ],
   offset: 40,
   ease: 'power3.out',

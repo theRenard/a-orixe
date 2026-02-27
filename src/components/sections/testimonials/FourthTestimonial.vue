@@ -12,8 +12,8 @@ const registerBlockEnter = inject<((index: number, play: () => void) => void) | 
 const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
 const { run } = useRevealAnimation({
   elements: [
-    { el: blockquoteInner, direction: 'down' },
-    { el: imageRef, direction: 'right', delay: 0.1 },
+    { el: blockquoteInner, direction: 'down', delay: 1 },
+    { el: imageRef, direction: 'left', delay: 1.1 },
   ],
   offset: 40,
   ease: 'power3.out',
@@ -32,7 +32,8 @@ onUnmounted(() => {
 <template>
 <div data-block data-component="FourthTestimonial" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="testimonial section--full-viewport with-background with-shadow fourth-testimonial">
+    <section ref="sectionRoot"
+      class="testimonial section--full-viewport with-background with-shadow fourth-testimonial">
       <div class="container fourth-testimonial__container">
         <img ref="imageRef" src="@/assets/illustrations/mouette.webp" :alt="$t('fourthTestimonial.quote')"
           class="fourth-testimonial__bird" loading="lazy">

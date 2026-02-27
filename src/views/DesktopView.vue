@@ -76,7 +76,7 @@ nextTick(() => {
     :rail-ref="(railRef as unknown as { value: HTMLElement | null })" />
   <div ref="railRef" class="blocks-rail">
     <!--
-      -->
+    -->
     <HeroIllustration />
     <CaminoSection />
     <FirstTestimonial />
