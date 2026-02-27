@@ -19,9 +19,9 @@ const creditsRight = ref<HTMLElement | null>(null)
 const registerBlockEnter = inject<((index: number, play: () => void) => void) | undefined>('blockScroll/registerBlockEnter')
 const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
 
-/** Illustration height in vh: 100 at top, 50 after scrolling (over first ~200px). */
+/** Illustration height in vh: 100 at top, 50 after scrolling (over first ~320px). */
 const illustrationHeightVh = ref(isWide.value ? 100 : 75)
-const SCROLL_THRESHOLD_PX = 200
+const SCROLL_THRESHOLD_PX = 5000
 
 /** Hide mouse icon as soon as user scrolls. */
 const showScrollIndicator = ref(true)
@@ -114,7 +114,7 @@ watch(isWide, () => {
                   class="type__credits-bold">{{ $t('credits.translatedByName') }}</span></p>
               <p>
                 {{ $t('credits.publishedOnPrefix') }}<span class="type__credits-bold">{{ $t('credits.publishedOnDate')
-                }}</span>
+                  }}</span>
               </p>
             </div>
             <div ref="creditsRight" :class="{ 'pb-2': isMobile, 'pt-2': isMobile }"
@@ -122,15 +122,15 @@ watch(isWide, () => {
               <div :class="{ 'ml-auto': isWide }" class="credits__line-accent" aria-hidden="true" />
               <p>
                 {{ $t('credits.artDirectionPrefix') }}<span class="type__credits-bold">{{ $t('credits.artDirectionName')
-                }}</span>
+                  }}</span>
               </p>
               <p>
                 {{ $t('credits.illustrationPrefix') }}<span class="type__credits-bold">{{ $t('credits.illustrationName')
-                }}</span>
+                  }}</span>
               </p>
               <p>
                 {{ $t('credits.devDesignPrefix') }}<span class="type__credits-bold">{{ $t('credits.devDesignName')
-                }}</span>
+                  }}</span>
               </p>
             </div>
           </div>
