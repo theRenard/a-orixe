@@ -63,7 +63,7 @@ onMounted(() => {
 .pilgrims-horizontal-chart {
   margin: 0;
   padding: 0;
-  width: 500px;
+  width: calc(500px * var(--chart-scale));
   margin: 0 auto;
 }
 
@@ -82,17 +82,17 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  width: 8rem;
+  width: calc(8rem * var(--font-scale));
   line-height: 1.1;
 }
 
 .pilgrims-horizontal-chart__name {
-  font: var(--font-style-normal) var(--font-weight-bold) 1.3rem/1.3rem var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-bold) calc(1.3rem * var(--font-scale))/calc(1.3rem * var(--font-scale)) var(--font-family-ubuntu);
   color: var(--color-black, #2d4b4b);
 }
 
 .pilgrims-horizontal-chart__pct {
-  font: var(--font-style-normal) var(--font-weight-bold) 1.3rem/1.3rem var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-bold) calc(1.3rem * var(--font-scale))/calc(1.3rem * var(--font-scale)) var(--font-family-ubuntu);
   color: var(--color-black, #2d4b4b);
   margin-top: 0.05rem;
 }
@@ -100,8 +100,8 @@ onMounted(() => {
 .pilgrims-horizontal-chart__track {
   flex: 1;
   min-width: 0;
-  max-width: 320px;
-  height: 60px;
+  max-width: calc(320px * var(--chart-scale));
+  height: calc(60px * var(--chart-scale));
   background-color: #d9edee;
 }
 

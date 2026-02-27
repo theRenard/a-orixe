@@ -154,13 +154,19 @@ onUnmounted(() => {
 
 .map-illustration-section__steps-img {
   display: block;
-  height: 370px;
+  height: 25rem;
   width: auto;
   object-fit: contain;
   border: 3px solid var(--color-orange);
-  padding: 20px;
+  padding: 2rem;
   position: absolute;
   right: 1rem;
   bottom: 0;
+}
+
+@media (max-width: 47.99rem) {
+  .map-illustration-section__steps-img {
+    bottom: 100%;
+  }
 }
 </style>

@@ -3,6 +3,9 @@ import { ref, onMounted, onUnmounted, inject } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
+import { useMobileDetection } from '@/composables/useMobileDetection'
+
+const { isMobile } = useMobileDetection()
 
 const { locale } = useI18n()
 const sectionRoot = ref<HTMLElement | null>(null)
@@ -35,8 +38,8 @@ onUnmounted(() => {
     <section ref="sectionRoot"
       class="testimonial section--full-viewport with-background with-shadow fourth-testimonial">
       <div class="container fourth-testimonial__container">
-        <img ref="imageRef" src="@/assets/illustrations/mouette.webp" :alt="$t('fourthTestimonial.quote')"
-          class="fourth-testimonial__bird" loading="lazy">
+        <img v-if="!isMobile" ref="imageRef" src="@/assets/illustrations/mouette.webp"
+          :alt="$t('fourthTestimonial.quote')" class="fourth-testimonial__bird" loading="lazy">
         <blockquote class="centered">
           <div ref="blockquoteInner">
             <p class="type__testimonial-block relative" :class="`type__testimonial-block--${locale}`">

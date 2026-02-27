@@ -6,6 +6,9 @@ import audioForetOiseaux from '@/assets/audio/audio_foret_oiseaux.mp3'
 import capsuleSonoreImage from '@/assets/photos/13_florence_antunes.webp'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
+import { useMobileDetection } from '@/composables/useMobileDetection'
+
+const { isMobile } = useMobileDetection()
 
 const sectionRoot = ref<HTMLElement | null>(null)
 const imageBlock = ref<HTMLElement | null>(null)
@@ -37,9 +40,9 @@ onUnmounted(() => {
     <section ref="sectionRoot" class="capsule-sonore-section">
       <div class="container">
         <div ref="imageBlock">
-          <ImageCrop width="70rem" height="50rem" position="center 50%">
-            <img :src="capsuleSonoreImage" :alt="$t('capsuleSonore.imageCaption')"
-              class="capsule-sonore-section__image" loading="lazy">
+          <ImageCrop :width="isMobile ? '100%' : '70rem'" :height="isMobile ? '70rem' : '50rem'" position="center 50%">
+            <img :src="capsuleSonoreImage" :alt="$t('capsuleSonore.imageCaption')" class="capsule-sonore-section__image"
+              loading="lazy">
           </ImageCrop>
         </div>
         <div ref="playerBlock" class="centered">

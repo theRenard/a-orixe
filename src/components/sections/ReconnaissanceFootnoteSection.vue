@@ -3,6 +3,9 @@ import { ref, onMounted, onUnmounted, inject } from 'vue'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
 import ImageCrop from '@/components/tools/ImageCrop.vue'
+import { useMobileDetection } from '@/composables/useMobileDetection'
+
+const { isMobile } = useMobileDetection()
 
 const sectionRoot = ref<HTMLElement | null>(null)
 const image = ref<HTMLElement | null>(null)
@@ -39,8 +42,8 @@ onUnmounted(() => {
         </div>
         <div ref="image" class="centered paragraph-spacing">
           <div class="image-crop-container">
-            <ImageCrop width="35rem" height="auto" position="center 50%" :caption="$t('reconnaissance.documentCaption')"
-              caption-position="bottom">
+            <ImageCrop :width="isMobile ? '100%' : '35rem'" :height="isMobile ? '100%' : 'auto'" position="center 50%"
+              :caption="$t('reconnaissance.documentCaption')" caption-position="bottom">
               <img src="@/assets/photos/lettrereconnaissancechemin.webp" :alt="$t('reconnaissance.documentCaption')"
                 loading="lazy">
             </ImageCrop>
@@ -54,7 +57,7 @@ onUnmounted(() => {
 
 <style scoped>
 .image-crop-container {
-  width: 35rem;
+  width: calc(35rem * var(--font-scale));
   height: auto;
   margin: 0 auto;
 }
@@ -68,7 +71,7 @@ onUnmounted(() => {
 }
 
 .reconnaissance-footnote-section img {
-  width: 35rem;
+  width: calc(35rem * var(--font-scale));
   height: auto;
   margin: 0 auto;
 }

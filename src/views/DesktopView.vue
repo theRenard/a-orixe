@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, provide, nextTick } from 'vue'
+import { ref, provide, nextTick, onMounted, onUnmounted, watch } from 'vue'
 import { useBlockScroll } from '@/composables/useBlockScroll'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 import HeroIllustration from '@/components/sections/HeroIllustration.vue'
@@ -64,8 +64,61 @@ useBlockScroll({
   },
 })
 
-nextTick(() => {
-  setTimeout(() => blockEnterCallbacks.get(0)?.(), 0)
+// Desktop: animation = callback when block becomes active (onBlockChange above).
+// Mobile: page scrolls normally; fire animation when [data-block] enters viewport.
+// Use root: null so intersection is against the viewport (document scroll), not the main container.
+let scrollRevealObserver: IntersectionObserver | null = null
+function setupMobileViewportTrigger() {
+  const rail = railRef.value
+  if (!rail) return
+  const blocks = rail.querySelectorAll<HTMLElement>('[data-block]')
+  if (blocks.length === 0) return
+  const fired = new Set<number>()
+  const trigger = (index: number) => {
+    if (fired.has(index)) return
+    fired.add(index)
+    blockEnterCallbacks.get(index)?.()
+  }
+  scrollRevealObserver = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue
+        const el = entry.target as HTMLElement
+        const index = Array.from(blocks).indexOf(el)
+        if (index === -1) continue
+        trigger(index)
+      }
+    },
+    { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0 }
+  )
+  blocks.forEach((block) => scrollRevealObserver?.observe(block))
+  requestAnimationFrame(() => requestAnimationFrame(() => trigger(0)))
+}
+function teardownMobileViewportTrigger() {
+  scrollRevealObserver?.disconnect()
+  scrollRevealObserver = null
+}
+
+onMounted(() => {
+  nextTick(() => {
+    if (isWide.value) setTimeout(() => blockEnterCallbacks.get(0)?.(), 0)
+  })
+  watch(
+    isWide,
+    (wide) => {
+      if (wide) {
+        teardownMobileViewportTrigger()
+      } else {
+        nextTick(() => {
+          requestAnimationFrame(() => requestAnimationFrame(() => setupMobileViewportTrigger()))
+        })
+      }
+    },
+    { immediate: true }
+  )
+})
+onUnmounted(() => {
+  teardownMobileViewportTrigger()
 })
 </script>
 
@@ -76,7 +129,7 @@ nextTick(() => {
     :rail-ref="(railRef as unknown as { value: HTMLElement | null })" />
   <div ref="railRef" class="blocks-rail">
     <!--
-    -->
+      -->
     <HeroIllustration />
     <CaminoSection />
     <FirstTestimonial />

@@ -3,6 +3,9 @@ import { ref, onMounted, onUnmounted, inject } from 'vue'
 import ImageCrop from '@/components/tools/ImageCrop.vue'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
+import { useMobileDetection } from '@/composables/useMobileDetection'
+
+const { isMobile } = useMobileDetection()
 
 const sectionRoot = ref<HTMLElement | null>(null)
 const firstBlock = ref<HTMLElement | null>(null)
@@ -46,9 +49,9 @@ onUnmounted(() => {
             <div ref="leftCol" class="col-left">
               <p ref="question" class="type__question" v-html="$t('parcoursPraticable.paragraph2')"></p>
             </div>
-            <div ref="rightCol" class="col-right">
-              <ImageCrop width="30rem" height="40rem" position="center 40%"
-                :caption="$t('parcoursPraticable.photoCredit')" caption-position="bottom">
+            <div ref="rightCol" class="col-right" :class="{ 'mt-6': isMobile }">
+              <ImageCrop :width="isMobile ? '100%' : '30rem'" :height="isMobile ? '100%' : '40rem'"
+                position="center 40%" :caption="$t('parcoursPraticable.photoCredit')" caption-position="bottom">
                 <img src="../../assets/photos/03_florence_antunes.webp" :alt="$t('parcoursPraticable.imageCaption')"
                   loading="lazy">
               </ImageCrop>

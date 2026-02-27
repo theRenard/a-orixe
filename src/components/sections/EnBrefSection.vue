@@ -121,7 +121,7 @@ onUnmounted(() => {
 }
 
 .en-bref-section__inner {
-  min-width: 70rem;
+  min-width: calc(70rem * var(--font-scale));
   margin: 0 auto;
 }
 
@@ -130,8 +130,8 @@ onUnmounted(() => {
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 2.5rem;
-  gap: 6rem;
+  margin-bottom: calc(2.5rem * var(--font-scale));
+  gap: calc(6rem * var(--font-scale));
 }
 
 .en-bref-section__stat {
@@ -148,32 +148,32 @@ onUnmounted(() => {
 
 .en-bref-section__icon {
   flex-shrink: 0;
-  width: 6.25rem;
-  height: 6.25rem;
+  width: calc(6.25rem * var(--font-scale));
+  height: calc(6.25rem * var(--font-scale));
   object-fit: contain;
-  margin-right: 1rem;
+  margin-right: calc(1rem * var(--font-scale));
 }
 
 .first-stat {
-  width: 8.5rem;
+  width: calc(8.5rem * var(--font-scale));
   justify-content: center;
 }
 
 .second-stat {
-  width: 20.5rem;
+  width: calc(20.5rem * var(--font-scale));
   justify-content: center;
 }
 
 .first-place {
-  width: 22.5rem;
+  width: calc(22.5rem * var(--font-scale));
 }
 
 .second-place {
-  width: 22.5rem;
+  width: calc(22.5rem * var(--font-scale));
 }
 
 .en-bref-section__link-wrap {
-  font: normal var(--font-weight-normal) calc(1.25rem * var(--font-scale)) / calc(2.5rem * var(--font-scale)) var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-normal) calc(1.25rem * var(--font-scale)) / calc(2.5rem * var(--font-scale)) var(--font-family-ubuntu);
   color: var(--color-teal-dark);
   text-align: center;
   margin: 0;

@@ -70,13 +70,15 @@ function setRevealInitialState() {
 onMounted(() => {
   myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
   registerBlockEnter?.(myBlockIndex, () => run())
-  unregisterBlockEnter?.(myBlockIndex)
   nextTick(setRevealInitialState)
   const el = blockInnerRef.value
   if (el) {
     el.addEventListener('scroll', onBlockScroll, { passive: true })
     onUnmounted(() => el.removeEventListener('scroll', onBlockScroll))
   }
+})
+onUnmounted(() => {
+  unregisterBlockEnter?.(myBlockIndex)
 })
 
 watch(isWide, () => {

@@ -12,6 +12,7 @@
   :root {
     --font-scale: 1;
     --font-scale-small: 1;
+    --chart-scale: 1;
   }
 }
 
@@ -19,6 +20,7 @@
   :root {
     --font-scale: 2.75;
     --font-scale-small: 1.5;
+    --chart-scale: 0.75;
   }
 }
 
