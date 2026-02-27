@@ -8,36 +8,24 @@ const route = useRoute()
 
 function goToLocale(newLocale: 'fr' | 'es') {
   if (locale.value === newLocale) return
-  const onMobilePath = route.path.endsWith('/mobile')
-  const path = onMobilePath ? `/${newLocale}/mobile` : `/${newLocale}`
-  router.push({ path, query: route.query })
+  router.push({ path: `/${newLocale}`, query: route.query })
 }
 </script>
 
 <template>
-  <div class="language-selector" role="group" aria-label="Language">
-    <button
-      type="button"
-      class="language-selector__option"
-      :class="{ 'language-selector__option--active': locale === 'fr' }"
-      aria-label="Français"
-      :aria-pressed="locale === 'fr'"
-      @click="goToLocale('fr')"
-    >
-      FR
-    </button>
-    <span class="language-selector__separator" aria-hidden="true">/</span>
-    <button
-      type="button"
-      class="language-selector__option"
-      :class="{ 'language-selector__option--active': locale === 'es' }"
-      aria-label="Español"
-      :aria-pressed="locale === 'es'"
-      @click="goToLocale('es')"
-    >
-      ES
-    </button>
-  </div>
+<div class="language-selector type__language-selector" role="group" aria-label="Language">
+  <button type="button" class="language-selector__option type__language-selector-option"
+    :class="{ 'language-selector__option--active': locale === 'fr' }" aria-label="Français"
+    :aria-pressed="locale === 'fr'" @click="goToLocale('fr')">
+    FR
+  </button>
+  <span class="language-selector__separator" aria-hidden="true">/</span>
+  <button type="button" class="language-selector__option type__language-selector-option"
+    :class="{ 'language-selector__option--active': locale === 'es' }" aria-label="Español"
+    :aria-pressed="locale === 'es'" @click="goToLocale('es')">
+    ES
+  </button>
+</div>
 </template>
 
 <style scoped>
@@ -53,14 +41,11 @@ function goToLocale(newLocale: 'fr' | 'es') {
   background-position: 0 0;
   background-origin: padding-box;
   opacity: 1;
-  font-family: var(--font-family-ubuntu);
-  font-size: var(--font-size-base);
-  line-height: 1;
-  padding: 0.4375rem;
+  padding: calc(0.4375rem * var(--font-scale));
   gap: 0.4rem;
-  height: 2.1875rem;
-  width: 4.6875rem;
-  border-bottom: 0.1875rem solid var(--color-orange);
+  height: calc(2.1875rem * var(--font-scale));
+  width: calc(4.6875rem * var(--font-scale));
+  border-bottom: calc(0.1875rem * var(--font-scale)) solid var(--color-orange);
 }
 
 .language-selector__option {
@@ -87,5 +72,12 @@ function goToLocale(newLocale: 'fr' | 'es') {
 
 .language-selector__separator {
   color: var(--color-black);
+}
+
+@media (max-width: 47.99rem) {
+  .language-selector {
+    transform: scale(2);
+    transform-origin: top right;
+  }
 }
 </style>

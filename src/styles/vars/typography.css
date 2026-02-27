@@ -1,4 +1,15 @@
 /* Typography – BEM block: type (uses design-tokens.css) */
+.heading-spacing {
+  margin-top: 2.5rem !important;
+  margin-bottom: 2.5rem !important;
+}
+
+/* Language selector */
+.type__language-selector {
+  font: var(--font-style-normal) var(--font-weight-normal) calc(1.25rem * var(--font-scale)) / calc(2.1875rem * var(--font-scale)) var(--font-family-ubuntu);
+  color: var(--color-black);
+  text-align: left;
+}
 
 /* Hero */
 .type__hero-title {
@@ -105,8 +116,8 @@
 .type__testimonial-block::before {
   content: '«';
   position: absolute;
-  top: -6rem;
-  left: -7rem;
+  top: calc(-6rem * var(--font-scale));
+  left: calc(-7rem * var(--font-scale));
   font: var(--font-style-italic) var(--font-weight-light) 6em/0.85 var(--font-family-ubuntu);
   color: var(--color-teal-light);
 }

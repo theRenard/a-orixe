@@ -1,0 +1,26 @@
+/**
+ * Responsive foundation (modern-responsive-architecture.md)
+ * Shared :root variables only. Viewport-specific rules live in mobile.css and desktop.css.
+ * Viewport "wide" breakpoint: 48rem — block-scroll layout and composable use this.
+ */
+
+:root {
+  /* Wide breakpoint: use in container queries or calc; media queries use 48rem directly */
+  --breakpoint-wide: 48rem;
+
+  /* Fluid type scale (clamp) */
+  --step-0: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+  --step-1: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  --step-2: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
+  --step-3: clamp(1.875rem, 1.5rem + 2vw, 2.5rem);
+
+  /* Fluid spacing */
+  --space-1: clamp(0.5rem, 1vw, 1rem);
+  --space-2: clamp(1rem, 2vw, 2rem);
+  --space-3: clamp(1.5rem, 3vw, 2.5rem);
+  --space-4: clamp(2rem, 4vw, 3rem);
+}
+
+/* Capability media: use where relevant in components */
+/* @media (hover: hover) { ... } — hover-only interactions (avoid hover on touch) */
+/* @media (prefers-reduced-motion: reduce) { ... } — respect reduced motion (e.g. animations, block-scroll) */

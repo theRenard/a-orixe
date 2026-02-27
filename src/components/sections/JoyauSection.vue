@@ -84,12 +84,6 @@ onUnmounted(() => {
   max-width: 100%;
 }
 
-@media (max-width: 768px) {
-  .joyau-section__grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 .joyau-section__cell {
   overflow: hidden;
   border-radius: 2px;

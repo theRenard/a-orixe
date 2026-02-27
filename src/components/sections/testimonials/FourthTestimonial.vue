@@ -67,11 +67,4 @@ onUnmounted(() => {
   height: auto;
   display: block;
 }
-
-@media (max-width: 768px) {
-  .fourth-testimonial__bird {
-    width: 80px;
-    right: 1rem;
-  }
-}
 </style>

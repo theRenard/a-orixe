@@ -22,6 +22,8 @@ export interface UseBlockScrollInput {
   containerRef: { value: HTMLElement | null }
   /** Optional ref to the rail element (the one that gets translateY). If not set, first child of container is used. */
   railRef?: { value: HTMLElement | null }
+  /** When provided and false, block-scroll is disabled (no wheel handling). Used for narrow viewports. */
+  enabled?: { value: boolean }
   options?: UseBlockScrollOptions
 }
 
@@ -33,7 +35,8 @@ export interface UseBlockScrollInput {
  * Call only on the client (e.g. after mount).
  */
 export function useBlockScroll(input: UseBlockScrollInput) {
-  const { containerRef, railRef, options: opts = {} } = input
+  const { containerRef, railRef, enabled, options: opts = {} } = input
+  const isEnabled = () => enabled === undefined || enabled.value
   const {
     transitionDuration = 0.8,
     transitionEase = 'power2.out',
@@ -45,7 +48,7 @@ export function useBlockScroll(input: UseBlockScrollInput) {
   const currentBlockIndex = ref(0)
   /** Cached scroll position so the proxy returns the value from the current frame during the rail tween (ScrollTrigger then fires when section enters viewport). */
   let currentScrollTop = 0
-  let rafId: number
+  let rafId: number | undefined
   let teardownProxy: (() => void) | null = null
   let accumulatedDelta = 0
   let cooldownUntil = 0
@@ -129,6 +132,7 @@ export function useBlockScroll(input: UseBlockScrollInput) {
   }
 
   function onWheel(e: WheelEvent) {
+    if (!isEnabled()) return
     const blocks = getBlockElements()
     if (blocks.length === 0) return
 
@@ -221,11 +225,12 @@ export function useBlockScroll(input: UseBlockScrollInput) {
     }
   }
 
-  onMounted(() => {
-    if (typeof window === 'undefined') return
+  function setupBlockScroll() {
+    if (typeof window === 'undefined' || !isEnabled()) return
     setupScrollProxy()
     window.addEventListener('wheel', onWheel, { passive: false })
     rafId = window.requestAnimationFrame(function raf() {
+      if (!isEnabled()) return
       ScrollTrigger.update()
       rafId = window.requestAnimationFrame(raf)
     })
@@ -237,15 +242,37 @@ export function useBlockScroll(input: UseBlockScrollInput) {
         currentScrollTop = currentBlockIndex.value * vh
       }
       ScrollTrigger.refresh()
-      // Run refresh again after children have mounted and created their ScrollTriggers
       setTimeout(() => ScrollTrigger.refresh(), 0)
     })
+  }
+
+  function teardownBlockScroll() {
+    window.removeEventListener('wheel', onWheel)
+    if (rafId != null) {
+      cancelAnimationFrame(rafId)
+      rafId = undefined
+    }
+    teardownProxy?.()
+  }
+
+  onMounted(() => {
+    if (typeof window === 'undefined') return
+    if (enabled !== undefined) {
+      watch(
+        () => enabled.value,
+        (v) => {
+          if (v) setupBlockScroll()
+          else teardownBlockScroll()
+        },
+        { immediate: true },
+      )
+    } else {
+      setupBlockScroll()
+    }
   })
 
   onUnmounted(() => {
-    window.removeEventListener('wheel', onWheel)
-    if (rafId != null) cancelAnimationFrame(rafId)
-    teardownProxy?.()
+    teardownBlockScroll()
   })
 
   watch(
