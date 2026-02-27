@@ -36,6 +36,7 @@ import EnBrefSection from '@/components/sections/EnBrefSection.vue'
 import CommentEstNeRecitSection from '@/components/sections/CommentEstNeRecitSection.vue'
 import ReadProgressBar from '@/components/ReadProgressBar.vue'
 import WindowWidthLabel from '@/components/WindowWidthLabel.vue'
+import { MOBILE_ANIMATIONS_ENABLED } from '@/config/feature-flags'
 
 const mainRef = ref<HTMLElement | null>(null)
 const railRef = ref<HTMLElement | null>(null)
@@ -67,12 +68,21 @@ useBlockScroll({
 // Desktop: animation = callback when block becomes active (onBlockChange above).
 // Mobile: page scrolls normally; fire animation when [data-block] enters viewport.
 // Use root: null so intersection is against the viewport (document scroll), not the main container.
+// When MOBILE_ANIMATIONS_ENABLED is false, all block animations run once on load so content is visible.
 let scrollRevealObserver: IntersectionObserver | null = null
 function setupMobileViewportTrigger() {
   const rail = railRef.value
   if (!rail) return
   const blocks = rail.querySelectorAll<HTMLElement>('[data-block]')
   if (blocks.length === 0) return
+
+  if (!MOBILE_ANIMATIONS_ENABLED) {
+    requestAnimationFrame(() => {
+      blocks.forEach((_, index) => blockEnterCallbacks.get(index)?.())
+    })
+    return
+  }
+
   const fired = new Set<number>()
   const trigger = (index: number) => {
     if (fired.has(index)) return
