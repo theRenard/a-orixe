@@ -49,7 +49,7 @@ function onBlockScroll() {
   if (!el) return
   const scrollTop = el.scrollTop
   const progress = Math.min(1, scrollTop / SCROLL_THRESHOLD_PX)
-  illustrationHeightVh.value = 100 - progress * 0.5
+  illustrationHeightVh.value = 100 - progress * 50
   showScrollIndicator.value = scrollTop <= SCROLL_INDICATOR_HIDE_PX
 
   if (!revealDone && scrollTop >= REVEAL_TRIGGER_PX) {
