@@ -3,7 +3,9 @@ import { ref, onMounted, onUnmounted, inject } from 'vue'
 import bateauIllustration from '@/assets/illustrations/bateau.webp'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
+import { useMobileDetection } from '@/composables/useMobileDetection'
 
+const { isMobile } = useMobileDetection()
 const sectionRoot = ref<HTMLElement | null>(null)
 const illustration = ref<HTMLElement | null>(null)
 const content = ref<HTMLElement | null>(null)
@@ -50,7 +52,7 @@ onUnmounted(() => {
       <div class="container">
         <div class="centered">
           <img ref="illustration" :src="bateauIllustration" :alt="$t('experienceDestinee.illustrationAlt')"
-            class="experience-destinee-section__illustration paragraph-spacing" loading="lazy">
+            class="experience-destinee-section__illustration" :class="{ 'paragraph-spacing': isMobile }" loading="lazy">
           <div ref="content">
             <p ref="question1" class="type__interview-question mb-0 experience-destinee-section__block paragraph-spacing"
               v-html="$t('experienceDestinee.question1')"></p>

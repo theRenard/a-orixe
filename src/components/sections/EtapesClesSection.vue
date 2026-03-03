@@ -2,7 +2,9 @@
 import { ref, onMounted, onUnmounted, inject } from 'vue'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
+import { useMobileDetection } from '@/composables/useMobileDetection'
 
+const { isMobile } = useMobileDetection()
 const sectionRoot = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
 const image = ref<HTMLElement | null>(null)
@@ -40,7 +42,7 @@ onUnmounted(() => {
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('etapesCles.paragraph')"></p>
         </div>
         <img ref="image" class="ma mb-2" src="../../assets/illustrations/saint_jacques_ok.webp"
-          :alt="$t('etapesCles.title')" loading="lazy" style="width: calc(50vw * var(--font-scale));">
+          :alt="$t('etapesCles.title')" :class="{ 'paragraph-spacing': isMobile }" loading="lazy" style="width: calc(50vw * var(--font-scale));">
       </div>
     </section>
   </div>

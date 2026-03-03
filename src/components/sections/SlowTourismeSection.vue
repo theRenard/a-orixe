@@ -3,7 +3,9 @@ import { ref, onMounted, onUnmounted, inject } from 'vue'
 import villageIllustration from '@/assets/illustrations/village.webp'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
+import { useMobileDetection } from '@/composables/useMobileDetection'
 
+const { isMobile } = useMobileDetection()
 const sectionRoot = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
 const content = ref<HTMLElement | null>(null)
@@ -54,7 +56,7 @@ onUnmounted(() => {
             </p>
           </div>
           <img ref="illustration" :src="villageIllustration" :alt="$t('slowTourisme.illustrationAlt')"
-            class="slow-tourisme-section__illustration paragraph-spacing" loading="lazy">
+            class="slow-tourisme-section__illustration" :class="{ 'paragraph-spacing': isMobile }" loading="lazy">
         </div>
       </div>
     </section>

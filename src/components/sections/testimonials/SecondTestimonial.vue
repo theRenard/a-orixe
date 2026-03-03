@@ -3,8 +3,10 @@ import { ref, onMounted, onUnmounted, inject } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
+import { useMobileDetection } from '@/composables/useMobileDetection'
 
 const { locale } = useI18n()
+const { isMobile } = useMobileDetection()
 const sectionRoot = ref<HTMLElement | null>(null)
 const blockquoteInner = ref<HTMLElement | null>(null)
 const imageRef = ref<HTMLElement | null>(null)
@@ -44,7 +46,7 @@ onUnmounted(() => {
           </div>
         </blockquote>
         <img ref="imageRef" src="@/assets/illustrations/phare.webp" :alt="$t('secondTestimonial.quote')"
-          class="second-testimonial__image ml-auto" loading="lazy">
+          class="second-testimonial__image ml-auto" :class="{ 'paragraph-spacing': isMobile }" loading="lazy">
       </div>
       <div class="container mb-2" style="position: absolute; bottom: 0; left: 0; right: 0;">
         <div class="centered">

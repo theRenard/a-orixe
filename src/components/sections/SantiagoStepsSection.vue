@@ -3,7 +3,9 @@ import { ref, onMounted, onUnmounted, inject } from 'vue'
 import espagneImage from '@/assets/illustrations/espagne_ok.webp'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
+import { useMobileDetection } from '@/composables/useMobileDetection'
 
+const { isMobile } = useMobileDetection()
 const sectionRoot = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
 const image = ref<HTMLElement | null>(null)
@@ -41,7 +43,7 @@ onUnmounted(() => {
         <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing col-left" style="flex: 0 0 50%;">
           {{ $t('santiagoSteps.title') }}
         </h2>
-        <img ref="image" :src="espagneImage" alt="" class="santiago-steps-section__title-img col-right" aria-hidden="true">
+        <img ref="image" :src="espagneImage" alt="" class="santiago-steps-section__title-img col-right" :class="{ 'paragraph-spacing': isMobile }" aria-hidden="true">
       </div>
     </div>
     <div class="centered">

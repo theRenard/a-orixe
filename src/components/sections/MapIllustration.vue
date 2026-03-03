@@ -7,8 +7,10 @@ import mapLineImage from '@/assets/illustrations/map_line.webp'
 import espagneImage from '@/assets/illustrations/espagne_ok.webp'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
+import { useMobileDetection } from '@/composables/useMobileDetection'
 
 gsap.registerPlugin(ScrollTrigger)
+const { isMobile } = useMobileDetection()
 
 const sectionRoot = ref<HTMLElement | null>(null)
 const bg = ref<HTMLElement | null>(null)
@@ -78,7 +80,7 @@ onUnmounted(() => {
     <section ref="sectionRoot" class="map-illustration-section">
       <div ref="mapWrap" class="map-illustration section--full-viewport image-section" role="img"
         :aria-label="$t('carteEtapesSantiago.caption')">
-        <img ref="bg" class="map-illustration__bg" :src="mapImage" alt="" />
+        <img ref="bg" class="map-illustration__bg" :class="{ 'paragraph-spacing': isMobile }" :src="mapImage" alt="" />
         <div ref="lineContainer" class="map-illustration__line-container">
           <div ref="line" class="map-illustration__line" :style="lineStyle" aria-hidden="true" />
         </div>
@@ -90,7 +92,7 @@ onUnmounted(() => {
               {{ $t('santiagoSteps.title') }}
             </h2>
             <img ref="stepsImage" :src="espagneImage" alt="" class="map-illustration-section__steps-img col-right"
-              aria-hidden="true">
+              :class="{ 'paragraph-spacing': isMobile }" aria-hidden="true">
           </div>
         </div>
         <div class="centered">

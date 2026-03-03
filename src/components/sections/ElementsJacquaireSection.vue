@@ -2,7 +2,9 @@
 import { ref, onMounted, onUnmounted, inject } from 'vue'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
+import { useMobileDetection } from '@/composables/useMobileDetection'
 
+const { isMobile } = useMobileDetection()
 const sectionRoot = ref<HTMLElement | null>(null)
 const image = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
@@ -41,7 +43,7 @@ onUnmounted(() => {
     <section ref="sectionRoot" class="elements-jacquaire-section section--full-viewport">
       <div class="container">
         <img ref="image" src="../../assets/illustrations/benevoles_ok.webp" :alt="$t('elementsJacquaire.title')"
-          class="elements-jacquaire-section__image ma" loading="lazy" height="auto"
+          class="elements-jacquaire-section__image ma" :class="{ 'paragraph-spacing': isMobile }" loading="lazy" height="auto"
           style="width: calc(50% * var(--font-scale-small));">
         <div ref="contentBlock" class="centered">
           <h2 ref="title"

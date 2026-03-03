@@ -7,8 +7,10 @@ import phareCorrubedo from '@/assets/illustrations/phare.png'
 import cathedrale from '@/assets/illustrations/cathedrale.png'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
+import { useMobileDetection } from '@/composables/useMobileDetection'
 
 gsap.registerPlugin(ScrollTrigger)
+const { isMobile } = useMobileDetection()
 
 const { locale, t } = useI18n()
 const routeDetailUrl = computed(() => `https://aorixe.es/${locale.value === 'es' ? 'es' : 'fr'}`)
@@ -88,14 +90,14 @@ onUnmounted(() => {
             <div class="type__enbref-small-orange">{{ $t('enBref.stat2Label') }}</div>
           </div>
           <div class="en-bref-section__place first-place">
-            <img :src="phareCorrubedo" :alt="$t('enBref.departurePlace')" class="en-bref-section__icon">
+            <img :src="phareCorrubedo" :alt="$t('enBref.departurePlace')" class="en-bref-section__icon" :class="{ 'paragraph-spacing': isMobile }">
             <div>
               <div class="type__enbref-small-orange--left">{{ $t('enBref.departureLabel') }}</div>
               <div class="type__enbref-small-green">{{ $t('enBref.departurePlace') }}</div>
             </div>
           </div>
           <div class="en-bref-section__place second-place">
-            <img :src="cathedrale" :alt="$t('enBref.arrivalPlace')" class="en-bref-section__icon">
+            <img :src="cathedrale" :alt="$t('enBref.arrivalPlace')" class="en-bref-section__icon" :class="{ 'paragraph-spacing': isMobile }">
             <div>
               <div class="type__enbref-small-orange--left">{{ $t('enBref.arrivalLabel') }}</div>
               <div class="type__enbref-small-green">{{ $t('enBref.arrivalPlace') }}</div>
