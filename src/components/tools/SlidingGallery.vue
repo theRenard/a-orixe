@@ -11,37 +11,25 @@ defineProps<{
 </script>
 
 <template>
-  <div class="sliding-gallery paragraph-spacing" role="region" aria-label="Image gallery">
-    <Carousel
-      :items-to-show="1"
-      :wrap-around="true"
-      :transition="400"
-      :touch-drag="true"
-      :mouse-drag="true"
-      height="70vmin"
-      class="sliding-gallery__carousel"
-    >
-      <Slide v-for="(item, i) in images" :key="i">
-        <div class="sliding-gallery__slide">
-          <img
-            :src="item.src"
-            :alt="item.alt ?? ''"
-            class="sliding-gallery__img"
-            loading="lazy"
-          >
-        </div>
-      </Slide>
-      <template #addons>
-        <Pagination />
-      </template>
-    </Carousel>
-    <p v-if="$slots.caption" class="sliding-gallery__caption type__image-caption type__image-caption--with-line">
-      <slot name="caption" />
-    </p>
-    <p v-else-if="caption" class="sliding-gallery__caption type__image-caption type__image-caption--with-line">
-      {{ caption }}
-    </p>
-  </div>
+<div class="sliding-gallery paragraph-spacing" role="region" aria-label="Image gallery">
+  <Carousel :autoplay="3000" :items-to-show="1" :wrap-around="true" :transition="400" :touch-drag="true"
+    :mouse-drag="true" height="100vmin" class="sliding-gallery__carousel">
+    <Slide v-for="(item, i) in images" :key="i">
+      <div class="sliding-gallery__slide">
+        <img :src="item.src" :alt="item.alt ?? ''" class="sliding-gallery__img" loading="lazy">
+      </div>
+    </Slide>
+    <template #addons>
+      <Pagination />
+    </template>
+  </Carousel>
+  <p v-if="$slots.caption" class="sliding-gallery__caption type__image-caption type__image-caption--with-line">
+    <slot name="caption" />
+  </p>
+  <p v-else-if="caption" class="sliding-gallery__caption type__image-caption type__image-caption--with-line">
+    {{ caption }}
+  </p>
+</div>
 </template>
 
 <style scoped>
@@ -62,13 +50,14 @@ defineProps<{
   overflow: hidden;
 }
 
+/*
 .sliding-gallery__img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-}
+} */
 
 .sliding-gallery__caption {
   margin: 0;
