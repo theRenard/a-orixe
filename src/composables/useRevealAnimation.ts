@@ -166,6 +166,48 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
 
     if (targets.length === 0) return
 
+    /** Apply initial "from" state to all elements immediately so they never flash in final position (fixes mobile jump). */
+    targets.forEach((target) => {
+      const {
+        el,
+        direction,
+        offset: elOffset,
+        rotation: elRotation,
+        scale: elScale,
+        opacity: elOpacity,
+        transformOrigin: elTransformOrigin,
+        steps: elSteps,
+      } = target
+      const dist = elOffset ?? offset
+      const origin = elTransformOrigin ?? '50% 50%'
+      const hasScaleOrRotation =
+        (elScale != null && elScale !== 1) ||
+        (elRotation != null && elRotation !== 0) ||
+        (elSteps?.some((s) => 'scale' in s.to || 'rotation' in s.to) ?? false)
+      if (hasScaleOrRotation || elTransformOrigin != null || (elSteps?.some((s) => s.transformOrigin != null) ?? false)) {
+        gsap.set(el, { transformOrigin: origin, force3D: !!hasScaleOrRotation })
+      }
+      const fromVars: gsap.TweenVars = { opacity: elOpacity ?? 0 }
+      if (direction === 'left' || direction === 'right') {
+        fromVars.x = direction === 'left' ? -dist : dist
+      } else {
+        fromVars.y = direction === 'up' ? -dist : dist
+      }
+      if (elRotation != null && elRotation !== 0) {
+        fromVars.rotation = elRotation
+        fromVars.transformOrigin = origin
+      }
+      if (elScale != null && elScale !== 1) {
+        fromVars.scale = elScale
+        fromVars.transformOrigin = origin
+        fromVars.force3D = true
+      }
+      if (elTransformOrigin != null && elRotation == null && (elScale == null || elScale === 1)) {
+        fromVars.transformOrigin = origin
+      }
+      gsap.set(el, fromVars)
+    })
+
     const stConfig =
       scrollTriggerOpt === true
         ? { once: true, start: 'top bottom' as const }
@@ -295,25 +337,27 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
           } else {
             applyOriginAndForce3D(mergedTo)
           }
-          const fromVars: gsap.TweenVars =
-            stepIndex === 0 ? buildInitialFrom() : { ...prevEndState }
-          if (stepHasTransform) {
-            fromVars.transformOrigin = stepOrigin
-            fromVars.force3D = true
-          } else {
-            applyOriginAndForce3D(fromVars)
-          }
           const toVars: gsap.TweenVars = {
             ...mergedTo,
             duration: step.duration,
             ease: step.ease ?? ease,
           }
-          timeline.fromTo(el, fromVars, toVars, position)
+          if (stepIndex === 0) {
+            timeline.to(el, toVars, position)
+          } else {
+            const fromVars: gsap.TweenVars = { ...prevEndState }
+            if (stepHasTransform) {
+              fromVars.transformOrigin = stepOrigin
+              fromVars.force3D = true
+            } else {
+              applyOriginAndForce3D(fromVars)
+            }
+            timeline.fromTo(el, fromVars, toVars, position)
+          }
           position += step.duration
           prevEndState = { ...mergedTo }
         }
       } else {
-        const fromVars = buildInitialFrom()
         const toVars: gsap.TweenVars = { opacity: 1, duration: d }
         if (direction === 'left' || direction === 'right') {
           toVars.x = 0
@@ -332,7 +376,7 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
         if (elTransformOrigin != null && elRotation == null && (elScale == null || elScale === 1)) {
           toVars.transformOrigin = origin
         }
-        timeline.fromTo(el, fromVars, toVars, startAt)
+        timeline.to(el, toVars, startAt)
       }
     })
 
