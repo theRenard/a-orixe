@@ -37,7 +37,7 @@ onUnmounted(() => {
           <div class="comment-est-ne-section__grid">
             <aside ref="author" class="comment-est-ne-section__author">
               <img src="@/assets/photos/florenceantunes-portrait.webp" alt="" class="comment-est-ne-section__avatar"
-                style="width: calc(20rem * var(--font-scale)); height: auto">
+                style="width: calc(20rem * var(--scale-large)); height: auto">
               <h3 class="comment-est-ne-section__author-name">
                 {{ $t('commentEstNeRecit.authorName') }}
               </h3>
@@ -124,7 +124,7 @@ onUnmounted(() => {
 
 /* Big green heading – Fraunces 35px/30px bold #2D4B4B */
 .comment-est-ne-section__title {
-  font: normal normal var(--font-weight-bold) calc(2.1875rem * var(--font-scale)) / calc(1.875rem * var(--font-scale)) var(--font-family-fraunces);
+  font: normal normal var(--font-weight-bold) calc(2.1875rem * var(--scale-large)) / calc(1.875rem * var(--scale-large)) var(--font-family-fraunces);
   letter-spacing: 0;
   color: var(--color-teal-dark);
   text-align: left;
@@ -132,7 +132,7 @@ onUnmounted(() => {
 
 /* Green paragraph – Ubuntu 18px/30px medium #2D4B4B, columnar width */
 .comment-est-ne-section__paragraph {
-  font: normal normal var(--font-weight-medium) calc(1.125rem * var(--font-scale)) / calc(1.875rem * var(--font-scale)) var(--font-family-ubuntu);
+  font: normal normal var(--font-weight-medium) calc(1.125rem * var(--scale-large)) / calc(1.875rem * var(--scale-large)) var(--font-family-ubuntu);
   letter-spacing: 0;
   color: var(--color-teal-dark);
   text-align: left;
@@ -141,7 +141,7 @@ onUnmounted(() => {
 
 /* Author name – Ubuntu 28px/27px bold #2D4B4B, center */
 .comment-est-ne-section__author-name {
-  font: normal normal var(--font-weight-bold) calc(1.75rem * var(--font-scale)) / calc(1.6875rem * var(--font-scale)) var(--font-family-ubuntu);
+  font: normal normal var(--font-weight-bold) calc(1.75rem * var(--scale-large)) / calc(1.6875rem * var(--scale-large)) var(--font-family-ubuntu);
   letter-spacing: 0;
   color: var(--color-teal-dark);
   text-align: center;
@@ -150,7 +150,7 @@ onUnmounted(() => {
 
 /* Author role – Ubuntu 19px/27px normal #609897, center */
 .comment-est-ne-section__author-role {
-  font: normal normal var(--font-weight-normal) calc(1.1875rem * var(--font-scale)) / calc(1.6875rem * var(--font-scale)) var(--font-family-ubuntu);
+  font: normal normal var(--font-weight-normal) calc(1.1875rem * var(--scale-large)) / calc(1.6875rem * var(--scale-large)) var(--font-family-ubuntu);
   letter-spacing: 0;
   color: var(--color-teal-medium);
   text-align: center;
@@ -159,7 +159,7 @@ onUnmounted(() => {
 /* Author email & website – bold, underline, dark greenish-grey #3C4C4A */
 .comment-est-ne-section__author-email,
 .comment-est-ne-section__author-website {
-  font: normal normal var(--font-weight-bold) calc(1.1875rem * var(--font-scale)) / calc(1.6875rem * var(--font-scale)) var(--font-family-ubuntu);
+  font: normal normal var(--font-weight-bold) calc(1.1875rem * var(--scale-large)) / calc(1.6875rem * var(--scale-large)) var(--font-family-ubuntu);
   letter-spacing: 0;
   color: #3c4c4a;
   text-align: center;

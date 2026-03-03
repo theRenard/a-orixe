@@ -144,22 +144,22 @@ onUnmounted(() => {
   display: inline-flex;
   position: relative;
   align-items: center;
-  gap: calc(1rem * var(--font-scale));
-  padding: calc(0.5rem * var(--font-scale)) calc(0.5rem * var(--font-scale));
+  gap: calc(1rem * var(--scale-large));
+  padding: calc(0.5rem * var(--scale-large)) calc(0.5rem * var(--scale-large));
   background: var(--color-cream);
   border: 3px solid var(--color-teal-medium);
-  border-radius: calc(3rem * var(--font-scale));
+  border-radius: calc(3rem * var(--scale-large));
   font-family: var(--font-family-ubuntu);
   font-size: calc(var(--font-size-sm));
-  font-weight: calc(var(--font-weight-medium) * var(--font-scale));
+  font-weight: calc(var(--font-weight-medium) * var(--scale-large));
   color: var(--color-teal-dark);
-  letter-spacing: calc(var(--letter-spacing-normal) * var(--font-scale));
+  letter-spacing: calc(var(--letter-spacing-normal) * var(--scale-large));
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  max-width: calc(30rem * var(--font-scale));
-  width: calc(30rem * var(--font-scale));
-  min-width: calc(30rem * var(--font-scale));
-  height: calc(5rem * var(--font-scale));
+  max-width: calc(30rem * var(--scale-large));
+  width: calc(30rem * var(--scale-large));
+  min-width: calc(30rem * var(--scale-large));
+  height: calc(5rem * var(--scale-large));
   position: relative;
   z-index: 1;
 }
@@ -175,15 +175,15 @@ onUnmounted(() => {
 
 .sound-player__image-wrap {
   margin-left: auto;
-  width: calc(5rem * var(--font-scale));
-  height: calc(5rem * var(--font-scale));
+  width: calc(5rem * var(--scale-large));
+  height: calc(5rem * var(--scale-large));
   flex-shrink: 0;
   padding: 0;
   border: 3px solid var(--color-teal-dark);
-  border-radius: calc(5rem * var(--font-scale)) / calc(5rem * var(--font-scale));
+  border-radius: calc(5rem * var(--scale-large)) / calc(5rem * var(--scale-large));
   overflow: hidden;
   position: relative;
-  margin-right: calc(-0.5rem - 3px * var(--font-scale));
+  margin-right: calc(-0.5rem - 3px * var(--scale-large));
 }
 
 .sound-player__image {
@@ -197,47 +197,47 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: calc(3.5rem * var(--font-scale));
-  height: calc(3.5rem * var(--font-scale));
+  width: calc(3.5rem * var(--scale-large));
+  height: calc(3.5rem * var(--scale-large));
   flex-shrink: 0;
   border: 3px solid var(--color-teal-medium);
-  border-radius: calc(5rem * var(--font-scale));
+  border-radius: calc(5rem * var(--scale-large));
   background: var(--color-cream);
   color: var(--color-teal-medium);
   position: relative;
 }
 
 .sound-player__svg {
-  width: calc(3.16rem * var(--font-scale));
-  height: calc(3.16rem * var(--font-scale)) / calc(3.16rem * var(--font-scale));
+  width: calc(3.16rem * var(--scale-large));
+  height: calc(3.16rem * var(--scale-large)) / calc(3.16rem * var(--scale-large));
 }
 
 .sound-player__text {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: calc(0.15rem * var(--font-scale));
+  gap: calc(0.15rem * var(--scale-large));
   line-height: 1.2;
-  margin-right: calc(0.25rem * var(--font-scale));
+  margin-right: calc(0.25rem * var(--scale-large));
   text-align: left;
 }
 
 .sound-player__line2 {
-  font-size: calc(0.875em * var(--font-scale));
+  font-size: calc(0.875em * var(--scale-large));
   font-weight: var(--font-weight-normal);
 }
 
 /* Wrapper when transcript is shown: single rounded card */
 .sound-player-widget {
   display: block;
-  max-width: calc(30rem * var(--font-scale));
-  min-width: calc(30rem * var(--font-scale));
-  width: calc(30rem * var(--font-scale));
+  max-width: calc(30rem * var(--scale-large));
+  min-width: calc(30rem * var(--scale-large));
+  width: calc(30rem * var(--scale-large));
   position: relative;
 }
 
 .sound-player-widget--with-chapters .sound-player {
-  border-radius: calc(1.25rem * var(--font-scale)) calc(1.25rem * var(--font-scale)) 0 0;
+  border-radius: calc(1.25rem * var(--scale-large)) calc(1.25rem * var(--scale-large)) 0 0;
   border: none;
   max-width: none;
 }
@@ -247,14 +247,14 @@ onUnmounted(() => {
   background: var(--color-teal-medium);
   color: var(--color-white);
   font-family: var(--font-family-ubuntu);
-  font-size: calc(var(--font-size-sm) * var(--font-scale-small));
+  font-size: calc(var(--font-size-sm) * var(--scale-large-small));
   font-weight: var(--font-weight-normal);
   line-height: 1.4;
-  padding: calc(1rem * var(--font-scale)) calc(1.25rem * var(--font-scale));
+  padding: calc(1rem * var(--scale-large)) calc(1.25rem * var(--scale-large));
   text-align: left;
-  border-radius: calc(3rem * var(--font-scale));
-  border-bottom-left-radius: calc(2rem * var(--font-scale));
-  border-bottom-right-radius: calc(2rem * var(--font-scale));
+  border-radius: calc(3rem * var(--scale-large));
+  border-bottom-left-radius: calc(2rem * var(--scale-large));
+  border-bottom-right-radius: calc(2rem * var(--scale-large));
   position: absolute;
   top: 0;
   left: 0;
@@ -268,8 +268,8 @@ onUnmounted(() => {
 @media (max-width: 47.99rem) {
   .sound-player__transcript {
     position: relative;
-    margin-top: calc(-5rem * var(--font-scale));
-    padding-top: calc(6rem * var(--font-scale));
+    margin-top: calc(-5rem * var(--scale-large));
+    padding-top: calc(6rem * var(--scale-large));
   }
 }
 
