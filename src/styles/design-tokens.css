@@ -10,6 +10,7 @@
 
 @media (min-width: 48rem) {
   :root {
+    --scale-xlarge: 1;
     --scale-large: 1;
     --scale-medium: 1;
     --scale-small: 1;
@@ -19,7 +20,8 @@
 
 @media (max-width: 47.99rem) {
   :root {
-    --scale-large: 3.5;
+    --scale-xlarge: 3.5;
+    --scale-large: 2.75;
     --scale-medium: 2;
     --scale-small: 1.5;
     --chart-scale: 0.75;
@@ -71,28 +73,28 @@
   --font-weight-bold: 700;
   --font-weight-black: 900;
 
-  /* Font sizes (rem so they scale with root; --scale-large applied) */
-  --font-size-xs: calc(0.75rem * var(--scale-large));
-  --font-size-sm: calc(1rem * var(--scale-large));
-  --font-size-base: calc(1.25rem * var(--scale-large));
-  --font-size-lg: calc(1.5rem * var(--scale-large));
-  --font-size-xl: calc(1.6875rem * var(--scale-large));
-  --font-size-2xl: calc(1.875rem * var(--scale-large));
-  --font-size-3xl: calc(2.1875rem * var(--scale-large));
-  --font-size-display: calc(9.375rem * var(--scale-large));
+  /* Font sizes (rem so they scale with root; --scale-xlarge applied) */
+  --font-size-xs: calc(0.75rem * var(--scale-xlarge));
+  --font-size-sm: calc(1rem * var(--scale-xlarge));
+  --font-size-base: calc(1.25rem * var(--scale-xlarge));
+  --font-size-lg: calc(1.5rem * var(--scale-xlarge));
+  --font-size-xl: calc(1.6875rem * var(--scale-xlarge));
+  --font-size-2xl: calc(1.875rem * var(--scale-xlarge));
+  --font-size-3xl: calc(2.1875rem * var(--scale-xlarge));
+  --font-size-display: calc(9.375rem * var(--scale-xlarge));
 
   /* Spacing (letter) */
   --letter-spacing-normal: 0px;
 
-  /* Line heights (rem so they scale with root; --scale-large applied) */
-  --line-height-tight: calc(0.9375rem * var(--scale-large));
-  --line-height-sm: calc(1.875rem * var(--scale-large));
-  --line-height-base: calc(2.125rem * var(--scale-large));
-  --line-height-md: calc(2.1875rem * var(--scale-large));
-  --line-height-text: calc(2.25rem * var(--scale-large));
-  --line-height-lg: calc(2.5rem * var(--scale-large));
-  --line-height-xl: calc(2.75rem * var(--scale-large));
-  --line-height-display: calc(3.4375rem * var(--scale-large));
+  /* Line heights (rem so they scale with root; --scale-xlarge applied) */
+  --line-height-tight: calc(0.9375rem * var(--scale-xlarge));
+  --line-height-sm: calc(1.875rem * var(--scale-xlarge));
+  --line-height-base: calc(2.125rem * var(--scale-xlarge));
+  --line-height-md: calc(2.1875rem * var(--scale-xlarge));
+  --line-height-text: calc(2.25rem * var(--scale-xlarge));
+  --line-height-lg: calc(2.5rem * var(--scale-xlarge));
+  --line-height-xl: calc(2.75rem * var(--scale-xlarge));
+  --line-height-display: calc(3.4375rem * var(--scale-xlarge));
 }
 
 /* Root font-size scales with viewport width so all rem (spacing, typography) scale proportionally */

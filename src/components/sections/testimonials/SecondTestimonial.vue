@@ -46,11 +46,12 @@ onUnmounted(() => {
           </div>
         </blockquote>
         <img ref="imageRef" src="@/assets/illustrations/phare.webp" :alt="$t('secondTestimonial.quote')"
-          class="second-testimonial__image ml-auto" :class="{ 'paragraph-spacing': isMobile }" loading="lazy">
+          class="second-testimonial__image ml-auto" loading="lazy">
       </div>
-      <div class="container mb-2" style="position: absolute; bottom: 0; left: 0; right: 0;">
+      <div class="container mb-2" :class="{ 'absolute-bottom': !isMobile }">
         <div class="centered">
-          <p class="type__footnote paragraph-spacing" v-html="$t('secondTestimonial.footnote')"></p>
+          <p class="type__footnote paragraph-spacing" :class="{ 'mb-0': isMobile }"
+            v-html="$t('secondTestimonial.footnote')"></p>
         </div>
       </div>
     </section>
@@ -72,7 +73,14 @@ onUnmounted(() => {
 
 @media (max-width: 47.99rem) {
   .second-testimonial__image {
-    margin-top: 20rem;
+    margin-top: 10rem;
   }
+}
+
+.absolute-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 </style>

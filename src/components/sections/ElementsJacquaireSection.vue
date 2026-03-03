@@ -44,7 +44,7 @@ onUnmounted(() => {
       <div class="container">
         <img ref="image" src="../../assets/illustrations/benevoles_ok.webp" :alt="$t('elementsJacquaire.title')"
           class="elements-jacquaire-section__image ma" :class="{ 'paragraph-spacing': isMobile }" loading="lazy"
-          height="auto" style="width: calc(50% * var(--scale-large-small));">
+          height="auto" style="width: calc(50% * var(--scale-small));">
         <div ref="contentBlock" class="centered">
           <h2 ref="title"
             class="type__section-title type__section-title--with-line elements-jacquaire-section__title heading-spacing">

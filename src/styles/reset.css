@@ -412,7 +412,8 @@ a {
 
 /* Margin auto utilities */
 .ma {
-  margin: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .ml-auto {
@@ -425,8 +426,8 @@ p {
 }
 
 .paragraph-spacing {
-  margin-top: calc(2.5rem * var(--scale-large)) !important;
-  margin-bottom: calc(2.5rem * var(--scale-large)) !important;
+  margin-top: calc(2.5rem * var(--scale-xlarge));
+  margin-bottom: calc(2.5rem * var(--scale-xlarge));
 }
 
 /* Headings: no default margin; use .heading-spacing for vertical rhythm */

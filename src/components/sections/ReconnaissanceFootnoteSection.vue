@@ -57,7 +57,7 @@ onUnmounted(() => {
 
 <style scoped>
 .image-crop-container {
-  width: calc(35rem * var(--scale-large));
+  width: calc(35rem * var(--scale-xlarge));
   height: auto;
   margin: 0 auto;
 }
@@ -71,7 +71,7 @@ onUnmounted(() => {
 }
 
 .reconnaissance-footnote-section img {
-  width: calc(35rem * var(--scale-large));
+  width: calc(35rem * var(--scale-xlarge));
   height: auto;
   margin: 0 auto;
 }

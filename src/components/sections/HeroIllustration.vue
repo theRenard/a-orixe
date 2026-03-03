@@ -104,36 +104,40 @@ watch(isWide, () => {
             {{ $t('hero.title') }}
           </h1>
           <p ref="heroSubtitle" class="type__hero-subtitle mt-0" v-html="$t('hero.subtitle')"></p>
-          <div class="container credits__inner paragraph-spacing">
-            <div ref="creditsLeft" :class="{ 'pb-2': isMobile, 'pt-2': isMobile }"
-              class="credits__col credits__col--left">
-              <div class="credits__line-accent" aria-hidden="true" />
-              <p>
-                {{ $t('credits.byPrefix') }}<span class="type__credits-bold">{{ $t('credits.byName') }}</span>
-              </p>
-              <p v-html="$t('credits.authorRole')"></p>
-              <p v-if="$t('credits.translatedByPrefix')">{{ $t('credits.translatedByPrefix') }}<span
-                  class="type__credits-bold">{{ $t('credits.translatedByName') }}</span></p>
-              <p>
-                {{ $t('credits.publishedOnPrefix') }}<span class="type__credits-bold">{{ $t('credits.publishedOnDate')
-                  }}</span>
-              </p>
-            </div>
-            <div ref="creditsRight" :class="{ 'pb-2': isMobile, 'pt-2': isMobile }"
-              class="credits__col credits__col--right">
-              <div :class="{ 'ml-auto': isWide }" class="credits__line-accent" aria-hidden="true" />
-              <p>
-                {{ $t('credits.artDirectionPrefix') }}<span class="type__credits-bold">{{ $t('credits.artDirectionName')
-                  }}</span>
-              </p>
-              <p>
-                {{ $t('credits.illustrationPrefix') }}<span class="type__credits-bold">{{ $t('credits.illustrationName')
-                  }}</span>
-              </p>
-              <p>
-                {{ $t('credits.devDesignPrefix') }}<span class="type__credits-bold">{{ $t('credits.devDesignName')
-                  }}</span>
-              </p>
+          <div class="paragraph-spacing" :class="{ 'mb-0': isMobile }">
+            <div class="container credits__inner">
+              <div ref="creditsLeft" class="credits__col credits__col--left"
+                :class="{ 'pb-2': isMobile, 'pt-2': isMobile }">
+                <div class="credits__line-accent" aria-hidden="true" />
+                <p>
+                  {{ $t('credits.byPrefix') }}<span class="type__credits-bold">{{ $t('credits.byName') }}</span>
+                </p>
+                <p v-html="$t('credits.authorRole')"></p>
+                <p v-if="$t('credits.translatedByPrefix')">{{ $t('credits.translatedByPrefix') }}<span
+                    class="type__credits-bold">{{ $t('credits.translatedByName') }}</span></p>
+                <p>
+                  {{ $t('credits.publishedOnPrefix') }}<span class="type__credits-bold">{{ $t('credits.publishedOnDate')
+                    }}</span>
+                </p>
+              </div>
+              <div ref="creditsRight" :class="{ 'pb-2': isMobile, 'pt-2': isMobile }"
+                class="credits__col credits__col--right">
+                <div :class="{ 'ml-auto': isWide }" class="credits__line-accent" aria-hidden="true" />
+                <p>
+                  {{ $t('credits.artDirectionPrefix') }}<span class="type__credits-bold">{{
+                    $t('credits.artDirectionName')
+                    }}</span>
+                </p>
+                <p>
+                  {{ $t('credits.illustrationPrefix') }}<span class="type__credits-bold">{{
+                    $t('credits.illustrationName')
+                    }}</span>
+                </p>
+                <p>
+                  {{ $t('credits.devDesignPrefix') }}<span class="type__credits-bold">{{ $t('credits.devDesignName')
+                    }}</span>
+                </p>
+              </div>
             </div>
           </div>
         </div>

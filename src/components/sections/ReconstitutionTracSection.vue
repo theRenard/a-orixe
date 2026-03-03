@@ -5,7 +5,9 @@ import { ref, onMounted, onUnmounted, inject } from 'vue'
 import ImageCrop from '@/components/tools/ImageCrop.vue'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
+import { useMobileDetection } from '@/composables/useMobileDetection'
 
+const { isMobile } = useMobileDetection()
 gsap.registerPlugin(ScrollTrigger)
 
 const sectionRoot = ref<HTMLElement | null>(null)
@@ -40,7 +42,7 @@ onUnmounted(() => {
 <template>
 <div data-block data-component="ReconstitutionTracSection" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="reconstitution-trac-section">
+    <section ref="sectionRoot" class="reconstitution-trac-section" :class="{ 'mt-8': isMobile }">
       <div class="container">
         <div ref="imageBlock">
           <ImageCrop ref="imageCrop" width="100%" height="320px" position="center 50%"

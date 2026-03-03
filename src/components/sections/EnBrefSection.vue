@@ -132,7 +132,7 @@ onUnmounted(() => {
 
 @media (min-width: 48rem) {
   .en-bref-section__inner {
-    min-width: calc(70rem * var(--scale-large));
+    min-width: calc(70rem * var(--scale-xlarge));
     text-align: left;
   }
 }
@@ -142,8 +142,8 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: calc(2.5rem * var(--scale-large));
-  gap: calc(2rem * var(--scale-large));
+  margin-bottom: calc(2.5rem * var(--scale-xlarge));
+  gap: calc(2rem * var(--scale-xlarge));
 }
 
 @media (min-width: 48rem) {
@@ -152,7 +152,7 @@ onUnmounted(() => {
     flex-wrap: nowrap;
     align-items: center;
     justify-content: space-between;
-    gap: calc(6rem * var(--scale-large));
+    gap: calc(6rem * var(--scale-xlarge));
   }
 }
 
@@ -184,10 +184,10 @@ onUnmounted(() => {
 
 .en-bref-section__icon {
   flex-shrink: 0;
-  width: calc(6.25rem * var(--scale-large));
-  height: calc(6.25rem * var(--scale-large));
+  width: calc(6.25rem * var(--scale-xlarge));
+  height: calc(6.25rem * var(--scale-xlarge));
   object-fit: contain;
-  margin-right: calc(1rem * var(--scale-large));
+  margin-right: calc(1rem * var(--scale-xlarge));
 }
 
 /* Mobile: blocks centered in column, max 50vw per block; desktop: fixed widths */
@@ -211,22 +211,22 @@ onUnmounted(() => {
   }
 
   .first-stat {
-    width: calc(8.5rem * var(--scale-large));
+    width: calc(8.5rem * var(--scale-xlarge));
   }
 
   .second-stat {
-    width: calc(20.5rem * var(--scale-large));
+    width: calc(20.5rem * var(--scale-xlarge));
   }
 
   .first-place,
   .second-place {
-    width: calc(22.5rem * var(--scale-large));
+    width: calc(22.5rem * var(--scale-xlarge));
     justify-content: space-between;
   }
 }
 
 .en-bref-section__link-wrap {
-  font: var(--font-style-normal) var(--font-weight-normal) calc(1.25rem * var(--scale-large)) / calc(2.5rem * var(--scale-large)) var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-normal) calc(1.25rem * var(--scale-xlarge)) / calc(2.5rem * var(--scale-xlarge)) var(--font-family-ubuntu);
   color: var(--color-teal-dark);
   text-align: center;
   margin: 0;
@@ -239,28 +239,28 @@ onUnmounted(() => {
 
 /* En bref section: infographic-style types (from design) */
 .type__enbref-big {
-  font: normal var(--font-weight-black, 900) calc(8.125rem * var(--scale-large)) / calc(8.125rem * var(--scale-large)) var(--font-family-fraunces);
+  font: normal var(--font-weight-black, 900) calc(8.125rem * var(--scale-xlarge)) / calc(8.125rem * var(--scale-xlarge)) var(--font-family-fraunces);
   letter-spacing: 0;
   color: var(--color-teal-dark);
   text-align: center;
 }
 
 .type__enbref-small-green {
-  font: normal var(--font-weight-bold) calc(1.5rem * var(--scale-large)) / calc(1.875rem * var(--scale-large)) var(--font-family-fraunces);
+  font: normal var(--font-weight-bold) calc(1.5rem * var(--scale-xlarge)) / calc(1.875rem * var(--scale-xlarge)) var(--font-family-fraunces);
   letter-spacing: 0;
   color: var(--color-teal-dark);
   text-align: left;
 }
 
 .type__enbref-small-orange {
-  font: normal var(--font-weight-bold) calc(1.25rem * var(--scale-large)) / calc(2.5rem * var(--scale-large)) var(--font-family-ubuntu);
+  font: normal var(--font-weight-bold) calc(1.25rem * var(--scale-xlarge)) / calc(2.5rem * var(--scale-xlarge)) var(--font-family-ubuntu);
   letter-spacing: 0;
   color: var(--color-orange);
   text-align: center;
 }
 
 .type__enbref-small-orange--left {
-  font: normal var(--font-weight-bold) calc(1.25rem * var(--scale-large)) / calc(2.5rem * var(--scale-large)) var(--font-family-ubuntu);
+  font: normal var(--font-weight-bold) calc(1.25rem * var(--scale-xlarge)) / calc(2.5rem * var(--scale-xlarge)) var(--font-family-ubuntu);
   letter-spacing: 0;
   color: var(--color-orange);
   text-align: left;

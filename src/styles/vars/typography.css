@@ -6,7 +6,7 @@
 
 /* Language selector */
 .type__language-selector {
-  font: var(--font-style-normal) var(--font-weight-normal) calc(1.25rem * var(--scale-large)) / calc(2.1875rem * var(--scale-large)) var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-normal) calc(1.25rem * var(--scale-medium)) / calc(2.1875rem * var(--scale-medium)) var(--font-family-ubuntu);
   color: var(--color-black);
   text-align: left;
 }
@@ -27,7 +27,7 @@
 }
 
 .type__hero-synopsis {
-  font: var(--font-style-normal) var(--font-weight-bold) calc(1.6875rem * var(--scale-large)) / calc(2.1875rem * var(--scale-large)) var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-bold) calc(1.6875rem * var(--scale-xlarge)) / calc(2.1875rem * var(--scale-xlarge)) var(--font-family-ubuntu);
   letter-spacing: var(--letter-spacing-normal);
   color: var(--color-black);
   text-align: left;
@@ -43,16 +43,16 @@
 }
 
 .type__credits {
-  font: var(--font-style-normal) var(--font-weight-normal) calc(1rem * var(--scale-large)) / calc(1.125rem * var(--scale-large)) var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-normal) calc(1rem * var(--scale-xlarge)) / calc(1.125rem * var(--scale-xlarge)) var(--font-family-ubuntu);
 }
 
 .type__credits-link {
-  font: var(--font-style-normal) var(--font-weight-bold) calc(1rem * var(--scale-large)) / calc(1.125rem * var(--scale-large)) var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-bold) calc(1rem * var(--scale-xlarge)) / calc(1.125rem * var(--scale-xlarge)) var(--font-family-ubuntu);
   text-decoration: underline;
 }
 
 .type__credits-bold {
-  font: var(--font-style-normal) var(--font-weight-bold) calc(1rem * var(--scale-large)) / calc(1.125rem * var(--scale-large)) var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-bold) calc(1rem * var(--scale-xlarge)) / calc(1.125rem * var(--scale-xlarge)) var(--font-family-ubuntu);
 }
 
 /* Section */
@@ -116,8 +116,8 @@
 .type__testimonial-block::before {
   content: '«';
   position: absolute;
-  top: calc(-6rem * var(--scale-large));
-  left: calc(-7rem * var(--scale-large));
+  top: calc(-6rem * var(--scale-small));
+  left: calc(-7rem * var(--scale-small));
   font: var(--font-style-italic) var(--font-weight-light) calc(12rem * var(--scale-small))/calc(8rem * var(--scale-small)) var(--font-family-ubuntu);
   color: var(--color-teal-light);
 }
@@ -181,7 +181,7 @@
 
 /* Footnote / small italic (e.g. testimonial footnote) */
 .type__footnote {
-  font: var(--font-style-italic) var(--font-weight-normal) calc(1rem * var(--scale-large)) / calc(1.5625rem * var(--scale-large)) var(--font-family-ubuntu);
+  font: var(--font-style-italic) var(--font-weight-normal) calc(1rem * var(--scale-xlarge)) / calc(1.5625rem * var(--scale-xlarge)) var(--font-family-ubuntu);
   letter-spacing: var(--letter-spacing-normal);
   color: var(--color-teal-medium);
   text-align: left;
@@ -189,7 +189,7 @@
 
 /* Image caption (medium, 14px/36px, Ubuntu, teal, optional line) */
 .type__image-caption {
-  font: var(--font-style-normal) var(--font-weight-medium) calc(0.875rem * var(--scale-large)) / calc(2.25rem * var(--scale-large)) var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-medium) calc(0.875rem * var(--scale-xlarge)) / calc(2.25rem * var(--scale-xlarge)) var(--font-family-ubuntu);
   letter-spacing: var(--letter-spacing-normal);
   color: var(--color-teal-medium);
   text-align: left;

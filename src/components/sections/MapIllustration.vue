@@ -5,6 +5,8 @@ import { ref, computed, onMounted, onUnmounted, inject } from 'vue'
 import mapImage from '@/assets/illustrations/map.webp'
 import mapLineImage from '@/assets/illustrations/map_line.webp'
 import espagneImage from '@/assets/illustrations/espagne_ok.webp'
+import mapImageMobile from '@/assets/illustrations/map_MOBILE_01.webp'
+import mapLineImageMobile from '@/assets/illustrations/map_MOBILE_02.webp'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
 import { useMobileDetection } from '@/composables/useMobileDetection'
@@ -27,15 +29,24 @@ function setLineWidth() {
   }
 }
 
+const mapImageComputed = computed(() => {
+  return isMobile.value ? mapImageMobile : mapImage
+})
+const mapLineImageComputed = computed(() => {
+  return isMobile.value ? mapLineImageMobile : mapLineImage
+})
+
 const lineStyle = computed(() => {
   const w = lineWidthPx.value
-  const bgImg = mapLineImage
+  const bgImg = mapLineImageComputed.value
   if (w == null) return { backgroundImage: `url(${bgImg})` }
   return { width: `${w}px`, backgroundImage: `url(${bgImg})` }
 })
 const title = ref<HTMLElement | null>(null)
 const stepsImage = ref<HTMLElement | null>(null)
 const question = ref<HTMLElement | null>(null)
+
+
 const registerBlockEnter = inject<((index: number, play: () => void) => void) | undefined>('blockScroll/registerBlockEnter')
 const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
 const { run } = useRevealAnimation({
@@ -80,7 +91,7 @@ onUnmounted(() => {
     <section ref="sectionRoot" class="map-illustration-section">
       <div ref="mapWrap" class="map-illustration section--full-viewport image-section" role="img"
         :aria-label="$t('carteEtapesSantiago.caption')">
-        <img ref="bg" class="map-illustration__bg" :class="{ 'paragraph-spacing': isMobile }" :src="mapImage" alt="" />
+        <img ref="bg" class="map-illustration__bg" :src="mapImageComputed" alt="" />
         <div ref="lineContainer" class="map-illustration__line-container">
           <div ref="line" class="map-illustration__line" :style="lineStyle" aria-hidden="true" />
         </div>

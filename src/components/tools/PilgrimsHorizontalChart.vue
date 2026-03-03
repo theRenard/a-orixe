@@ -82,17 +82,17 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  width: calc(8rem * var(--scale-large));
+  width: calc(8rem * var(--scale-xlarge));
   line-height: 1.1;
 }
 
 .pilgrims-horizontal-chart__name {
-  font: var(--font-style-normal) var(--font-weight-bold) calc(1.3rem * var(--scale-large))/calc(1.3rem * var(--scale-large)) var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-bold) calc(1.3rem * var(--scale-xlarge))/calc(1.3rem * var(--scale-xlarge)) var(--font-family-ubuntu);
   color: var(--color-black, #2d4b4b);
 }
 
 .pilgrims-horizontal-chart__pct {
-  font: var(--font-style-normal) var(--font-weight-bold) calc(1.3rem * var(--scale-large))/calc(1.3rem * var(--scale-large)) var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-bold) calc(1.3rem * var(--scale-xlarge))/calc(1.3rem * var(--scale-xlarge)) var(--font-family-ubuntu);
   color: var(--color-black, #2d4b4b);
   margin-top: 0.05rem;
 }

@@ -43,7 +43,7 @@ onUnmounted(() => {
         </div>
         <img ref="image" class="ma mb-2" src="../../assets/illustrations/saint_jacques_ok.webp"
           :alt="$t('etapesCles.title')" :class="{ 'paragraph-spacing': isMobile }" loading="lazy"
-          style="width: calc(50vw * var(--scale-large));">
+          style="width: calc(50vw * var(--scale-xlarge));">
       </div>
     </section>
   </div>
