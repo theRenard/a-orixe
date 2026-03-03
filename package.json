@@ -25,7 +25,8 @@
     "vite-ssg": "^28.3.0",
     "vue": "^3.5.27",
     "vue-i18n": "^11.2.8",
-    "vue-router": "^4.6.4"
+    "vue-router": "^4.6.4",
+    "vue3-carousel": "^0.17.0"
   },
   "devDependencies": {
     "@tsconfig/node24": "^24.0.4",

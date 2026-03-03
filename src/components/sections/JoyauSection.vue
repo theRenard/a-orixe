@@ -1,8 +1,23 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, inject } from 'vue'
+import { ref, computed, onMounted, onUnmounted, inject } from 'vue'
+import { useI18n } from 'vue-i18n'
 import ImageCrop from '@/components/tools/ImageCrop.vue'
+import SlidingGallery from '@/components/tools/SlidingGallery.vue'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
+import { useMobileDetection } from '@/composables/useMobileDetection'
+
+const { t } = useI18n()
+const { isMobile } = useMobileDetection()
+
+const image1 = new URL('../../assets/photos/10_florence_antunes.webp', import.meta.url).href
+const image2 = new URL('../../assets/photos/11_florence_antunes.webp', import.meta.url).href
+const image3 = new URL('../../assets/photos/12_florence_antunes.webp', import.meta.url).href
+const imageList = computed(() => [
+  { src: image1, alt: t('joyau.caption') },
+  { src: image2, alt: t('joyau.caption') },
+  { src: image3, alt: t('joyau.caption') },
+])
 
 const sectionRoot = ref<HTMLElement | null>(null)
 const caption = ref<HTMLElement | null>(null)
@@ -45,20 +60,21 @@ onUnmounted(() => {
         <p ref="caption" class="joyau-section__caption type__image-caption type__image-caption--with-line"
           v-html="$t('joyau.caption')">
         </p>
-        <div class="joyau-section__grid">
+        <SlidingGallery v-if="isMobile" :images="imageList" />
+        <div v-else class="joyau-section__grid">
           <div ref="cell1" class="joyau-section__cell">
             <ImageCrop width="100%" height="37.5rem" position="center 50%">
-              <img src="../../assets/photos/10_florence_antunes.webp" :alt="$t('joyau.caption')" loading="lazy">
+              <img :src="image1" :alt="$t('joyau.caption')" loading="lazy">
             </ImageCrop>
           </div>
           <div ref="cell2" class="joyau-section__cell">
             <ImageCrop width="100%" height="37.5rem" position="center 50%">
-              <img src="../../assets/photos/11_florence_antunes.webp" :alt="$t('joyau.caption')" loading="lazy">
+              <img :src="image2" :alt="$t('joyau.caption')" loading="lazy">
             </ImageCrop>
           </div>
           <div ref="cell3" class="joyau-section__cell">
             <ImageCrop width="100%" height="37.5rem" position="center 50%">
-              <img src="../../assets/photos/12_florence_antunes.webp" :alt="$t('joyau.caption')" loading="lazy">
+              <img :src="image3" :alt="$t('joyau.caption')" loading="lazy">
             </ImageCrop>
           </div>
         </div>
