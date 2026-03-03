@@ -247,13 +247,13 @@ onUnmounted(() => {
   background: var(--color-teal-medium);
   color: var(--color-white);
   font-family: var(--font-family-ubuntu);
-  font-size: calc(var(--font-size-sm) * var(--font-scale));
+  font-size: calc(var(--font-size-sm) * var(--font-scale-small));
   font-weight: var(--font-weight-normal);
   line-height: 1.4;
   padding: calc(1rem * var(--font-scale)) calc(1.25rem * var(--font-scale));
   text-align: left;
   border-radius: calc(3rem * var(--font-scale));
-  border-bottom-left-radius: 2rem;
+  border-bottom-left-radius: calc(2rem * var(--font-scale));
   border-bottom-right-radius: calc(2rem * var(--font-scale));
   position: absolute;
   top: 0;
@@ -263,6 +263,14 @@ onUnmounted(() => {
   min-height: 5rem;
   padding-top: 6rem;
   padding-bottom: 1rem;
+}
+
+@media (max-width: 47.99rem) {
+  .sound-player__transcript {
+    position: relative;
+    margin-top: calc(-5rem * var(--font-scale));
+    padding-top: calc(6rem * var(--font-scale));
+  }
 }
 
 .sound-player__transcript-chapter {

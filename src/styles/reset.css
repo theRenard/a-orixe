@@ -3,6 +3,10 @@
  * Normalises box model, margins, and common defaults so you can set spacing by hand.
  */
 
+:root {
+  color-scheme: light only;
+}
+
 *,
 *::before,
 *::after {
