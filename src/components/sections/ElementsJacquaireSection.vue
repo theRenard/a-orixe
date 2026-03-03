@@ -11,7 +11,7 @@ const title = ref<HTMLElement | null>(null)
 const contentBlock = ref<HTMLElement | null>(null)
 const registerBlockEnter = inject<((index: number, play: () => void) => void) | undefined>('blockScroll/registerBlockEnter')
 const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
-const { run } = useRevealAnimation({
+const { run, setInitialState } = useRevealAnimation({
   elements: [
     // { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
     {
@@ -29,6 +29,7 @@ const { run } = useRevealAnimation({
 })
 let myBlockIndex = -1
 onMounted(() => {
+  setInitialState()
   myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
   registerBlockEnter?.(myBlockIndex, () => run())
 })

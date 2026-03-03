@@ -31,7 +31,7 @@ const SCROLL_INDICATOR_HIDE_PX = 10
 const REVEAL_TRIGGER_PX = 50
 let revealDone = false
 
-const { run } = useRevealAnimation({
+const { run, setInitialState } = useRevealAnimation({
   elements: [
     { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
     { el: heroTitle, direction: 'down', delay: 0.1 },
@@ -60,17 +60,10 @@ function onBlockScroll() {
 
 let myBlockIndex = -1
 
-function setRevealInitialState() {
-  const left = creditsLeft.value
-  const right = creditsRight.value
-  if (left) gsap.set(left, { x: -80, opacity: 0 })
-  if (right) gsap.set(right, { x: 80, opacity: 0 })
-}
-
 onMounted(() => {
+  setInitialState()
   myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
   registerBlockEnter?.(myBlockIndex, () => run())
-  nextTick(setRevealInitialState)
   const el = blockInnerRef.value
   if (el) {
     el.addEventListener('scroll', onBlockScroll, { passive: true })

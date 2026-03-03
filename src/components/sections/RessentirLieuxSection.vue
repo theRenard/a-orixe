@@ -16,7 +16,7 @@ const imageBlock = ref<HTMLElement | null>(null)
 const titleBlock = ref<HTMLElement | null>(null)
 const registerBlockEnter = inject<((index: number, play: () => void) => void) | undefined>('blockScroll/registerBlockEnter')
 const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
-const { run } = useRevealAnimation({
+const { run, setInitialState } = useRevealAnimation({
   elements: [
     { el: imageBlock, delay: 0, steps: [
       { to: { scale: 1.5 }, duration: 0, opacity: 0, transformOrigin: 'center top' },
@@ -34,6 +34,7 @@ const { run } = useRevealAnimation({
 })
 let myBlockIndex = -1
 onMounted(() => {
+  setInitialState()
   myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
   registerBlockEnter?.(myBlockIndex, () => run())
 })

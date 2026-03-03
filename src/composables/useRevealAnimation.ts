@@ -112,10 +112,95 @@ function mergeTweenVars(
   return { ...base, ...overrides }
 }
 
+type ResolvedTarget = {
+  el: Element
+  direction: RevealDirection
+  delay?: number
+  duration?: number
+  offset?: number
+  rotation?: number
+  scale?: number
+  opacity?: number
+  transformOrigin?: string
+  steps?: RevealStep[]
+}
+
+function resolveTargets(
+  elements: RevealElementConfig[],
+  offsetPx: number,
+): ResolvedTarget[] {
+  const targets: ResolvedTarget[] = []
+  for (const config of elements) {
+    const el = resolveEl(config)
+    if (!el) continue
+    targets.push({
+      el,
+      direction: config.direction ?? 'left',
+      delay: config.delay,
+      duration: config.duration,
+      offset: config.offset,
+      rotation: config.rotation,
+      scale: config.scale,
+      opacity: config.opacity,
+      transformOrigin: config.transformOrigin,
+      steps: config.steps?.length ? config.steps : undefined,
+    })
+  }
+  return targets
+}
+
+function applyInitialFromState(
+  targets: ResolvedTarget[],
+  offsetPx: number,
+): void {
+  targets.forEach((target) => {
+    const {
+      el,
+      direction,
+      offset: elOffset,
+      rotation: elRotation,
+      scale: elScale,
+      opacity: elOpacity,
+      transformOrigin: elTransformOrigin,
+      steps: elSteps,
+    } = target
+    const dist = elOffset ?? offsetPx
+    const origin = elTransformOrigin ?? '50% 50%'
+    const hasScaleOrRotation =
+      (elScale != null && elScale !== 1) ||
+      (elRotation != null && elRotation !== 0) ||
+      (elSteps?.some((s) => 'scale' in s.to || 'rotation' in s.to) ?? false)
+    if (hasScaleOrRotation || elTransformOrigin != null || (elSteps?.some((s) => s.transformOrigin != null) ?? false)) {
+      gsap.set(el, { transformOrigin: origin, force3D: !!hasScaleOrRotation })
+    }
+    const fromVars: gsap.TweenVars = { opacity: elOpacity ?? 0 }
+    if (direction === 'left' || direction === 'right') {
+      fromVars.x = direction === 'left' ? -dist : dist
+    } else {
+      fromVars.y = direction === 'up' ? -dist : dist
+    }
+    if (elRotation != null && elRotation !== 0) {
+      fromVars.rotation = elRotation
+      fromVars.transformOrigin = origin
+    }
+    if (elScale != null && elScale !== 1) {
+      fromVars.scale = elScale
+      fromVars.transformOrigin = origin
+      fromVars.force3D = true
+    }
+    if (elTransformOrigin != null && elRotation == null && (elScale == null || elScale === 1)) {
+      fromVars.transformOrigin = origin
+    }
+    gsap.set(el, fromVars)
+  })
+}
+
 /**
  * Composable for GSAP reveal animations: elements enter from left, right, up, or down
  * and fade in from opacity 0. Run only on the client (use inside onMounted).
  * Use scrollTrigger to start the animation when the section enters the viewport.
+ * When using registerBlockEnter (mobile), call setInitialState() in onMounted so
+ * elements start hidden and don't flash in final position before the animation.
  */
 export function useRevealAnimation(options: UseRevealAnimationOptions) {
   const {
@@ -129,84 +214,30 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
   } = options
 
   /**
+   * Applies the initial "from" state to all reveal elements so they are hidden until
+   * run() plays. Call this in onMounted when using registerBlockEnter (mobile scroll
+   * trigger) to prevent elements flashing in final position before the animation.
+   */
+  function setInitialState(): void {
+    if (typeof window === 'undefined') return
+    const targets = resolveTargets(elements, offset)
+    if (targets.length === 0) return
+    applyInitialFromState(targets, offset)
+  }
+
+  /**
    * Builds and runs the reveal animation. When scrollTrigger is set, the timeline
    * is tied to ScrollTrigger and returns a cleanup function for onUnmounted.
    */
   function run(): (() => void) | void {
     if (typeof window === 'undefined') return
 
-    const targets: Array<{
-      el: Element
-      direction: RevealDirection
-      delay?: number
-      duration?: number
-      offset?: number
-      rotation?: number
-      scale?: number
-      opacity?: number
-      transformOrigin?: string
-      steps?: RevealStep[]
-    }> = []
-    for (const config of elements) {
-      const el = resolveEl(config)
-      if (!el) continue
-      targets.push({
-        el,
-        direction: config.direction ?? 'left',
-        delay: config.delay,
-        duration: config.duration,
-        offset: config.offset,
-        rotation: config.rotation,
-        scale: config.scale,
-        opacity: config.opacity,
-        transformOrigin: config.transformOrigin,
-        steps: config.steps?.length ? config.steps : undefined,
-      })
-    }
+    const targets = resolveTargets(elements, offset)
 
     if (targets.length === 0) return
 
-    /** Apply initial "from" state to all elements immediately so they never flash in final position (fixes mobile jump). */
-    targets.forEach((target) => {
-      const {
-        el,
-        direction,
-        offset: elOffset,
-        rotation: elRotation,
-        scale: elScale,
-        opacity: elOpacity,
-        transformOrigin: elTransformOrigin,
-        steps: elSteps,
-      } = target
-      const dist = elOffset ?? offset
-      const origin = elTransformOrigin ?? '50% 50%'
-      const hasScaleOrRotation =
-        (elScale != null && elScale !== 1) ||
-        (elRotation != null && elRotation !== 0) ||
-        (elSteps?.some((s) => 'scale' in s.to || 'rotation' in s.to) ?? false)
-      if (hasScaleOrRotation || elTransformOrigin != null || (elSteps?.some((s) => s.transformOrigin != null) ?? false)) {
-        gsap.set(el, { transformOrigin: origin, force3D: !!hasScaleOrRotation })
-      }
-      const fromVars: gsap.TweenVars = { opacity: elOpacity ?? 0 }
-      if (direction === 'left' || direction === 'right') {
-        fromVars.x = direction === 'left' ? -dist : dist
-      } else {
-        fromVars.y = direction === 'up' ? -dist : dist
-      }
-      if (elRotation != null && elRotation !== 0) {
-        fromVars.rotation = elRotation
-        fromVars.transformOrigin = origin
-      }
-      if (elScale != null && elScale !== 1) {
-        fromVars.scale = elScale
-        fromVars.transformOrigin = origin
-        fromVars.force3D = true
-      }
-      if (elTransformOrigin != null && elRotation == null && (elScale == null || elScale === 1)) {
-        fromVars.transformOrigin = origin
-      }
-      gsap.set(el, fromVars)
-    })
+    /** Apply initial "from" state so they never flash in final position (fixes mobile jump). */
+    applyInitialFromState(targets, offset)
 
     const stConfig =
       scrollTriggerOpt === true
@@ -385,5 +416,5 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
     }
   }
 
-  return { run, runOnMount }
+  return { run, setInitialState, runOnMount }
 }

@@ -9,7 +9,7 @@ const rightCol = ref<HTMLElement | null>(null)
 const question = ref<HTMLElement | null>(null)
 const registerBlockEnter = inject<((index: number, play: () => void) => void) | undefined>('blockScroll/registerBlockEnter')
 const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
-const { run } = useRevealAnimation({
+const { run, setInitialState } = useRevealAnimation({
   elements: [
     { el: leftCol, direction: 'left', delay: 0 },
     { el: rightCol, direction: 'right', delay: 0.1, rotation: 12 },
@@ -21,6 +21,7 @@ const { run } = useRevealAnimation({
 })
 let myBlockIndex = -1
 onMounted(() => {
+  setInitialState()
   myBlockIndex = getBlockIndexFromElement(leftCol.value)
   registerBlockEnter?.(myBlockIndex, () => run())
 })

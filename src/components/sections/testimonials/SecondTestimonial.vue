@@ -12,7 +12,7 @@ const blockquoteInner = ref<HTMLElement | null>(null)
 const imageRef = ref<HTMLElement | null>(null)
 const registerBlockEnter = inject<((index: number, play: () => void) => void) | undefined>('blockScroll/registerBlockEnter')
 const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
-const { run } = useRevealAnimation({
+const { run, setInitialState } = useRevealAnimation({
   elements: [
     { el: blockquoteInner, direction: 'down', delay: 0.5 },
     { el: imageRef, direction: 'right', delay: 1.1 },
@@ -23,6 +23,7 @@ const { run } = useRevealAnimation({
 })
 let myBlockIndex = -1
 onMounted(() => {
+  setInitialState()
   myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
   registerBlockEnter?.(myBlockIndex, () => run())
 })
