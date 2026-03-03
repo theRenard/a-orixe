@@ -11,6 +11,7 @@
 @media (min-width: 48rem) {
   :root {
     --font-scale: 1;
+    --font-scale-double: 1;
     --font-scale-small: 1;
     --chart-scale: 1;
   }
@@ -19,6 +20,7 @@
 @media (max-width: 47.99rem) {
   :root {
     --font-scale: 2.75;
+    --font-scale-double: 2;
     --font-scale-small: 1.5;
     --chart-scale: 0.75;
   }

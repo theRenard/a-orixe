@@ -64,6 +64,7 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 1.5rem;
+    flex-direction: row;
   }
 
   .col-left {

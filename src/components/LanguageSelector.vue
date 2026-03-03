@@ -41,11 +41,11 @@ function goToLocale(newLocale: 'fr' | 'es') {
   background-position: 0 0;
   background-origin: padding-box;
   opacity: 1;
-  padding: calc(0.4375rem * var(--font-scale));
+  padding: calc(0.4375rem * var(--font-scale-double));
   gap: 0.4rem;
-  height: calc(2.1875rem * var(--font-scale));
-  width: calc(4.6875rem * var(--font-scale));
-  border-bottom: calc(0.1875rem * var(--font-scale)) solid var(--color-orange);
+  height: calc(2.1875rem * var(--font-scale-double));
+  width: calc(4.6875rem * var(--font-scale-double));
+  border-bottom: calc(0.1875rem * var(--font-scale-double)) solid var(--color-orange);
 }
 
 .language-selector__option {

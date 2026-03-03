@@ -45,7 +45,7 @@ onUnmounted(() => {
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('parcoursPraticable.paragraph1')"></p>
         </div>
         <div class="centered--large">
-          <div class="row-two-col">
+          <div class="row-two-col paragraph-spacing">
             <div ref="leftCol" class="col-left">
               <p ref="question" class="type__question" v-html="$t('parcoursPraticable.paragraph2')"></p>
             </div>

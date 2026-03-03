@@ -78,3 +78,9 @@ section.section--full-viewport {
   padding: 0;
   padding-left: 0;
 }
+
+/* Two-col row: on mobile show second column before first (inverted order) */
+.row-two-col {
+  display: flex;
+  flex-direction: column-reverse;
+}

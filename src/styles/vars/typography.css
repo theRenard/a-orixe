@@ -6,7 +6,7 @@
 
 /* Language selector */
 .type__language-selector {
-  font: var(--font-style-normal) var(--font-weight-normal) calc(1.25rem * var(--font-scale)) / calc(2.1875rem * var(--font-scale)) var(--font-family-ubuntu);
+  font: var(--font-style-normal) var(--font-weight-normal) calc(1.25rem * var(--font-scale-double)) / calc(2.1875rem * var(--font-scale-double)) var(--font-family-ubuntu);
   color: var(--color-black);
   text-align: left;
 }
