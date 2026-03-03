@@ -57,14 +57,10 @@ onUnmounted(() => {
   <div data-block-inner class="block-inner">
     <section ref="sectionRoot" class="santiago-journey-photo-grid-section section--full-viewport">
       <div class="container">
-        <div ref="photoGrid" class="santiago-journey-photo-grid__wrapper">
-          <SlidingGallery
-            v-if="isMobile"
-            :images="imageList"
-            :caption="$t('santiagoJourney.imageCaption')"
-          />
+        <div class="santiago-journey-photo-grid__wrapper">
+          <SlidingGallery v-if="isMobile" :images="imageList" :caption="$t('santiagoJourney.imageCaption')" />
           <template v-else>
-            <div class="santiago-journey-photo-grid align-center paragraph-spacing" role="img"
+            <div ref="photoGrid" class="santiago-journey-photo-grid align-center paragraph-spacing" role="img"
               :aria-label="$t('santiagoJourney.imageCaption')">
               <div ref="cellLeft" class="santiago-journey-photo-grid__cell santiago-journey-photo-grid__cell--left">
                 <ImageCrop width="100%" height="100%" position="center 50%">
