@@ -112,7 +112,7 @@ watch(isWide, () => {
                     class="type__credits-bold">{{ $t('credits.translatedByName') }}</span></p>
                 <p>
                   {{ $t('credits.publishedOnPrefix') }}<span class="type__credits-bold">{{ $t('credits.publishedOnDate')
-                    }}</span>
+                  }}</span>
                 </p>
               </div>
               <div ref="creditsRight" :class="{ 'pb-2': isMobile, 'pt-2': isMobile }"
@@ -121,16 +121,16 @@ watch(isWide, () => {
                 <p>
                   {{ $t('credits.artDirectionPrefix') }}<span class="type__credits-bold">{{
                     $t('credits.artDirectionName')
-                    }}</span>
+                  }}</span>
                 </p>
                 <p>
                   {{ $t('credits.illustrationPrefix') }}<span class="type__credits-bold">{{
                     $t('credits.illustrationName')
-                    }}</span>
+                  }}</span>
                 </p>
                 <p>
                   {{ $t('credits.devDesignPrefix') }}<span class="type__credits-bold">{{ $t('credits.devDesignName')
-                    }}</span>
+                  }}</span>
                 </p>
               </div>
             </div>

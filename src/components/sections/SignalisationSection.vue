@@ -52,11 +52,7 @@ onUnmounted(() => {
   <div data-block-inner class="block-inner">
     <section ref="sectionRoot" class="signalisation-section section--full-viewport">
       <div class="container">
-        <SlidingGallery
-          v-if="isMobile"
-          :images="imageList"
-          :caption="$t('signalisation.caption')"
-        />
+        <SlidingGallery v-if="isMobile" :images="imageList" :caption="$t('signalisation.caption')" />
         <template v-else>
           <div class="signalisation-section__grid">
             <div ref="cell1" class="signalisation-section__cell">

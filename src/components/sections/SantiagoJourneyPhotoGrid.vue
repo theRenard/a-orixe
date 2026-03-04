@@ -82,11 +82,11 @@ onUnmounted(() => {
                   <img :src="rightBottomImage" alt="" loading="lazy" role="presentation">
                 </ImageCrop>
               </div>
+              <p ref="caption"
+                class="santiago-journey-photo-grid__caption type__image-caption type__image-caption--with-line">
+                {{ $t('santiagoJourney.imageCaption') }}
+              </p>
             </div>
-            <p ref="caption"
-              class="santiago-journey-photo-grid__caption type__image-caption type__image-caption--with-line">
-              {{ $t('santiagoJourney.imageCaption') }}
-            </p>
           </template>
         </div>
       </div>

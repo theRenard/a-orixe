@@ -3,7 +3,9 @@ import { ref, onMounted, onUnmounted, inject } from 'vue'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
 import { isMobileViewport } from '@/composables/useMobileDetection'
+import { useMobileDetection } from '@/composables/useMobileDetection'
 
+const { isMobile } = useMobileDetection()
 const sectionRoot = ref<HTMLElement | null>(null)
 const author = ref<HTMLElement | null>(null)
 const content = ref<HTMLElement | null>(null)
@@ -36,7 +38,7 @@ onUnmounted(() => {
 <template>
 <div data-block data-component="CommentEstNeRecitSection" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="section--full-viewport comment-est-ne-section">
+    <section ref="sectionRoot" class="section--full-viewport comment-est-ne-section" :class="{ 'pb-10': isMobile }">
       <div class="container">
         <div class="comment-est-ne-section__inner paragraph-spacing">
           <div class="comment-est-ne-section__grid">

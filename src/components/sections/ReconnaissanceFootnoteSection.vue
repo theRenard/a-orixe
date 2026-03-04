@@ -61,7 +61,7 @@ onUnmounted(() => {
 
 <style scoped>
 .image-crop-container {
-  width: calc(35rem * var(--scale-xlarge));
+  width: calc(35rem * var(--scale-large));
   height: auto;
   margin: 0 auto;
 }

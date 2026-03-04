@@ -61,10 +61,7 @@ onUnmounted(() => {
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('joyau.paragraph1')"></p>
           <p class="type__section-paragraph joyau-section__quote paragraph-spacing" v-html="$t('joyau.paragraph2')"></p>
         </div>
-        <p ref="caption" class="joyau-section__caption type__image-caption type__image-caption--with-line"
-          v-html="$t('joyau.caption')">
-        </p>
-        <SlidingGallery v-if="isMobile" :images="imageList" />
+        <SlidingGallery v-if="isMobile" :images="imageList" class="mb-0" />
         <div v-else class="joyau-section__grid">
           <div ref="cell1" class="joyau-section__cell">
             <ImageCrop width="100%" height="37.5rem" position="center 50%">
@@ -82,6 +79,9 @@ onUnmounted(() => {
             </ImageCrop>
           </div>
         </div>
+        <p ref="caption" class="joyau-section__caption type__image-caption type__image-caption--with-line"
+          v-html="$t('joyau.caption')">
+        </p>
       </div>
     </section>
   </div>
