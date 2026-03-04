@@ -242,8 +242,8 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
     /** Apply initial "from" state so elements are hidden until timeline plays (desktop: block-enter; mobile: ScrollTrigger). */
     applyInitialFromState(targets, offset)
 
-    /** On mobile: per-element ScrollTrigger so each element reveals when it reaches 70% viewport. */
-    const MOBILE_START = 'top 70%'
+    /** On mobile: per-element ScrollTrigger so each element reveals when it reaches 80% viewport. */
+    const MOBILE_START = 'top 90%'
     if (isMobile) {
       const killList: (() => void)[] = []
       targets.forEach((target, i) => {
@@ -309,6 +309,7 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
               start: MOBILE_START,
               once: true,
               toggleActions: 'play none none none',
+              // markers: true,
             },
             defaults: { ease },
           })
@@ -368,6 +369,7 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
               start: MOBILE_START,
               once: true,
               toggleActions: 'play none none none',
+              // markers: true,
             },
           })
           killList.push(() => tween.scrollTrigger?.kill())
@@ -403,6 +405,7 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
           start: stConfig.start,
           end: stConfig.end,
           toggleActions: stConfig.once ? 'play none none none' : 'play none reverse none',
+          // markers: true,
         }
       }
     }
