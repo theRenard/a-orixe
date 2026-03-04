@@ -5,6 +5,7 @@ import pronunciationMp3 from '@/assets/audio/audio_prononciation_a_orixe.mp3'
 import pronunciationImage from '@/assets/audio-photos/pastille-photo-saturio.webp'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
+import { isMobileViewport } from '@/composables/useMobileDetection'
 
 const sectionRoot = ref<HTMLElement | null>(null)
 const question = ref<HTMLElement | null>(null)
@@ -22,13 +23,16 @@ const { run, setInitialState } = useRevealAnimation({
   runOnMount: false,
 })
 let myBlockIndex = -1
+let mobileRevealCleanup: (() => void) | void
 onMounted(() => {
   setInitialState()
   myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
   registerBlockEnter?.(myBlockIndex, () => run())
+  if (isMobileViewport()) mobileRevealCleanup = run()
 })
 onUnmounted(() => {
   unregisterBlockEnter?.(myBlockIndex)
+  mobileRevealCleanup?.()
 })
 </script>
 

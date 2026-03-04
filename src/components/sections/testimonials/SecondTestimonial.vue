@@ -3,7 +3,7 @@ import { ref, onMounted, onUnmounted, inject } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
-import { useMobileDetection } from '@/composables/useMobileDetection'
+import { useMobileDetection, isMobileViewport } from '@/composables/useMobileDetection'
 
 const { locale } = useI18n()
 const { isMobile } = useMobileDetection()
@@ -22,13 +22,16 @@ const { run, setInitialState } = useRevealAnimation({
   runOnMount: false,
 })
 let myBlockIndex = -1
+let mobileRevealCleanup: (() => void) | void
 onMounted(() => {
   setInitialState()
   myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
   registerBlockEnter?.(myBlockIndex, () => run())
+  if (isMobileViewport()) mobileRevealCleanup = run()
 })
 onUnmounted(() => {
   unregisterBlockEnter?.(myBlockIndex)
+  mobileRevealCleanup?.()
 })
 </script>
 

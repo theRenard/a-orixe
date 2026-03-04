@@ -4,7 +4,7 @@ import gsap from 'gsap'
 import heroImage from '@/assets/illustrations/illu_principale_ok.webp'
 import mouseIcon from '@/assets/icons/scroll_down_2.webp'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
-import { useMobileDetection } from '@/composables/useMobileDetection.ts'
+import { useMobileDetection, isMobileViewport } from '@/composables/useMobileDetection'
 import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
 
 const { isWide, isMobile } = useMobileDetection()
@@ -59,11 +59,13 @@ function onBlockScroll() {
 }
 
 let myBlockIndex = -1
+let mobileRevealCleanup: (() => void) | void
 
 onMounted(() => {
   setInitialState()
   myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
   registerBlockEnter?.(myBlockIndex, () => run())
+  if (isMobileViewport()) mobileRevealCleanup = run()
   const el = blockInnerRef.value
   if (el) {
     el.addEventListener('scroll', onBlockScroll, { passive: true })
@@ -72,6 +74,7 @@ onMounted(() => {
 })
 onUnmounted(() => {
   unregisterBlockEnter?.(myBlockIndex)
+  mobileRevealCleanup?.()
 })
 
 watch(isWide, () => {

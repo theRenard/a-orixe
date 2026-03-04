@@ -9,7 +9,7 @@ import mapImageMobile from '@/assets/illustrations/map_MOBILE_01.webp'
 import mapLineImageMobile from '@/assets/illustrations/map_MOBILE_02.webp'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
-import { useMobileDetection } from '@/composables/useMobileDetection'
+import { useMobileDetection, isMobileViewport } from '@/composables/useMobileDetection'
 
 gsap.registerPlugin(ScrollTrigger)
 const { isMobile } = useMobileDetection()
@@ -61,10 +61,12 @@ const { run, setInitialState } = useRevealAnimation({
   runOnMount: false,
 })
 let myBlockIndex = -1
+let mobileRevealCleanup: (() => void) | void
 onMounted(() => {
   setInitialState()
   myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
   registerBlockEnter?.(myBlockIndex, () => run())
+  if (isMobileViewport()) mobileRevealCleanup = run()
   setLineWidth()
   const resizeObserver = new ResizeObserver(setLineWidth)
   const wrap = mapWrap.value
@@ -83,6 +85,7 @@ onMounted(() => {
 })
 onUnmounted(() => {
   unregisterBlockEnter?.(myBlockIndex)
+  mobileRevealCleanup?.()
 })
 </script>
 

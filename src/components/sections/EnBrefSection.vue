@@ -7,7 +7,7 @@ import phareCorrubedo from '@/assets/illustrations/phare.png'
 import cathedrale from '@/assets/illustrations/cathedrale.png'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
-import { useMobileDetection } from '@/composables/useMobileDetection'
+import { useMobileDetection, isMobileViewport } from '@/composables/useMobileDetection'
 
 gsap.registerPlugin(ScrollTrigger)
 const { isMobile } = useMobileDetection()
@@ -34,10 +34,12 @@ const { run, setInitialState } = useRevealAnimation({
   runOnMount: false,
 })
 let myBlockIndex = -1
+let mobileRevealCleanup: (() => void) | void
 onMounted(() => {
   setInitialState()
   myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
   registerBlockEnter?.(myBlockIndex, () => run())
+  if (isMobileViewport()) mobileRevealCleanup = run()
   nextTick(() => {
     const triggerEl = sectionRoot.value
     const el1 = stat1El.value
@@ -67,6 +69,7 @@ onMounted(() => {
 })
 onUnmounted(() => {
   unregisterBlockEnter?.(myBlockIndex)
+  mobileRevealCleanup?.()
 })
 </script>
 

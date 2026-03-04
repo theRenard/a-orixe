@@ -3,7 +3,7 @@ import { ref, onMounted, onUnmounted, inject } from 'vue'
 import villageIllustration from '@/assets/illustrations/village.webp'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
-import { useMobileDetection } from '@/composables/useMobileDetection'
+import { useMobileDetection, isMobileViewport } from '@/composables/useMobileDetection'
 
 const { isMobile } = useMobileDetection()
 const sectionRoot = ref<HTMLElement | null>(null)
@@ -27,13 +27,16 @@ const { run, setInitialState } = useRevealAnimation({
   runOnMount: false,
 })
 let myBlockIndex = -1
+let mobileRevealCleanup: (() => void) | void
 onMounted(() => {
   setInitialState()
   myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
   registerBlockEnter?.(myBlockIndex, () => run())
+  if (isMobileViewport()) mobileRevealCleanup = run()
 })
 onUnmounted(() => {
   unregisterBlockEnter?.(myBlockIndex)
+  mobileRevealCleanup?.()
 })
 </script>
 

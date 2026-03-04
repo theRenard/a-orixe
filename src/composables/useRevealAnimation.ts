@@ -1,6 +1,7 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import type { Ref } from 'vue'
+import { isMobileViewport } from '@/composables/useMobileDetection'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -215,8 +216,8 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
 
   /**
    * Applies the initial "from" state to all reveal elements so they are hidden until
-   * run() plays. Call this in onMounted when using registerBlockEnter (mobile scroll
-   * trigger) to prevent elements flashing in final position before the animation.
+   * run() plays. Call this in onMounted: on desktop before block-enter; on mobile
+   * before run() sets up ScrollTrigger, so elements stay hidden until scroll triggers the reveal.
    */
   function setInitialState(): void {
     if (typeof window === 'undefined') return
@@ -236,20 +237,156 @@ export function useRevealAnimation(options: UseRevealAnimationOptions) {
 
     if (targets.length === 0) return
 
-    /** Apply initial "from" state so they never flash in final position (fixes mobile jump). */
+    const isMobile = isMobileViewport()
+
+    /** Apply initial "from" state so elements are hidden until timeline plays (desktop: block-enter; mobile: ScrollTrigger). */
     applyInitialFromState(targets, offset)
 
-    const stConfig =
-      scrollTriggerOpt === true
-        ? { once: true, start: 'top bottom' as const }
-        : scrollTriggerOpt
-          ? {
-            once: scrollTriggerOpt.once ?? true,
-            start: scrollTriggerOpt.start ?? 'top bottom',
-            end: scrollTriggerOpt.end,
-            trigger: scrollTriggerOpt.trigger,
+    /** On mobile: per-element ScrollTrigger so each element reveals when it reaches 70% viewport. */
+    const MOBILE_START = 'top 70%'
+    if (isMobile) {
+      const killList: (() => void)[] = []
+      targets.forEach((target, i) => {
+        const {
+          el,
+          direction,
+          delay: elDelay,
+          duration: elDuration,
+          offset: elOffset,
+          rotation: elRotation,
+          scale: elScale,
+          opacity: elOpacity,
+          transformOrigin: elTransformOrigin,
+          steps: elSteps,
+        } = target
+        const dist = elOffset ?? offset
+        const d = elDuration ?? duration
+        const origin = elTransformOrigin ?? '50% 50%'
+        const hasScaleOrRotation =
+          (elScale != null && elScale !== 1) ||
+          (elRotation != null && elRotation !== 0) ||
+          (elSteps?.some((s) => 'scale' in s.to || 'rotation' in s.to) ?? false)
+        const needsTransformOrigin =
+          hasScaleOrRotation || elTransformOrigin != null || (elSteps?.some((s) => s.transformOrigin != null) ?? false)
+        if (needsTransformOrigin) {
+          gsap.set(el, { transformOrigin: origin, force3D: hasScaleOrRotation })
+        }
+
+        const fromVars: gsap.TweenVars = { opacity: elOpacity ?? 0 }
+        if (direction === 'left' || direction === 'right') {
+          fromVars.x = direction === 'left' ? -dist : dist
+        } else {
+          fromVars.y = direction === 'up' ? -dist : dist
+        }
+        if (elRotation != null && elRotation !== 0) {
+          fromVars.rotation = elRotation
+          fromVars.transformOrigin = origin
+        }
+        if (elScale != null && elScale !== 1) {
+          fromVars.scale = elScale
+          fromVars.transformOrigin = origin
+          fromVars.force3D = true
+        }
+        if (elTransformOrigin != null && elRotation == null && (elScale == null || elScale === 1)) {
+          fromVars.transformOrigin = origin
+        }
+
+        if (elSteps?.length) {
+          const revealEndDefaults: gsap.TweenVars = {
+            opacity: 1,
+            x: 0,
+            y: 0,
+            rotation: 0,
+            scale: 1,
           }
-          : null
+          if (hasScaleOrRotation) {
+            revealEndDefaults.transformOrigin = origin
+            revealEndDefaults.force3D = true
+          }
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: el,
+              start: MOBILE_START,
+              once: true,
+              toggleActions: 'play none none none',
+            },
+            defaults: { ease },
+          })
+          killList.push(() => tl.scrollTrigger?.kill())
+          let prevEndState: gsap.TweenVars = { ...revealEndDefaults }
+          let position = 0
+          for (const [stepIndex, step] of elSteps.entries()) {
+            if (step.delay != null) position += step.delay
+            const mergedTo = mergeTweenVars(
+              stepIndex === 0 ? revealEndDefaults : prevEndState,
+              step.to,
+            )
+            if (step.opacity != null) mergedTo.opacity = step.opacity
+            if (step.scale != null) mergedTo.scale = step.scale
+            if (step.rotation != null) mergedTo.rotation = step.rotation
+            if (step.x != null) mergedTo.x = step.x
+            if (step.y != null) mergedTo.y = step.y
+            const stepOrigin = step.transformOrigin ?? origin
+            mergedTo.transformOrigin = stepOrigin
+            mergedTo.force3D = true
+            const toVars: gsap.TweenVars = {
+              ...mergedTo,
+              duration: step.duration,
+              ease: step.ease ?? ease,
+            }
+            if (stepIndex === 0) {
+              tl.to(el, toVars, position)
+            } else {
+              tl.fromTo(el, { ...prevEndState, transformOrigin: stepOrigin, force3D: true }, toVars, position)
+            }
+            position += step.duration
+            prevEndState = { ...mergedTo }
+          }
+        } else {
+          const toVars: gsap.TweenVars = { opacity: 1, duration: d, ease }
+          if (direction === 'left' || direction === 'right') {
+            toVars.x = 0
+          } else {
+            toVars.y = 0
+          }
+          if (elRotation != null && elRotation !== 0) {
+            toVars.rotation = 0
+            toVars.transformOrigin = origin
+          }
+          if (elScale != null && elScale !== 1) {
+            toVars.scale = 1
+            toVars.transformOrigin = origin
+            toVars.force3D = true
+          }
+          if (elTransformOrigin != null && elRotation == null && (elScale == null || elScale === 1)) {
+            toVars.transformOrigin = origin
+          }
+          const tween = gsap.to(el, {
+            ...toVars,
+            scrollTrigger: {
+              trigger: el,
+              start: MOBILE_START,
+              once: true,
+              toggleActions: 'play none none none',
+            },
+          })
+          killList.push(() => tween.scrollTrigger?.kill())
+        }
+      })
+      return () => killList.forEach((kill) => kill())
+    }
+
+    /** Desktop: one timeline, one ScrollTrigger (or none for block-enter). */
+    const stConfig = scrollTriggerOpt === true
+      ? { once: true, start: 'top bottom' as const, end: undefined as undefined, trigger: undefined as undefined }
+      : scrollTriggerOpt
+        ? {
+          once: scrollTriggerOpt.once ?? true,
+          start: scrollTriggerOpt.start ?? 'top bottom',
+          end: scrollTriggerOpt.end,
+          trigger: scrollTriggerOpt.trigger,
+        }
+        : null
 
     const timelineVars: gsap.TimelineVars = { defaults: { ease } }
     if (stConfig) {

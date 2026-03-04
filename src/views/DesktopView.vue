@@ -44,9 +44,11 @@ const { isWide } = useMobileDetection()
 
 const blockEnterCallbacks = new Map<number, () => void>()
 function registerBlockEnter(index: number, play: () => void) {
+  if (!isWide.value) return
   blockEnterCallbacks.set(index, play)
 }
 function unregisterBlockEnter(index: number) {
+  if (!isWide.value) return
   blockEnterCallbacks.delete(index)
 }
 provide('blockScroll/registerBlockEnter', registerBlockEnter)

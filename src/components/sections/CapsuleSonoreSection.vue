@@ -6,7 +6,7 @@ import audioForetOiseaux from '@/assets/audio/audio_foret_oiseaux.mp3'
 import capsuleSonoreImage from '@/assets/photos/13_florence_antunes.webp'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
-import { useMobileDetection } from '@/composables/useMobileDetection'
+import { useMobileDetection, isMobileViewport } from '@/composables/useMobileDetection'
 
 const { isMobile } = useMobileDetection()
 
@@ -25,13 +25,16 @@ const { run, setInitialState } = useRevealAnimation({
   runOnMount: false,
 })
 let myBlockIndex = -1
+let mobileRevealCleanup: (() => void) | void
 onMounted(() => {
   setInitialState()
   myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
   registerBlockEnter?.(myBlockIndex, () => run())
+  if (isMobileViewport()) mobileRevealCleanup = run()
 })
 onUnmounted(() => {
   unregisterBlockEnter?.(myBlockIndex)
+  mobileRevealCleanup?.()
 })
 </script>
 
