@@ -3,6 +3,7 @@ import { ref, provide, nextTick, onMounted, onUnmounted, watch } from 'vue'
 import { useBlockScroll } from '@/composables/useBlockScroll'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 import HeroIllustration from '@/components/sections/HeroIllustration.vue'
+import HeroIllustrationMobile from '@/components/sections/HeroIllustrationMobile.vue'
 import CaminoSection from '@/components/sections/CaminoSection.vue'
 import EtapesClesSection from '@/components/sections/EtapesClesSection.vue'
 import RessentirLieuxSection from '@/components/sections/RessentirLieuxSection.vue'
@@ -142,7 +143,8 @@ onUnmounted(() => {
   <div ref="railRef" class="blocks-rail">
     <!--
       -->
-    <HeroIllustration />
+    <HeroIllustration v-if="isWide" />
+    <HeroIllustrationMobile v-else />
     <CaminoSection />
     <FirstTestimonial />
     <EtapesClesSection />
