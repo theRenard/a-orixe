@@ -12,7 +12,7 @@ defineProps<{
 
 <template>
 <div class="sliding-gallery paragraph-spacing" role="region" aria-label="Image gallery">
-  <Carousel :autoplay="3000" :items-to-show="1" :wrap-around="true" :transition="400" :touch-drag="true"
+  <Carousel :autoplay="0" :items-to-show="1" :wrap-around="true" :transition="400" :touch-drag="true"
     :mouse-drag="true" height="100vmin" class="sliding-gallery__carousel">
     <Slide v-for="(item, i) in images" :key="i">
       <div class="sliding-gallery__slide">

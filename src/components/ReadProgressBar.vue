@@ -14,6 +14,8 @@ const props = withDefaults(
 const fillPercent = ref(0)
 let observer: IntersectionObserver | null = null
 let blockElements: Element[] = []
+/** For each block index, whether it is currently intersecting the viewport. */
+const intersecting = ref<boolean[]>([])
 const readCount = ref(0)
 
 function getBlocks(): Element[] {
@@ -43,17 +45,22 @@ function setupObserver() {
   blockElements = getBlocks()
   if (blockElements.length === 0) return
 
+  intersecting.value = blockElements.map(() => false)
   readCount.value = 0
   updateProgress()
 
   observer = new IntersectionObserver(
     (entries) => {
       for (const entry of entries) {
-        if (!entry.isIntersecting) continue
         const index = blockElements.indexOf(entry.target)
         if (index === -1) continue
-        readCount.value = Math.max(readCount.value, index + 1)
+        intersecting.value[index] = entry.isIntersecting
       }
+      const maxIntersectingIndex = intersecting.value.reduce(
+        (max, isIn, i) => (isIn ? i : max),
+        -1,
+      )
+      readCount.value = maxIntersectingIndex === -1 ? 0 : maxIntersectingIndex + 1
       updateProgress()
     },
     {
