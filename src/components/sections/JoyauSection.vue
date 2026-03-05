@@ -62,7 +62,7 @@ onUnmounted(() => {
           <p class="type__section-paragraph joyau-section__quote paragraph-spacing" v-html="$t('joyau.paragraph2')"></p>
         </div>
         <SlidingGallery v-if="isMobile" :images="imageList" class="mb-0" />
-        <div v-else class="joyau-section__grid">
+        <div v-else class="joyau-section__grid paragraph-spacing mb-0">
           <div ref="cell1" class="joyau-section__cell">
             <ImageCrop width="100%" height="37.5rem" position="center 50%">
               <img :src="image1" :alt="$t('joyau.caption')" loading="lazy">
