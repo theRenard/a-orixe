@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import { nextTick } from 'vue'
 import { createHead } from '@unhead/vue/client'
 import App from './App.vue'
 import router from './router'
@@ -21,4 +22,7 @@ app.use(i18n)
 app.mount('#app')
 
 initShowComponentLabels()
-initAnimation()
+
+router.isReady().then(() => {
+  nextTick(() => initAnimation())
+})
