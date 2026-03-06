@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useMobileDetection } from '@/composables/useMobileDetection'
 
+defineProps<{ sectionIndex: number }>()
 const { isMobile } = useMobileDetection()
 </script>
 
@@ -13,9 +14,9 @@ const { isMobile } = useMobileDetection()
 </doc>
 
 <template>
-<div data-block data-component="EtapesClesSection" class="block">
-  <div data-block-inner class="block-inner">
-    <section id="etapes-cles" class="etapes-cles-section section--full-viewport">
+<section :class="['section', `section-${sectionIndex}`, 'etapes-cles-section', 'section--full-viewport']" id="etapes-cles" data-block data-component="EtapesClesSection">
+  <div class="section-content">
+    <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">
           <h2 class="type__section-title type__section-title--with-line heading-spacing">
@@ -27,9 +28,9 @@ const { isMobile } = useMobileDetection()
           :alt="$t('etapesCles.title')" :class="{ 'paragraph-spacing': isMobile }" loading="lazy"
           style="width: calc(50vw * var(--scale-xlarge));">
       </div>
-    </section>
+    </div>
   </div>
-</div>
+</section>
 </template>
 
 <style scoped>

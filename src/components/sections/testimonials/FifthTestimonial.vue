@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
+defineProps<{ sectionIndex: number }>()
 const { locale } = useI18n()
 </script>
 
@@ -13,29 +14,31 @@ const { locale } = useI18n()
 </doc>
 
 <template>
-<div data-block data-component="FifthTestimonial" class="block">
-  <div data-block-inner class="block-inner">
-    <section class="fifth-testimonial section--half-viewport">
-      <div class="container">
-        <div class="centered">
-          <p class="type__section-paragraph paragraph-spacing" v-html="$t('ressentirLieux.paragraph2')"></p>
-        </div>
-      </div>
-    </section>
-    <section class="testimonial fifth-testimonial section--half-viewport with-background with-shadow">
-      <div class="container">
-        <blockquote class="centered">
-          <div>
-            <p class="type__testimonial-block relative" :class="`type__testimonial-block--${locale}`">
-              <span v-html="$t('fifthTestimonial.quote')"></span>
-            </p>
-            <footer class="type__testimonial-name" v-html="$t('fifthTestimonial.quoteAuthor')"></footer>
+<section :class="['section', `section-${sectionIndex}`, 'fifth-testimonial']" data-block data-component="FifthTestimonial">
+  <div class="section-content">
+    <div class="section-inner" data-block-inner>
+      <section class="fifth-testimonial section--half-viewport">
+        <div class="container">
+          <div class="centered">
+            <p class="type__section-paragraph paragraph-spacing" v-html="$t('ressentirLieux.paragraph2')"></p>
           </div>
-        </blockquote>
-      </div>
-    </section>
+        </div>
+      </section>
+      <section class="testimonial fifth-testimonial section--half-viewport with-background with-shadow">
+        <div class="container">
+          <blockquote class="centered">
+            <div>
+              <p class="type__testimonial-block relative" :class="`type__testimonial-block--${locale}`">
+                <span v-html="$t('fifthTestimonial.quote')"></span>
+              </p>
+              <footer class="type__testimonial-name" v-html="$t('fifthTestimonial.quoteAuthor')"></footer>
+            </div>
+          </blockquote>
+        </div>
+      </section>
+    </div>
   </div>
-</div>
+</section>
 </template>
 
 <style scoped>

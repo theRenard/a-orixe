@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
+defineProps<{ sectionIndex: number }>()
 const { locale } = useI18n()
 </script>
 
@@ -13,9 +14,9 @@ const { locale } = useI18n()
 </doc>
 
 <template>
-<div data-block data-component="FirstTestimonial" class="block">
-  <div data-block-inner class="block-inner">
-    <section class="testimonial section--full-viewport with-background with-shadow">
+<section :class="['section', `section-${sectionIndex}`, 'testimonial', 'section--full-viewport', 'with-background', 'with-shadow']" data-block data-component="FirstTestimonial">
+  <div class="section-content">
+    <div class="section-inner" data-block-inner>
       <div class="container">
         <blockquote class="centered">
           <div>
@@ -26,9 +27,9 @@ const { locale } = useI18n()
           </div>
         </blockquote>
       </div>
-    </section>
+    </div>
   </div>
-</div>
+</section>
 </template>
 
 <style scoped>

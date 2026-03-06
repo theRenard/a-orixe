@@ -2,6 +2,7 @@
 import bateauIllustration from '@/assets/illustrations/bateau.webp'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 
+defineProps<{ sectionIndex: number }>()
 const { isMobile } = useMobileDetection()
 </script>
 
@@ -14,9 +15,9 @@ const { isMobile } = useMobileDetection()
 </doc>
 
 <template>
-<div data-block data-component="ExperienceDestineeSection" class="block">
-  <div data-block-inner class="block-inner">
-    <section class="experience-destinee-section section--full-viewport">
+<section :class="['section', `section-${sectionIndex}`, 'experience-destinee-section', 'section--full-viewport']" data-block data-component="ExperienceDestineeSection">
+  <div class="section-content">
+    <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">
           <img :src="bateauIllustration" :alt="$t('experienceDestinee.illustrationAlt')"
@@ -41,9 +42,9 @@ const { isMobile } = useMobileDetection()
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </div>
-</div>
+</section>
 </template>
 
 <style scoped>

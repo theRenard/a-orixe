@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useMobileDetection } from '@/composables/useMobileDetection'
 
+defineProps<{ sectionIndex: number }>()
 const { isMobile } = useMobileDetection()
 </script>
 
@@ -13,9 +14,9 @@ const { isMobile } = useMobileDetection()
 </doc>
 
 <template>
-<div data-block data-component="ElementsJacquaireSection" class="block">
-  <div data-block-inner class="block-inner">
-    <section class="elements-jacquaire-section section--full-viewport">
+<section :class="['section', `section-${sectionIndex}`, 'elements-jacquaire-section', 'section--full-viewport']" data-block data-component="ElementsJacquaireSection">
+  <div class="section-content">
+    <div class="section-inner" data-block-inner>
       <div class="container">
         <img src="../../assets/illustrations/benevoles_ok.webp" :alt="$t('elementsJacquaire.title')"
           class="elements-jacquaire-section__image ma" :class="{ 'paragraph-spacing': isMobile }" loading="lazy"
@@ -28,9 +29,9 @@ const { isMobile } = useMobileDetection()
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('elementsJacquaire.paragraph')"></p>
         </div>
       </div>
-    </section>
+    </div>
   </div>
-</div>
+</section>
 </template>
 
 <style scoped>

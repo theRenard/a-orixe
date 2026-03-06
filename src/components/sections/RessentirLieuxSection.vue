@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import ImageCrop from '@/components/tools/ImageCrop.vue'
+
+defineProps<{ sectionIndex: number }>()
 </script>
 
 <doc lang="text">
@@ -11,9 +13,9 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
 </doc>
 
 <template>
-<div data-block data-component="RessentirLieuxSection" class="block">
-  <div data-block-inner class="block-inner">
-    <section class="ressentir-lieux-section">
+<section :class="['section', `section-${sectionIndex}`, 'ressentir-lieux-section']" data-block data-component="RessentirLieuxSection">
+  <div class="section-content">
+    <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="ressentir-lieux-section__image-wrap">
           <ImageCrop width="100%" height="300px" position="0 75%" :caption="$t('ressentirLieux.imageCaption')"
@@ -33,9 +35,9 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </div>
-</div>
+</section>
 </template>
 
 <style scoped>

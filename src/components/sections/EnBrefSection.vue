@@ -5,6 +5,7 @@ import phareCorrubedo from '@/assets/illustrations/phare.png'
 import cathedrale from '@/assets/illustrations/cathedrale.png'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 
+defineProps<{ sectionIndex: number }>()
 const { isMobile } = useMobileDetection()
 const { locale } = useI18n()
 const routeDetailUrl = computed(() => `https://aorixe.es/${locale.value === 'es' ? 'es' : 'fr'}`)
@@ -24,9 +25,9 @@ const routeDetailUrl = computed(() => `https://aorixe.es/${locale.value === 'es'
 </doc>
 
 <template>
-<div data-block data-component="EnBrefSection" class="block">
-  <div data-block-inner class="block-inner">
-    <section class="en-bref-section section--full-viewport" :class="{ 'pb-10': isMobile }">
+<section :class="['section', `section-${sectionIndex}`, 'en-bref-section', 'section--full-viewport', { 'pb-10': isMobile }]" data-block data-component="EnBrefSection">
+  <div class="section-content">
+    <div class="section-inner" data-block-inner>
       <div class="en-bref-section__inner container">
         <h2 class="type__section-title type__section-title--with-line heading-spacing">
           <span class="">{{ $t('enBref.titlePrefix') }}</span>{{ $t('enBref.titleSuffix') }}
@@ -67,9 +68,9 @@ const routeDetailUrl = computed(() => `https://aorixe.es/${locale.value === 'es'
             class="type__enbref-small-green en-bref-section__link">{{ $t('enBref.detailLinkHere') }}</a>
         </p>
       </div>
-    </section>
+    </div>
   </div>
-</div>
+</section>
 </template>
 
 <style scoped>

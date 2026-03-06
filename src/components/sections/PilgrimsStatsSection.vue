@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import PilgrimsHorizontalChart from '@/components/tools/PilgrimsHorizontalChart.vue'
+
+defineProps<{ sectionIndex: number }>()
 </script>
 
 <doc lang="text">
@@ -12,9 +14,9 @@ import PilgrimsHorizontalChart from '@/components/tools/PilgrimsHorizontalChart.
 </doc>
 
 <template>
-<div data-block data-component="PilgrimsStatsSection" class="block">
-  <div data-block-inner class="block-inner">
-    <section class="pilgrims-stats-section section--full-viewport">
+<section :class="['section', `section-${sectionIndex}`, 'pilgrims-stats-section', 'section--full-viewport']" data-block data-component="PilgrimsStatsSection">
+  <div class="section-content">
+    <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">
           <h2 class="type__section-title type__section-title--with-line heading-spacing">
@@ -29,9 +31,9 @@ import PilgrimsHorizontalChart from '@/components/tools/PilgrimsHorizontalChart.
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </div>
-</div>
+</section>
 </template>
 
 <style scoped>

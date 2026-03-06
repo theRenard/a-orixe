@@ -1,4 +1,5 @@
 <script setup lang="ts">
+defineProps<{ sectionIndex: number }>()
 </script>
 
 <doc lang="text">
@@ -10,9 +11,9 @@
 </doc>
 
 <template>
-<div data-block data-component="OrixeInterviewSection" class="block">
-  <div data-block-inner class="block-inner">
-    <section class="orixe-interview-section section--full-viewport">
+<section :class="['section', `section-${sectionIndex}`, 'orixe-interview-section', 'section--full-viewport']" data-block data-component="OrixeInterviewSection">
+  <div class="section-content">
+    <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">
           <div>
@@ -35,9 +36,9 @@
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </div>
-</div>
+</section>
 </template>
 
 <style scoped>

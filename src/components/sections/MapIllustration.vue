@@ -7,6 +7,7 @@ import mapImageMobile from '@/assets/illustrations/map_MOBILE_01.webp'
 import mapLineImageMobile from '@/assets/illustrations/map_MOBILE_02.webp'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 
+defineProps<{ sectionIndex: number }>()
 const { isMobile } = useMobileDetection()
 
 const mapWrap = ref<HTMLElement | null>(null)
@@ -57,9 +58,9 @@ onMounted(() => {
 </doc>
 
 <template>
-<div data-block data-component="MapIllustration" class="block">
-  <div data-block-inner class="block-inner">
-    <section class="map-illustration-section">
+<section :class="['section', `section-${sectionIndex}`, 'map-illustration-section']" data-block data-component="MapIllustration">
+  <div class="section-content">
+    <div class="section-inner" data-block-inner>
       <div ref="mapWrap" class="map-illustration section--full-viewport image-section" role="img"
         :aria-label="$t('carteEtapesSantiago.caption')">
         <img class="map-illustration__bg" :src="mapImageComputed" alt="" />
@@ -83,9 +84,9 @@ onMounted(() => {
           <p class="type__question paragraph-spacing" v-html="$t('santiagoSteps.highlight')"></p>
         </div>
       </div>
-    </section>
+    </div>
   </div>
-</div>
+</section>
 </template>
 
 <style scoped>

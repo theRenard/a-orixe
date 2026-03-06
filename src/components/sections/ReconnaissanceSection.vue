@@ -1,4 +1,5 @@
 <script setup lang="ts">
+defineProps<{ sectionIndex: number }>()
 </script>
 
 <doc lang="text">
@@ -10,9 +11,9 @@
 </doc>
 
 <template>
-<div data-block data-component="ReconnaissanceSection" class="block">
-  <div data-block-inner class="block-inner">
-    <section class="reconnaissance-section section--full-viewport">
+<section :class="['section', `section-${sectionIndex}`, 'reconnaissance-section', 'section--full-viewport']" data-block data-component="ReconnaissanceSection">
+  <div class="section-content">
+    <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">
           <div class="paragraph-spacing reconnaissance-section__row">
@@ -24,9 +25,9 @@
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </div>
-</div>
+</section>
 </template>
 
 <style scoped>

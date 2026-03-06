@@ -3,6 +3,8 @@ import SoundPlayer from '@/components/tools/SoundPlayer.vue'
 import audioSabela from '@/assets/audio/audio_sabela.mp3'
 import chaptersSabela from '@/assets/audio-refs/Horodatage-Audio-Sabela.json'
 import sabelaImage from '@/assets/audio-photos/pastille-photo-sabela.webp'
+
+defineProps<{ sectionIndex: number }>()
 </script>
 
 <doc lang="text">
@@ -14,9 +16,9 @@ import sabelaImage from '@/assets/audio-photos/pastille-photo-sabela.webp'
 </doc>
 
 <template>
-<div data-block data-component="CoupDeCoeurSection" class="block">
-  <div data-block-inner class="block-inner">
-    <section class="coup-de-coeur-section section--full-viewport">
+<section :class="['section', `section-${sectionIndex}`, 'coup-de-coeur-section', 'section--full-viewport']" data-block data-component="CoupDeCoeurSection">
+  <div class="section-content">
+    <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">
           <h2 class="type__section-title type__section-title--with-line heading-spacing">
@@ -32,9 +34,9 @@ import sabelaImage from '@/assets/audio-photos/pastille-photo-sabela.webp'
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </div>
-</div>
+</section>
 </template>
 
 <style scoped>

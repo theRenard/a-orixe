@@ -2,6 +2,7 @@
 import { useI18n } from 'vue-i18n'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 
+defineProps<{ sectionIndex: number }>()
 const { locale } = useI18n()
 const { isMobile } = useMobileDetection()
 </script>
@@ -15,10 +16,9 @@ const { isMobile } = useMobileDetection()
 </doc>
 
 <template>
-<div data-block data-component="SecondTestimonial" class="block">
-  <div data-block-inner class="block-inner">
-    <section class="testimonial section--full-viewport with-background with-shadow second-testimonial"
-      style="position: relative;">
+<section :class="['section', `section-${sectionIndex}`, 'testimonial', 'section--full-viewport', 'with-background', 'with-shadow', 'second-testimonial']" style="position: relative;" data-block data-component="SecondTestimonial">
+  <div class="section-content">
+    <div class="section-inner" data-block-inner>
       <div class="container">
         <blockquote class="centered">
           <div>
@@ -37,9 +37,9 @@ const { isMobile } = useMobileDetection()
             v-html="$t('secondTestimonial.footnote')"></p>
         </div>
       </div>
-    </section>
+    </div>
   </div>
-</div>
+</section>
 </template>
 
 <style scoped>

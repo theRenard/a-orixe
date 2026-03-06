@@ -5,6 +5,7 @@ import audioForetOiseaux from '@/assets/audio/audio_foret_oiseaux.mp3'
 import capsuleSonoreImage from '@/assets/photos/13_florence_antunes.webp'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 
+defineProps<{ sectionIndex: number }>()
 const { isMobile } = useMobileDetection()
 </script>
 
@@ -17,9 +18,9 @@ const { isMobile } = useMobileDetection()
 </doc>
 
 <template>
-<div data-block data-component="CapsuleSonoreSection" class="block">
-  <div data-block-inner class="block-inner">
-    <section class="capsule-sonore-section">
+<section :class="['section', `section-${sectionIndex}`, 'capsule-sonore-section']" data-block data-component="CapsuleSonoreSection">
+  <div class="section-content">
+    <div class="section-inner" data-block-inner>
       <div class="container">
         <div>
           <ImageCrop :width="isMobile ? '100%' : '70rem'" :height="isMobile ? '70rem' : '50rem'" position="center 50%">
@@ -34,9 +35,9 @@ const { isMobile } = useMobileDetection()
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </div>
-</div>
+</section>
 </template>
 
 <style scoped>

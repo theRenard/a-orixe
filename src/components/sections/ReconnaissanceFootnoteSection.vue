@@ -2,6 +2,7 @@
 import ImageCrop from '@/components/tools/ImageCrop.vue'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 
+defineProps<{ sectionIndex: number }>()
 const { isMobile } = useMobileDetection()
 </script>
 
@@ -14,9 +15,9 @@ const { isMobile } = useMobileDetection()
 </doc>
 
 <template>
-<div data-block data-component="ReconnaissanceFootnoteSection" class="block">
-  <div data-block-inner class="block-inner">
-    <section class="reconnaissance-footnote-section section--full-viewport">
+<section :class="['section', `section-${sectionIndex}`, 'reconnaissance-footnote-section', 'section--full-viewport']" data-block data-component="ReconnaissanceFootnoteSection">
+  <div class="section-content">
+    <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">
           <p class="type__section-paragraph paragraph-spacing">{{ $t('reconnaissance.insertBetween') }}</p>
@@ -31,9 +32,9 @@ const { isMobile } = useMobileDetection()
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </div>
-</div>
+</section>
 </template>
 
 <style scoped>

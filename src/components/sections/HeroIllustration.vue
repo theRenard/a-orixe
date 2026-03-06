@@ -4,6 +4,7 @@ import heroImage from '@/assets/illustrations/illu_principale_ok.webp'
 import mouseIcon from '@/assets/icons/scroll_down_2.webp'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 
+const props = defineProps<{ sectionIndex: number }>()
 const { isWide, isMobile } = useMobileDetection()
 
 /** Static illustration height: 100vh (wide) or 75vh (narrow). Previously animated 100→50vh over scroll. */
@@ -25,10 +26,9 @@ const illustrationHeightVh = computed(() => (isWide.value ? 100 : 75))
 </doc>
 
 <template>
-<div :data-wide="isWide" :data-mobile="isMobile" data-block data-component="HeroIllustration"
-  class="block block--first">
-  <div data-block-inner class="block-inner">
-    <section class="hero-block section--full-viewport" aria-label="Hero">
+<section :class="['section', `section-${props.sectionIndex}`, 'hero-block', 'section--full-viewport', { 'block--first': props.sectionIndex === 1 }]" :data-wide="isWide" :data-mobile="isMobile" data-block data-component="HeroIllustration" aria-label="Hero">
+  <div class="section-content">
+    <div class="section-inner" data-block-inner>
       <div class="hero-block__illustration"
         :style="{ backgroundImage: `url(${heroImage})`, height: `${illustrationHeightVh}vh` }" role="img"
         :aria-label="$t('hero.illustrationAlt')" />
@@ -76,12 +76,12 @@ const illustrationHeightVh = computed(() => (isWide.value ? 100 : 75))
           </div>
         </div>
       </div>
-    </section>
-    <div v-if="isWide" class="scroll-indicator" aria-hidden="true">
-      <img :src="mouseIcon" alt="" class="scroll-indicator__icon" />
+      <div v-if="isWide" class="scroll-indicator" aria-hidden="true">
+        <img :src="mouseIcon" alt="" class="scroll-indicator__icon" />
+      </div>
     </div>
   </div>
-</div>
+</section>
 </template>
 
 <style scoped>
@@ -104,7 +104,7 @@ const illustrationHeightVh = computed(() => (isWide.value ? 100 : 75))
   line-height: normal;
 }
 
-.block--first .block-inner {
+.block--first .section-inner {
   position: relative;
 }
 

@@ -39,40 +39,40 @@ const { isWide } = useMobileDetection()
 
 <template>
 <main class="block-viewport">
-  <div class="blocks-rail">
-    <HeroIllustration v-if="isWide" />
-    <HeroIllustrationMobile v-else />
-    <CaminoSection />
-    <FirstTestimonial />
-    <EtapesClesSection />
-    <SecondTestimonial />
-    <RessentirLieuxSection />
-    <FifthTestimonial />
-    <AssociationSection />
-    <ReconstitutionTracSection />
-    <ThirdTestimonial />
-    <ElementsJacquaireSection />
-    <ParcoursPraticableSection />
-    <MapIllustration />
-    <ConcentreGaliceSection />
-    <SantiagoJourneyPhotoGrid />
-    <SantiagoJourneySection />
-    <ReconnaissanceSection />
-    <ReconnaissanceFootnoteSection />
-    <FourthTestimonial />
-    <FlechageSection />
-    <SignalisationSection />
-    <CoupDeCoeurSection />
-    <JoyauSection />
-    <DeconnexionSection />
-    <CapsuleSonoreSection />
-    <PilgrimsStatsSection />
-    <TraceRouteSection />
-    <SlowTourismeSection />
-    <OrixeInterviewSection />
-    <ExperienceDestineeSection />
-    <EnBrefSection />
-    <CommentEstNeRecitSection />
+  <div class="slides-wrapper">
+    <HeroIllustration v-if="isWide" :section-index="1" />
+    <HeroIllustrationMobile v-else :section-index="1" />
+    <CaminoSection :section-index="2" />
+    <FirstTestimonial :section-index="3" />
+    <EtapesClesSection :section-index="4" />
+    <SecondTestimonial :section-index="5" />
+    <RessentirLieuxSection :section-index="6" />
+    <FifthTestimonial :section-index="7" />
+    <AssociationSection :section-index="8" />
+    <ReconstitutionTracSection :section-index="9" />
+    <ThirdTestimonial :section-index="10" />
+    <ElementsJacquaireSection :section-index="11" />
+    <ParcoursPraticableSection :section-index="12" />
+    <MapIllustration :section-index="13" />
+    <ConcentreGaliceSection :section-index="14" />
+    <SantiagoJourneyPhotoGrid :section-index="15" />
+    <SantiagoJourneySection :section-index="16" />
+    <ReconnaissanceSection :section-index="17" />
+    <ReconnaissanceFootnoteSection :section-index="18" />
+    <FourthTestimonial :section-index="19" />
+    <FlechageSection :section-index="20" />
+    <SignalisationSection :section-index="21" />
+    <CoupDeCoeurSection :section-index="22" />
+    <JoyauSection :section-index="23" />
+    <DeconnexionSection :section-index="24" />
+    <CapsuleSonoreSection :section-index="25" />
+    <PilgrimsStatsSection :section-index="26" />
+    <TraceRouteSection :section-index="27" />
+    <SlowTourismeSection :section-index="28" />
+    <OrixeInterviewSection :section-index="29" />
+    <ExperienceDestineeSection :section-index="30" />
+    <EnBrefSection :section-index="31" />
+    <CommentEstNeRecitSection :section-index="32" />
   </div>
 </main>
 </template>

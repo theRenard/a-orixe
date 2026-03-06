@@ -3,6 +3,8 @@ import SoundPlayer from '@/components/tools/SoundPlayer.vue'
 import audioAdrian from '@/assets/audio/audio_adrian.mp3'
 import chaptersAdrian from '@/assets/audio-refs/Horodatage-Audio-Adrian.json'
 import adrianImage from '@/assets/audio-photos/pastille-photo-adrian.webp'
+
+defineProps<{ sectionIndex: number }>()
 </script>
 
 <doc lang="text">
@@ -14,9 +16,9 @@ import adrianImage from '@/assets/audio-photos/pastille-photo-adrian.webp'
 </doc>
 
 <template>
-<div data-block data-component="SantiagoJourneySection" class="block">
-  <div data-block-inner class="block-inner">
-    <section class="santiago-journey-section section--full-viewport">
+<section :class="['section', `section-${sectionIndex}`, 'santiago-journey-section', 'section--full-viewport']" data-block data-component="SantiagoJourneySection">
+  <div class="section-content">
+    <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('santiagoJourney.paragraph')"></p>
@@ -26,9 +28,9 @@ import adrianImage from '@/assets/audio-photos/pastille-photo-adrian.webp'
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </div>
-</div>
+</section>
 </template>
 
 <style scoped>

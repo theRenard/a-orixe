@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useMobileDetection } from '@/composables/useMobileDetection'
 
+defineProps<{ sectionIndex: number }>()
 const { isMobile } = useMobileDetection()
 </script>
 
@@ -13,9 +14,9 @@ const { isMobile } = useMobileDetection()
 </doc>
 
 <template>
-<div data-block data-component="CommentEstNeRecitSection" class="block">
-  <div data-block-inner class="block-inner">
-    <section class="section--full-viewport comment-est-ne-section" :class="{ 'pb-10': isMobile }">
+<section :class="['section', `section-${sectionIndex}`, 'section--full-viewport', 'comment-est-ne-section', { 'pb-10': isMobile }]" data-block data-component="CommentEstNeRecitSection">
+  <div class="section-content">
+    <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="comment-est-ne-section__inner paragraph-spacing">
           <div class="comment-est-ne-section__grid">
@@ -44,9 +45,9 @@ const { isMobile } = useMobileDetection()
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </div>
-</div>
+</section>
 </template>
 
 <style scoped>

@@ -2,6 +2,7 @@
 import ImageCrop from '@/components/tools/ImageCrop.vue'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 
+defineProps<{ sectionIndex: number }>()
 const { isMobile } = useMobileDetection()
 </script>
 
@@ -14,9 +15,9 @@ const { isMobile } = useMobileDetection()
 </doc>
 
 <template>
-<div data-block data-component="ParcoursPraticableSection" class="block">
-  <div data-block-inner class="block-inner">
-    <section class="parcours-praticable-section section--full-viewport">
+<section :class="['section', `section-${sectionIndex}`, 'parcours-praticable-section', 'section--full-viewport']" data-block data-component="ParcoursPraticableSection">
+  <div class="section-content">
+    <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered parcours-praticable-section__first">
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('parcoursPraticable.paragraph1')"></p>
@@ -36,9 +37,9 @@ const { isMobile } = useMobileDetection()
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </div>
-</div>
+</section>
 </template>
 
 <style scoped>

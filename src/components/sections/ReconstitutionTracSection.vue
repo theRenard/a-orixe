@@ -2,6 +2,7 @@
 import ImageCrop from '@/components/tools/ImageCrop.vue'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 
+defineProps<{ sectionIndex: number }>()
 const { isMobile } = useMobileDetection()
 </script>
 
@@ -14,9 +15,9 @@ const { isMobile } = useMobileDetection()
 </doc>
 
 <template>
-<div data-block data-component="ReconstitutionTracSection" class="block">
-  <div data-block-inner class="block-inner">
-    <section class="reconstitution-trac-section" :class="{ 'mt-8': isMobile }">
+<section :class="['section', `section-${sectionIndex}`, 'reconstitution-trac-section', { 'mt-8': isMobile }]" data-block data-component="ReconstitutionTracSection">
+  <div class="section-content">
+    <div class="section-inner" data-block-inner>
       <div class="container">
         <div>
           <ImageCrop width="100%" height="320px" position="center 50%"
@@ -36,9 +37,9 @@ const { isMobile } = useMobileDetection()
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </div>
-</div>
+</section>
 </template>
 
 <style scoped>

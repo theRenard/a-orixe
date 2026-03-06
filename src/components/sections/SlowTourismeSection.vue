@@ -2,6 +2,7 @@
 import villageIllustration from '@/assets/illustrations/village.webp'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 
+defineProps<{ sectionIndex: number }>()
 const { isMobile } = useMobileDetection()
 </script>
 
@@ -14,9 +15,9 @@ const { isMobile } = useMobileDetection()
 </doc>
 
 <template>
-<div data-block data-component="SlowTourismeSection" class="block">
-  <div data-block-inner class="block-inner">
-    <section class="slow-tourisme-section section--full-viewport">
+<section :class="['section', `section-${sectionIndex}`, 'slow-tourisme-section', 'section--full-viewport']" data-block data-component="SlowTourismeSection">
+  <div class="section-content">
+    <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">
           <h2 class="type__interview-title slow-tourisme-section__headline heading-spacing">
@@ -36,9 +37,9 @@ const { isMobile } = useMobileDetection()
             class="slow-tourisme-section__illustration" :class="{ 'paragraph-spacing': isMobile }" loading="lazy">
         </div>
       </div>
-    </section>
+    </div>
   </div>
-</div>
+</section>
 </template>
 
 <style scoped>

@@ -2,6 +2,7 @@
 import { useI18n } from 'vue-i18n'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 
+defineProps<{ sectionIndex: number }>()
 const { locale } = useI18n()
 const { isMobile } = useMobileDetection()
 </script>
@@ -15,10 +16,9 @@ const { isMobile } = useMobileDetection()
 </doc>
 
 <template>
-<div data-block data-component="FourthTestimonial" class="block">
-  <div data-block-inner class="block-inner">
-    <section
-      class="testimonial section--full-viewport with-background with-shadow fourth-testimonial">
+<section :class="['section', `section-${sectionIndex}`, 'testimonial', 'section--full-viewport', 'with-background', 'with-shadow', 'fourth-testimonial']" data-block data-component="FourthTestimonial">
+  <div class="section-content">
+    <div class="section-inner" data-block-inner>
       <div class="container fourth-testimonial__container">
         <img v-if="!isMobile" src="@/assets/illustrations/mouette.webp"
           :alt="$t('fourthTestimonial.quote')" class="fourth-testimonial__bird" loading="lazy">
@@ -31,9 +31,9 @@ const { isMobile } = useMobileDetection()
           </div>
         </blockquote>
       </div>
-    </section>
+    </div>
   </div>
-</div>
+</section>
 </template>
 
 <style scoped>

@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import ImageCrop from '@/components/tools/ImageCrop.vue'
+
+defineProps<{ sectionIndex: number }>()
 </script>
 
 <doc lang="text">
@@ -11,9 +13,9 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
 </doc>
 
 <template>
-<div data-block data-component="ConcentreGaliceSection" class="block">
-  <div data-block-inner class="block-inner">
-    <section class="concentre-galice-section section--full-viewport">
+<section :class="['section', `section-${sectionIndex}`, 'concentre-galice-section', 'section--full-viewport']" data-block data-component="ConcentreGaliceSection">
+  <div class="section-content">
+    <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered--large">
           <h2 class="type__section-title type__section-title--with-line heading-spacing mb-0">
@@ -37,9 +39,9 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('concentreGalice.paragraph3')"></p>
         </div>
       </div>
-    </section>
+    </div>
   </div>
-</div>
+</section>
 </template>
 
 <style scoped>

@@ -5,6 +5,7 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
 import SlidingGallery from '@/components/tools/SlidingGallery.vue'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 
+defineProps<{ sectionIndex: number }>()
 const { t } = useI18n()
 const { isMobile } = useMobileDetection()
 
@@ -28,9 +29,9 @@ const imageList = computed(() => [
 </doc>
 
 <template>
-<div data-block data-component="SantiagoJourneyPhotoGrid" class="block">
-  <div data-block-inner class="block-inner">
-    <section class="santiago-journey-photo-grid-section section--full-viewport">
+<section :class="['section', `section-${sectionIndex}`, 'santiago-journey-photo-grid-section', 'section--full-viewport']" data-block data-component="SantiagoJourneyPhotoGrid">
+  <div class="section-content">
+    <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="santiago-journey-photo-grid__wrapper">
           <SlidingGallery v-if="isMobile" :images="imageList" :caption="$t('santiagoJourney.imageCaption')" />
@@ -59,9 +60,9 @@ const imageList = computed(() => [
           </template>
         </div>
       </div>
-    </section>
+    </div>
   </div>
-</div>
+</section>
 </template>
 
 <style scoped>

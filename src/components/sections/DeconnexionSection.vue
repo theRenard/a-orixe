@@ -1,4 +1,5 @@
 <script setup lang="ts">
+defineProps<{ sectionIndex: number }>()
 </script>
 
 <doc lang="text">
@@ -10,9 +11,9 @@
 </doc>
 
 <template>
-<div data-block data-component="DeconnexionSection" class="block">
-  <div data-block-inner class="block-inner">
-    <section class="deconnexion-section section--full-viewport">
+<section :class="['section', `section-${sectionIndex}`, 'deconnexion-section', 'section--full-viewport']" data-block data-component="DeconnexionSection">
+  <div class="section-content">
+    <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">
           <h2 class="type__section-title type__section-title--with-line heading-spacing">
@@ -25,9 +26,9 @@
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </div>
-</div>
+</section>
 </template>
 
 <style scoped>

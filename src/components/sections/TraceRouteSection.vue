@@ -3,6 +3,8 @@ import SoundPlayer from '@/components/tools/SoundPlayer.vue'
 import audioDonManuel from '@/assets/audio/audio_don_manuel.mp4'
 import chaptersDonManuel from '@/assets/audio-refs/Horodatage-Audio-DonManuel.json'
 import donManuelImage from '@/assets/audio-photos/pastille-photo-don-manuel.webp'
+
+defineProps<{ sectionIndex: number }>()
 </script>
 
 <doc lang="text">
@@ -14,9 +16,9 @@ import donManuelImage from '@/assets/audio-photos/pastille-photo-don-manuel.webp
 </doc>
 
 <template>
-<div data-block data-component="TraceRouteSection" class="block">
-  <div data-block-inner class="block-inner">
-    <section class="trace-route-section section--full-viewport">
+<section :class="['section', `section-${sectionIndex}`, 'trace-route-section', 'section--full-viewport']" data-block data-component="TraceRouteSection">
+  <div class="section-content">
+    <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">
           <h2 class="type__section-title type__section-title--with-line heading-spacing">
@@ -35,9 +37,9 @@ import donManuelImage from '@/assets/audio-photos/pastille-photo-don-manuel.webp
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('traceRoute.paragraph3')"></p>
         </div>
       </div>
-    </section>
+    </div>
   </div>
-</div>
+</section>
 </template>
 
 <style scoped>
