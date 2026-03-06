@@ -200,13 +200,15 @@ export function useBlockScroll(input: UseBlockScrollInput) {
   }
 
   function onTouchStart(_e: TouchEvent) {
-    if (!isEnabled() || !_e.touches.length) return
-    lastTouchY = _e.touches[0].clientY
+    const touch = _e.touches[0]
+    if (!isEnabled() || !touch) return
+    lastTouchY = touch.clientY
     touchAccumulatedDelta = 0
   }
 
   function onTouchMove(e: TouchEvent) {
-    if (!isEnabled() || !e.touches.length) return
+    const touch = e.touches[0]
+    if (!isEnabled() || !touch) return
     const blocks = getBlockElements()
     if (blocks.length === 0) return
 
@@ -219,7 +221,7 @@ export function useBlockScroll(input: UseBlockScrollInput) {
       return
     }
 
-    const currentY = e.touches[0].clientY
+    const currentY = touch.clientY
     const deltaY = lastTouchY - currentY
     lastTouchY = currentY
 
