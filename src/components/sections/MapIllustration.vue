@@ -37,8 +37,6 @@ const lineStyle = computed(() => {
   return { width: `${w}px`, backgroundImage: `url(${bgImg})` }
 })
 
-let cleanupAnimation: (() => void) | undefined
-
 onMounted(() => {
   setLineWidth()
   const wrap = mapWrap.value
@@ -48,15 +46,13 @@ onMounted(() => {
     onUnmounted(() => resizeObserver.disconnect())
   }
   if (sectionRoot.value) {
-    cleanupAnimation = useAnimation({
+    useAnimation({
       tweens: [
         { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
       ],
     })
   }
 })
-
-onUnmounted(() => cleanupAnimation?.())
 </script>
 
 <doc lang="text">

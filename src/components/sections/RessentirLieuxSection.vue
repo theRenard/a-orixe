@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import ImageCrop from '@/components/tools/ImageCrop.vue'
 import { useAnimation } from '@/composables/useAnimation'
 
@@ -8,11 +8,10 @@ defineProps<{ sectionIndex: number }>()
 const sectionRoot = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
 const question = ref<HTMLElement | null>(null)
-let cleanup: (() => void) | undefined
 
 onMounted(() => {
   if (!sectionRoot.value || !title.value || !question.value) return
-  cleanup = useAnimation({
+  useAnimation({
     tweens: [
       { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
       { el: title, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, delay: 0.1, ease: 'power3.out' } },
@@ -20,7 +19,6 @@ onMounted(() => {
     ],
   })
 })
-onUnmounted(() => cleanup?.())
 </script>
 
 <doc lang="text">

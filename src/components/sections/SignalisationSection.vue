@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import ImageCrop from '@/components/tools/ImageCrop.vue'
 import SlidingGallery from '@/components/tools/SlidingGallery.vue'
@@ -11,17 +11,15 @@ const { t } = useI18n()
 const { isMobile } = useMobileDetection()
 
 const sectionRoot = ref<HTMLElement | null>(null)
-let cleanup: (() => void) | undefined
 
 onMounted(() => {
   if (!sectionRoot.value) return
-  cleanup = useAnimation({
+  useAnimation({
     tweens: [
       { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
     ],
   })
 })
-onUnmounted(() => cleanup?.())
 
 const image1 = new URL('../../assets/photos/08_florence_antunes.webp', import.meta.url).href
 const image2 = new URL('../../assets/photos/09_florence_antunes.webp', import.meta.url).href

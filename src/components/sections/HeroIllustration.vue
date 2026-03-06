@@ -26,12 +26,18 @@ const illustrationHeightVh = computed(() => (isWide.value ? 100 : 75))
 </doc>
 
 <template>
-<section :class="['section', `section-${props.sectionIndex}`, 'hero-block', 'section--full-viewport', { 'block--first': props.sectionIndex === 1 }]" :data-wide="isWide" :data-mobile="isMobile" data-block data-component="HeroIllustration" aria-label="Hero">
+<section
+  :class="['section', `section-${props.sectionIndex}`, 'hero-block', 'section--full-viewport', { 'block--first': props.sectionIndex === 1 }]"
+  :data-wide="isWide" :data-mobile="isMobile" data-block data-component="HeroIllustration" aria-label="Hero">
   <div class="section-content">
     <div class="section-inner" data-block-inner>
       <div class="hero-block__illustration"
         :style="{ backgroundImage: `url(${heroImage})`, height: `${illustrationHeightVh}vh` }" role="img"
-        :aria-label="$t('hero.illustrationAlt')" />
+        :aria-label="$t('hero.illustrationAlt')">
+        <div v-if="isWide" class="scroll-indicator" aria-hidden="true">
+          <img :src="mouseIcon" alt="" class="scroll-indicator__icon" />
+        </div>
+      </div>
       <div class="hero-block__content mt-4 type__credits">
         <div class="container">
           <h1 class="type__hero-title">
@@ -40,8 +46,7 @@ const illustrationHeightVh = computed(() => (isWide.value ? 100 : 75))
           <p class="type__hero-subtitle mt-0" v-html="$t('hero.subtitle')"></p>
           <div class="paragraph-spacing" :class="{ 'mb-0': isMobile }">
             <div class="container credits__inner">
-              <div class="credits__col credits__col--left"
-                :class="{ 'pb-2': isMobile, 'pt-2': isMobile }">
+              <div class="credits__col credits__col--left" :class="{ 'pb-2': isMobile, 'pt-2': isMobile }">
                 <div class="credits__line-accent" aria-hidden="true" />
                 <p>
                   {{ $t('credits.byPrefix') }}<span class="type__credits-bold">{{ $t('credits.byName') }}</span>
@@ -51,34 +56,31 @@ const illustrationHeightVh = computed(() => (isWide.value ? 100 : 75))
                     class="type__credits-bold">{{ $t('credits.translatedByName') }}</span></p>
                 <p>
                   {{ $t('credits.publishedOnPrefix') }}<span class="type__credits-bold">{{ $t('credits.publishedOnDate')
-                  }}</span>
+                    }}</span>
                 </p>
               </div>
-              <div :class="{ 'pb-2': isMobile, 'pt-2': isMobile }"
-                class="credits__col credits__col--right">
+              <div :class="{ 'pb-2': isMobile, 'pt-2': isMobile }" class="credits__col credits__col--right">
                 <div :class="{ 'ml-auto': isWide }" class="credits__line-accent" aria-hidden="true" />
                 <p>
                   {{ $t('credits.artDirectionPrefix') }}<span class="type__credits-bold">{{
                     $t('credits.artDirectionName')
-                  }}</span>
+                    }}</span>
                 </p>
                 <p>
                   {{ $t('credits.illustrationPrefix') }}<span class="type__credits-bold">{{
                     $t('credits.illustrationName')
-                  }}</span>
+                    }}</span>
                 </p>
                 <p>
                   {{ $t('credits.devDesignPrefix') }}<span class="type__credits-bold">{{ $t('credits.devDesignName')
-                  }}</span>
+                    }}</span>
                 </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div v-if="isWide" class="scroll-indicator" aria-hidden="true">
-        <img :src="mouseIcon" alt="" class="scroll-indicator__icon" />
-      </div>
+
     </div>
   </div>
 </section>
@@ -98,6 +100,7 @@ const illustrationHeightVh = computed(() => (isWide.value ? 100 : 75))
   background-position: center;
   background-repeat: no-repeat;
   transition: height 0.25s ease-out;
+  position: relative;
 }
 
 .hero-block__content {
@@ -159,6 +162,7 @@ const illustrationHeightVh = computed(() => (isWide.value ? 100 : 75))
 }
 
 @media (min-width: 48rem) {
+
   /* Limit hero scroll height so less scroll is needed to reach bottom and go to next block */
   .hero-block {
     max-height: calc(100dvh + 600px);

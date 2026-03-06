@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useAnimation } from '@/composables/useAnimation'
 
 defineProps<{ sectionIndex: number }>()
@@ -7,11 +7,9 @@ defineProps<{ sectionIndex: number }>()
 const sectionRoot = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
 
-let cleanup: (() => void) | undefined
-
 onMounted(() => {
   if (!sectionRoot.value || !title.value) return
-  cleanup = useAnimation({
+  useAnimation({
     tweens: [
       {
         el: sectionRoot,
@@ -25,10 +23,6 @@ onMounted(() => {
       },
     ],
   })
-})
-
-onUnmounted(() => {
-  cleanup?.()
 })
 </script>
 

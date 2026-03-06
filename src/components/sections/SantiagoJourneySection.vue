@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import SoundPlayer from '@/components/tools/SoundPlayer.vue'
 import audioAdrian from '@/assets/audio/audio_adrian.mp3'
 import chaptersAdrian from '@/assets/audio-refs/Horodatage-Audio-Adrian.json'
@@ -9,17 +9,15 @@ import { useAnimation } from '@/composables/useAnimation'
 defineProps<{ sectionIndex: number }>()
 
 const sectionRoot = ref<HTMLElement | null>(null)
-let cleanup: (() => void) | undefined
 
 onMounted(() => {
   if (!sectionRoot.value) return
-  cleanup = useAnimation({
+  useAnimation({
     tweens: [
       { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
     ],
   })
 })
-onUnmounted(() => cleanup?.())
 </script>
 
 <doc lang="text">
