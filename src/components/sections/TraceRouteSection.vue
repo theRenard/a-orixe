@@ -1,10 +1,27 @@
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
 import SoundPlayer from '@/components/tools/SoundPlayer.vue'
 import audioDonManuel from '@/assets/audio/audio_don_manuel.mp4'
 import chaptersDonManuel from '@/assets/audio-refs/Horodatage-Audio-DonManuel.json'
 import donManuelImage from '@/assets/audio-photos/pastille-photo-don-manuel.webp'
+import { useAnimation } from '@/composables/useAnimation'
 
 defineProps<{ sectionIndex: number }>()
+
+const sectionRoot = ref<HTMLElement | null>(null)
+const title = ref<HTMLElement | null>(null)
+let cleanup: (() => void) | undefined
+
+onMounted(() => {
+  if (!sectionRoot.value || !title.value) return
+  cleanup = useAnimation({
+    tweens: [
+      { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
+      { el: title, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, ease: 'power3.out' } },
+    ],
+  })
+})
+onUnmounted(() => cleanup?.())
 </script>
 
 <doc lang="text">
@@ -16,12 +33,12 @@ defineProps<{ sectionIndex: number }>()
 </doc>
 
 <template>
-<section :class="['section', `section-${sectionIndex}`, 'trace-route-section', 'section--full-viewport']" data-block data-component="TraceRouteSection">
+<section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'trace-route-section', 'section--full-viewport']" data-block data-component="TraceRouteSection">
   <div class="section-content">
     <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">
-          <h2 class="type__section-title type__section-title--with-line heading-spacing">
+          <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">
             {{ $t('traceRoute.title') }}
           </h2>
           <div>

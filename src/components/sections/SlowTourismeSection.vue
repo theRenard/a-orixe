@@ -1,9 +1,26 @@
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
 import villageIllustration from '@/assets/illustrations/village.webp'
 import { useMobileDetection } from '@/composables/useMobileDetection'
+import { useAnimation } from '@/composables/useAnimation'
 
 defineProps<{ sectionIndex: number }>()
 const { isMobile } = useMobileDetection()
+
+const sectionRoot = ref<HTMLElement | null>(null)
+const title = ref<HTMLElement | null>(null)
+let cleanup: (() => void) | undefined
+
+onMounted(() => {
+  if (!sectionRoot.value || !title.value) return
+  cleanup = useAnimation({
+    tweens: [
+      { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
+      { el: title, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, ease: 'power3.out' } },
+    ],
+  })
+})
+onUnmounted(() => cleanup?.())
 </script>
 
 <doc lang="text">
@@ -15,12 +32,12 @@ const { isMobile } = useMobileDetection()
 </doc>
 
 <template>
-<section :class="['section', `section-${sectionIndex}`, 'slow-tourisme-section', 'section--full-viewport']" data-block data-component="SlowTourismeSection">
+<section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'slow-tourisme-section', 'section--full-viewport']" data-block data-component="SlowTourismeSection">
   <div class="section-content">
     <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">
-          <h2 class="type__interview-title slow-tourisme-section__headline heading-spacing">
+          <h2 ref="title" class="type__interview-title slow-tourisme-section__headline heading-spacing">
             {{ $t('slowTourisme.title') }}
           </h2>
           <div>

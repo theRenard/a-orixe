@@ -1,6 +1,6 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { SCROLL_PINNING_ENABLED } from '@/config'
+import { SCROLL_PINNING_ENABLED, SNAP_ENABLED } from '@/config'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -45,8 +45,19 @@ export function initAnimation(): void {
           fakeScrollRatio ? `+=${innerpanel.offsetHeight}` : 'bottom top',
         pinSpacing: false,
         pin: true,
-        scrub: true,
-        // markers: true,
+        scrub: 1.2, // seconds for animation to catch up to scroll; higher = slower/smoother (true = instant)
+        ...(SNAP_ENABLED
+          ? {
+            // Snap to section start (0) or end (1) when user stops scrolling.
+            // Tuning: snapTo = rest points; delay = wait before snap; duration = snap animation length; ease = power2 (gentle) to power4 (strong).
+            snap: {
+              snapTo: [0, 1],
+              delay: 0.2,
+              duration: 0.3,
+              ease: 'power2.inOut',
+            },
+          }
+          : {}),
       },
     })
 
@@ -59,10 +70,11 @@ export function initAnimation(): void {
         ease: 'none',
       })
     }
+    // As section leaves view: fade out (opacity 1 → 0 over 0.5s), then hold at 0.
     tl.fromTo(
       panel,
       { scale: 1, opacity: 1 },
-      { scale: 1, opacity: 0, duration: 0.5, yPercent: -100 },
+      { scale: 1, opacity: 0, duration: 0.2 },
     ).to(panel, { opacity: 0, duration: 0.1 })
   })
 }

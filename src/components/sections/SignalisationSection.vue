@@ -1,13 +1,27 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import ImageCrop from '@/components/tools/ImageCrop.vue'
 import SlidingGallery from '@/components/tools/SlidingGallery.vue'
 import { useMobileDetection } from '@/composables/useMobileDetection'
+import { useAnimation } from '@/composables/useAnimation'
 
 defineProps<{ sectionIndex: number }>()
 const { t } = useI18n()
 const { isMobile } = useMobileDetection()
+
+const sectionRoot = ref<HTMLElement | null>(null)
+let cleanup: (() => void) | undefined
+
+onMounted(() => {
+  if (!sectionRoot.value) return
+  cleanup = useAnimation({
+    tweens: [
+      { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
+    ],
+  })
+})
+onUnmounted(() => cleanup?.())
 
 const image1 = new URL('../../assets/photos/08_florence_antunes.webp', import.meta.url).href
 const image2 = new URL('../../assets/photos/09_florence_antunes.webp', import.meta.url).href
@@ -26,7 +40,7 @@ const imageList = computed(() => [
 </doc>
 
 <template>
-<section :class="['section', `section-${sectionIndex}`, 'signalisation-section', 'section--full-viewport']" data-block data-component="SignalisationSection">
+<section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'signalisation-section', 'section--full-viewport']" data-block data-component="SignalisationSection">
   <div class="section-content">
     <div class="section-inner" data-block-inner>
       <div class="container">

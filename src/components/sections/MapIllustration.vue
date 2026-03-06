@@ -6,10 +6,12 @@ import espagneImage from '@/assets/illustrations/espagne_ok.webp'
 import mapImageMobile from '@/assets/illustrations/map_MOBILE_01.webp'
 import mapLineImageMobile from '@/assets/illustrations/map_MOBILE_02.webp'
 import { useMobileDetection } from '@/composables/useMobileDetection'
+import { useAnimation } from '@/composables/useAnimation'
 
 defineProps<{ sectionIndex: number }>()
 const { isMobile } = useMobileDetection()
 
+const sectionRoot = ref<HTMLElement | null>(null)
 const mapWrap = ref<HTMLElement | null>(null)
 const line = ref<HTMLElement | null>(null)
 const lineWidthPx = ref<number | null>(null)
@@ -35,6 +37,8 @@ const lineStyle = computed(() => {
   return { width: `${w}px`, backgroundImage: `url(${bgImg})` }
 })
 
+let cleanupAnimation: (() => void) | undefined
+
 onMounted(() => {
   setLineWidth()
   const wrap = mapWrap.value
@@ -43,7 +47,16 @@ onMounted(() => {
     resizeObserver.observe(wrap)
     onUnmounted(() => resizeObserver.disconnect())
   }
+  if (sectionRoot.value) {
+    cleanupAnimation = useAnimation({
+      tweens: [
+        { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
+      ],
+    })
+  }
 })
+
+onUnmounted(() => cleanupAnimation?.())
 </script>
 
 <doc lang="text">
@@ -58,7 +71,7 @@ onMounted(() => {
 </doc>
 
 <template>
-<section :class="['section', `section-${sectionIndex}`, 'map-illustration-section']" data-block data-component="MapIllustration">
+<section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'map-illustration-section']" data-block data-component="MapIllustration">
   <div class="section-content">
     <div class="section-inner" data-block-inner>
       <div ref="mapWrap" class="map-illustration section--full-viewport image-section" role="img"

@@ -1,9 +1,24 @@
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
 import SoundPlayer from '@/components/tools/SoundPlayer.vue'
 import pronunciationMp3 from '@/assets/audio/audio_prononciation_a_orixe.mp3'
 import pronunciationImage from '@/assets/audio-photos/pastille-photo-saturio.webp'
+import { useAnimation } from '@/composables/useAnimation'
 
 defineProps<{ sectionIndex: number }>()
+
+const sectionRoot = ref<HTMLElement | null>(null)
+let cleanup: (() => void) | undefined
+
+onMounted(() => {
+  if (!sectionRoot.value) return
+  cleanup = useAnimation({
+    tweens: [
+      { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
+    ],
+  })
+})
+onUnmounted(() => cleanup?.())
 </script>
 
 <doc lang="text">
@@ -15,7 +30,7 @@ defineProps<{ sectionIndex: number }>()
 </doc>
 
 <template>
-<section :class="['section', `section-${sectionIndex}`, 'association-section', 'section--full-viewport']" data-block data-component="AssociationSection">
+<section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'association-section', 'section--full-viewport']" data-block data-component="AssociationSection">
   <div class="section-content">
     <div class="section-inner" data-block-inner>
       <div class="container">

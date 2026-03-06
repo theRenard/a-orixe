@@ -1,14 +1,30 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import phareCorrubedo from '@/assets/illustrations/phare.png'
 import cathedrale from '@/assets/illustrations/cathedrale.png'
 import { useMobileDetection } from '@/composables/useMobileDetection'
+import { useAnimation } from '@/composables/useAnimation'
 
 defineProps<{ sectionIndex: number }>()
 const { isMobile } = useMobileDetection()
 const { locale } = useI18n()
 const routeDetailUrl = computed(() => `https://aorixe.es/${locale.value === 'es' ? 'es' : 'fr'}`)
+
+const sectionRoot = ref<HTMLElement | null>(null)
+const title = ref<HTMLElement | null>(null)
+let cleanup: (() => void) | undefined
+
+onMounted(() => {
+  if (!sectionRoot.value || !title.value) return
+  cleanup = useAnimation({
+    tweens: [
+      { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
+      { el: title, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, ease: 'power3.out' } },
+    ],
+  })
+})
+onUnmounted(() => cleanup?.())
 </script>
 
 <doc lang="text">
@@ -25,11 +41,11 @@ const routeDetailUrl = computed(() => `https://aorixe.es/${locale.value === 'es'
 </doc>
 
 <template>
-<section :class="['section', `section-${sectionIndex}`, 'en-bref-section', 'section--full-viewport', { 'pb-10': isMobile }]" data-block data-component="EnBrefSection">
+<section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'en-bref-section', 'section--full-viewport', { 'pb-10': isMobile }]" data-block data-component="EnBrefSection">
   <div class="section-content">
     <div class="section-inner" data-block-inner>
       <div class="en-bref-section__inner container">
-        <h2 class="type__section-title type__section-title--with-line heading-spacing">
+        <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">
           <span class="">{{ $t('enBref.titlePrefix') }}</span>{{ $t('enBref.titleSuffix') }}
         </h2>
 
