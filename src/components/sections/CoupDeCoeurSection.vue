@@ -48,11 +48,11 @@ onUnmounted(() => {
           </h2>
           <div>
             <p class="type__section-paragraph paragraph-spacing" v-html="$t('coupDeCoeur.paragraph1')"></p>
+            <div ref="player">
+              <SoundPlayer :src="audioSabela" :text="$t('coupDeCoeur.soundPlayerText')" :image="sabelaImage"
+                :chapters="chaptersSabela" class="align-center paragraph-spacing" />
+            </div>
             <p class="type__section-paragraph paragraph-spacing" v-html="$t('coupDeCoeur.quote')"></p>
-          </div>
-          <div ref="player">
-            <SoundPlayer :src="audioSabela" :text="$t('coupDeCoeur.soundPlayerText')" :image="sabelaImage"
-              :chapters="chaptersSabela" class="align-center paragraph-spacing" />
           </div>
         </div>
       </div>

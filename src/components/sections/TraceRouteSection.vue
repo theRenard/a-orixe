@@ -49,7 +49,6 @@ onUnmounted(() => {
           <div>
             <p class="type__section-paragraph paragraph-spacing" v-html="$t('traceRoute.paragraph1')"></p>
             <p class="type__section-paragraph paragraph-spacing" v-html="$t('traceRoute.paragraph2')"></p>
-            <p class="type__section-paragraph paragraph-spacing" v-html="$t('traceRoute.paragraph3')"></p>
           </div>
           <div ref="player" class="trace-route-section__player-wrap mt-4 mb-5">
             <SoundPlayer :src="audioDonManuel" :image="donManuelImage" :chapters="chaptersDonManuel">
@@ -57,6 +56,7 @@ onUnmounted(() => {
               <span class="trace-route-section__player-line2">{{ $t('traceRoute.soundPlayerSubtitle') }}</span>
             </SoundPlayer>
           </div>
+          <p class="type__section-paragraph paragraph-spacing" v-html="$t('traceRoute.paragraph3')"></p>
         </div>
       </div>
     </section>
