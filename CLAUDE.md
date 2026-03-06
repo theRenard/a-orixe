@@ -51,6 +51,7 @@ Single long-page website with Vue 3, programmatic animations, and bilingual cont
 ## Conventions
 
 - **Code quality**: Keep the code clean and avoid unnecessary complexity. Prefer simple, readable solutions; do not add abstraction or indirection unless clearly needed.
+- **Desktop vs mobile (TS/JS)**: Same principle as CSS — one breakpoint (48rem). Keep wide and narrow behavior in distinct branches (e.g. `matchMedia('(min-width: 48rem)')`, `useMobileDetection().isWide`); do not mix desktop and mobile logic in the same path.
 - **Components**: PascalCase; one main component per section on the long page when it makes sense.
 - **New sections**: Add every new section at the end of the page — i.e. register it last in `src/views/DesktopView.vue`, so it appears at the bottom of the long scroll.
 - **i18n**: Keys by feature/section (e.g. `hero.title`, `footer.copyright`). Never hardcode fr/es strings in templates or components. In templates use the global `$t('key')` for translations and `$i18n.locale` for the current locale; do not use `useI18n()` and `t` in components solely for template translations.

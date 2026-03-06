@@ -1,92 +1,67 @@
 /**
  * Mobile (narrow viewport) styles.
- * Base styles for viewports below 48rem. Add mobile-specific overrides here.
+ * All rules apply only below 48rem. Desktop styles are in desktop.css (min-width: 48rem).
+ * The two files are mutually exclusive by media query.
  */
 
-/* Single scroll container: body scrolls; prevents slow touch from getting stuck in a nested scroll. */
-body {
-  overflow-x: hidden;
-}
+@media (max-width: 47.99rem) {
+  /* Single scroll container: body scrolls; prevents slow touch from getting stuck in a nested scroll. */
+  body {
+    overflow-x: hidden;
+  }
 
-/* Add mobile styles below */
+  section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 
-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  /* padding-top: 10rem;
-  padding-bottom: 10rem; */
-  /* background-color: green; */
-}
+  section.testimonial {
+    padding-top: 20rem;
+    padding-bottom: 20rem;
+    padding-left: 13rem;
+    padding-right: 12rem;
+  }
 
-section.testimonial {
-  padding-top: 20rem;
-  padding-bottom: 20rem;
-  padding-left: 13rem;
-  padding-right: 12rem;
-}
+  section.with-borders {
+    border-top: 3px solid var(--color-amber-4d);
+    border-bottom: 3px solid var(--color-amber-4d);
+  }
 
-section.with-borders {
-  border-top: 3px solid var(--color-amber-4d);
-  border-bottom: 3px solid var(--color-amber-4d);
-}
+  section.with-background {
+    background-color: var(--color-white-off);
+  }
 
-section.with-background {
-  background-color: var(--color-white-off);
-}
+  /* Narrow viewport: document scroll so touch is not stuck in nested scroll. */
+  .block-viewport {
+    height: auto;
+    min-height: 100dvh;
+    overflow: visible;
+    position: relative;
+  }
 
-section.section--full-viewport {
-  /* min-width: 100vw;
-  min-height: 100vh; */
-}
+  .blocks-rail {
+    display: block;
+  }
 
-/* Narrow viewport: let the document scroll (no overflow on main) so touch
-   gestures are not captured by a nested scroll context (avoids "stuck" slow scroll). */
-.block-viewport {
-  height: auto;
-  min-height: 100dvh;
-  overflow: visible;
-  position: relative;
-}
+  .container {
+    max-width: 90vw;
+    margin: 0 auto;
+  }
 
-.blocks-rail {
-  display: block;
-}
+  .centered {
+    padding: 0;
+  }
 
-/* Block and block-inner: narrow viewport */
-[data-block] {
-  /* min-height: 100dvh;
-  flex-shrink: 0; */
-  /* margin-top: 10rem;
-  margin-bottom: 10rem; */
-  /* padding-top: 10rem;
-  padding-bottom: 10rem; */
-}
+  .centered--large {
+    padding: 0;
+    padding-left: 0;
+  }
 
-[data-block-inner] {
-  /* height: 100%;
-  min-height: 100dvh;
-  overflow-y: auto;
-  overflow-x: hidden; */
-}
-
-.container {
-  max-width: 90vw;
-  margin: 0 auto;
-}
-
-.centered {
-  padding: 0;
-}
-
-.centered--large {
-  padding: 0;
-  padding-left: 0;
-}
-
-/* Two-col row: on mobile show second column before first (inverted order) */
-.row-two-col {
-  display: flex;
-  flex-direction: column-reverse;
+  /* Two-col row: on mobile show second column before first (inverted order) */
+  .row-two-col {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 }

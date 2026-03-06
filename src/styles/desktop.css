@@ -1,13 +1,26 @@
 /**
  * Desktop (wide viewport) styles.
  * All rules apply only at min-width: 48rem (matches --breakpoint-wide and useMobileDetection).
- * Load after mobile.css so these override on wide viewports.
+ * Mobile styles are in mobile.css (max-width: 47.99rem). The two files are mutually exclusive by media query.
  */
 
 @media (min-width: 48rem) {
   section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     background-color: transparent;
     padding-top: 0;
+  }
+
+  section.with-borders {
+    border-top: 3px solid var(--color-amber-4d);
+    border-bottom: 3px solid var(--color-amber-4d);
+  }
+
+  section.with-background {
+    background-color: var(--color-white-off);
   }
 
   section.section--full-viewport {
@@ -26,6 +39,7 @@
 
   .container {
     max-width: 70vw;
+    margin: 0 auto;
   }
 
   .centered {
