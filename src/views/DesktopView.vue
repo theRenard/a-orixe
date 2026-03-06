@@ -61,7 +61,7 @@ useBlockScroll({
   enabled: isWide,
   options: {
     transitionDuration: 1,
-    scrollThresholdPx: 240,
+    scrollThresholdPx: 80,
     onBlockChange(index) {
       blockEnterCallbacks.get(index)?.()
     },

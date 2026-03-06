@@ -18,9 +18,9 @@ const creditsRight = ref<HTMLElement | null>(null)
 const registerBlockEnter = inject<((index: number, play: () => void) => void) | undefined>('blockScroll/registerBlockEnter')
 const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
 
-/** Illustration height in vh: 100 at top, 50 after scrolling (over first ~320px). */
+/** Illustration height in vh: 100 at top, 50 after scrolling (over first ~600px). */
 const illustrationHeightVh = ref(isWide.value ? 100 : 75)
-const SCROLL_THRESHOLD_PX = 5000
+const SCROLL_THRESHOLD_PX = 600
 
 /** Hide mouse icon as soon as user scrolls. */
 const showScrollIndicator = ref(true)
@@ -221,6 +221,10 @@ watch(isWide, () => {
 }
 
 @media (min-width: 48rem) {
+  /* Limit hero scroll height so less scroll is needed to reach bottom and go to next block */
+  .hero-block {
+    max-height: calc(100dvh + 600px);
+  }
 
   .credits__inner {
     display: grid;

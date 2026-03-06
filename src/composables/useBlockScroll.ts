@@ -52,6 +52,9 @@ export function useBlockScroll(input: UseBlockScrollInput) {
   let teardownProxy: (() => void) | null = null
   let accumulatedDelta = 0
   let cooldownUntil = 0
+  /** Touch: last clientY and accumulated delta for block advance */
+  let lastTouchY = 0
+  let touchAccumulatedDelta = 0
 
   function getRail(): HTMLElement | null {
     const rail = railRef?.value
@@ -196,6 +199,78 @@ export function useBlockScroll(input: UseBlockScrollInput) {
     }
   }
 
+  function onTouchStart(_e: TouchEvent) {
+    if (!isEnabled() || !_e.touches.length) return
+    lastTouchY = _e.touches[0].clientY
+    touchAccumulatedDelta = 0
+  }
+
+  function onTouchMove(e: TouchEvent) {
+    if (!isEnabled() || !e.touches.length) return
+    const blocks = getBlockElements()
+    if (blocks.length === 0) return
+
+    const block = getCurrentBlock()
+    if (!block) return
+
+    const now = Date.now()
+    if (now < cooldownUntil) {
+      e.preventDefault()
+      return
+    }
+
+    const currentY = e.touches[0].clientY
+    const deltaY = lastTouchY - currentY
+    lastTouchY = currentY
+
+    const scrollingDown = deltaY > 0
+    const scrollingUp = deltaY < 0
+
+    if (scrollingDown) {
+      const canScrollWithin = hasScrollableInner(block) && !isScrollableAtBottom(block)
+      if (canScrollWithin) {
+        touchAccumulatedDelta = 0
+        return
+      }
+      if (touchAccumulatedDelta < 0) touchAccumulatedDelta = 0
+      touchAccumulatedDelta += deltaY
+      if (touchAccumulatedDelta >= scrollThresholdPx && currentBlockIndex.value < blocks.length - 1) {
+        e.preventDefault()
+        touchAccumulatedDelta = 0
+        cooldownUntil = now + cooldownMs
+        currentBlockIndex.value++
+        onBlockChange?.(currentBlockIndex.value)
+        ScrollTrigger.update()
+        applyRailTransform()
+      } else if (currentBlockIndex.value >= blocks.length - 1) {
+        e.preventDefault()
+      }
+      return
+    }
+
+    if (scrollingUp) {
+      const canScrollWithin = hasScrollableInner(block) && !isScrollableAtTop(block)
+      if (canScrollWithin) {
+        touchAccumulatedDelta = 0
+        return
+      }
+      if (touchAccumulatedDelta > 0) touchAccumulatedDelta = 0
+      touchAccumulatedDelta += deltaY
+      const prevBlockIndex = currentBlockIndex.value - 1
+      if (touchAccumulatedDelta <= -scrollThresholdPx && prevBlockIndex >= 0) {
+        e.preventDefault()
+        touchAccumulatedDelta = 0
+        cooldownUntil = now + cooldownMs
+        currentBlockIndex.value = prevBlockIndex
+        onBlockChange?.(currentBlockIndex.value)
+        ScrollTrigger.update()
+        applyRailTransform()
+      } else if (currentBlockIndex.value > 0) {
+        e.preventDefault()
+      }
+    }
+  }
+
   function setupScrollProxy() {
     const container = containerRef.value
     if (!container) return
@@ -229,6 +304,8 @@ export function useBlockScroll(input: UseBlockScrollInput) {
     if (typeof window === 'undefined' || !isEnabled()) return
     setupScrollProxy()
     window.addEventListener('wheel', onWheel, { passive: false })
+    window.addEventListener('touchstart', onTouchStart, { passive: true })
+    window.addEventListener('touchmove', onTouchMove, { passive: false })
     rafId = window.requestAnimationFrame(function raf() {
       if (!isEnabled()) return
       ScrollTrigger.update()
@@ -248,6 +325,8 @@ export function useBlockScroll(input: UseBlockScrollInput) {
 
   function teardownBlockScroll() {
     window.removeEventListener('wheel', onWheel)
+    window.removeEventListener('touchstart', onTouchStart)
+    window.removeEventListener('touchmove', onTouchMove)
     if (rafId != null) {
       cancelAnimationFrame(rafId)
       rafId = undefined
