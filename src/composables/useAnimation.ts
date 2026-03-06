@@ -5,14 +5,13 @@ gsap.registerPlugin(ScrollTrigger)
 
 /**
  * Port of docs/codepen-bGRdvMy-reference/reference.js
- * Selectors: .section → .block-viewport [data-block], .section-inner → [data-block-inner]
  */
 export function initAnimation(): void {
-  const panels = gsap.utils.toArray<HTMLElement>('.block-viewport [data-block]')
+  const panels = gsap.utils.toArray<HTMLElement>('.section')
   panels.pop()
 
   panels.forEach((panel) => {
-    const innerpanel = panel.querySelector<HTMLElement>('[data-block-inner]')
+    const innerpanel = panel.querySelector<HTMLElement>('.section-inner')
     if (!innerpanel) return
 
     const panelHeight = innerpanel.offsetHeight
