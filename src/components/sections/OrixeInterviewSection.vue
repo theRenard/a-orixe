@@ -19,7 +19,7 @@ onMounted(() => {
 
 <doc lang="text">
   Previous animation (useRevealAnimation):
-  - elements: [{ el: sectionRoot, direction: 'down', delay: 0, duration: 3 }, { el: block1, direction: 'left', delay: 0 }, { el: block2, direction: 'right', delay: 0.1 }, { el: block3, direction: 'left', delay: 0.2 }]
+  - elements: [{ el: sectionRoot, direction: 'down', delay: 0, duration: 3 }]
   - offset: 44
   - ease: 'power3.out'
   - runOnMount: false

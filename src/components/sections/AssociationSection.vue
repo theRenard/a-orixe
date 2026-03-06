@@ -22,7 +22,7 @@ onMounted(() => {
 
 <doc lang="text">
   Previous animation (useRevealAnimation):
-  - elements: [{ el: sectionRoot, direction: 'down', delay: 0, duration: 3 }, { el: question, direction: 'down', delay: 0 }, { el: player, direction: 'down', delay: 0.1 }]
+  - elements: [{ el: sectionRoot, direction: 'down', delay: 0, duration: 3 }]
   - offset: 44
   - ease: 'power3.out'
   - runOnMount: false

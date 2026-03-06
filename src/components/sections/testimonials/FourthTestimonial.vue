@@ -10,16 +10,17 @@ const { isMobile } = useMobileDetection()
 
 const sectionRoot = ref<HTMLElement | null>(null)
 const blockquoteInner = ref<HTMLElement | null>(null)
+const imageRef = ref<HTMLImageElement | null>(null)
 
 onMounted(() => {
   if (!sectionRoot.value || !blockquoteInner.value) return
-  useAnimation({
-    trigger: sectionRoot,
-    tweens: [
-      { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
-      { el: blockquoteInner, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, delay: 0.5, ease: 'power3.out' } },
-    ],
-  })
+  const tweens = [
+    { el: blockquoteInner, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, delay: 0.5, ease: 'power3.out' } },
+  ]
+  if (imageRef.value) {
+    tweens.push({ el: imageRef, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, delay: 1.1, ease: 'power3.out' } })
+  }
+  useAnimation({ trigger: sectionRoot, tweens })
 })
 </script>
 
@@ -35,7 +36,7 @@ onMounted(() => {
 <section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'testimonial', 'section--full-viewport', 'with-background', 'with-shadow', 'fourth-testimonial']" data-block data-component="FourthTestimonial">
   <div class="section-inner" data-block-inner>
       <div class="container fourth-testimonial__container">
-        <img v-if="!isMobile" src="@/assets/illustrations/mouette.webp"
+        <img v-if="!isMobile" ref="imageRef" src="@/assets/illustrations/mouette.webp"
           :alt="$t('fourthTestimonial.quote')" class="fourth-testimonial__bird" loading="lazy">
         <blockquote class="centered">
           <div ref="blockquoteInner">

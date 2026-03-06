@@ -35,7 +35,7 @@ const imageList = computed(() => [
 
 <doc lang="text">
   Previous animation (useRevealAnimation):
-  - elements: [{ el: sectionRoot, direction: 'down', delay: 0, duration: 3 }, { el: photoGrid, direction: 'down', delay: 0, scale: 0.5, rotation: 12 }, { el: cellLeft, direction: 'left', delay: 0.06 }, { el: cellRightTop, direction: 'right', delay: 0.12 }, { el: cellRightBottom, direction: 'right', delay: 0.18 }, { el: caption, direction: 'left', delay: 0.24 }]
+  - elements: [{ el: sectionRoot, direction: 'down', delay: 0, duration: 3 }]
   - offset: 40
   - ease: 'power3.out'
   - runOnMount: false

@@ -25,7 +25,7 @@ onMounted(() => {
 
 <doc lang="text">
   Previous animation (useRevealAnimation):
-  - elements: [{ el: imageBlock, direction: 'up', delay: 0, scale: 3, duration: 4, transformOrigin: 'bottom center' }, { el: playerBlock, direction: 'down', delay: 0.1 }]
+  - elements: [{ el: sectionRoot, direction: 'down', delay: 0, duration: 3 }]
   - offset: 44
   - ease: 'power3.out'
   - runOnMount: false
