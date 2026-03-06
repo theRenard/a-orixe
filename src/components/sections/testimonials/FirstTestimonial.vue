@@ -12,6 +12,7 @@ const blockquoteInner = ref<HTMLElement | null>(null)
 onMounted(() => {
   if (!sectionRoot.value || !blockquoteInner.value) return
   useAnimation({
+    trigger: sectionRoot,
     tweens: [
       // { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
       { el: blockquoteInner, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, delay: 0.5, ease: 'power3.out' } },

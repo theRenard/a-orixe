@@ -10,6 +10,7 @@ const title = ref<HTMLElement | null>(null)
 onMounted(() => {
   if (!sectionRoot.value || !title.value) return
   useAnimation({
+    trigger: sectionRoot,
     tweens: [
       {
         el: sectionRoot,
