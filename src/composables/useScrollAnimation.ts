@@ -16,20 +16,24 @@ export function initAnimation(): void {
   panels.pop()
 
   panels.forEach((panel) => {
+    // Get the element holding the content inside the panel
     const innerpanel = panel.querySelector<HTMLElement>('.section-inner')
     if (!innerpanel) return
 
+    // Get the Height of the content inside the panel
     const panelHeight = innerpanel.offsetHeight
+    // Get the window height
     const windowHeight = window.innerHeight
     const difference = panelHeight - windowHeight
+    // ratio (between 0 and 1) representing the portion of the overall animation that's for the fake-scrolling. We know that the scale & fade should happen over the course of 1 windowHeight, so we can figure out the ratio based on how far we must fake-scroll
     const fakeScrollRatio =
       difference > 0 ? difference / (difference + windowHeight) : 0
 
+    // if we need to fake scroll (because the panel is taller than the window), add the appropriate amount of margin to the bottom so that the next element comes in at the proper time.
     if (fakeScrollRatio) {
       panel.style.marginBottom = panelHeight * fakeScrollRatio + 'px'
     }
 
-    /* Animation type: pin + scrub — section pins, timeline scrubs with scroll */
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: panel,
@@ -39,11 +43,11 @@ export function initAnimation(): void {
         pinSpacing: false,
         pin: true,
         scrub: true,
-        markers: true,
+        // markers: true,
       },
     })
 
-    /* Animation type: fake-scroll — inner content scrolls up (tall sections only) */
+    // fake scroll. We use 1 because that's what the rest of the timeline consists of (0.9 scale + 0.1 fade)
     if (fakeScrollRatio) {
       tl.to(innerpanel, {
         yPercent: -100,
@@ -52,7 +56,6 @@ export function initAnimation(): void {
         ease: 'none',
       })
     }
-    /* Animation type: scale + fade — section scales down and fades out */
     tl.fromTo(
       panel,
       { scale: 1, opacity: 1 },

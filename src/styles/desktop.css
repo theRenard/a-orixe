@@ -5,19 +5,32 @@
  */
 
 @media (min-width: 48rem) {
+
   /* Scroll container for ScrollTrigger: same as reference (body scrolls). */
+  html,
+  body {
+    margin: 0;
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+  }
+
   body {
     overflow-x: hidden;
     overflow-y: scroll;
   }
 
   section {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     background-color: transparent;
     padding-top: 0;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
   }
 
   section.with-borders {
@@ -69,7 +82,15 @@
     display: block;
   }
 
-  /* Pinning: fixed height per block, inner can be taller for fake-scroll (see useAnimation). */
+  /* Section inner: reference .section-inner layout; height/overflow also on [data-block-inner] for pinning. */
+  .section-inner {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Pinning: fixed height per block, inner can be taller for fake-scroll (see useScrollAnimation). */
   [data-block] {
     height: 100dvh;
     min-height: 100dvh;
