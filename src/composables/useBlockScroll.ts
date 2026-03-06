@@ -271,6 +271,27 @@ export function useBlockScroll(input: UseBlockScrollInput) {
     }
   }
 
+  /** Simulate a small wheel scroll so keys behave like mouse (scroll within block, then advance at boundary). */
+  const KEY_SCROLL_DELTA = 80
+
+  function onKeyDown(e: KeyboardEvent) {
+    if (!isEnabled()) return
+    const blocks = getBlockElements()
+    if (blocks.length === 0) return
+    const target = e.target as Node
+    if (target && (target as HTMLElement).closest?.('input, textarea, select, [contenteditable="true"]')) return
+
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+      e.preventDefault()
+      onWheel(new WheelEvent('wheel', { deltaY: KEY_SCROLL_DELTA, bubbles: true }))
+      return
+    }
+    if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault()
+      onWheel(new WheelEvent('wheel', { deltaY: -KEY_SCROLL_DELTA, bubbles: true }))
+    }
+  }
+
   function setupScrollProxy() {
     const container = containerRef.value
     if (!container) return
@@ -306,6 +327,7 @@ export function useBlockScroll(input: UseBlockScrollInput) {
     window.addEventListener('wheel', onWheel, { passive: false })
     window.addEventListener('touchstart', onTouchStart, { passive: true })
     window.addEventListener('touchmove', onTouchMove, { passive: false })
+    window.addEventListener('keydown', onKeyDown)
     rafId = window.requestAnimationFrame(function raf() {
       if (!isEnabled()) return
       ScrollTrigger.update()
@@ -327,6 +349,7 @@ export function useBlockScroll(input: UseBlockScrollInput) {
     window.removeEventListener('wheel', onWheel)
     window.removeEventListener('touchstart', onTouchStart)
     window.removeEventListener('touchmove', onTouchMove)
+    window.removeEventListener('keydown', onKeyDown)
     if (rafId != null) {
       cancelAnimationFrame(rafId)
       rafId = undefined
