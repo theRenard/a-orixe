@@ -1,10 +1,29 @@
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useMobileDetection } from '@/composables/useMobileDetection'
+import { useAnimation } from '@/composables/useAnimation'
 
 defineProps<{ sectionIndex: number }>()
 const { locale } = useI18n()
 const { isMobile } = useMobileDetection()
+
+const sectionRoot = ref<HTMLElement | null>(null)
+const blockquoteInner = ref<HTMLElement | null>(null)
+const imageRef = ref<HTMLImageElement | null>(null)
+let cleanup: (() => void) | undefined
+
+onMounted(() => {
+  if (!sectionRoot.value || !blockquoteInner.value || !imageRef.value) return
+  cleanup = useAnimation({
+    tweens: [
+      { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
+      { el: blockquoteInner, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, delay: 0.5, ease: 'power3.out' } },
+      { el: imageRef, from: { x: 80, opacity: 0 }, to: { x: 0, opacity: 1, delay: 1.1, ease: 'power3.out' } },
+    ],
+  })
+})
+onUnmounted(() => cleanup?.())
 </script>
 
 <doc lang="text">
@@ -16,19 +35,19 @@ const { isMobile } = useMobileDetection()
 </doc>
 
 <template>
-<section :class="['section', `section-${sectionIndex}`, 'testimonial', 'section--full-viewport', 'with-background', 'with-shadow', 'second-testimonial']" style="position: relative;" data-block data-component="SecondTestimonial">
+<section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'testimonial', 'section--full-viewport', 'with-background', 'with-shadow', 'second-testimonial']" style="position: relative;" data-block data-component="SecondTestimonial">
   <div class="section-content">
     <div class="section-inner" data-block-inner>
       <div class="container">
         <blockquote class="centered">
-          <div>
+          <div ref="blockquoteInner">
             <p class="type__testimonial-block relative" :class="`type__testimonial-block--${locale}`">
               <span v-html="$t('secondTestimonial.quote')"></span>
             </p>
             <footer class="type__testimonial-name" v-html="$t('secondTestimonial.quoteAuthor')"></footer>
           </div>
         </blockquote>
-        <img src="@/assets/illustrations/phare.webp" :alt="$t('secondTestimonial.quote')"
+        <img ref="imageRef" src="@/assets/illustrations/phare.webp" :alt="$t('secondTestimonial.quote')"
           class="second-testimonial__image ml-auto" loading="lazy">
       </div>
       <div class="container mb-2" :class="{ 'absolute-bottom': !isMobile }">
@@ -43,10 +62,6 @@ const { isMobile } = useMobileDetection()
 </template>
 
 <style scoped>
-.second-testimonial {
-  overflow-x: hidden;
-}
-
 .second-testimonial__image {
   display: block;
   max-width: 100%;

@@ -3,6 +3,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+/** Set to false to disable scroll pinning (normal scroll only). */
+export const SCROLL_PINNING_ENABLED = false
+
 /**
  * Port of docs/codepen-bGRdvMy-reference/reference.js
  *
@@ -12,6 +15,8 @@ gsap.registerPlugin(ScrollTrigger)
  * - Then scale down (1 → 0.7) and fade out (1 → 0.5 → 0)
  */
 export function initAnimation(): void {
+  if (!SCROLL_PINNING_ENABLED) return
+
   const panels = gsap.utils.toArray<HTMLElement>('.section')
   panels.pop()
 

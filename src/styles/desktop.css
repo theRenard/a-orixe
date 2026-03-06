@@ -99,10 +99,10 @@
   }
 
   [data-block-inner] {
-    height: auto;
+    /* height: auto;
     min-height: 100%;
     overflow: hidden;
-    overflow-x: hidden;
+    overflow-x: hidden; */
   }
 
   /* Two-column layout: left column fixed width, right column wraps to full width */
