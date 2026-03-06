@@ -34,26 +34,26 @@
     overflow: hidden;
   }
 
-  section.with-borders {
+  .with-borders {
     border-top: 3px solid var(--color-amber-4d);
     border-bottom: 3px solid var(--color-amber-4d);
   }
 
-  section.with-background {
+  .with-background {
     background-color: var(--color-white-off);
   }
 
-  section.section--full-viewport {
+  .section--full-viewport {
     min-width: 100vw;
     min-height: 100vh;
   }
 
-  section.testimonial {
+  .testimonial {
     padding: 0;
   }
 
   /* Half-viewport section: ~50vh height, content centered vertically */
-  section.section--half-viewport {
+  .section--half-viewport {
     min-height: 50vh;
   }
 
@@ -74,7 +74,7 @@
   /* Section inner: reference .section-inner layout; height/overflow also on [data-block-inner] for pinning. */
   .section-inner {
     height: auto;
-    overflow: hidden;
+    /* overflow: hidden; */
     display: flex;
     flex-direction: column;
     align-items: center;

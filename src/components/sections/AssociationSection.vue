@@ -28,20 +28,21 @@ onMounted(() => {
 </doc>
 
 <template>
-<section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'association-section', 'section--full-viewport']" data-block data-component="AssociationSection">
+<section ref="sectionRoot"
+  :class="['section', `section-${sectionIndex}`, 'association-section', 'section--full-viewport']" data-block
+  data-component="AssociationSection">
   <div class="section-inner" data-block-inner>
-      <div class="container">
-        <div class="centered">
-          <div>
-            <p class="type__section-paragraph paragraph-spacing" v-html="$t('association.paragraph1')"></p>
-            <p class="type__question paragraph-spacing" v-html="$t('association.blockquote')"></p>
-          </div>
-          <p class="type__section-paragraph paragraph-spacing" v-html="$t('association.paragraph2')"></p>
-          <p class="type__section-paragraph paragraph-spacing" v-html="$t('association.paragraph3')"></p>
-          <div>
-            <SoundPlayer :src="pronunciationMp3" :text="$t('association.soundPlayerText')" :image="pronunciationImage"
-              class="paragraph-spacing align-center" />
-          </div>
+    <div class="container">
+      <div class="centered">
+        <div>
+          <p class="type__section-paragraph paragraph-spacing" v-html="$t('association.paragraph1')"></p>
+          <p class="type__question paragraph-spacing" v-html="$t('association.blockquote')"></p>
+        </div>
+        <p class="type__section-paragraph paragraph-spacing" v-html="$t('association.paragraph2')"></p>
+        <p class="type__section-paragraph paragraph-spacing" v-html="$t('association.paragraph3')"></p>
+        <div>
+          <SoundPlayer :src="pronunciationMp3" :text="$t('association.soundPlayerText')" :image="pronunciationImage"
+            class="paragraph-spacing align-center" />
         </div>
       </div>
     </div>
