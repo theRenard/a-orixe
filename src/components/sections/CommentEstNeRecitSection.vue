@@ -1,48 +1,25 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, inject } from 'vue'
-import { useRevealAnimation } from '@/composables/useRevealAnimation'
-import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
-import { isMobileViewport } from '@/composables/useMobileDetection'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 
 const { isMobile } = useMobileDetection()
-const sectionRoot = ref<HTMLElement | null>(null)
-const author = ref<HTMLElement | null>(null)
-const content = ref<HTMLElement | null>(null)
-const registerBlockEnter = inject<((index: number, play: () => void) => void) | undefined>('blockScroll/registerBlockEnter')
-const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
-const { run, setInitialState } = useRevealAnimation({
-  elements: [
-    { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
-    { el: author, direction: 'left', delay: 0 },
-    { el: content, direction: 'right', delay: 0.12 },
-  ],
-  offset: 44,
-  ease: 'power3.out',
-  runOnMount: false,
-})
-let myBlockIndex = -1
-let mobileRevealCleanup: (() => void) | void
-onMounted(() => {
-  setInitialState()
-  myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
-  registerBlockEnter?.(myBlockIndex, () => run())
-  if (isMobileViewport()) mobileRevealCleanup = run()
-})
-onUnmounted(() => {
-  unregisterBlockEnter?.(myBlockIndex)
-  mobileRevealCleanup?.()
-})
 </script>
+
+<doc lang="text">
+  Previous animation (useRevealAnimation):
+  - elements: [{ el: sectionRoot, direction: 'down', delay: 0, duration: 3 }, { el: author, direction: 'left', delay: 0 }, { el: content, direction: 'right', delay: 0.12 }]
+  - offset: 44
+  - ease: 'power3.out'
+  - runOnMount: false
+</doc>
 
 <template>
 <div data-block data-component="CommentEstNeRecitSection" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="section--full-viewport comment-est-ne-section" :class="{ 'pb-10': isMobile }">
+    <section class="section--full-viewport comment-est-ne-section" :class="{ 'pb-10': isMobile }">
       <div class="container">
         <div class="comment-est-ne-section__inner paragraph-spacing">
           <div class="comment-est-ne-section__grid">
-            <aside ref="author" class="comment-est-ne-section__author">
+            <aside class="comment-est-ne-section__author">
               <img src="@/assets/photos/florenceantunes-portrait.webp" alt="" class="comment-est-ne-section__avatar"
                 style="width: calc(20rem * var(--scale-xlarge)); height: auto">
               <h3 class="comment-est-ne-section__author-name">
@@ -57,7 +34,7 @@ onUnmounted(() => {
                 {{ $t('commentEstNeRecit.authorWebsite') }}
               </a>
             </aside>
-            <div ref="content" class="comment-est-ne-section__content mt-4">
+            <div class="comment-est-ne-section__content mt-4">
               <h2 class="comment-est-ne-section__title heading-spacing">
                 {{ $t('commentEstNeRecit.title') }}
               </h2>

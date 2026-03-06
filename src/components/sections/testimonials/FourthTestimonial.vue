@@ -1,51 +1,29 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, inject } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useRevealAnimation } from '@/composables/useRevealAnimation'
-import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
-import { useMobileDetection, isMobileViewport } from '@/composables/useMobileDetection'
-
-const { isMobile } = useMobileDetection()
+import { useMobileDetection } from '@/composables/useMobileDetection'
 
 const { locale } = useI18n()
-const sectionRoot = ref<HTMLElement | null>(null)
-const blockquoteInner = ref<HTMLElement | null>(null)
-const imageRef = ref<HTMLElement | null>(null)
-const registerBlockEnter = inject<((index: number, play: () => void) => void) | undefined>('blockScroll/registerBlockEnter')
-const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
-const { run, setInitialState } = useRevealAnimation({
-  elements: [
-    { el: blockquoteInner, direction: 'down', delay: 0.5 },
-    { el: imageRef, direction: 'left', delay: 1.1 },
-  ],
-  offset: 40,
-  ease: 'power3.out',
-  runOnMount: false,
-})
-let myBlockIndex = -1
-let mobileRevealCleanup: (() => void) | void
-onMounted(() => {
-  setInitialState()
-  myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
-  registerBlockEnter?.(myBlockIndex, () => run())
-  if (isMobileViewport()) mobileRevealCleanup = run()
-})
-onUnmounted(() => {
-  unregisterBlockEnter?.(myBlockIndex)
-  mobileRevealCleanup?.()
-})
+const { isMobile } = useMobileDetection()
 </script>
+
+<doc lang="text">
+  Previous animation (useRevealAnimation):
+  - elements: [{ el: blockquoteInner, direction: 'down', delay: 0.5 }, { el: imageRef, direction: 'left', delay: 1.1 }]
+  - offset: 40
+  - ease: 'power3.out'
+  - runOnMount: false
+</doc>
 
 <template>
 <div data-block data-component="FourthTestimonial" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot"
+    <section
       class="testimonial section--full-viewport with-background with-shadow fourth-testimonial">
       <div class="container fourth-testimonial__container">
-        <img v-if="!isMobile" ref="imageRef" src="@/assets/illustrations/mouette.webp"
+        <img v-if="!isMobile" src="@/assets/illustrations/mouette.webp"
           :alt="$t('fourthTestimonial.quote')" class="fourth-testimonial__bird" loading="lazy">
         <blockquote class="centered">
-          <div ref="blockquoteInner">
+          <div>
             <p class="type__testimonial-block relative" :class="`type__testimonial-block--${locale}`">
               <span v-html="$t('fourthTestimonial.quote')"></span>
             </p>

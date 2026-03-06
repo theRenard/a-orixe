@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, inject } from 'vue'
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import ImageCrop from '@/components/tools/ImageCrop.vue'
 import SlidingGallery from '@/components/tools/SlidingGallery.vue'
-import { useRevealAnimation } from '@/composables/useRevealAnimation'
-import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
-import { useMobileDetection, isMobileViewport } from '@/composables/useMobileDetection'
+import { useMobileDetection } from '@/composables/useMobileDetection'
 
 const { t } = useI18n()
 const { isMobile } = useMobileDetection()
@@ -16,57 +14,36 @@ const imageList = computed(() => [
   { src: image1, alt: t('signalisation.caption') },
   { src: image2, alt: t('signalisation.caption') },
 ])
-
-const sectionRoot = ref<HTMLElement | null>(null)
-const cell1 = ref<HTMLElement | null>(null)
-const cell2 = ref<HTMLElement | null>(null)
-const caption = ref<HTMLElement | null>(null)
-const registerBlockEnter = inject<((index: number, play: () => void) => void) | undefined>('blockScroll/registerBlockEnter')
-const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
-const { run, setInitialState } = useRevealAnimation({
-  elements: [
-    { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
-    { el: cell1, direction: 'left', delay: 0, rotation: -12, transformOrigin: 'left bottom' },
-    { el: cell2, direction: 'right', delay: 0.08, rotation: 12, transformOrigin: 'right bottom' },
-  ],
-  offset: 44,
-  ease: 'power3.out',
-  runOnMount: false,
-})
-let myBlockIndex = -1
-let mobileRevealCleanup: (() => void) | void
-onMounted(() => {
-  setInitialState()
-  myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
-  registerBlockEnter?.(myBlockIndex, () => run())
-  if (isMobileViewport()) mobileRevealCleanup = run()
-})
-onUnmounted(() => {
-  unregisterBlockEnter?.(myBlockIndex)
-  mobileRevealCleanup?.()
-})
 </script>
+
+<doc lang="text">
+  Previous animation (useRevealAnimation):
+  - elements: [{ el: sectionRoot, direction: 'down', delay: 0, duration: 3 }, { el: cell1, direction: 'left', delay: 0, rotation: -12, transformOrigin: 'left bottom' }, { el: cell2, direction: 'right', delay: 0.08, rotation: 12, transformOrigin: 'right bottom' }]
+  - offset: 44
+  - ease: 'power3.out'
+  - runOnMount: false
+</doc>
 
 <template>
 <div data-block data-component="SignalisationSection" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="signalisation-section section--full-viewport">
+    <section class="signalisation-section section--full-viewport">
       <div class="container">
         <SlidingGallery v-if="isMobile" :images="imageList" :caption="$t('signalisation.caption')" />
         <template v-else>
           <div class="signalisation-section__grid">
-            <div ref="cell1" class="signalisation-section__cell">
+            <div class="signalisation-section__cell">
               <ImageCrop width="100%" height="40vw" position="center 50%">
                 <img :src="image1" :alt="$t('signalisation.caption')" loading="lazy">
               </ImageCrop>
             </div>
-            <div ref="cell2" class="signalisation-section__cell">
+            <div class="signalisation-section__cell">
               <ImageCrop width="100%" height="40vw" position="center 50%">
                 <img :src="image2" :alt="$t('signalisation.caption')" loading="lazy">
               </ImageCrop>
             </div>
           </div>
-          <p ref="caption" class="signalisation-section__caption type__image-caption type__image-caption--with-line">
+          <p class="signalisation-section__caption type__image-caption type__image-caption--with-line">
             {{ $t('signalisation.caption') }}
           </p>
         </template>

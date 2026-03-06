@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, inject } from 'vue'
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import ImageCrop from '@/components/tools/ImageCrop.vue'
 import SlidingGallery from '@/components/tools/SlidingGallery.vue'
-import { useRevealAnimation } from '@/composables/useRevealAnimation'
-import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
-import { useMobileDetection, isMobileViewport } from '@/composables/useMobileDetection'
+import { useMobileDetection } from '@/composables/useMobileDetection'
 
 const { t } = useI18n()
 const { isMobile } = useMobileDetection()
@@ -19,71 +17,42 @@ const imageList = computed(() => [
   { src: rightTopImage, alt: '' },
   { src: rightBottomImage, alt: '' },
 ])
-
-const sectionRoot = ref<HTMLElement | null>(null)
-const photoGrid = ref<HTMLElement | null>(null)
-const cellLeft = ref<HTMLElement | null>(null)
-const cellRightTop = ref<HTMLElement | null>(null)
-const cellRightBottom = ref<HTMLElement | null>(null)
-const caption = ref<HTMLElement | null>(null)
-const registerBlockEnter = inject<((index: number, play: () => void) => void) | undefined>('blockScroll/registerBlockEnter')
-const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
-const { run, setInitialState } = useRevealAnimation({
-  elements: [
-    { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
-    { el: photoGrid, direction: 'down', delay: 0, scale: 0.5, rotation: 12 },
-    { el: cellLeft, direction: 'left', delay: 0.06 },
-    { el: cellRightTop, direction: 'right', delay: 0.12 },
-    { el: cellRightBottom, direction: 'right', delay: 0.18 },
-    { el: caption, direction: 'left', delay: 0.24 },
-  ],
-  offset: 40,
-  ease: 'power3.out',
-  runOnMount: false,
-})
-let myBlockIndex = -1
-let mobileRevealCleanup: (() => void) | void
-onMounted(() => {
-  setInitialState()
-  myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
-  registerBlockEnter?.(myBlockIndex, () => run())
-  if (isMobileViewport()) mobileRevealCleanup = run()
-})
-onUnmounted(() => {
-  unregisterBlockEnter?.(myBlockIndex)
-  mobileRevealCleanup?.()
-})
 </script>
+
+<doc lang="text">
+  Previous animation (useRevealAnimation):
+  - elements: [{ el: sectionRoot, direction: 'down', delay: 0, duration: 3 }, { el: photoGrid, direction: 'down', delay: 0, scale: 0.5, rotation: 12 }, { el: cellLeft, direction: 'left', delay: 0.06 }, { el: cellRightTop, direction: 'right', delay: 0.12 }, { el: cellRightBottom, direction: 'right', delay: 0.18 }, { el: caption, direction: 'left', delay: 0.24 }]
+  - offset: 40
+  - ease: 'power3.out'
+  - runOnMount: false
+</doc>
 
 <template>
 <div data-block data-component="SantiagoJourneyPhotoGrid" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="santiago-journey-photo-grid-section section--full-viewport">
+    <section class="santiago-journey-photo-grid-section section--full-viewport">
       <div class="container">
         <div class="santiago-journey-photo-grid__wrapper">
           <SlidingGallery v-if="isMobile" :images="imageList" :caption="$t('santiagoJourney.imageCaption')" />
           <template v-else>
-            <div ref="photoGrid" class="santiago-journey-photo-grid align-center paragraph-spacing" role="img"
+            <div class="santiago-journey-photo-grid align-center paragraph-spacing" role="img"
               :aria-label="$t('santiagoJourney.imageCaption')">
-              <div ref="cellLeft" class="santiago-journey-photo-grid__cell santiago-journey-photo-grid__cell--left">
+              <div class="santiago-journey-photo-grid__cell santiago-journey-photo-grid__cell--left">
                 <ImageCrop width="100%" height="100%" position="center 50%">
                   <img :src="leftImage" :alt="$t('santiagoJourney.imageCaption')" loading="lazy">
                 </ImageCrop>
               </div>
-              <div ref="cellRightTop"
-                class="santiago-journey-photo-grid__cell santiago-journey-photo-grid__cell--right-top">
+              <div class="santiago-journey-photo-grid__cell santiago-journey-photo-grid__cell--right-top">
                 <ImageCrop width="100%" height="100%" position="center 50%">
                   <img :src="rightTopImage" alt="" loading="lazy" role="presentation">
                 </ImageCrop>
               </div>
-              <div ref="cellRightBottom"
-                class="santiago-journey-photo-grid__cell santiago-journey-photo-grid__cell--right-bottom">
+              <div class="santiago-journey-photo-grid__cell santiago-journey-photo-grid__cell--right-bottom">
                 <ImageCrop width="100%" height="100%" position="center 50%">
                   <img :src="rightBottomImage" alt="" loading="lazy" role="presentation">
                 </ImageCrop>
               </div>
-              <p ref="caption"
-                class="santiago-journey-photo-grid__caption type__image-caption type__image-caption--with-line">
+              <p class="santiago-journey-photo-grid__caption type__image-caption type__image-caption--with-line">
                 {{ $t('santiagoJourney.imageCaption') }}
               </p>
             </div>

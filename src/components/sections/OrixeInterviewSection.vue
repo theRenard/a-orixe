@@ -1,59 +1,33 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, inject } from 'vue'
-import { useRevealAnimation } from '@/composables/useRevealAnimation'
-import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
-import { isMobileViewport } from '@/composables/useMobileDetection'
-
-const sectionRoot = ref<HTMLElement | null>(null)
-const block1 = ref<HTMLElement | null>(null)
-const block2 = ref<HTMLElement | null>(null)
-const block3 = ref<HTMLElement | null>(null)
-const registerBlockEnter = inject<((index: number, play: () => void) => void) | undefined>('blockScroll/registerBlockEnter')
-const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
-const { run, setInitialState } = useRevealAnimation({
-  elements: [
-    { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
-    { el: block1, direction: 'left', delay: 0 },
-    { el: block2, direction: 'right', delay: 0.1 },
-    { el: block3, direction: 'left', delay: 0.2 },
-  ],
-  offset: 44,
-  ease: 'power3.out',
-  runOnMount: false,
-})
-let myBlockIndex = -1
-let mobileRevealCleanup: (() => void) | void
-onMounted(() => {
-  setInitialState()
-  myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
-  registerBlockEnter?.(myBlockIndex, () => run())
-  if (isMobileViewport()) mobileRevealCleanup = run()
-})
-onUnmounted(() => {
-  unregisterBlockEnter?.(myBlockIndex)
-  mobileRevealCleanup?.()
-})
 </script>
+
+<doc lang="text">
+  Previous animation (useRevealAnimation):
+  - elements: [{ el: sectionRoot, direction: 'down', delay: 0, duration: 3 }, { el: block1, direction: 'left', delay: 0 }, { el: block2, direction: 'right', delay: 0.1 }, { el: block3, direction: 'left', delay: 0.2 }]
+  - offset: 44
+  - ease: 'power3.out'
+  - runOnMount: false
+</doc>
 
 <template>
 <div data-block data-component="OrixeInterviewSection" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="orixe-interview-section section--full-viewport">
+    <section class="orixe-interview-section section--full-viewport">
       <div class="container">
         <div class="centered">
-          <div ref="block1">
+          <div>
             <p class="type__interview-question mb-0 orixe-interview-section__block paragraph-spacing"
               v-html="$t('orixeInterview.title')"></p>
             <p class="type__interview-answer mt-0 orixe-interview-section__block paragraph-spacing"
               v-html="$t('orixeInterview.paragraph1')"></p>
           </div>
-          <div ref="block2">
+          <div>
             <p class="type__interview-question mb-0 orixe-interview-section__block paragraph-spacing"
               v-html="$t('orixeInterview.question1')"></p>
             <p class="type__interview-answer mt-0 orixe-interview-section__block paragraph-spacing"
               v-html="$t('orixeInterview.answer1')"></p>
           </div>
-          <div ref="block3">
+          <div>
             <p class="type__interview-question mb-0 orixe-interview-section__block paragraph-spacing"
               v-html="$t('orixeInterview.question2')"></p>
             <p class="type__interview-answer mt-0 orixe-interview-section__block paragraph-spacing"

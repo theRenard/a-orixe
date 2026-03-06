@@ -1,48 +1,26 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, inject } from 'vue'
 import SoundPlayer from '@/components/tools/SoundPlayer.vue'
 import audioAdrian from '@/assets/audio/audio_adrian.mp3'
 import chaptersAdrian from '@/assets/audio-refs/Horodatage-Audio-Adrian.json'
 import adrianImage from '@/assets/audio-photos/pastille-photo-adrian.webp'
-import { useRevealAnimation } from '@/composables/useRevealAnimation'
-import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
-import { isMobileViewport } from '@/composables/useMobileDetection'
-
-const sectionRoot = ref<HTMLElement | null>(null)
-const player = ref<HTMLElement | null>(null)
-const registerBlockEnter = inject<((index: number, play: () => void) => void) | undefined>('blockScroll/registerBlockEnter')
-const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
-const { run, setInitialState } = useRevealAnimation({
-  elements: [
-    { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
-    { el: player, direction: 'down', delay: 0 },
-  ],
-  offset: 44,
-  ease: 'power3.out',
-  runOnMount: false,
-})
-let myBlockIndex = -1
-let mobileRevealCleanup: (() => void) | void
-onMounted(() => {
-  setInitialState()
-  myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
-  registerBlockEnter?.(myBlockIndex, () => run())
-  if (isMobileViewport()) mobileRevealCleanup = run()
-})
-onUnmounted(() => {
-  unregisterBlockEnter?.(myBlockIndex)
-  mobileRevealCleanup?.()
-})
 </script>
+
+<doc lang="text">
+  Previous animation (useRevealAnimation):
+  - elements: [{ el: sectionRoot, direction: 'down', delay: 0, duration: 3 }, { el: player, direction: 'down', delay: 0 }]
+  - offset: 44
+  - ease: 'power3.out'
+  - runOnMount: false
+</doc>
 
 <template>
 <div data-block data-component="SantiagoJourneySection" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="santiago-journey-section section--full-viewport">
+    <section class="santiago-journey-section section--full-viewport">
       <div class="container">
         <div class="centered">
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('santiagoJourney.paragraph')"></p>
-          <div ref="player">
+          <div>
             <SoundPlayer :src="audioAdrian" :text="$t('santiagoJourney.soundPlayerQuote')" :image="adrianImage"
               :chapters="chaptersAdrian" class="paragraph-spacing align-center" />
           </div>

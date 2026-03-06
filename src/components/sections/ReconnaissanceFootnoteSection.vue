@@ -1,50 +1,27 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, inject } from 'vue'
-import { useRevealAnimation } from '@/composables/useRevealAnimation'
-import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
 import ImageCrop from '@/components/tools/ImageCrop.vue'
-import { useMobileDetection, isMobileViewport } from '@/composables/useMobileDetection'
+import { useMobileDetection } from '@/composables/useMobileDetection'
 
 const { isMobile } = useMobileDetection()
-
-const sectionRoot = ref<HTMLElement | null>(null)
-const image = ref<HTMLElement | null>(null)
-const content = ref<HTMLElement | null>(null)
-const registerBlockEnter = inject<((index: number, play: () => void) => void) | undefined>('blockScroll/registerBlockEnter')
-const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
-const { run, setInitialState } = useRevealAnimation({
-  elements: [
-    // { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
-    { el: image, direction: 'right', delay: 0, rotation: 12 },
-    // { el: content, direction: 'left', delay: 0.1 },
-  ],
-  offset: 44,
-  ease: 'power3.out',
-  runOnMount: false,
-})
-let myBlockIndex = -1
-let mobileRevealCleanup: (() => void) | void
-onMounted(() => {
-  setInitialState()
-  myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
-  registerBlockEnter?.(myBlockIndex, () => run())
-  if (isMobileViewport()) mobileRevealCleanup = run()
-})
-onUnmounted(() => {
-  unregisterBlockEnter?.(myBlockIndex)
-  mobileRevealCleanup?.()
-})
 </script>
+
+<doc lang="text">
+  Previous animation (useRevealAnimation):
+  - elements: [{ el: image, direction: 'right', delay: 0, rotation: 12 }]
+  - offset: 44
+  - ease: 'power3.out'
+  - runOnMount: false
+</doc>
 
 <template>
 <div data-block data-component="ReconnaissanceFootnoteSection" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="reconnaissance-footnote-section section--full-viewport">
+    <section class="reconnaissance-footnote-section section--full-viewport">
       <div class="container">
-        <div ref="content" class="centered">
+        <div class="centered">
           <p class="type__section-paragraph paragraph-spacing">{{ $t('reconnaissance.insertBetween') }}</p>
         </div>
-        <div ref="image" class="centered paragraph-spacing">
+        <div class="centered paragraph-spacing">
           <div class="image-crop-container">
             <ImageCrop :width="isMobile ? '100%' : '35rem'" :height="isMobile ? '100%' : 'auto'" position="center 50%"
               :caption="$t('reconnaissance.documentCaption')" caption-position="bottom">

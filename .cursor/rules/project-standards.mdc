@@ -5,6 +5,7 @@ alwaysApply: true
 
 # a-orixe project standards
 
+- **Keep the code clean; avoid unnecessary complexity.** Prefer simple, readable solutions. Do not add abstraction or indirection unless it is clearly needed.
 - Prefer project conventions defined in **CLAUDE.md** (tech stack, style, commands).
 - Follow patterns already used in the codebase; avoid introducing new styles without reason.
 - Keep changes focused; one concern per commit or change set when possible.

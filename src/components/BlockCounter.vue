@@ -4,14 +4,14 @@ withDefaults(
     /** Static version number (e.g. 1 → "v1"). */
     version?: number
   }>(),
-  { version: 1 }
+  { version: 3 }
 )
 </script>
 
 <template>
-  <div class="block-counter" aria-hidden="true">
-    v{{ version }}
-  </div>
+<div class="block-counter" aria-hidden="true">
+  v{{ version }}
+</div>
 </template>
 
 <style scoped>

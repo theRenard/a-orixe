@@ -1,107 +1,46 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch, inject } from 'vue'
+import { computed } from 'vue'
 import heroImage from '@/assets/illustrations/illu_principale_ok.webp'
 import mouseIcon from '@/assets/icons/scroll_down_2.webp'
-import { useRevealAnimation } from '@/composables/useRevealAnimation'
-import { useMobileDetection, isMobileViewport } from '@/composables/useMobileDetection'
-import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
+import { useMobileDetection } from '@/composables/useMobileDetection'
 
 const { isWide, isMobile } = useMobileDetection()
 
-const sectionRoot = ref<HTMLElement | null>(null)
-const blockInnerRef = ref<HTMLElement | null>(null)
-const bg = ref<HTMLElement | null>(null)
-const heroTitle = ref<HTMLElement | null>(null)
-const heroSubtitle = ref<HTMLElement | null>(null)
-const creditsLeft = ref<HTMLElement | null>(null)
-const creditsRight = ref<HTMLElement | null>(null)
-const registerBlockEnter = inject<((index: number, play: () => void) => void) | undefined>('blockScroll/registerBlockEnter')
-const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
-
-/** Illustration height in vh: 100 at top, 50 after scrolling (over first ~600px). */
-const illustrationHeightVh = ref(isWide.value ? 100 : 75)
-const SCROLL_THRESHOLD_PX = 600
-
-/** Hide mouse icon as soon as user scrolls. */
-const showScrollIndicator = ref(true)
-const SCROLL_INDICATOR_HIDE_PX = 10
-
-/** Run the reveal animation when user has scrolled this far inside the hero block. */
-const REVEAL_TRIGGER_PX = 50
-let revealDone = false
-
-const { run, setInitialState } = useRevealAnimation({
-  elements: [
-    { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
-    { el: heroTitle, direction: 'down', delay: 0.1 },
-    { el: heroSubtitle, direction: 'down', delay: 0.2 },
-    { el: creditsLeft, direction: 'left', delay: 0.35, offset: 80 },
-    { el: creditsRight, direction: 'right', delay: 0.35, offset: 80 },
-  ],
-  offset: 48,
-  ease: 'power3.out',
-  runOnMount: false,
-})
-
-function onBlockScroll() {
-  const el = blockInnerRef.value
-  if (!el) return
-  const scrollTop = el.scrollTop
-  const progress = Math.min(1, scrollTop / SCROLL_THRESHOLD_PX)
-  illustrationHeightVh.value = 100 - progress * 50
-  showScrollIndicator.value = scrollTop <= SCROLL_INDICATOR_HIDE_PX
-
-  if (!revealDone && scrollTop >= REVEAL_TRIGGER_PX) {
-    revealDone = true
-    run()
-  }
-}
-
-let myBlockIndex = -1
-let mobileRevealCleanup: (() => void) | void
-
-onMounted(() => {
-  setInitialState()
-  myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
-  registerBlockEnter?.(myBlockIndex, () => run())
-  if (isMobileViewport()) mobileRevealCleanup = run()
-  const el = blockInnerRef.value
-  if (el) {
-    el.addEventListener('scroll', onBlockScroll, { passive: true })
-    onUnmounted(() => el.removeEventListener('scroll', onBlockScroll))
-  }
-})
-onUnmounted(() => {
-  unregisterBlockEnter?.(myBlockIndex)
-  mobileRevealCleanup?.()
-})
-
-watch(isWide, () => {
-  if (isWide.value) {
-    illustrationHeightVh.value = 100
-  } else {
-    illustrationHeightVh.value = 75
-  }
-})
+/** Static illustration height: 100vh (wide) or 75vh (narrow). Previously animated 100→50vh over scroll. */
+const illustrationHeightVh = computed(() => (isWide.value ? 100 : 75))
 </script>
+
+<doc lang="text">
+  Previous animation (useRevealAnimation):
+  - elements: [{ el: sectionRoot, direction: 'down', delay: 0, duration: 3 }, { el: heroTitle, direction: 'down', delay: 0.1 }, { el: heroSubtitle, direction: 'down', delay: 0.2 }, { el: creditsLeft, direction: 'left', delay: 0.35, offset: 80 }, { el: creditsRight, direction: 'right', delay: 0.35, offset: 80 }]
+  - offset: 48
+  - ease: 'power3.out'
+  - runOnMount: false
+
+  Scroll-driven behavior (block-inner scroll):
+  - SCROLL_THRESHOLD_PX: 600 — illustration height interpolated over this scroll distance (100vh → 50vh).
+  - REVEAL_TRIGGER_PX: 50 — reveal animation run when block-inner scrollTop >= 50.
+  - SCROLL_INDICATOR_HIDE_PX: 10 — scroll indicator hidden when scrollTop > 10.
+  - Scroll listener on blockInnerRef; onBlockScroll updated illustrationHeightVh and showScrollIndicator, and triggered run() once when scrollTop >= REVEAL_TRIGGER_PX.
+</doc>
 
 <template>
 <div :data-wide="isWide" :data-mobile="isMobile" data-block data-component="HeroIllustration"
   class="block block--first">
-  <div ref="blockInnerRef" data-block-inner class="block-inner">
+  <div data-block-inner class="block-inner">
     <section class="hero-block section--full-viewport" aria-label="Hero">
-      <div ref="bg" class="hero-block__illustration"
+      <div class="hero-block__illustration"
         :style="{ backgroundImage: `url(${heroImage})`, height: `${illustrationHeightVh}vh` }" role="img"
         :aria-label="$t('hero.illustrationAlt')" />
-      <div ref="sectionRoot" class="hero-block__content mt-4 type__credits">
+      <div class="hero-block__content mt-4 type__credits">
         <div class="container">
-          <h1 ref="heroTitle" class="type__hero-title">
+          <h1 class="type__hero-title">
             {{ $t('hero.title') }}
           </h1>
-          <p ref="heroSubtitle" class="type__hero-subtitle mt-0" v-html="$t('hero.subtitle')"></p>
+          <p class="type__hero-subtitle mt-0" v-html="$t('hero.subtitle')"></p>
           <div class="paragraph-spacing" :class="{ 'mb-0': isMobile }">
             <div class="container credits__inner">
-              <div ref="creditsLeft" class="credits__col credits__col--left"
+              <div class="credits__col credits__col--left"
                 :class="{ 'pb-2': isMobile, 'pt-2': isMobile }">
                 <div class="credits__line-accent" aria-hidden="true" />
                 <p>
@@ -115,7 +54,7 @@ watch(isWide, () => {
                   }}</span>
                 </p>
               </div>
-              <div ref="creditsRight" :class="{ 'pb-2': isMobile, 'pt-2': isMobile }"
+              <div :class="{ 'pb-2': isMobile, 'pt-2': isMobile }"
                 class="credits__col credits__col--right">
                 <div :class="{ 'ml-auto': isWide }" class="credits__line-accent" aria-hidden="true" />
                 <p>
@@ -138,8 +77,7 @@ watch(isWide, () => {
         </div>
       </div>
     </section>
-    <div v-if="isWide" class="scroll-indicator" :class="{ 'scroll-indicator--hidden': !showScrollIndicator }"
-      aria-hidden="true">
+    <div v-if="isWide" class="scroll-indicator" aria-hidden="true">
       <img :src="mouseIcon" alt="" class="scroll-indicator__icon" />
     </div>
   </div>

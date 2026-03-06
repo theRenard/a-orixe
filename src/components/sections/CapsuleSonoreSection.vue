@@ -1,55 +1,33 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, inject } from 'vue'
 import ImageCrop from '@/components/tools/ImageCrop.vue'
 import SoundPlayer from '@/components/tools/SoundPlayer.vue'
 import audioForetOiseaux from '@/assets/audio/audio_foret_oiseaux.mp3'
 import capsuleSonoreImage from '@/assets/photos/13_florence_antunes.webp'
-import { useRevealAnimation } from '@/composables/useRevealAnimation'
-import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
-import { useMobileDetection, isMobileViewport } from '@/composables/useMobileDetection'
+import { useMobileDetection } from '@/composables/useMobileDetection'
 
 const { isMobile } = useMobileDetection()
-
-const sectionRoot = ref<HTMLElement | null>(null)
-const imageBlock = ref<HTMLElement | null>(null)
-const playerBlock = ref<HTMLElement | null>(null)
-const registerBlockEnter = inject<((index: number, play: () => void) => void) | undefined>('blockScroll/registerBlockEnter')
-const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
-const { run, setInitialState } = useRevealAnimation({
-  elements: [
-    { el: imageBlock, direction: 'up', delay: 0, scale: 3, duration: 4, transformOrigin: 'bottom center' },
-    { el: playerBlock, direction: 'down', delay: 0.1 },
-  ],
-  offset: 44,
-  ease: 'power3.out',
-  runOnMount: false,
-})
-let myBlockIndex = -1
-let mobileRevealCleanup: (() => void) | void
-onMounted(() => {
-  setInitialState()
-  myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
-  registerBlockEnter?.(myBlockIndex, () => run())
-  if (isMobileViewport()) mobileRevealCleanup = run()
-})
-onUnmounted(() => {
-  unregisterBlockEnter?.(myBlockIndex)
-  mobileRevealCleanup?.()
-})
 </script>
+
+<doc lang="text">
+  Previous animation (useRevealAnimation):
+  - elements: [{ el: imageBlock, direction: 'up', delay: 0, scale: 3, duration: 4, transformOrigin: 'bottom center' }, { el: playerBlock, direction: 'down', delay: 0.1 }]
+  - offset: 44
+  - ease: 'power3.out'
+  - runOnMount: false
+</doc>
 
 <template>
 <div data-block data-component="CapsuleSonoreSection" class="block">
   <div data-block-inner class="block-inner">
-    <section ref="sectionRoot" class="capsule-sonore-section">
+    <section class="capsule-sonore-section">
       <div class="container">
-        <div ref="imageBlock">
+        <div>
           <ImageCrop :width="isMobile ? '100%' : '70rem'" :height="isMobile ? '70rem' : '50rem'" position="center 50%">
             <img :src="capsuleSonoreImage" :alt="$t('capsuleSonore.imageCaption')" class="capsule-sonore-section__image"
               loading="lazy">
           </ImageCrop>
         </div>
-        <div ref="playerBlock" class="centered">
+        <div class="centered">
           <div class="capsule-sonore-section__player-wrap mt-3 mb-3">
             <SoundPlayer :src="audioForetOiseaux" :text="$t('capsuleSonore.soundPlayerText')"
               :image="capsuleSonoreImage" />

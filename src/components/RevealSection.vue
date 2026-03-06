@@ -1,36 +1,22 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
-import { useRevealAnimation, type RevealDirection } from '@/composables/useRevealAnimation'
-
-const props = withDefaults(
-  defineProps<{
-    direction?: RevealDirection
-    offset?: number
-  }>(),
-  {
-    direction: 'left',
-    offset: 48,
-  },
-)
-
-const root = ref<HTMLElement | null>(null)
-const { run } = useRevealAnimation({
-  elements: [{ el: root, direction: props.direction }],
-  offset: props.offset,
-  ease: 'power3.out',
-  scrollTrigger: { trigger: root },
-})
-
-onMounted(() => {
-  const cleanup = run()
-  if (cleanup) {
-    onUnmounted(cleanup)
-  }
-})
+defineProps<{
+  direction?: 'left' | 'right' | 'up' | 'down'
+  offset?: number
+}>()
 </script>
 
+<doc lang="text">
+  Previous animation: useRevealAnimation with scrollTrigger.
+  - Props: direction (default 'left'), offset (default 48).
+  - elements: [{ el: root, direction: props.direction }]
+  - offset: props.offset
+  - ease: 'power3.out'
+  - scrollTrigger: { trigger: root }
+  - run() called in onMounted; cleanup in onUnmounted if returned.
+</doc>
+
 <template>
-  <div ref="root" class="reveal-section">
+  <div class="reveal-section">
     <slot />
   </div>
 </template>
