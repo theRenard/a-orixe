@@ -29,8 +29,7 @@ onMounted(() => {
 
 <template>
 <section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'association-section', 'section--full-viewport']" data-block data-component="AssociationSection">
-  <div class="section-content">
-    <div class="section-inner" data-block-inner>
+  <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">
           <div>

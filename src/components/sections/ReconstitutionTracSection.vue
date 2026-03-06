@@ -31,8 +31,7 @@ onMounted(() => {
 
 <template>
 <section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'reconstitution-trac-section', { 'mt-8': isMobile }]" data-block data-component="ReconstitutionTracSection">
-  <div class="section-content">
-    <div class="section-inner" data-block-inner>
+  <div class="section-inner" data-block-inner>
       <div class="container">
         <div>
           <ImageCrop width="100%" height="320px" position="center 50%"
@@ -53,7 +52,6 @@ onMounted(() => {
         </div>
       </div>
     </div>
-  </div>
 </section>
 </template>
 

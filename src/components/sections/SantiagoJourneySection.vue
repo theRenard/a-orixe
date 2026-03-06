@@ -30,8 +30,7 @@ onMounted(() => {
 
 <template>
 <section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'santiago-journey-section', 'section--full-viewport']" data-block data-component="SantiagoJourneySection">
-  <div class="section-content">
-    <div class="section-inner" data-block-inner>
+  <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('santiagoJourney.paragraph')"></p>
@@ -42,7 +41,6 @@ onMounted(() => {
         </div>
       </div>
     </div>
-  </div>
 </section>
 </template>
 

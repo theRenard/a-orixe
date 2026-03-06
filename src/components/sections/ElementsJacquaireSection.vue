@@ -30,8 +30,7 @@ onMounted(() => {
 
 <template>
 <section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'elements-jacquaire-section', 'section--full-viewport']" data-block data-component="ElementsJacquaireSection">
-  <div class="section-content">
-    <div class="section-inner" data-block-inner>
+  <div class="section-inner" data-block-inner>
       <div class="container">
         <img src="../../assets/illustrations/benevoles_ok.webp" :alt="$t('elementsJacquaire.title')"
           class="elements-jacquaire-section__image ma" :class="{ 'paragraph-spacing': isMobile }" loading="lazy"
@@ -45,7 +44,6 @@ onMounted(() => {
         </div>
       </div>
     </div>
-  </div>
 </section>
 </template>
 

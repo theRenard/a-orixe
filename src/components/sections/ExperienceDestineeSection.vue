@@ -29,8 +29,7 @@ onMounted(() => {
 
 <template>
 <section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'experience-destinee-section', 'section--full-viewport']" data-block data-component="ExperienceDestineeSection">
-  <div class="section-content">
-    <div class="section-inner" data-block-inner>
+  <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">
           <img :src="bateauIllustration" :alt="$t('experienceDestinee.illustrationAlt')"
@@ -56,7 +55,6 @@ onMounted(() => {
         </div>
       </div>
     </div>
-  </div>
 </section>
 </template>
 

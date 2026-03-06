@@ -6,8 +6,7 @@ defineProps<{ sectionIndex: number }>()
 
 <template>
 <section :class="['section', `section-${sectionIndex}`, 'hero-block', 'section--full-viewport', 'block--first']" data-mobile data-block data-component="HeroIllustrationMobile" aria-label="Hero">
-  <div class="section-content">
-    <div class="section-inner" data-block-inner>
+  <div class="section-inner" data-block-inner>
       <div class="hero-block__illustration"
         :style="{ backgroundImage: `url(${heroImage})`, height: '75vh' }" role="img"
         :aria-label="$t('hero.illustrationAlt')" />
@@ -54,7 +53,6 @@ defineProps<{ sectionIndex: number }>()
         </div>
       </div>
     </div>
-  </div>
 </section>
 </template>
 

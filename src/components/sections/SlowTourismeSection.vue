@@ -31,8 +31,7 @@ onMounted(() => {
 
 <template>
 <section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'slow-tourisme-section', 'section--full-viewport']" data-block data-component="SlowTourismeSection">
-  <div class="section-content">
-    <div class="section-inner" data-block-inner>
+  <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">
           <h2 ref="title" class="type__interview-title slow-tourisme-section__headline heading-spacing">
@@ -53,7 +52,6 @@ onMounted(() => {
         </div>
       </div>
     </div>
-  </div>
 </section>
 </template>
 

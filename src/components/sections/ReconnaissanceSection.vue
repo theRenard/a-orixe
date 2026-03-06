@@ -28,8 +28,7 @@ onMounted(() => {
 
 <template>
 <section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'reconnaissance-section', 'section--full-viewport']" data-block data-component="ReconnaissanceSection">
-  <div class="section-content">
-    <div class="section-inner" data-block-inner>
+  <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">
           <div class="paragraph-spacing reconnaissance-section__row">
@@ -42,7 +41,6 @@ onMounted(() => {
         </div>
       </div>
     </div>
-  </div>
 </section>
 </template>
 

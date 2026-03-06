@@ -34,8 +34,7 @@ onMounted(() => {
 <section ref="sectionRoot"
   :class="['section', `section-${sectionIndex}`, 'etapes-cles-section', 'section--full-viewport']" id="etapes-cles"
   data-block data-component="EtapesClesSection">
-  <div class="section-content">
-    <div class="section-inner" data-block-inner>
+  <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">
           <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">
@@ -48,6 +47,5 @@ onMounted(() => {
           style="width: calc(50vw * var(--scale-xlarge));">
       </div>
     </div>
-  </div>
 </section>
 </template>

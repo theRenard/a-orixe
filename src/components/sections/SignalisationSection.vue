@@ -39,8 +39,7 @@ const imageList = computed(() => [
 
 <template>
 <section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'signalisation-section', 'section--full-viewport']" data-block data-component="SignalisationSection">
-  <div class="section-content">
-    <div class="section-inner" data-block-inner>
+  <div class="section-inner" data-block-inner>
       <div class="container">
         <SlidingGallery v-if="isMobile" :images="imageList" :caption="$t('signalisation.caption')" />
         <template v-else>
@@ -62,7 +61,6 @@ const imageList = computed(() => [
         </template>
       </div>
     </div>
-  </div>
 </section>
 </template>
 

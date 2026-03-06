@@ -32,8 +32,7 @@ onMounted(() => {
 
 <template>
 <section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'coup-de-coeur-section', 'section--full-viewport']" data-block data-component="CoupDeCoeurSection">
-  <div class="section-content">
-    <div class="section-inner" data-block-inner>
+  <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">
           <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">
@@ -50,7 +49,6 @@ onMounted(() => {
         </div>
       </div>
     </div>
-  </div>
 </section>
 </template>
 

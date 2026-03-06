@@ -32,8 +32,7 @@ onMounted(() => {
 
 <template>
 <section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'testimonial', 'section--full-viewport', 'with-background', 'with-shadow', 'fourth-testimonial']" data-block data-component="FourthTestimonial">
-  <div class="section-content">
-    <div class="section-inner" data-block-inner>
+  <div class="section-inner" data-block-inner>
       <div class="container fourth-testimonial__container">
         <img v-if="!isMobile" src="@/assets/illustrations/mouette.webp"
           :alt="$t('fourthTestimonial.quote')" class="fourth-testimonial__bird" loading="lazy">
@@ -47,7 +46,6 @@ onMounted(() => {
         </blockquote>
       </div>
     </div>
-  </div>
 </section>
 </template>
 

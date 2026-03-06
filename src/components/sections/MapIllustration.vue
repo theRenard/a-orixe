@@ -68,8 +68,7 @@ onMounted(() => {
 
 <template>
 <section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'map-illustration-section']" data-block data-component="MapIllustration">
-  <div class="section-content">
-    <div class="section-inner" data-block-inner>
+  <div class="section-inner" data-block-inner>
       <div ref="mapWrap" class="map-illustration section--full-viewport image-section" role="img"
         :aria-label="$t('carteEtapesSantiago.caption')">
         <img class="map-illustration__bg" :src="mapImageComputed" alt="" />
@@ -94,7 +93,6 @@ onMounted(() => {
         </div>
       </div>
     </div>
-  </div>
 </section>
 </template>
 

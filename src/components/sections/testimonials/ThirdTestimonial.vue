@@ -30,8 +30,7 @@ onMounted(() => {
 
 <template>
 <section ref="sectionRoot" :class="['section', `section-${sectionIndex}`]" data-block data-component="ThirdTestimonial">
-  <div class="section-content">
-    <div class="section-inner" data-block-inner>
+  <div class="section-inner" data-block-inner>
       <section class="section--half-viewport with-shadow">
         <div class="container">
           <div class="centered">
@@ -55,7 +54,6 @@ onMounted(() => {
         </div>
       </section>
     </div>
-  </div>
 </section>
 </template>
 

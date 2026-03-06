@@ -41,8 +41,7 @@ const imageList = computed(() => [
 
 <template>
 <section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'joyau-section', 'section--full-viewport']" data-block data-component="JoyauSection">
-  <div class="section-content">
-    <div class="section-inner" data-block-inner>
+  <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('joyau.paragraph1')"></p>
@@ -71,7 +70,6 @@ const imageList = computed(() => [
         </p>
       </div>
     </div>
-  </div>
 </section>
 </template>
 

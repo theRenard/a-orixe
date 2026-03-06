@@ -1,6 +1,6 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { SCROLL_PINNING_ENABLED, SNAP_ENABLED } from '@/config'
+import { SCROLL_ENABLED, SNAP_ENABLED } from '@/config'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger)
  * - Then scale down (1 → 0.7) and fade out (1 → 0.5 → 0)
  */
 export function initAnimation(): void {
-  if (!SCROLL_PINNING_ENABLED) return
+  if (!SCROLL_ENABLED) return
 
   const panels = gsap.utils.toArray<HTMLElement>('.section')
   panels.pop()
@@ -74,7 +74,7 @@ export function initAnimation(): void {
     tl.fromTo(
       panel,
       { scale: 1, opacity: 1 },
-      { scale: 1, opacity: 0, duration: 0.2 },
+      { scale: 0.5, opacity: 0.5, duration: 0.9 },
     ).to(panel, { opacity: 0, duration: 0.1 })
   })
 }

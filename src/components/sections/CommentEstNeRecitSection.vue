@@ -30,8 +30,7 @@ onMounted(() => {
 
 <template>
 <section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'section--full-viewport', 'comment-est-ne-section', { 'pb-10': isMobile }]" data-block data-component="CommentEstNeRecitSection">
-  <div class="section-content">
-    <div class="section-inner" data-block-inner>
+  <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="comment-est-ne-section__inner paragraph-spacing">
           <div class="comment-est-ne-section__grid">
@@ -61,7 +60,6 @@ onMounted(() => {
         </div>
       </div>
     </div>
-  </div>
 </section>
 </template>
 

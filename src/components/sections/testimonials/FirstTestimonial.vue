@@ -32,8 +32,7 @@ onMounted(() => {
 <section ref="sectionRoot"
   :class="['section', `section-${sectionIndex}`, 'testimonial', 'section--full-viewport', 'with-background', 'with-shadow']"
   data-block data-component="FirstTestimonial">
-  <div class="section-content">
-    <div class="section-inner" data-block-inner>
+  <div class="section-inner" data-block-inner>
       <div class="container">
         <blockquote class="centered">
           <div ref="blockquoteInner">
@@ -45,6 +44,5 @@ onMounted(() => {
         </blockquote>
       </div>
     </div>
-  </div>
 </section>
 </template>

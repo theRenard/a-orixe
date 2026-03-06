@@ -29,8 +29,7 @@ const illustrationHeightVh = computed(() => (isWide.value ? 100 : 75))
 <section
   :class="['section', `section-${props.sectionIndex}`, 'hero-block', 'section--full-viewport', { 'block--first': props.sectionIndex === 1 }]"
   :data-wide="isWide" :data-mobile="isMobile" data-block data-component="HeroIllustration" aria-label="Hero">
-  <div class="section-content">
-    <div class="section-inner" data-block-inner>
+  <div class="section-inner" data-block-inner>
       <div class="hero-block__illustration"
         :style="{ backgroundImage: `url(${heroImage})`, height: `${illustrationHeightVh}vh` }" role="img"
         :aria-label="$t('hero.illustrationAlt')">
@@ -56,7 +55,7 @@ const illustrationHeightVh = computed(() => (isWide.value ? 100 : 75))
                     class="type__credits-bold">{{ $t('credits.translatedByName') }}</span></p>
                 <p>
                   {{ $t('credits.publishedOnPrefix') }}<span class="type__credits-bold">{{ $t('credits.publishedOnDate')
-                    }}</span>
+                  }}</span>
                 </p>
               </div>
               <div :class="{ 'pb-2': isMobile, 'pt-2': isMobile }" class="credits__col credits__col--right">
@@ -64,16 +63,16 @@ const illustrationHeightVh = computed(() => (isWide.value ? 100 : 75))
                 <p>
                   {{ $t('credits.artDirectionPrefix') }}<span class="type__credits-bold">{{
                     $t('credits.artDirectionName')
-                    }}</span>
+                  }}</span>
                 </p>
                 <p>
                   {{ $t('credits.illustrationPrefix') }}<span class="type__credits-bold">{{
                     $t('credits.illustrationName')
-                    }}</span>
+                  }}</span>
                 </p>
                 <p>
                   {{ $t('credits.devDesignPrefix') }}<span class="type__credits-bold">{{ $t('credits.devDesignName')
-                    }}</span>
+                  }}</span>
                 </p>
               </div>
             </div>
@@ -82,7 +81,6 @@ const illustrationHeightVh = computed(() => (isWide.value ? 100 : 75))
       </div>
 
     </div>
-  </div>
 </section>
 </template>
 
@@ -165,7 +163,7 @@ const illustrationHeightVh = computed(() => (isWide.value ? 100 : 75))
 
   /* Limit hero scroll height so less scroll is needed to reach bottom and go to next block */
   .hero-block {
-    max-height: calc(100dvh + 600px);
+    /* max-height: calc(100dvh + 600px); */
   }
 
   .credits__inner {

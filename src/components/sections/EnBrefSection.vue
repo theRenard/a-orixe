@@ -40,8 +40,7 @@ onMounted(() => {
 
 <template>
 <section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'en-bref-section', 'section--full-viewport', { 'pb-10': isMobile }]" data-block data-component="EnBrefSection">
-  <div class="section-content">
-    <div class="section-inner" data-block-inner>
+  <div class="section-inner" data-block-inner>
       <div class="en-bref-section__inner container">
         <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">
           <span class="">{{ $t('enBref.titlePrefix') }}</span>{{ $t('enBref.titleSuffix') }}
@@ -83,7 +82,6 @@ onMounted(() => {
         </p>
       </div>
     </div>
-  </div>
 </section>
 </template>
 
