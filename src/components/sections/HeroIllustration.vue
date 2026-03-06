@@ -4,7 +4,6 @@ import heroImage from '@/assets/illustrations/illu_principale_ok.webp'
 import mouseIcon from '@/assets/icons/scroll_down_2.webp'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 
-const props = defineProps<{ sectionIndex: number }>()
 const { isWide, isMobile } = useMobileDetection()
 
 /** Static illustration height: 100vh (wide) or 75vh (narrow). Previously animated 100→50vh over scroll. */
@@ -27,7 +26,7 @@ const illustrationHeightVh = computed(() => (isWide.value ? 100 : 75))
 
 <template>
 <section
-  :class="['section', `section-${props.sectionIndex}`, 'hero-block', 'section--full-viewport', { 'block--first': props.sectionIndex === 1 }]"
+  :class="['section', 'hero-block', 'section--full-viewport', 'block--first']"
   :data-wide="isWide" :data-mobile="isMobile" data-block data-component="HeroIllustration" aria-label="Hero">
   <div class="section-inner" data-block-inner>
       <div class="hero-block__illustration"

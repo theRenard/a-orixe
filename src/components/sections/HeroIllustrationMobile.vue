@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import heroImage from '@/assets/illustrations/illu_principale_ok.webp'
 
-defineProps<{ sectionIndex: number }>()
 </script>
 
 <template>
-<section :class="['section', `section-${sectionIndex}`, 'hero-block', 'section--full-viewport', 'block--first']" data-mobile data-block data-component="HeroIllustrationMobile" aria-label="Hero">
+<section :class="['section', 'hero-block', 'section--full-viewport', 'block--first']" data-mobile data-block data-component="HeroIllustrationMobile" aria-label="Hero">
   <div class="section-inner" data-block-inner>
       <div class="hero-block__illustration"
         :style="{ backgroundImage: `url(${heroImage})`, height: '75vh' }" role="img"

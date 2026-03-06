@@ -3,7 +3,6 @@ import { ref, onMounted } from 'vue'
 import ImageCrop from '@/components/tools/ImageCrop.vue'
 import { useAnimation } from '@/composables/useAnimation'
 
-defineProps<{ sectionIndex: number }>()
 
 const sectionRoot = ref<HTMLElement | null>(null)
 const imageBlock = ref<HTMLElement | null>(null)
@@ -37,7 +36,7 @@ onMounted(() => {
 </doc>
 
 <template>
-<section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'ressentir-lieux-section']" data-block data-component="RessentirLieuxSection">
+<section ref="sectionRoot" :class="['section', 'ressentir-lieux-section']" data-block data-component="RessentirLieuxSection">
   <div class="section-inner" data-block-inner>
       <div class="container">
         <div ref="imageBlock" class="ressentir-lieux-section__image-wrap">

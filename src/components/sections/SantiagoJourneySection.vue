@@ -6,7 +6,6 @@ import chaptersAdrian from '@/assets/audio-refs/Horodatage-Audio-Adrian.json'
 import adrianImage from '@/assets/audio-photos/pastille-photo-adrian.webp'
 import { useAnimation } from '@/composables/useAnimation'
 
-defineProps<{ sectionIndex: number }>()
 
 const sectionRoot = ref<HTMLElement | null>(null)
 
@@ -30,7 +29,7 @@ onMounted(() => {
 </doc>
 
 <template>
-<section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'santiago-journey-section', 'section--full-viewport']" data-block data-component="SantiagoJourneySection">
+<section ref="sectionRoot" :class="['section', 'santiago-journey-section', 'section--full-viewport']" data-block data-component="SantiagoJourneySection">
   <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">

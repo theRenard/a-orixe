@@ -6,7 +6,6 @@ import SlidingGallery from '@/components/tools/SlidingGallery.vue'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 import { useAnimation } from '@/composables/useAnimation'
 
-defineProps<{ sectionIndex: number }>()
 const { t } = useI18n()
 const { isMobile } = useMobileDetection()
 
@@ -39,7 +38,7 @@ const imageList = computed(() => [
 </doc>
 
 <template>
-<section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'signalisation-section', 'section--full-viewport']" data-block data-component="SignalisationSection">
+<section ref="sectionRoot" :class="['section', 'signalisation-section', 'section--full-viewport']" data-block data-component="SignalisationSection">
   <div class="section-inner" data-block-inner>
       <div class="container">
         <SlidingGallery v-if="isMobile" :images="imageList" :caption="$t('signalisation.caption')" />

@@ -2,7 +2,6 @@
 import { ref, onMounted } from 'vue'
 import { useAnimation } from '@/composables/useAnimation'
 
-defineProps<{ sectionIndex: number }>()
 
 const sectionRoot = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
@@ -35,7 +34,7 @@ onMounted(() => {
 </doc>
 
 <template>
-<section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'camino-section', 'section--full-viewport']"
+<section ref="sectionRoot" :class="['section', 'camino-section', 'section--full-viewport']"
   data-block data-component="CaminoSection">
   <div class="section-inner" data-block-inner>
       <div class="container">

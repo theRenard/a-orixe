@@ -3,7 +3,6 @@ import { ref, onMounted } from 'vue'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 import { useAnimation } from '@/composables/useAnimation'
 
-defineProps<{ sectionIndex: number }>()
 const { isMobile } = useMobileDetection()
 
 const sectionRoot = ref<HTMLElement | null>(null)
@@ -30,7 +29,7 @@ onMounted(() => {
 </doc>
 
 <template>
-<section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'section--full-viewport', 'comment-est-ne-section', { 'pb-10': isMobile }]" data-block data-component="CommentEstNeRecitSection">
+<section ref="sectionRoot" :class="['section', 'section--full-viewport', 'comment-est-ne-section', { 'pb-10': isMobile }]" data-block data-component="CommentEstNeRecitSection">
   <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="comment-est-ne-section__inner paragraph-spacing">

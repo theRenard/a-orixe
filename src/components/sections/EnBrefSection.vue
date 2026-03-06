@@ -6,7 +6,6 @@ import cathedrale from '@/assets/illustrations/cathedrale.png'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 import { useAnimation } from '@/composables/useAnimation'
 
-defineProps<{ sectionIndex: number }>()
 const { isMobile } = useMobileDetection()
 const { locale } = useI18n()
 const routeDetailUrl = computed(() => `https://aorixe.es/${locale.value === 'es' ? 'es' : 'fr'}`)
@@ -40,7 +39,7 @@ onMounted(() => {
 </doc>
 
 <template>
-<section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'en-bref-section', 'section--full-viewport', { 'pb-10': isMobile }]" data-block data-component="EnBrefSection">
+<section ref="sectionRoot" :class="['section', 'en-bref-section', 'section--full-viewport', { 'pb-10': isMobile }]" data-block data-component="EnBrefSection">
   <div class="section-inner" data-block-inner>
       <div class="en-bref-section__inner container">
         <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">

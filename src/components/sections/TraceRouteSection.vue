@@ -6,7 +6,6 @@ import chaptersDonManuel from '@/assets/audio-refs/Horodatage-Audio-DonManuel.js
 import donManuelImage from '@/assets/audio-photos/pastille-photo-don-manuel.webp'
 import { useAnimation } from '@/composables/useAnimation'
 
-defineProps<{ sectionIndex: number }>()
 
 const sectionRoot = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
@@ -32,7 +31,7 @@ onMounted(() => {
 </doc>
 
 <template>
-<section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'trace-route-section', 'section--full-viewport']" data-block data-component="TraceRouteSection">
+<section ref="sectionRoot" :class="['section', 'trace-route-section', 'section--full-viewport']" data-block data-component="TraceRouteSection">
   <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">

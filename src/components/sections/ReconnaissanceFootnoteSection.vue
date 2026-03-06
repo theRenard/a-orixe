@@ -4,7 +4,6 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 import { useAnimation } from '@/composables/useAnimation'
 
-defineProps<{ sectionIndex: number }>()
 const { isMobile } = useMobileDetection()
 
 const sectionRoot = ref<HTMLElement | null>(null)
@@ -29,7 +28,7 @@ onMounted(() => {
 </doc>
 
 <template>
-<section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'reconnaissance-footnote-section', 'section--full-viewport']" data-block data-component="ReconnaissanceFootnoteSection">
+<section ref="sectionRoot" :class="['section', 'reconnaissance-footnote-section', 'section--full-viewport']" data-block data-component="ReconnaissanceFootnoteSection">
   <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">

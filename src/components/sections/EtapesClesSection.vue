@@ -3,7 +3,6 @@ import { ref, onMounted } from 'vue'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 import { useAnimation } from '@/composables/useAnimation'
 
-defineProps<{ sectionIndex: number }>()
 const { isMobile } = useMobileDetection()
 
 const sectionRoot = ref<HTMLElement | null>(null)
@@ -33,7 +32,7 @@ onMounted(() => {
 
 <template>
 <section ref="sectionRoot"
-  :class="['section', `section-${sectionIndex}`, 'etapes-cles-section', 'section--full-viewport']" id="etapes-cles"
+  :class="['section', 'etapes-cles-section', 'section--full-viewport']" id="etapes-cles"
   data-block data-component="EtapesClesSection">
   <div class="section-inner" data-block-inner>
       <div class="container">

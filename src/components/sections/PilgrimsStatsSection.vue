@@ -3,7 +3,6 @@ import { ref, onMounted } from 'vue'
 import PilgrimsHorizontalChart from '@/components/tools/PilgrimsHorizontalChart.vue'
 import { useAnimation } from '@/composables/useAnimation'
 
-defineProps<{ sectionIndex: number }>()
 
 const sectionRoot = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
@@ -30,7 +29,7 @@ onMounted(() => {
 </doc>
 
 <template>
-<section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'pilgrims-stats-section', 'section--full-viewport']" data-block data-component="PilgrimsStatsSection">
+<section ref="sectionRoot" :class="['section', 'pilgrims-stats-section', 'section--full-viewport']" data-block data-component="PilgrimsStatsSection">
   <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">

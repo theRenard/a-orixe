@@ -6,7 +6,6 @@ import chaptersSabela from '@/assets/audio-refs/Horodatage-Audio-Sabela.json'
 import sabelaImage from '@/assets/audio-photos/pastille-photo-sabela.webp'
 import { useAnimation } from '@/composables/useAnimation'
 
-defineProps<{ sectionIndex: number }>()
 
 const sectionRoot = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
@@ -32,7 +31,7 @@ onMounted(() => {
 </doc>
 
 <template>
-<section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'coup-de-coeur-section', 'section--full-viewport']" data-block data-component="CoupDeCoeurSection">
+<section ref="sectionRoot" :class="['section', 'coup-de-coeur-section', 'section--full-viewport']" data-block data-component="CoupDeCoeurSection">
   <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">

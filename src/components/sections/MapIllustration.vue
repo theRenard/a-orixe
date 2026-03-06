@@ -8,7 +8,6 @@ import mapLineImageMobile from '@/assets/illustrations/map_MOBILE_02.webp'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 import { useAnimation } from '@/composables/useAnimation'
 
-defineProps<{ sectionIndex: number }>()
 const { isMobile } = useMobileDetection()
 
 const sectionRoot = ref<HTMLElement | null>(null)
@@ -68,7 +67,7 @@ onMounted(() => {
 </doc>
 
 <template>
-<section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'map-illustration-section']" data-block data-component="MapIllustration">
+<section ref="sectionRoot" :class="['section', 'map-illustration-section']" data-block data-component="MapIllustration">
   <div class="section-inner" data-block-inner>
       <div ref="mapWrap" class="map-illustration section--full-viewport image-section" role="img"
         :aria-label="$t('carteEtapesSantiago.caption')">

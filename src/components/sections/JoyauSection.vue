@@ -6,7 +6,6 @@ import SlidingGallery from '@/components/tools/SlidingGallery.vue'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 import { useAnimation } from '@/composables/useAnimation'
 
-defineProps<{ sectionIndex: number }>()
 const { t } = useI18n()
 const { isMobile } = useMobileDetection()
 
@@ -41,7 +40,7 @@ const imageList = computed(() => [
 </doc>
 
 <template>
-<section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'joyau-section', 'section--full-viewport']" data-block data-component="JoyauSection">
+<section ref="sectionRoot" :class="['section', 'joyau-section', 'section--full-viewport']" data-block data-component="JoyauSection">
   <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">

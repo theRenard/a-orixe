@@ -4,7 +4,6 @@ import villageIllustration from '@/assets/illustrations/village.webp'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 import { useAnimation } from '@/composables/useAnimation'
 
-defineProps<{ sectionIndex: number }>()
 const { isMobile } = useMobileDetection()
 
 const sectionRoot = ref<HTMLElement | null>(null)
@@ -31,7 +30,7 @@ onMounted(() => {
 </doc>
 
 <template>
-<section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'slow-tourisme-section', 'section--full-viewport']" data-block data-component="SlowTourismeSection">
+<section ref="sectionRoot" :class="['section', 'slow-tourisme-section', 'section--full-viewport']" data-block data-component="SlowTourismeSection">
   <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">

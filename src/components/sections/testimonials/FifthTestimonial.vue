@@ -3,7 +3,6 @@ import { ref, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useAnimation } from '@/composables/useAnimation'
 
-defineProps<{ sectionIndex: number }>()
 const { locale } = useI18n()
 
 const sectionRoot = ref<HTMLElement | null>(null)
@@ -30,7 +29,7 @@ onMounted(() => {
 
 <template>
 <section ref="sectionRoot"
-  :class="['section', `section-${sectionIndex}`, 'testimonial', 'section--full-viewport', 'with-background', 'with-shadow', 'fifth-testimonial']"
+  :class="['section', 'testimonial', 'section--full-viewport', 'with-background', 'with-shadow', 'fifth-testimonial']"
   data-block data-component="FifthTestimonial">
   <div class="section-inner" data-block-inner>
     <div class="container">

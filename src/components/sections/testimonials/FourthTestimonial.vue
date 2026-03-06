@@ -4,7 +4,6 @@ import { useI18n } from 'vue-i18n'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 import { useAnimation } from '@/composables/useAnimation'
 
-defineProps<{ sectionIndex: number }>()
 const { locale } = useI18n()
 const { isMobile } = useMobileDetection()
 
@@ -33,7 +32,7 @@ onMounted(() => {
 </doc>
 
 <template>
-<section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'testimonial', 'section--full-viewport', 'with-background', 'with-shadow', 'fourth-testimonial']" data-block data-component="FourthTestimonial">
+<section ref="sectionRoot" :class="['section', 'testimonial', 'section--full-viewport', 'with-background', 'with-shadow', 'fourth-testimonial']" data-block data-component="FourthTestimonial">
   <div class="section-inner" data-block-inner>
       <div class="container fourth-testimonial__container">
         <img v-if="!isMobile" ref="imageRef" src="@/assets/illustrations/mouette.webp"

@@ -7,7 +7,6 @@ import capsuleSonoreImage from '@/assets/photos/13_florence_antunes.webp'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 import { useAnimation } from '@/composables/useAnimation'
 
-defineProps<{ sectionIndex: number }>()
 const { isMobile } = useMobileDetection()
 
 const sectionRoot = ref<HTMLElement | null>(null)
@@ -32,7 +31,7 @@ onMounted(() => {
 </doc>
 
 <template>
-<section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'capsule-sonore-section']" data-block data-component="CapsuleSonoreSection">
+<section ref="sectionRoot" :class="['section', 'capsule-sonore-section']" data-block data-component="CapsuleSonoreSection">
   <div class="section-inner" data-block-inner>
       <div class="container">
         <div>

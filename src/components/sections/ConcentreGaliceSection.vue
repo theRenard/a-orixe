@@ -3,7 +3,6 @@ import { ref, onMounted } from 'vue'
 import ImageCrop from '@/components/tools/ImageCrop.vue'
 import { useAnimation } from '@/composables/useAnimation'
 
-defineProps<{ sectionIndex: number }>()
 
 const sectionRoot = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
@@ -29,7 +28,7 @@ onMounted(() => {
 </doc>
 
 <template>
-<section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'concentre-galice-section', 'section--full-viewport']" data-block data-component="ConcentreGaliceSection">
+<section ref="sectionRoot" :class="['section', 'concentre-galice-section', 'section--full-viewport']" data-block data-component="ConcentreGaliceSection">
   <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered--large">

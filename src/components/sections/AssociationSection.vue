@@ -5,7 +5,6 @@ import pronunciationMp3 from '@/assets/audio/audio_prononciation_a_orixe.mp3'
 import pronunciationImage from '@/assets/audio-photos/pastille-photo-saturio.webp'
 import { useAnimation } from '@/composables/useAnimation'
 
-defineProps<{ sectionIndex: number }>()
 
 const sectionRoot = ref<HTMLElement | null>(null)
 
@@ -30,7 +29,7 @@ onMounted(() => {
 
 <template>
 <section ref="sectionRoot"
-  :class="['section', `section-${sectionIndex}`, 'association-section', 'section--full-viewport']" data-block
+  :class="['section', 'association-section', 'section--full-viewport']" data-block
   data-component="AssociationSection">
   <div class="section-inner" data-block-inner>
     <div class="container">

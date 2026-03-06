@@ -3,7 +3,6 @@ import { ref, onMounted } from 'vue'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 import { useAnimation } from '@/composables/useAnimation'
 
-defineProps<{ sectionIndex: number }>()
 const { isMobile } = useMobileDetection()
 
 const sectionRoot = ref<HTMLElement | null>(null)
@@ -30,7 +29,7 @@ onMounted(() => {
 </doc>
 
 <template>
-<section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'elements-jacquaire-section', 'section--full-viewport']" data-block data-component="ElementsJacquaireSection">
+<section ref="sectionRoot" :class="['section', 'elements-jacquaire-section', 'section--full-viewport']" data-block data-component="ElementsJacquaireSection">
   <div class="section-inner" data-block-inner>
       <div class="container">
         <img src="../../assets/illustrations/benevoles_ok.webp" :alt="$t('elementsJacquaire.title')"

@@ -2,7 +2,6 @@
 import { ref, onMounted } from 'vue'
 import { useAnimation } from '@/composables/useAnimation'
 
-defineProps<{ sectionIndex: number }>()
 
 const sectionRoot = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
@@ -28,7 +27,7 @@ onMounted(() => {
 </doc>
 
 <template>
-<section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'flechage-section', 'section--full-viewport']" data-block data-component="FlechageSection">
+<section ref="sectionRoot" :class="['section', 'flechage-section', 'section--full-viewport']" data-block data-component="FlechageSection">
   <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">

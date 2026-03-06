@@ -2,7 +2,6 @@
 import { ref, onMounted } from 'vue'
 import { useAnimation } from '@/composables/useAnimation'
 
-defineProps<{ sectionIndex: number }>()
 
 const sectionRoot = ref<HTMLElement | null>(null)
 
@@ -26,7 +25,7 @@ onMounted(() => {
 </doc>
 
 <template>
-<section ref="sectionRoot" :class="['section', `section-${sectionIndex}`, 'orixe-interview-section', 'section--full-viewport']" data-block data-component="OrixeInterviewSection">
+<section ref="sectionRoot" :class="['section', 'orixe-interview-section', 'section--full-viewport']" data-block data-component="OrixeInterviewSection">
   <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">
