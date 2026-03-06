@@ -5,6 +5,12 @@
  */
 
 @media (min-width: 48rem) {
+  /* Scroll container for ScrollTrigger: same as reference (body scrolls). */
+  body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+
   section {
     display: flex;
     justify-content: center;
@@ -63,16 +69,18 @@
     display: block;
   }
 
+  /* Pinning: fixed height per block, inner can be taller for fake-scroll (see useAnimation). */
   [data-block] {
+    height: 100dvh;
     min-height: 100dvh;
-    height: auto;
     margin: 0;
+    overflow: hidden;
   }
 
   [data-block-inner] {
-    min-height: 100dvh;
     height: auto;
-    overflow: visible;
+    min-height: 100%;
+    overflow: hidden;
     overflow-x: hidden;
   }
 
