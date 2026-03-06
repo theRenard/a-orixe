@@ -1,10 +1,8 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { SCROLL_PINNING_ENABLED } from '@/config'
 
 gsap.registerPlugin(ScrollTrigger)
-
-/** Set to false to disable scroll pinning (normal scroll only). */
-export const SCROLL_PINNING_ENABLED = false
 
 /**
  * Port of docs/codepen-bGRdvMy-reference/reference.js

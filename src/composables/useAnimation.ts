@@ -1,6 +1,7 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import type { Ref } from 'vue'
+import { DEFAULT_ANIMATION_DURATION, REVEAL_ANIMATION_ENABLED } from '@/config'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -28,6 +29,8 @@ function getElement(el: Ref<HTMLElement | null> | HTMLElement): HTMLElement | nu
  * Returns cleanup to call in onUnmounted.
  */
 export function useAnimation(config: UseAnimationConfig): () => void {
+  if (!REVEAL_ANIMATION_ENABLED) return () => { }
+
   const tweens = config.tweens
   const triggerEl = config.trigger
     ? getElement(config.trigger)
@@ -43,7 +46,11 @@ export function useAnimation(config: UseAnimationConfig): () => void {
     if (!el) continue
     const from = tween.from ?? {}
     gsap.set(el, from)
-    tl.fromTo(el, from, tween.to, 0)
+    const to =
+      tween.to.duration === undefined
+        ? { ...tween.to, duration: DEFAULT_ANIMATION_DURATION }
+        : tween.to
+    tl.fromTo(el, from, to, 0)
   }
 
   // gsap.set(triggerEl, { opacity: 0 })

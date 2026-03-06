@@ -13,11 +13,11 @@ onMounted(() => {
   if (!sectionRoot.value || !title.value) return
   cleanup = useAnimation({
     tweens: [
-      // {
-      //   el: sectionRoot,
-      //   from: { y: -80, opacity: 0 },
-      //   to: { y: 0, opacity: 1, duration: 5, ease: 'power3.out' },
-      // },
+      {
+        el: sectionRoot,
+        from: { y: -80, opacity: 0 },
+        to: { y: 0, opacity: 1, duration: 5, ease: 'power3.out' },
+      },
       {
         el: title,
         from: { x: -80, opacity: 0 },
