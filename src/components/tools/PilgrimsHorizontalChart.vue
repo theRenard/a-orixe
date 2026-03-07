@@ -1,4 +1,42 @@
 <script setup lang="ts">
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { ref, onMounted, onUnmounted } from 'vue'
+
+gsap.registerPlugin(ScrollTrigger)
+
+const chartRef = ref<HTMLElement | null>(null)
+const fill1Ref = ref<HTMLElement | null>(null)
+const fill2Ref = ref<HTMLElement | null>(null)
+const fill3Ref = ref<HTMLElement | null>(null)
+
+let cleanup: (() => void) | null = null
+
+onMounted(() => {
+  const chart = chartRef.value
+  const fill1 = fill1Ref.value
+  const fill2 = fill2Ref.value
+  const fill3 = fill3Ref.value
+  if (!chart || !fill1 || !fill2 || !fill3) return
+
+  const tl = gsap.timeline({
+    scrollTrigger: { trigger: chart, start: 'top 80%', once: true },
+  })
+
+  tl.fromTo(fill1, { width: '0%' }, { width: '46%', duration: 2, ease: 'power2.out' }, 0)
+  tl.fromTo(fill2, { width: '0%' }, { width: '19%', duration: 2, ease: 'power2.out' }, 0.1)
+  tl.fromTo(fill3, { width: 0 }, { width: 2, duration: 2, ease: 'power2.out' }, 0.2)
+
+  cleanup = () => {
+    tl.scrollTrigger?.kill()
+    tl.kill()
+  }
+})
+
+onUnmounted(() => {
+  cleanup?.()
+  cleanup = null
+})
 </script>
 
 <doc lang="text">
@@ -9,14 +47,14 @@
 </doc>
 
 <template>
-<figure class="pilgrims-horizontal-chart" role="img" :aria-label="$t('pilgrimsStats.chart.ariaLabel')">
+<figure ref="chartRef" class="pilgrims-horizontal-chart" role="img" :aria-label="$t('pilgrimsStats.chart.ariaLabel')">
   <div class="pilgrims-horizontal-chart__row pilgrims-horizontal-chart__row--1">
     <div class="pilgrims-horizontal-chart__labels">
       <span class="pilgrims-horizontal-chart__name">{{ $t('pilgrimsStats.chart.bar1Label') }}</span>
       <span class="pilgrims-horizontal-chart__pct">{{ $t('pilgrimsStats.chart.bar1Pct') }}</span>
     </div>
     <div class="pilgrims-horizontal-chart__track">
-      <div class="pilgrims-horizontal-chart__fill pilgrims-horizontal-chart__fill--animated" />
+      <div ref="fill1Ref" class="pilgrims-horizontal-chart__fill pilgrims-horizontal-chart__fill--animated" />
     </div>
   </div>
   <div class="pilgrims-horizontal-chart__row pilgrims-horizontal-chart__row--2">
@@ -25,7 +63,7 @@
       <span class="pilgrims-horizontal-chart__pct">{{ $t('pilgrimsStats.chart.bar2Pct') }}</span>
     </div>
     <div class="pilgrims-horizontal-chart__track">
-      <div class="pilgrims-horizontal-chart__fill pilgrims-horizontal-chart__fill--animated" />
+      <div ref="fill2Ref" class="pilgrims-horizontal-chart__fill pilgrims-horizontal-chart__fill--animated" />
     </div>
   </div>
   <div class="pilgrims-horizontal-chart__row pilgrims-horizontal-chart__row--3">
@@ -35,6 +73,7 @@
     </div>
     <div class="pilgrims-horizontal-chart__track">
       <div
+        ref="fill3Ref"
         class="pilgrims-horizontal-chart__fill pilgrims-horizontal-chart__fill--line pilgrims-horizontal-chart__fill--animated" />
     </div>
   </div>
@@ -92,21 +131,21 @@
   background-color: #345558;
 }
 
-/* Bar 1: 46% – previously animated from 0 by GSAP */
+/* Bar 1: 46% – width set by GSAP animation */
 .pilgrims-horizontal-chart__row--1 .pilgrims-horizontal-chart__fill--animated {
-  width: 46%;
+  width: 0;
   background-color: #345558;
 }
 
-/* Bar 2: 19% – previously animated from 0 by GSAP */
+/* Bar 2: 19% – width set by GSAP animation */
 .pilgrims-horizontal-chart__row--2 .pilgrims-horizontal-chart__fill--animated {
-  width: 19%;
+  width: 0;
   background-color: #5d979b;
 }
 
-/* Bar 3: thin vertical line (2px) – previously animated from 0 by GSAP */
+/* Bar 3: thin vertical line – width set by GSAP animation */
 .pilgrims-horizontal-chart__row--3 .pilgrims-horizontal-chart__fill--line.pilgrims-horizontal-chart__fill--animated {
-  width: 2px;
+  width: 0;
   min-width: 0;
   background-color: #df5e3e;
 }
