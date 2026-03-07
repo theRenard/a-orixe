@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useMobileDetection } from '@/composables/useMobileDetection'
-import { useAnimation } from '@/composables/useAnimation'
+import { useAnimation, type UseAnimationTween } from '@/composables/useAnimation'
 
 const { locale } = useI18n()
 const { isMobile } = useMobileDetection()
@@ -13,7 +13,7 @@ const imageRef = ref<HTMLImageElement | null>(null)
 
 onMounted(() => {
   if (!sectionRoot.value || !blockquoteInner.value) return
-  const tweens = [
+  const tweens: UseAnimationTween[] = [
     { el: blockquoteInner, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, delay: 0.5, ease: 'power3.out' } },
   ]
   if (imageRef.value) {
