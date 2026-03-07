@@ -12,3 +12,15 @@ export const REVEAL_ANIMATION_ENABLED = true
 
 /** Default duration (seconds) for reveal animation tweens when not specified. */
 export const DEFAULT_ANIMATION_DURATION = 3
+
+/** When true, show ScrollTrigger markers for section reveal animations (useAnimation). */
+export const REVEAL_ANIMATION_MARKERS = false
+
+/** When true, show ScrollTrigger markers for section pinning (useScrollAnimation). */
+export const SCROLL_PINNING_MARKERS = false
+
+/** When true, show ScrollTrigger markers for EnBrefSection count-up timeline. */
+export const EN_BREF_COUNTUP_MARKERS = false
+
+/** When true, show ScrollTrigger markers for MapIllustration line-width timeline. */
+export const MAP_LINE_ANIMATION_MARKERS = false

@@ -7,6 +7,7 @@ import phareCorrubedo from '@/assets/illustrations/phare.png'
 import cathedrale from '@/assets/illustrations/cathedrale.png'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 import { useAnimation } from '@/composables/useAnimation'
+import { EN_BREF_COUNTUP_MARKERS } from '@/config'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -42,7 +43,7 @@ onMounted(() => {
     const obj1 = { value: 0 }
     const obj2 = { value: 0 }
     const tl = gsap.timeline({
-      scrollTrigger: { trigger: triggerEl, start: 'top 70%', once: true },
+      scrollTrigger: { trigger: triggerEl, start: 'top 70%', once: true, markers: EN_BREF_COUNTUP_MARKERS },
     })
     tl.to(obj1, {
       value: target1,

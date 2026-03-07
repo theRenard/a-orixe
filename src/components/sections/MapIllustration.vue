@@ -9,6 +9,7 @@ import mapImageMobile from '@/assets/illustrations/map_MOBILE_01.webp'
 import mapLineImageMobile from '@/assets/illustrations/map_MOBILE_02.webp'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 import { useAnimation } from '@/composables/useAnimation'
+import { MAP_LINE_ANIMATION_MARKERS } from '@/config'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -56,7 +57,7 @@ onMounted(() => {
   const triggerEl = sectionRoot.value
   if (containerEl && triggerEl) {
     const tl = gsap.timeline({
-      scrollTrigger: { trigger: triggerEl, start: 'top 70%', once: true },
+      scrollTrigger: { trigger: triggerEl, start: 'top 70%', once: true, markers: MAP_LINE_ANIMATION_MARKERS },
     })
     tl.to(containerEl, { width: '27%', duration: 0, ease: 'linear' }, 0)
     tl.to(containerEl, { width: '100%', duration: 5, ease: 'linear' }, 0.15)

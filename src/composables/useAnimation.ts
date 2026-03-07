@@ -1,7 +1,7 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import type { Ref } from 'vue'
-import { DEFAULT_ANIMATION_DURATION, REVEAL_ANIMATION_ENABLED } from '@/config'
+import { DEFAULT_ANIMATION_DURATION, REVEAL_ANIMATION_ENABLED, REVEAL_ANIMATION_MARKERS } from '@/config'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -80,7 +80,7 @@ export function useAnimation(config: UseAnimationConfig): () => void {
     refreshPriority: -10,
     onEnter: () => tl.play(),
     onEnterBack: () => tl.restart(),
-    markers: true,
+    markers: REVEAL_ANIMATION_MARKERS,
   })
 
   return () => {

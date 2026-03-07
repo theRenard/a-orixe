@@ -1,6 +1,6 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { SCROLL_ENABLED, SECTION_HOLD_SCROLL_PX, SNAP_ENABLED } from '@/config'
+import { SCROLL_ENABLED, SCROLL_PINNING_MARKERS, SECTION_HOLD_SCROLL_PX, SNAP_ENABLED } from '@/config'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -59,6 +59,7 @@ export function initAnimation(): void {
           scrub: true,
           invalidateOnRefresh: true,
           refreshPriority: 10,
+          markers: SCROLL_PINNING_MARKERS,
           snap: SNAP_ENABLED
             ? {
               snapTo: [0, 1],

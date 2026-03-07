@@ -5,7 +5,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import heroImage from '@/assets/illustrations/illu_principale_ok.webp'
 import mouseIcon from '@/assets/icons/scroll_down_2.webp'
 import { useMobileDetection } from '@/composables/useMobileDetection'
-import { useAnimation } from '@/composables/useAnimation'
 
 const { isWide, isMobile } = useMobileDetection()
 gsap.registerPlugin(ScrollTrigger)
@@ -21,18 +20,20 @@ const scrollIndicator = ref<HTMLElement | null>(null)
 
 const HERO_SCROLL_THRESHOLD_PX = 600
 const HERO_SCROLL_INDICATOR_HIDE_PX = 10
+const HERO_REVEAL_TRIGGER_PX = 50
 
-let revealCleanup: (() => void) | null = null
 let tickerCleanup: (() => void) | null = null
 let pinTrigger: ScrollTrigger | null = null
+let revealTimeline: gsap.core.Timeline | null = null
+let revealDone = false
 
 function setDesktopInitialState() {
   if (!illustration.value || !content.value || !heroTitle.value || !heroSubtitle.value || !creditsLeft.value || !creditsRight.value) return
 
   gsap.set(illustration.value, { clearProps: 'height', height: '100vh' })
   gsap.set(content.value, { y: -48, opacity: 0 })
-  gsap.set(heroTitle.value, { y: -48, opacity: 0 })
-  gsap.set(heroSubtitle.value, { y: -48, opacity: 0 })
+  gsap.set(heroTitle.value, { x: -80, opacity: 0 })
+  gsap.set(heroSubtitle.value, { x: 80, opacity: 0 })
   gsap.set(creditsLeft.value, { x: -80, opacity: 0 })
   gsap.set(creditsRight.value, { x: 80, opacity: 0 })
   if (scrollIndicator.value) {
@@ -41,11 +42,12 @@ function setDesktopInitialState() {
 }
 
 function clearDesktopState() {
-  revealCleanup?.()
-  revealCleanup = null
   tickerCleanup?.()
   tickerCleanup = null
+  revealTimeline?.kill()
+  revealTimeline = null
   pinTrigger = null
+  revealDone = false
 
   const elements = [
     illustration.value,
@@ -87,6 +89,14 @@ function syncHeroProgress() {
       visibility: traveled <= HERO_SCROLL_INDICATOR_HIDE_PX ? 'inherit' : 'hidden',
     })
   }
+
+  if (!revealDone && traveled >= HERO_REVEAL_TRIGGER_PX) {
+    revealDone = true
+    revealTimeline?.play(0)
+  } else if (revealDone && traveled < HERO_REVEAL_TRIGGER_PX) {
+    revealDone = false
+    revealTimeline?.pause(0)
+  }
 }
 
 function initDesktopAnimation() {
@@ -96,36 +106,38 @@ function initDesktopAnimation() {
 
   setDesktopInitialState()
 
-  revealCleanup = useAnimation({
-    trigger: sectionRoot,
-    tweens: [
-      {
-        el: content,
-        from: { y: -48, opacity: 0 },
-        to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' },
-      },
-      {
-        el: heroTitle,
-        from: { y: -48, opacity: 0 },
-        to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out', delay: 0.1 },
-      },
-      {
-        el: heroSubtitle,
-        from: { y: -48, opacity: 0 },
-        to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out', delay: 0.2 },
-      },
-      {
-        el: creditsLeft,
-        from: { x: -80, opacity: 0 },
-        to: { x: 0, opacity: 1, duration: 3, ease: 'power3.out', delay: 0.35 },
-      },
-      {
-        el: creditsRight,
-        from: { x: 80, opacity: 0 },
-        to: { x: 0, opacity: 1, duration: 3, ease: 'power3.out', delay: 0.35 },
-      },
-    ],
-  })
+  revealTimeline = gsap.timeline({ paused: true })
+  revealTimeline
+    .to(content.value, {
+      y: 0,
+      opacity: 1,
+      duration: 3,
+      ease: 'power3.out',
+    }, 0)
+    .to(heroTitle.value, {
+      x: 0,
+      opacity: 1,
+      duration: 3,
+      ease: 'power3.out',
+    }, 0.1)
+    .to(heroSubtitle.value, {
+      x: 0,
+      opacity: 1,
+      duration: 3,
+      ease: 'power3.out',
+    }, 0.2)
+    .to(creditsLeft.value, {
+      x: 0,
+      opacity: 1,
+      duration: 3,
+      ease: 'power3.out',
+    }, 0.35)
+    .to(creditsRight.value, {
+      x: 0,
+      opacity: 1,
+      duration: 3,
+      ease: 'power3.out',
+    }, 0.35)
 
   const tick = () => {
     syncHeroProgress()
