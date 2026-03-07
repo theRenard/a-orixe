@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { useMobileDetection } from '@/composables/useMobileDetection'
 import HeroIllustration from '@/components/sections/HeroIllustration.vue'
-import HeroIllustrationMobile from '@/components/sections/HeroIllustrationMobile.vue'
 import CaminoSection from '@/components/sections/CaminoSection.vue'
 import EtapesClesSection from '@/components/sections/EtapesClesSection.vue'
 import RessentirLieuxSection from '@/components/sections/RessentirLieuxSection.vue'
@@ -34,14 +32,13 @@ import ExperienceDestineeSection from '@/components/sections/ExperienceDestineeS
 import EnBrefSection from '@/components/sections/EnBrefSection.vue'
 import CommentEstNeRecitSection from '@/components/sections/CommentEstNeRecitSection.vue'
 
-const { isWide } = useMobileDetection()
 </script>
 
 <template>
 <main>
   <!--
-   <HeroIllustration v-if="isWide" />
-  <HeroIllustrationMobile v-else />
+  -->
+  <HeroIllustration />
   <CaminoSection />
   <FirstTestimonial />
   <EtapesClesSection />
@@ -65,7 +62,6 @@ const { isWide } = useMobileDetection()
   <CoupDeCoeurSection />
   <JoyauSection />
   <DeconnexionSection />
-  -->
   <CapsuleSonoreSection />
   <PilgrimsStatsSection />
   <TraceRouteSection />
