@@ -20,7 +20,6 @@ onMounted(() => {
   useAnimation({
     trigger: sectionRoot,
     tweens: [
-      { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
       { el: caption, from: { x: 80, opacity: 0 }, to: { x: 0, opacity: 1, ease: 'power3.out' } },
       { el: cell1, from: { x: -80, opacity: 0, rotation: -12, transformOrigin: 'left bottom' }, to: { x: 0, opacity: 1, rotation: 0, delay: 0.06, ease: 'power3.out', transformOrigin: 'left bottom' } },
       { el: cell2, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, delay: 0.12, ease: 'power3.out' } },

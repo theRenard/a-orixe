@@ -57,6 +57,10 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.second-testimonial .section-inner {
+  width: 100%;
+}
+
 .second-testimonial__image {
   display: block;
   max-width: 100%;
@@ -75,5 +79,11 @@ onMounted(() => {
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+@media (min-width: 48rem) {
+  .second-testimonial .section-inner {
+    padding-bottom: 10rem;
+  }
 }
 </style>

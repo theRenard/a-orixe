@@ -15,7 +15,6 @@ onMounted(() => {
   useAnimation({
     trigger: sectionRoot,
     tweens: [
-      { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
       { el: question, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, ease: 'power3.out' } },
       { el: player, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, delay: 0.1, ease: 'power3.out' } },
     ],

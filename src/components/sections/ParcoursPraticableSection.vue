@@ -16,7 +16,6 @@ onMounted(() => {
   useAnimation({
     trigger: sectionRoot,
     tweens: [
-      { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
       { el: leftCol, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, delay: 0.1, ease: 'power3.out' } },
       { el: rightCol, from: { x: 80, opacity: 0, rotation: 15, transformOrigin: 'left bottom' }, to: { x: 0, opacity: 1, delay: 0.1, rotation: 0, ease: 'power3.out', transformOrigin: 'left bottom' } },
       { el: question, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, delay: 0.2, ease: 'power3.out' } },
