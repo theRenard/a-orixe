@@ -4,77 +4,102 @@ import { SCROLL_ENABLED, SNAP_ENABLED } from '@/config'
 
 gsap.registerPlugin(ScrollTrigger)
 
+let mediaQuery: gsap.MatchMedia | null = null
+
 /**
- * Port of docs/codepen-bGRdvMy-reference/reference.js
- *
- * Animation type: scroll-driven section pinning with scrub
- * - Each section (except last) pins when its bottom hits viewport bottom
- * - Optional inner fake-scroll when content is taller than viewport
- * - Then scale down (1 → 0.7) and fade out (1 → 0.5 → 0)
+ * Section-by-section desktop scroll:
+ * - Each section except the last pins at the top of the viewport
+ * - Taller sections scroll their inner content while pinned
+ * - At the end of the pinned distance, the current section slides away to reveal the next one
  */
 export function initAnimation(): void {
   if (!SCROLL_ENABLED) return
 
-  const panels = gsap.utils.toArray<HTMLElement>('.section')
-  panels.pop()
+  mediaQuery?.revert()
+  mediaQuery = gsap.matchMedia()
 
-  panels.forEach((panel) => {
-    // Get the element holding the content inside the panel
-    const innerpanel = panel.querySelector<HTMLElement>('.section-inner')
-    if (!innerpanel) return
+  mediaQuery.add('(min-width: 48rem)', () => {
+    const panels = gsap.utils.toArray<HTMLElement>('.section')
+    const pinnedPanels = panels.slice(0, -1)
 
-    // Get the Height of the content inside the panel
-    const panelHeight = innerpanel.offsetHeight
-    // Get the window height
-    const windowHeight = window.innerHeight
-    const difference = panelHeight - windowHeight
-    // ratio (between 0 and 1) representing the portion of the overall animation that's for the fake-scrolling. We know that the scale & fade should happen over the course of 1 windowHeight, so we can figure out the ratio based on how far we must fake-scroll
-    const fakeScrollRatio =
-      difference > 0 ? difference / (difference + windowHeight) : 0
+    pinnedPanels.forEach((panel, index) => {
+      const innerPanel = panel.querySelector<HTMLElement>('.section-inner')
+      if (!innerPanel) return
 
-    // if we need to fake scroll (because the panel is taller than the window), add the appropriate amount of margin to the bottom so that the next element comes in at the proper time.
-    if (fakeScrollRatio) {
-      panel.style.marginBottom = panelHeight * fakeScrollRatio + 'px'
-    }
+      const getOverflowDistance = () =>
+        Math.max(innerPanel.scrollHeight - window.innerHeight, 0)
+      const getTransitionDistance = () => window.innerHeight
+      const getPinDistance = () =>
+        getOverflowDistance() + getTransitionDistance()
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: panel,
-        start: 'bottom bottom',
-        end: () =>
-          fakeScrollRatio ? `+=${innerpanel.offsetHeight}` : 'bottom top',
-        pinSpacing: false,
-        pin: true,
-        scrub: 1.2, // seconds for animation to catch up to scroll; higher = slower/smoother (true = instant)
-        ...(SNAP_ENABLED
-          ? {
-            // Snap to section start (0) or end (1) when user stops scrolling.
-            // Tuning: snapTo = rest points; delay = wait before snap; duration = snap animation length; ease = power2 (gentle) to power4 (strong).
-            snap: {
+      gsap.set(panel, {
+        clearProps: 'transform',
+        zIndex: pinnedPanels.length - index,
+      })
+      gsap.set(innerPanel, { clearProps: 'transform' })
+
+      const overflowDistance = getOverflowDistance()
+      const totalDistance = getPinDistance()
+      const scrollPortion =
+        totalDistance === 0 ? 0 : overflowDistance / totalDistance
+
+      const timeline = gsap.timeline({
+        defaults: { ease: 'none' },
+        scrollTrigger: {
+          trigger: panel,
+          start: 'top top',
+          end: () => `+=${getPinDistance()}`,
+          pin: true,
+          pinSpacing: false,
+          anticipatePin: 1,
+          scrub: true,
+          invalidateOnRefresh: true,
+          snap: SNAP_ENABLED
+            ? {
               snapTo: [0, 1],
-              delay: 0.2,
-              duration: 0.3,
+              delay: 0.1,
+              duration: 0.25,
               ease: 'power2.inOut',
-            },
-          }
-          : {}),
-      },
+            }
+            : undefined,
+        },
+      })
+
+      if (overflowDistance > 0) {
+        timeline.to(innerPanel, {
+          y: () => -getOverflowDistance(),
+          duration: scrollPortion,
+        })
+      }
+
+      timeline.to(innerPanel, {
+        y: () => -(getOverflowDistance() + window.innerHeight),
+        duration: 1 - scrollPortion,
+      }).to(panel, {
+        opacity: 0,
+        duration: 1 - scrollPortion,
+      }, '<')
     })
 
-    // fake scroll. We use 1 because that's what the rest of the timeline consists of (0.9 scale + 0.1 fade)
-    if (fakeScrollRatio) {
-      tl.to(innerpanel, {
-        yPercent: -100,
-        y: window.innerHeight,
-        duration: 1 / (1 - fakeScrollRatio) - 1,
-        ease: 'none',
+    const lastPanel = panels[panels.length - 1]
+    if (lastPanel) {
+      gsap.set(lastPanel, {
+        clearProps: 'transform,opacity',
+        zIndex: 0,
       })
     }
-    // As section leaves view: fade out (opacity 1 → 0 over 0.5s), then hold at 0.
-    tl.fromTo(
-      panel,
-      { scale: 1, opacity: 1 },
-      { scale: 0.5, opacity: 0.5, duration: 0.9 },
-    ).to(panel, { opacity: 0, duration: 0.1 })
+
+    ScrollTrigger.refresh()
+
+    return () => {
+      panels.forEach((panel) => {
+        panel.style.removeProperty('margin-bottom')
+        gsap.set(panel, { clearProps: 'transform,opacity,z-index' })
+        const innerPanel = panel.querySelector<HTMLElement>('.section-inner')
+        if (innerPanel) {
+          gsap.set(innerPanel, { clearProps: 'transform' })
+        }
+      })
+    }
   })
 }

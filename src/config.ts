@@ -1,5 +1,5 @@
 /** Set to false to disable scroll pinning (normal scroll only). */
-export const SCROLL_ENABLED = false
+export const SCROLL_ENABLED = true
 
 /** Set to false to disable snap-to-section when scroll pinning is active. */
 export const SNAP_ENABLED = false
