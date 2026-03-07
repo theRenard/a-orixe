@@ -1,13 +1,160 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import heroImage from '@/assets/illustrations/illu_principale_ok.webp'
 import mouseIcon from '@/assets/icons/scroll_down_2.webp'
 import { useMobileDetection } from '@/composables/useMobileDetection'
+import { useAnimation } from '@/composables/useAnimation'
 
 const { isWide, isMobile } = useMobileDetection()
+gsap.registerPlugin(ScrollTrigger)
 
-/** Static illustration height: 100vh (wide) or 75vh (narrow). Previously animated 100→50vh over scroll. */
-const illustrationHeightVh = computed(() => (isWide.value ? 100 : 75))
+const sectionRoot = ref<HTMLElement | null>(null)
+const illustration = ref<HTMLElement | null>(null)
+const content = ref<HTMLElement | null>(null)
+const heroTitle = ref<HTMLElement | null>(null)
+const heroSubtitle = ref<HTMLElement | null>(null)
+const creditsLeft = ref<HTMLElement | null>(null)
+const creditsRight = ref<HTMLElement | null>(null)
+const scrollIndicator = ref<HTMLElement | null>(null)
+
+const HERO_SCROLL_THRESHOLD_PX = 600
+const HERO_SCROLL_INDICATOR_HIDE_PX = 10
+
+let revealCleanup: (() => void) | null = null
+let tickerCleanup: (() => void) | null = null
+let pinTrigger: ScrollTrigger | null = null
+
+function setDesktopInitialState() {
+  if (!illustration.value || !content.value || !heroTitle.value || !heroSubtitle.value || !creditsLeft.value || !creditsRight.value) return
+
+  gsap.set(illustration.value, { clearProps: 'height', height: '100vh' })
+  gsap.set(content.value, { y: -48, opacity: 0 })
+  gsap.set(heroTitle.value, { y: -48, opacity: 0 })
+  gsap.set(heroSubtitle.value, { y: -48, opacity: 0 })
+  gsap.set(creditsLeft.value, { x: -80, opacity: 0 })
+  gsap.set(creditsRight.value, { x: 80, opacity: 0 })
+  if (scrollIndicator.value) {
+    gsap.set(scrollIndicator.value, { opacity: 1, visibility: 'inherit' })
+  }
+}
+
+function clearDesktopState() {
+  revealCleanup?.()
+  revealCleanup = null
+  tickerCleanup?.()
+  tickerCleanup = null
+  pinTrigger = null
+
+  const elements = [
+    illustration.value,
+    content.value,
+    heroTitle.value,
+    heroSubtitle.value,
+    creditsLeft.value,
+    creditsRight.value,
+    scrollIndicator.value,
+  ].filter(Boolean)
+
+  elements.forEach((element) => {
+    gsap.set(element, { clearProps: 'all' })
+  })
+}
+
+function findPinTrigger(): ScrollTrigger | null {
+  if (!sectionRoot.value) return null
+  return ScrollTrigger.getAll().find((trigger) =>
+    trigger.trigger === sectionRoot.value && Boolean(trigger.pin),
+  ) ?? null
+}
+
+function syncHeroProgress() {
+  if (!illustration.value) return
+
+  if (!pinTrigger) {
+    pinTrigger = findPinTrigger()
+    if (!pinTrigger) return
+  }
+
+  const traveled = Math.max(0, pinTrigger.scroll() - pinTrigger.start)
+  const imageProgress = Math.min(traveled / HERO_SCROLL_THRESHOLD_PX, 1)
+  gsap.set(illustration.value, { height: `${100 - imageProgress * 50}vh` })
+
+  if (scrollIndicator.value) {
+    gsap.set(scrollIndicator.value, {
+      opacity: traveled <= HERO_SCROLL_INDICATOR_HIDE_PX ? 1 : 0,
+      visibility: traveled <= HERO_SCROLL_INDICATOR_HIDE_PX ? 'inherit' : 'hidden',
+    })
+  }
+}
+
+function initDesktopAnimation() {
+  if (!sectionRoot.value || !illustration.value || !content.value || !heroTitle.value || !heroSubtitle.value || !creditsLeft.value || !creditsRight.value) {
+    return
+  }
+
+  setDesktopInitialState()
+
+  revealCleanup = useAnimation({
+    trigger: sectionRoot,
+    tweens: [
+      {
+        el: content,
+        from: { y: -48, opacity: 0 },
+        to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' },
+      },
+      {
+        el: heroTitle,
+        from: { y: -48, opacity: 0 },
+        to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out', delay: 0.1 },
+      },
+      {
+        el: heroSubtitle,
+        from: { y: -48, opacity: 0 },
+        to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out', delay: 0.2 },
+      },
+      {
+        el: creditsLeft,
+        from: { x: -80, opacity: 0 },
+        to: { x: 0, opacity: 1, duration: 3, ease: 'power3.out', delay: 0.35 },
+      },
+      {
+        el: creditsRight,
+        from: { x: 80, opacity: 0 },
+        to: { x: 0, opacity: 1, duration: 3, ease: 'power3.out', delay: 0.35 },
+      },
+    ],
+  })
+
+  const tick = () => {
+    syncHeroProgress()
+  }
+
+  gsap.ticker.add(tick)
+  tickerCleanup = () => {
+    gsap.ticker.remove(tick)
+  }
+  syncHeroProgress()
+}
+
+onMounted(() => {
+  nextTick(() => {
+    if (!isWide.value) return
+    initDesktopAnimation()
+  })
+})
+
+onUnmounted(() => {
+  clearDesktopState()
+})
+
+watch(isWide, (wide) => {
+  clearDesktopState()
+  if (wide) {
+    initDesktopAnimation()
+  }
+})
 </script>
 
 <doc lang="text">
@@ -26,25 +173,40 @@ const illustrationHeightVh = computed(() => (isWide.value ? 100 : 75))
 
 <template>
 <section
+  ref="sectionRoot"
   :class="['section', 'hero-block', 'section--full-viewport', 'block--first']"
   :data-wide="isWide" :data-mobile="isMobile" data-block data-component="HeroIllustration" aria-label="Hero">
   <div class="section-inner" data-block-inner>
-      <div class="hero-block__illustration"
-        :style="{ backgroundImage: `url(${heroImage})`, height: `${illustrationHeightVh}vh` }" role="img"
+      <div
+        ref="illustration"
+        class="hero-block__illustration"
+        :style="{ height: isWide ? '100vh' : '75vh' }" role="img"
         :aria-label="$t('hero.illustrationAlt')">
-        <div v-if="isWide" class="scroll-indicator" aria-hidden="true">
+        <img
+          :src="heroImage"
+          alt=""
+          class="hero-block__illustration-image"
+          aria-hidden="true">
+        <div
+          ref="scrollIndicator"
+          v-if="isWide"
+          class="scroll-indicator"
+          aria-hidden="true">
           <img :src="mouseIcon" alt="" class="scroll-indicator__icon" />
         </div>
       </div>
-      <div class="hero-block__content mt-4 type__credits">
+      <div ref="content" class="hero-block__content mt-4 type__credits">
         <div class="container">
-          <h1 class="type__hero-title">
+          <h1 ref="heroTitle" class="type__hero-title">
             {{ $t('hero.title') }}
           </h1>
-          <p class="type__hero-subtitle mt-0" v-html="$t('hero.subtitle')"></p>
+          <p ref="heroSubtitle" class="type__hero-subtitle mt-0" v-html="$t('hero.subtitle')"></p>
           <div class="paragraph-spacing" :class="{ 'mb-0': isMobile }">
             <div class="container credits__inner">
-              <div class="credits__col credits__col--left" :class="{ 'pb-2': isMobile, 'pt-2': isMobile }">
+              <div
+                ref="creditsLeft"
+                class="credits__col credits__col--left"
+                :class="{ 'pb-2': isMobile, 'pt-2': isMobile }">
                 <div class="credits__line-accent" aria-hidden="true" />
                 <p>
                   {{ $t('credits.byPrefix') }}<span class="type__credits-bold">{{ $t('credits.byName') }}</span>
@@ -57,7 +219,10 @@ const illustrationHeightVh = computed(() => (isWide.value ? 100 : 75))
                   }}</span>
                 </p>
               </div>
-              <div :class="{ 'pb-2': isMobile, 'pt-2': isMobile }" class="credits__col credits__col--right">
+              <div
+                ref="creditsRight"
+                :class="{ 'pb-2': isMobile, 'pt-2': isMobile }"
+                class="credits__col credits__col--right">
                 <div :class="{ 'ml-auto': isWide }" class="credits__line-accent" aria-hidden="true" />
                 <p>
                   {{ $t('credits.artDirectionPrefix') }}<span class="type__credits-bold">{{
@@ -85,19 +250,27 @@ const illustrationHeightVh = computed(() => (isWide.value ? 100 : 75))
 
 <style scoped>
 .hero-block {
-  width: 100%;
+  width: 100vw;
   line-height: 0;
   overflow-x: hidden;
+  justify-content: flex-start;
+  align-items: stretch;
 }
 
 .hero-block__illustration {
-  width: 100%;
+  width: 100vw;
   min-height: 50vh;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   transition: height 0.25s ease-out;
   position: relative;
+  overflow: hidden;
+}
+
+.hero-block__illustration-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
 }
 
 .hero-block__content {
@@ -106,6 +279,7 @@ const illustrationHeightVh = computed(() => (isWide.value ? 100 : 75))
 
 .block--first .section-inner {
   position: relative;
+  width: 100vw;
 }
 
 .scroll-indicator {
@@ -162,7 +336,7 @@ const illustrationHeightVh = computed(() => (isWide.value ? 100 : 75))
 
   /* Limit hero scroll height so less scroll is needed to reach bottom and go to next block */
   .hero-block {
-    /* max-height: calc(100dvh + 600px); */
+    max-height: calc(100dvh + 600px);
   }
 
   .credits__inner {
