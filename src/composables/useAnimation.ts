@@ -23,6 +23,22 @@ function getElement(el: Ref<HTMLElement | null> | HTMLElement): HTMLElement | nu
   return el as HTMLElement
 }
 
+function getTweenElement(
+  el: Ref<HTMLElement | null> | HTMLElement,
+  triggerEl: HTMLElement,
+): HTMLElement | null {
+  const resolvedEl = getElement(el)
+  if (!resolvedEl) return null
+
+  // The outer section may be pinned by ScrollTrigger, which also uses transforms.
+  // Animate the stable inner wrapper instead so reveal tweens do not fight the pin transform.
+  if (resolvedEl === triggerEl && triggerEl.classList.contains('section')) {
+    return triggerEl.querySelector<HTMLElement>('.section-inner') ?? resolvedEl
+  }
+
+  return resolvedEl
+}
+
 /**
  * Wrapper for a GSAP timeline with ScrollTrigger.
  * Trigger = config.trigger or first tween's el. Tweens use full gsap.TweenVars for from/to.
@@ -42,7 +58,7 @@ export function useAnimation(config: UseAnimationConfig): () => void {
   const tl = gsap.timeline({ paused: true })
 
   for (const tween of tweens) {
-    const el = getElement(tween.el)
+    const el = getTweenElement(tween.el, triggerEl)
     if (!el) continue
     const from = tween.from ?? {}
     gsap.set(el, from)
@@ -57,8 +73,8 @@ export function useAnimation(config: UseAnimationConfig): () => void {
 
   const st = ScrollTrigger.create({
     trigger: triggerEl,
-    start: 'top 70%',
-    end: 'top 60%',
+    start: 'top 50%',
+    end: 'top -20%',
     once: false,
     invalidateOnRefresh: true,
     refreshPriority: -10,
