@@ -5,6 +5,8 @@ import { useAnimation } from '@/composables/useAnimation'
 
 const sectionRoot = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
+const content = ref<HTMLElement | null>(null)
+const question = ref<HTMLElement | null>(null)
 
 onMounted(() => {
   if (!sectionRoot.value || !title.value) return
@@ -13,6 +15,8 @@ onMounted(() => {
     tweens: [
       { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
       { el: title, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, ease: 'power3.out' } },
+      { el: content, from: { x: 80, opacity: 0 }, to: { x: 0, opacity: 1, delay: 0.1, ease: 'power3.out' } },
+      { el: question, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, delay: 0.2, ease: 'power3.out' } },
     ],
   })
 })
@@ -34,9 +38,9 @@ onMounted(() => {
           <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">
             {{ $t('flechage.title') }}
           </h2>
-          <div>
+          <div ref="content">
             <p class="type__section-paragraph paragraph-spacing" v-html="$t('flechage.paragraph1')"></p>
-            <p class="type__question paragraph-spacing" v-html="$t('flechage.highlight')"></p>
+            <p ref="question" class="type__question paragraph-spacing" v-html="$t('flechage.highlight')"></p>
             <p class="type__section-paragraph paragraph-spacing" v-html="$t('flechage.paragraph2')"></p>
           </div>
         </div>

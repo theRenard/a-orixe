@@ -6,15 +6,17 @@ import { useAnimation } from '@/composables/useAnimation'
 const { isMobile } = useMobileDetection()
 
 const sectionRoot = ref<HTMLElement | null>(null)
-const title = ref<HTMLElement | null>(null)
+const author = ref<HTMLElement | null>(null)
+const content = ref<HTMLElement | null>(null)
 
 onMounted(() => {
-  if (!sectionRoot.value || !title.value) return
+  if (!sectionRoot.value || !author.value) return
   useAnimation({
     trigger: sectionRoot,
     tweens: [
       { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
-      { el: title, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, ease: 'power3.out' } },
+      { el: author, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, ease: 'power3.out' } },
+      { el: content, from: { x: 80, opacity: 0 }, to: { x: 0, opacity: 1, delay: 0.12, ease: 'power3.out' } },
     ],
   })
 })
@@ -34,7 +36,7 @@ onMounted(() => {
       <div class="container">
         <div class="comment-est-ne-section__inner paragraph-spacing">
           <div class="comment-est-ne-section__grid">
-            <aside class="comment-est-ne-section__author">
+            <aside ref="author" class="comment-est-ne-section__author">
               <img src="@/assets/photos/florenceantunes-portrait.webp" alt="" class="comment-est-ne-section__avatar"
                 style="width: calc(20rem * var(--scale-xlarge)); height: auto">
               <h3 class="comment-est-ne-section__author-name">
@@ -49,8 +51,8 @@ onMounted(() => {
                 {{ $t('commentEstNeRecit.authorWebsite') }}
               </a>
             </aside>
-            <div class="comment-est-ne-section__content mt-4">
-              <h2 ref="title" class="comment-est-ne-section__title heading-spacing">
+            <div ref="content" class="comment-est-ne-section__content mt-4">
+              <h2 class="comment-est-ne-section__title heading-spacing">
                 {{ $t('commentEstNeRecit.title') }}
               </h2>
               <p class="comment-est-ne-section__paragraph paragraph-spacing" v-html="$t('commentEstNeRecit.paragraph')">

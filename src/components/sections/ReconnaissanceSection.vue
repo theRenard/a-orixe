@@ -4,15 +4,15 @@ import { useAnimation } from '@/composables/useAnimation'
 
 
 const sectionRoot = ref<HTMLElement | null>(null)
-const title = ref<HTMLElement | null>(null)
+const leftCol = ref<HTMLElement | null>(null)
 
 onMounted(() => {
-  if (!sectionRoot.value || !title.value) return
+  if (!sectionRoot.value || !leftCol.value) return
   useAnimation({
     trigger: sectionRoot,
     tweens: [
       { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
-      { el: title, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, ease: 'power3.out' } },
+      { el: leftCol, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, ease: 'power3.out' } },
     ],
   })
 })
@@ -31,8 +31,8 @@ onMounted(() => {
   <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">
-          <div class="paragraph-spacing reconnaissance-section__row">
-            <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">
+          <div ref="leftCol" class="paragraph-spacing reconnaissance-section__row">
+            <h2 class="type__section-title type__section-title--with-line heading-spacing">
               {{ $t('reconnaissance.title') }}
             </h2>
             <p class="type__section-paragraph paragraph-spacing" v-html="$t('reconnaissance.paragraph1')"></p>

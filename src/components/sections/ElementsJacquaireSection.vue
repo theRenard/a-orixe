@@ -6,6 +6,7 @@ import { useAnimation } from '@/composables/useAnimation'
 const { isMobile } = useMobileDetection()
 
 const sectionRoot = ref<HTMLElement | null>(null)
+const image = ref<HTMLImageElement | null>(null)
 const title = ref<HTMLElement | null>(null)
 
 onMounted(() => {
@@ -13,8 +14,8 @@ onMounted(() => {
   useAnimation({
     trigger: sectionRoot,
     tweens: [
-      { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
-      { el: title, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, ease: 'power3.out' } },
+      { el: image, from: { scale: 2, opacity: 0 }, to: { scale: 1, opacity: 1, duration: 2, ease: 'power3.out' } },
+      { el: title, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, delay: 0.7, ease: 'power3.out' } },
     ],
   })
 })
@@ -32,7 +33,7 @@ onMounted(() => {
 <section ref="sectionRoot" :class="['section', 'elements-jacquaire-section', 'section--full-viewport']" data-block data-component="ElementsJacquaireSection">
   <div class="section-inner" data-block-inner>
       <div class="container">
-        <img src="../../assets/illustrations/benevoles_ok.webp" :alt="$t('elementsJacquaire.title')"
+        <img ref="image" src="../../assets/illustrations/benevoles_ok.webp" :alt="$t('elementsJacquaire.title')"
           class="elements-jacquaire-section__image ma" :class="{ 'paragraph-spacing': isMobile }" loading="lazy"
           height="auto" style="width: calc(50% * var(--scale-small));">
         <div class="centered">

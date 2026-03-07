@@ -10,6 +10,10 @@ const { t } = useI18n()
 const { isMobile } = useMobileDetection()
 
 const sectionRoot = ref<HTMLElement | null>(null)
+const caption = ref<HTMLElement | null>(null)
+const cell1 = ref<HTMLElement | null>(null)
+const cell2 = ref<HTMLElement | null>(null)
+const cell3 = ref<HTMLElement | null>(null)
 
 onMounted(() => {
   if (!sectionRoot.value) return
@@ -17,6 +21,10 @@ onMounted(() => {
     trigger: sectionRoot,
     tweens: [
       { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
+      { el: caption, from: { x: 80, opacity: 0 }, to: { x: 0, opacity: 1, ease: 'power3.out' } },
+      { el: cell1, from: { x: -80, opacity: 0, rotation: -12, transformOrigin: 'left bottom' }, to: { x: 0, opacity: 1, rotation: 0, delay: 0.06, ease: 'power3.out', transformOrigin: 'left bottom' } },
+      { el: cell2, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, delay: 0.12, ease: 'power3.out' } },
+      { el: cell3, from: { x: 80, opacity: 0, rotation: 12, transformOrigin: 'right bottom' }, to: { x: 0, opacity: 1, delay: 0.18, rotation: 0, ease: 'power3.out', transformOrigin: 'right bottom' } },
     ],
   })
 })
@@ -49,23 +57,23 @@ const imageList = computed(() => [
         </div>
         <SlidingGallery v-if="isMobile" :images="imageList" class="mb-0" />
         <div v-else class="joyau-section__grid paragraph-spacing mb-0">
-          <div class="joyau-section__cell">
+          <div ref="cell1" class="joyau-section__cell">
             <ImageCrop width="100%" height="37.5rem" position="center 50%">
               <img :src="image1" :alt="$t('joyau.caption')" loading="lazy">
             </ImageCrop>
           </div>
-          <div class="joyau-section__cell">
+          <div ref="cell2" class="joyau-section__cell">
             <ImageCrop width="100%" height="37.5rem" position="center 50%">
               <img :src="image2" :alt="$t('joyau.caption')" loading="lazy">
             </ImageCrop>
           </div>
-          <div class="joyau-section__cell">
+          <div ref="cell3" class="joyau-section__cell">
             <ImageCrop width="100%" height="37.5rem" position="center 50%">
               <img :src="image3" :alt="$t('joyau.caption')" loading="lazy">
             </ImageCrop>
           </div>
         </div>
-        <p class="joyau-section__caption type__image-caption type__image-caption--with-line"
+        <p ref="caption" class="joyau-section__caption type__image-caption type__image-caption--with-line"
           v-html="$t('joyau.caption')">
         </p>
       </div>

@@ -7,6 +7,15 @@ import { useAnimation } from '@/composables/useAnimation'
 const { isMobile } = useMobileDetection()
 
 const sectionRoot = ref<HTMLElement | null>(null)
+const illustration = ref<HTMLImageElement | null>(null)
+const content = ref<HTMLElement | null>(null)
+const question1 = ref<HTMLElement | null>(null)
+const answer1Intro = ref<HTMLElement | null>(null)
+const question1b = ref<HTMLElement | null>(null)
+const answer1b = ref<HTMLElement | null>(null)
+const answer1 = ref<HTMLElement | null>(null)
+const question2 = ref<HTMLElement | null>(null)
+const answer2 = ref<HTMLElement | null>(null)
 
 onMounted(() => {
   if (!sectionRoot.value) return
@@ -14,6 +23,15 @@ onMounted(() => {
     trigger: sectionRoot,
     tweens: [
       { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
+      { el: illustration, from: { x: 80, opacity: 0 }, to: { x: 0, opacity: 1, ease: 'power3.out' } },
+      { el: content, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, delay: 0.1, ease: 'power3.out' } },
+      { el: question1, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, delay: 0.2, ease: 'power3.out' } },
+      { el: answer1Intro, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, delay: 0.2, ease: 'power3.out' } },
+      { el: question1b, from: { x: 80, opacity: 0 }, to: { x: 0, opacity: 1, delay: 0.2, ease: 'power3.out' } },
+      { el: answer1b, from: { x: 80, opacity: 0 }, to: { x: 0, opacity: 1, delay: 0.2, ease: 'power3.out' } },
+      { el: answer1, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, delay: 0.2, ease: 'power3.out' } },
+      { el: question2, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, delay: 0.2, ease: 'power3.out' } },
+      { el: answer2, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, delay: 0.2, ease: 'power3.out' } },
     ],
   })
 })
@@ -32,24 +50,24 @@ onMounted(() => {
   <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">
-          <img :src="bateauIllustration" :alt="$t('experienceDestinee.illustrationAlt')"
+          <img ref="illustration" :src="bateauIllustration" :alt="$t('experienceDestinee.illustrationAlt')"
             class="experience-destinee-section__illustration" :class="{ 'paragraph-spacing': isMobile }" loading="lazy">
-          <div>
-            <p class="type__interview-question mb-0 experience-destinee-section__block paragraph-spacing"
+          <div ref="content">
+            <p ref="question1" class="type__interview-question mb-0 experience-destinee-section__block paragraph-spacing"
               v-html="$t('experienceDestinee.question1')"></p>
             <template v-if="$te('experienceDestinee.answer1Intro')">
-              <p class="type__interview-answer mt-0 experience-destinee-section__block paragraph-spacing"
+              <p ref="answer1Intro" class="type__interview-answer mt-0 experience-destinee-section__block paragraph-spacing"
                 v-html="$t('experienceDestinee.answer1Intro')"></p>
-              <p class="type__interview-question mb-0 experience-destinee-section__block paragraph-spacing"
+              <p ref="question1b" class="type__interview-question mb-0 experience-destinee-section__block paragraph-spacing"
                 v-html="$t('experienceDestinee.question1b')"></p>
-              <p class="type__interview-answer mt-0 experience-destinee-section__block paragraph-spacing"
+              <p ref="answer1b" class="type__interview-answer mt-0 experience-destinee-section__block paragraph-spacing"
                 v-html="$t('experienceDestinee.answer1b')"></p>
             </template>
-            <p v-else class="type__interview-answer mt-0 experience-destinee-section__block paragraph-spacing"
+            <p v-else ref="answer1" class="type__interview-answer mt-0 experience-destinee-section__block paragraph-spacing"
               v-html="$t('experienceDestinee.answer1')"></p>
-            <p class="type__interview-question mb-0 experience-destinee-section__block paragraph-spacing"
+            <p ref="question2" class="type__interview-question mb-0 experience-destinee-section__block paragraph-spacing"
               v-html="$t('experienceDestinee.question2')"></p>
-            <p class="type__interview-answer mt-0 experience-destinee-section__block paragraph-spacing"
+            <p ref="answer2" class="type__interview-answer mt-0 experience-destinee-section__block paragraph-spacing"
               v-html="$t('experienceDestinee.answer2')"></p>
           </div>
         </div>

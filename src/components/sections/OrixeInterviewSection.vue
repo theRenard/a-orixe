@@ -4,6 +4,9 @@ import { useAnimation } from '@/composables/useAnimation'
 
 
 const sectionRoot = ref<HTMLElement | null>(null)
+const block1 = ref<HTMLElement | null>(null)
+const block2 = ref<HTMLElement | null>(null)
+const block3 = ref<HTMLElement | null>(null)
 
 onMounted(() => {
   if (!sectionRoot.value) return
@@ -11,6 +14,9 @@ onMounted(() => {
     trigger: sectionRoot,
     tweens: [
       { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
+      { el: block1, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, ease: 'power3.out' } },
+      { el: block2, from: { x: 80, opacity: 0 }, to: { x: 0, opacity: 1, delay: 0.1, ease: 'power3.out' } },
+      { el: block3, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, delay: 0.2, ease: 'power3.out' } },
     ],
   })
 })
@@ -29,19 +35,19 @@ onMounted(() => {
   <div class="section-inner" data-block-inner>
       <div class="container">
         <div class="centered">
-          <div>
+          <div ref="block1">
             <p class="type__interview-question mb-0 orixe-interview-section__block paragraph-spacing"
               v-html="$t('orixeInterview.title')"></p>
             <p class="type__interview-answer mt-0 orixe-interview-section__block paragraph-spacing"
               v-html="$t('orixeInterview.paragraph1')"></p>
           </div>
-          <div>
+          <div ref="block2">
             <p class="type__interview-question mb-0 orixe-interview-section__block paragraph-spacing"
               v-html="$t('orixeInterview.question1')"></p>
             <p class="type__interview-answer mt-0 orixe-interview-section__block paragraph-spacing"
               v-html="$t('orixeInterview.answer1')"></p>
           </div>
-          <div>
+          <div ref="block3">
             <p class="type__interview-question mb-0 orixe-interview-section__block paragraph-spacing"
               v-html="$t('orixeInterview.question2')"></p>
             <p class="type__interview-answer mt-0 orixe-interview-section__block paragraph-spacing"

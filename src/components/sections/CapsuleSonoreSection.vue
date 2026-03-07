@@ -10,13 +10,16 @@ import { useAnimation } from '@/composables/useAnimation'
 const { isMobile } = useMobileDetection()
 
 const sectionRoot = ref<HTMLElement | null>(null)
+const imageBlock = ref<HTMLElement | null>(null)
+const playerBlock = ref<HTMLElement | null>(null)
 
 onMounted(() => {
   if (!sectionRoot.value) return
   useAnimation({
     trigger: sectionRoot,
     tweens: [
-      { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
+      { el: imageBlock, from: { y: 80, opacity: 0, scale: 3, transformOrigin: 'bottom center' }, to: { y: 0, opacity: 1, scale: 1, duration: 4, ease: 'power3.out', transformOrigin: 'bottom center' } },
+      { el: playerBlock, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, delay: 0.1, ease: 'power3.out' } },
     ],
   })
 })
@@ -34,13 +37,13 @@ onMounted(() => {
 <section ref="sectionRoot" :class="['section', 'capsule-sonore-section']" data-block data-component="CapsuleSonoreSection">
   <div class="section-inner" data-block-inner>
       <div class="container">
-        <div>
+        <div ref="imageBlock">
           <ImageCrop :width="isMobile ? '100%' : '70rem'" :height="isMobile ? '70rem' : '50rem'" position="center 50%">
             <img :src="capsuleSonoreImage" :alt="$t('capsuleSonore.imageCaption')" class="capsule-sonore-section__image"
               loading="lazy">
           </ImageCrop>
         </div>
-        <div class="centered">
+        <div ref="playerBlock" class="centered">
           <div class="capsule-sonore-section__player-wrap mt-3 mb-3">
             <SoundPlayer :src="audioForetOiseaux" :text="$t('capsuleSonore.soundPlayerText')"
               :image="capsuleSonoreImage" />

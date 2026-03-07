@@ -9,6 +9,7 @@ import { useAnimation } from '@/composables/useAnimation'
 
 const sectionRoot = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
+const player = ref<HTMLElement | null>(null)
 
 onMounted(() => {
   if (!sectionRoot.value || !title.value) return
@@ -17,6 +18,7 @@ onMounted(() => {
     tweens: [
       { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
       { el: title, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, ease: 'power3.out' } },
+      { el: player, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, delay: 0.08, ease: 'power3.out' } },
     ],
   })
 })
@@ -40,7 +42,7 @@ onMounted(() => {
           </h2>
           <div>
             <p class="type__section-paragraph paragraph-spacing" v-html="$t('coupDeCoeur.paragraph1')"></p>
-            <div>
+            <div ref="player">
               <SoundPlayer :src="audioSabela" :text="$t('coupDeCoeur.soundPlayerText')" :image="sabelaImage"
                 :chapters="chaptersSabela" class="align-center paragraph-spacing" />
             </div>

@@ -7,13 +7,14 @@ import { useAnimation } from '@/composables/useAnimation'
 const { isMobile } = useMobileDetection()
 
 const sectionRoot = ref<HTMLElement | null>(null)
+const image = ref<HTMLElement | null>(null)
 
 onMounted(() => {
   if (!sectionRoot.value) return
   useAnimation({
     trigger: sectionRoot,
     tweens: [
-      { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
+      { el: image, from: { x: 80, opacity: 0, rotation: 12 }, to: { x: 0, opacity: 1, rotation: 0, ease: 'power3.out' } },
     ],
   })
 })
@@ -35,7 +36,7 @@ onMounted(() => {
           <p class="type__section-paragraph paragraph-spacing">{{ $t('reconnaissance.insertBetween') }}</p>
         </div>
         <div class="centered paragraph-spacing">
-          <div class="image-crop-container">
+          <div ref="image" class="image-crop-container">
             <ImageCrop :width="isMobile ? '100%' : '35rem'" :height="isMobile ? '100%' : 'auto'" position="center 50%"
               :caption="$t('reconnaissance.documentCaption')" caption-position="bottom">
               <img src="@/assets/photos/lettrereconnaissancechemin.webp" :alt="$t('reconnaissance.documentCaption')"
