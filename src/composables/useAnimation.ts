@@ -58,10 +58,11 @@ export function useAnimation(config: UseAnimationConfig): () => void {
   const st = ScrollTrigger.create({
     trigger: triggerEl,
     start: 'top 70%',
-    end: 'top 20%',
+    end: 'top 60%',
     once: false,
-    markers: true,
     onEnter: () => tl.play(),
+    // onEnterBack: () => tl.restart(),
+    markers: true,
   })
 
   return () => {
