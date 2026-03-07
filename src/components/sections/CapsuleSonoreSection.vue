@@ -19,7 +19,7 @@ const playerBlock = ref<HTMLElement | null>(null)
 const IMAGE_SCROLL_THRESHOLD_PX = 700
 const IMAGE_END_HEIGHT_VH = 50
 const IMAGE_SIDE_PADDING_REM = 15
-const IMAGE_END_OBJECT_POSITION_Y = 70
+const IMAGE_END_OBJECT_POSITION_Y = 50
 const REVEAL_TRIGGER_PX = 80
 
 let tickerCleanup: (() => void) | null = null
