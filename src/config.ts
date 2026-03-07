@@ -4,6 +4,9 @@ export const SCROLL_ENABLED = true
 /** Set to false to disable snap-to-section when scroll pinning is active. */
 export const SNAP_ENABLED = false
 
+/** Extra scroll distance to hold a section once it reaches the top of the viewport. */
+export const SECTION_HOLD_SCROLL_PX = 500
+
 /** Set to false to disable section reveal animations (useAnimation). */
 export const REVEAL_ANIMATION_ENABLED = true
 

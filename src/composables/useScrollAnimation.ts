@@ -1,6 +1,6 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { SCROLL_ENABLED, SNAP_ENABLED } from '@/config'
+import { SCROLL_ENABLED, SECTION_HOLD_SCROLL_PX, SNAP_ENABLED } from '@/config'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -26,22 +26,26 @@ export function initAnimation(): void {
       const innerPanel = panel.querySelector<HTMLElement>('.section-inner')
       if (!innerPanel) return
 
+      const getHoldDistance = () => Math.max(SECTION_HOLD_SCROLL_PX, 0)
       const getOverflowDistance = () =>
         Math.max(innerPanel.scrollHeight - window.innerHeight, 0)
       const getTransitionDistance = () => window.innerHeight
       const getPinDistance = () =>
-        getOverflowDistance() + getTransitionDistance()
+        getHoldDistance() + getOverflowDistance() + getTransitionDistance()
 
       gsap.set(panel, {
-        clearProps: 'transform',
-        zIndex: pinnedPanels.length - index,
+        clearProps: 'transform,z-index',
       })
       gsap.set(innerPanel, { clearProps: 'transform' })
 
+      const holdDistance = getHoldDistance()
       const overflowDistance = getOverflowDistance()
       const totalDistance = getPinDistance()
+      const holdPortion =
+        totalDistance === 0 ? 0 : holdDistance / totalDistance
       const scrollPortion =
         totalDistance === 0 ? 0 : overflowDistance / totalDistance
+      const transitionPortion = Math.max(1 - holdPortion - scrollPortion, 0)
 
       const timeline = gsap.timeline({
         defaults: { ease: 'none' },
@@ -50,7 +54,7 @@ export function initAnimation(): void {
           start: 'top top',
           end: () => `+=${getPinDistance()}`,
           pin: true,
-          pinSpacing: false,
+          pinSpacing: true,
           anticipatePin: 1,
           scrub: true,
           invalidateOnRefresh: true,
@@ -65,6 +69,10 @@ export function initAnimation(): void {
         },
       })
 
+      if (holdPortion > 0) {
+        timeline.to({}, { duration: holdPortion })
+      }
+
       if (overflowDistance > 0) {
         timeline.to(innerPanel, {
           y: () => -getOverflowDistance(),
@@ -74,10 +82,10 @@ export function initAnimation(): void {
 
       timeline.to(innerPanel, {
         y: () => -(getOverflowDistance() + window.innerHeight),
-        duration: 1 - scrollPortion,
+        duration: transitionPortion,
       }).to(panel, {
         opacity: 0,
-        duration: 1 - scrollPortion,
+        duration: transitionPortion,
       }, '<')
     })
 
