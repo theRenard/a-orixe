@@ -29,7 +29,7 @@ export function initAnimation(): void {
       const getHoldDistance = () => Math.max(SECTION_HOLD_SCROLL_PX, 0)
       const getOverflowDistance = () =>
         Math.max(innerPanel.scrollHeight - window.innerHeight, 0)
-      const getTransitionDistance = () => window.innerHeight
+      const getTransitionDistance = () => Math.round(window.innerHeight * 0.18)
       const getPinDistance = () =>
         getHoldDistance() + getOverflowDistance() + getTransitionDistance()
 
@@ -82,11 +82,11 @@ export function initAnimation(): void {
       }
 
       timeline.to(innerPanel, {
-        y: () => -(getOverflowDistance() + window.innerHeight),
+        y: () => -(getOverflowDistance() + getTransitionDistance()),
         duration: transitionPortion,
       }).to(panel, {
         opacity: 0,
-        duration: transitionPortion,
+        duration: Math.min(transitionPortion, 0.12),
       }, '<')
     })
 
