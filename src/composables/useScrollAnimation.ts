@@ -58,6 +58,7 @@ export function initAnimation(): void {
           anticipatePin: 1,
           scrub: true,
           invalidateOnRefresh: true,
+          refreshPriority: 10,
           snap: SNAP_ENABLED
             ? {
               snapTo: [0, 1],

@@ -60,8 +60,10 @@ export function useAnimation(config: UseAnimationConfig): () => void {
     start: 'top 70%',
     end: 'top 60%',
     once: false,
+    invalidateOnRefresh: true,
+    refreshPriority: -10,
     onEnter: () => tl.play(),
-    // onEnterBack: () => tl.restart(),
+    onEnterBack: () => tl.restart(),
     markers: true,
   })
 
