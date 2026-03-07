@@ -2,6 +2,8 @@
 
 This document lists the **TypeScript animation logic** in `src/old_sections/` that does **not** use `useRevealAnimation`: GSAP timelines with ScrollTrigger, scroll-driven handlers, and supporting code. Each entry has file reference and the relevant code. See [old-sections-useRevealAnimation-elements.md](old-sections-useRevealAnimation-elements.md) for reveal elements.
 
+**Current components:** EnBrefSection and MapIllustration have been updated to match (count-up timeline and line-width timeline). HeroIllustration’s scroll-driven behavior (block-inner scroll, height 100→50vh, reveal on scroll) is not ported in the current single-page scroll design.
+
 ---
 
 ## EnBrefSection

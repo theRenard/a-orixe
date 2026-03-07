@@ -10,6 +10,7 @@ const sectionRoot = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
 const imageBlock = ref<HTMLElement | null>(null)
 const image = ref<HTMLImageElement | null>(null)
+const question = ref<HTMLElement | null>(null)
 
 onMounted(() => {
   if (!sectionRoot.value || !title.value || !imageBlock.value || !image.value) return
@@ -17,9 +18,10 @@ onMounted(() => {
     trigger: sectionRoot,
     tweens: [
       { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
-      { el: title, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, ease: 'power3.out' } },
       { el: imageBlock, from: { scale: 4, opacity: 0, transformOrigin: 'bottom center' }, to: { scale: 1, opacity: 1, duration: 4, ease: 'power3.out', transformOrigin: 'bottom center' } },
-      { el: image, from: { y: -80, opacity: 0, scale: 3, transformOrigin: 'top center' }, to: { y: 0, opacity: 1, scale: 1, ease: 'power3.out', transformOrigin: 'top center' } },
+      { el: image, from: { y: -80, opacity: 0, scale: 3, transformOrigin: 'top center' }, to: { y: 0, opacity: 1, scale: 1, delay: 0.1, ease: 'power3.out', transformOrigin: 'top center' } },
+      { el: title, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, delay: 0.1, ease: 'power3.out' } },
+      { el: question, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, delay: 0.2, ease: 'power3.out' } },
     ],
   })
 })
@@ -53,7 +55,7 @@ onMounted(() => {
         <div>
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('reconstitutionTrac.paragraph1')"></p>
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('reconstitutionTrac.paragraph2')"></p>
-          <p class="type__question paragraph-spacing" v-html="$t('reconstitutionTrac.question')"></p>
+          <p ref="question" class="type__question paragraph-spacing" v-html="$t('reconstitutionTrac.question')"></p>
           <p class="type__section-paragraph travail-fourmi-paragraph paragraph-spacing"
             v-html="$t('travailFourmi.paragraph')"></p>
         </div>

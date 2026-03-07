@@ -8,6 +8,7 @@ import { useAnimation } from '@/composables/useAnimation'
 
 
 const sectionRoot = ref<HTMLElement | null>(null)
+const player = ref<HTMLElement | null>(null)
 
 onMounted(() => {
   if (!sectionRoot.value) return
@@ -15,6 +16,7 @@ onMounted(() => {
     trigger: sectionRoot,
     tweens: [
       { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
+      { el: player, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, ease: 'power3.out' } },
     ],
   })
 })
@@ -34,7 +36,7 @@ onMounted(() => {
       <div class="container">
         <div class="centered">
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('santiagoJourney.paragraph')"></p>
-          <div>
+          <div ref="player">
             <SoundPlayer :src="audioAdrian" :text="$t('santiagoJourney.soundPlayerQuote')" :image="adrianImage"
               :chapters="chaptersAdrian" class="paragraph-spacing align-center" />
           </div>

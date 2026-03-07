@@ -9,6 +9,7 @@ import { useAnimation } from '@/composables/useAnimation'
 
 const sectionRoot = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
+const player = ref<HTMLElement | null>(null)
 
 onMounted(() => {
   if (!sectionRoot.value || !title.value) return
@@ -17,6 +18,7 @@ onMounted(() => {
     tweens: [
       { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
       { el: title, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, ease: 'power3.out' } },
+      { el: player, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, delay: 0.08, ease: 'power3.out' } },
     ],
   })
 })
@@ -42,7 +44,7 @@ onMounted(() => {
             <p class="type__section-paragraph paragraph-spacing" v-html="$t('traceRoute.paragraph1')"></p>
             <p class="type__section-paragraph paragraph-spacing" v-html="$t('traceRoute.paragraph2')"></p>
           </div>
-          <div class="trace-route-section__player-wrap mt-4 mb-5">
+          <div ref="player" class="trace-route-section__player-wrap mt-4 mb-5">
             <SoundPlayer :src="audioDonManuel" :image="donManuelImage" :chapters="chaptersDonManuel">
               <span class="trace-route-section__player-line1">{{ $t('traceRoute.soundPlayerText') }}</span>
               <span class="trace-route-section__player-line2">{{ $t('traceRoute.soundPlayerSubtitle') }}</span>

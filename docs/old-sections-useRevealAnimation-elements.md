@@ -2,6 +2,8 @@
 
 This document lists the `elements` config of `useRevealAnimation` for each Vue component under `src/old_sections/`, with file and line reference. No property or comment has been removed.
 
+Current section components in `src/components/sections/` are aligned to this reference where feasible: same elements get refs and `useAnimation` tweens with equivalent direction/delay/duration/scale/rotation. Trigger is always the section root. Steps and commented-out elements in the doc are not implemented.
+
 ---
 
 ## AssociationSection

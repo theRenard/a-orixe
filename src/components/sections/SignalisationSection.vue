@@ -10,6 +10,8 @@ const { t } = useI18n()
 const { isMobile } = useMobileDetection()
 
 const sectionRoot = ref<HTMLElement | null>(null)
+const cell1 = ref<HTMLElement | null>(null)
+const cell2 = ref<HTMLElement | null>(null)
 
 onMounted(() => {
   if (!sectionRoot.value) return
@@ -17,6 +19,8 @@ onMounted(() => {
     trigger: sectionRoot,
     tweens: [
       { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
+      { el: cell1, from: { x: -80, opacity: 0, rotation: -12, transformOrigin: 'left bottom' }, to: { x: 0, opacity: 1, rotation: 0, ease: 'power3.out', transformOrigin: 'left bottom' } },
+      { el: cell2, from: { x: 80, opacity: 0, rotation: 12, transformOrigin: 'right bottom' }, to: { x: 0, opacity: 1, delay: 0.08, rotation: 0, ease: 'power3.out', transformOrigin: 'right bottom' } },
     ],
   })
 })
@@ -44,12 +48,12 @@ const imageList = computed(() => [
         <SlidingGallery v-if="isMobile" :images="imageList" :caption="$t('signalisation.caption')" />
         <template v-else>
           <div class="signalisation-section__grid">
-            <div class="signalisation-section__cell">
+            <div ref="cell1" class="signalisation-section__cell">
               <ImageCrop width="100%" height="40vw" position="center 50%">
                 <img :src="image1" :alt="$t('signalisation.caption')" loading="lazy">
               </ImageCrop>
             </div>
-            <div class="signalisation-section__cell">
+            <div ref="cell2" class="signalisation-section__cell">
               <ImageCrop width="100%" height="40vw" position="center 50%">
                 <img :src="image2" :alt="$t('signalisation.caption')" loading="lazy">
               </ImageCrop>

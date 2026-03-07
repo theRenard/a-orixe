@@ -7,6 +7,8 @@ import { useAnimation } from '@/composables/useAnimation'
 
 
 const sectionRoot = ref<HTMLElement | null>(null)
+const question = ref<HTMLElement | null>(null)
+const player = ref<HTMLElement | null>(null)
 
 onMounted(() => {
   if (!sectionRoot.value) return
@@ -14,6 +16,8 @@ onMounted(() => {
     trigger: sectionRoot,
     tweens: [
       { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
+      { el: question, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, ease: 'power3.out' } },
+      { el: player, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, delay: 0.1, ease: 'power3.out' } },
     ],
   })
 })
@@ -36,11 +40,11 @@ onMounted(() => {
       <div class="centered">
         <div>
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('association.paragraph1')"></p>
-          <p class="type__question paragraph-spacing" v-html="$t('association.blockquote')"></p>
+          <p ref="question" class="type__question paragraph-spacing" v-html="$t('association.blockquote')"></p>
         </div>
         <p class="type__section-paragraph paragraph-spacing" v-html="$t('association.paragraph2')"></p>
         <p class="type__section-paragraph paragraph-spacing" v-html="$t('association.paragraph3')"></p>
-        <div>
+        <div ref="player">
           <SoundPlayer :src="pronunciationMp3" :text="$t('association.soundPlayerText')" :image="pronunciationImage"
             class="paragraph-spacing align-center" />
         </div>

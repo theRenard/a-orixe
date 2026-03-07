@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import mapImage from '@/assets/illustrations/map.webp'
 import mapLineImage from '@/assets/illustrations/map_line.webp'
@@ -8,11 +10,17 @@ import mapLineImageMobile from '@/assets/illustrations/map_MOBILE_02.webp'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 import { useAnimation } from '@/composables/useAnimation'
 
+gsap.registerPlugin(ScrollTrigger)
+
 const { isMobile } = useMobileDetection()
 
 const sectionRoot = ref<HTMLElement | null>(null)
+const title = ref<HTMLElement | null>(null)
+const stepsImage = ref<HTMLImageElement | null>(null)
+const question = ref<HTMLElement | null>(null)
 const mapWrap = ref<HTMLElement | null>(null)
 const line = ref<HTMLElement | null>(null)
+const lineContainer = ref<HTMLElement | null>(null)
 const lineWidthPx = ref<number | null>(null)
 
 function setLineWidth() {
@@ -44,11 +52,23 @@ onMounted(() => {
     resizeObserver.observe(wrap)
     onUnmounted(() => resizeObserver.disconnect())
   }
+  const containerEl = lineContainer.value
+  const triggerEl = sectionRoot.value
+  if (containerEl && triggerEl) {
+    const tl = gsap.timeline({
+      scrollTrigger: { trigger: triggerEl, start: 'top 70%', once: true },
+    })
+    tl.to(containerEl, { width: '27%', duration: 0, ease: 'linear' }, 0)
+    tl.to(containerEl, { width: '100%', duration: 5, ease: 'linear' }, 0.15)
+  }
   if (sectionRoot.value) {
     useAnimation({
       trigger: sectionRoot,
       tweens: [
         { el: sectionRoot, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, duration: 3, ease: 'power3.out' } },
+        { el: title, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, delay: 0.1, ease: 'power3.out' } },
+        { el: stepsImage, from: { x: 80, opacity: 0, rotation: 12 }, to: { x: 0, opacity: 1, delay: 0.18, rotation: 0, ease: 'power3.out' } },
+        { el: question, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, delay: 0.26, ease: 'power3.out' } },
       ],
     })
   }
@@ -72,24 +92,24 @@ onMounted(() => {
       <div ref="mapWrap" class="map-illustration section--full-viewport image-section" role="img"
         :aria-label="$t('carteEtapesSantiago.caption')">
         <img class="map-illustration__bg" :src="mapImageComputed" alt="" />
-        <div class="map-illustration__line-container map-illustration__line-container--visible">
+        <div ref="lineContainer" class="map-illustration__line-container map-illustration__line-container--visible">
           <div ref="line" class="map-illustration__line" :style="lineStyle" aria-hidden="true" />
         </div>
       </div>
       <div class="container">
         <div class="centered--large">
           <div class="row-two-col map-illustration-section__steps-row">
-            <h2 class="type__section-title type__section-title--with-line heading-spacing col-left">
+            <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing col-left">
               {{ $t('santiagoSteps.title') }}
             </h2>
-            <img :src="espagneImage" alt="" class="map-illustration-section__steps-img col-right"
+            <img ref="stepsImage" :src="espagneImage" alt="" class="map-illustration-section__steps-img col-right"
               :class="{ 'paragraph-spacing': isMobile }" aria-hidden="true">
           </div>
         </div>
         <div class="centered">
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('santiagoSteps.paragraph1')"></p>
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('santiagoSteps.paragraph2')"></p>
-          <p class="type__question paragraph-spacing" v-html="$t('santiagoSteps.highlight')"></p>
+          <p ref="question" class="type__question paragraph-spacing" v-html="$t('santiagoSteps.highlight')"></p>
         </div>
       </div>
     </div>
