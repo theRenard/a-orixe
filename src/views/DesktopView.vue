@@ -39,12 +39,12 @@ const { isWide } = useMobileDetection()
 
 <template>
 <main>
-  <HeroIllustration v-if="isWide" />
+  <!-- <HeroIllustration v-if="isWide" />
   <HeroIllustrationMobile v-else />
   <CaminoSection />
   <FirstTestimonial />
   <EtapesClesSection />
-  <SecondTestimonial />
+  <SecondTestimonial /> -->
   <RessentirLieuxSection />
   <FifthTestimonial />
   <AssociationSection />

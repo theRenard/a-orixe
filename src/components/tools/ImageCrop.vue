@@ -27,7 +27,7 @@ function toCssSize(value: string | number): string {
   <slot />
 </div>
 <p v-if="props.captionPosition === 'bottom'" class="type__image-caption type__image-caption--with-line">{{ props.caption
-}}</p>
+  }}</p>
 </template>
 
 <style scoped>

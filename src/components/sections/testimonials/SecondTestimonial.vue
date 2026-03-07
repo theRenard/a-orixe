@@ -46,7 +46,7 @@ onMounted(() => {
         <img ref="imageRef" src="@/assets/illustrations/phare.webp" :alt="$t('secondTestimonial.quote')"
           class="second-testimonial__image ml-auto" loading="lazy">
       </div>
-      <div class="container mb-2" :class="{ 'absolute-bottom': !isMobile }">
+      <div class="container mb-2 second-testimonial__footnote-wrap">
         <div class="centered">
           <p class="type__footnote paragraph-spacing" :class="{ 'mb-0': isMobile }"
             v-html="$t('secondTestimonial.footnote')"></p>
@@ -58,6 +58,10 @@ onMounted(() => {
 
 <style scoped>
 .second-testimonial .section-inner {
+  width: 100%;
+}
+
+.second-testimonial .container {
   width: 100%;
 }
 
@@ -74,16 +78,16 @@ onMounted(() => {
   }
 }
 
-.absolute-bottom {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
 @media (min-width: 48rem) {
   .second-testimonial .section-inner {
-    padding-bottom: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .second-testimonial__footnote-wrap {
+    margin-top: 1rem;
   }
 }
 </style>
