@@ -62,7 +62,7 @@ export function useAnimation(config: UseAnimationConfig): () => void {
     once: false,
     onEnter: () => tl.play(),
     // onEnterBack: () => tl.restart(),
-    // markers: true,
+    markers: true,
   })
 
   return () => {

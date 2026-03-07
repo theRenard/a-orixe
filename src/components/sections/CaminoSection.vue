@@ -9,7 +9,7 @@ const title = ref<HTMLElement | null>(null)
 onMounted(() => {
   if (!sectionRoot.value || !title.value) return
   useAnimation({
-    trigger: sectionRoot,
+    trigger: title,
     tweens: [
       {
         el: sectionRoot,
@@ -34,19 +34,19 @@ onMounted(() => {
 </doc>
 
 <template>
-<section ref="sectionRoot" :class="['section', 'camino-section', 'section--full-viewport']"
-  data-block data-component="CaminoSection">
+<section ref="sectionRoot" :class="['section', 'camino-section', 'section--full-viewport']" data-block
+  data-component="CaminoSection">
   <div class="section-inner" data-block-inner>
-      <div class="container">
-        <div class="centered">
-          <p class="type__hero-synopsis paragraph-spacing" v-html="$t('camino.paragraph')"></p>
-          <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">
-            {{ $t('camino.title') }}
-          </h2>
-          <p class="type__section-paragraph paragraph-spacing" v-html="$t('camino.paragraph1')"></p>
-          <p class="type__section-paragraph paragraph-spacing" v-html="$t('camino.paragraph2')"></p>
-        </div>
+    <div class="container">
+      <div class="centered">
+        <p class="type__hero-synopsis paragraph-spacing" v-html="$t('camino.paragraph')"></p>
+        <h2 ref="title" class="type__section-title type__section-title--with-line heading-spacing">
+          {{ $t('camino.title') }}
+        </h2>
+        <p class="type__section-paragraph paragraph-spacing" v-html="$t('camino.paragraph1')"></p>
+        <p class="type__section-paragraph paragraph-spacing" v-html="$t('camino.paragraph2')"></p>
       </div>
     </div>
+  </div>
 </section>
 </template>
