@@ -156,7 +156,7 @@ watch(isWide, (wide) => {
     <div ref="playerBlock" class="capsule-sonore-section__content">
       <div class="container">
         <div class="centered">
-          <div class="capsule-sonore-section__player-wrap mt-3 mb-3">
+          <div class="capsule-sonore-section__player-wrap mt-3 mb-3" :class="{ 'mt-10': isMobile, 'mb-10': isMobile }">
             <SoundPlayer :src="audioForetOiseaux" :text="$t('capsuleSonore.soundPlayerText')"
               :image="capsuleSonoreImage" />
           </div>
@@ -215,7 +215,7 @@ watch(isWide, (wide) => {
   justify-content: center;
 }
 
-/* @media (max-width: 47.99rem) {
+@media (max-width: 47.99rem) {
   .capsule-sonore-section {
     width: 100%;
   }
@@ -227,5 +227,5 @@ watch(isWide, (wide) => {
   .capsule-sonore-section__illustration {
     width: 100%;
   }
-} */
+}
 </style>

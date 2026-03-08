@@ -311,5 +311,6 @@ watch(isWide, (wide) => {
   position: absolute;
   right: 1rem;
   bottom: 0;
+  top: -30rem;
 }
 </style>
