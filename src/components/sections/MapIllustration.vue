@@ -26,9 +26,12 @@ const question = ref<HTMLElement | null>(null)
 const MAP_LINE_REVEAL_START_RATIO = 0.18
 const MAP_LINE_ANIMATION_DURATION_SEC = 9
 const MAP_REVEAL_TRIGGER_PX = 80
+const DESKTOP_MAP_ASPECT_RATIO = '4000 / 1609'
+const MOBILE_MAP_ASPECT_RATIO = '1500 / 1411'
 
 const mapImageComputed = computed(() => (isMobile.value ? mapImageMobile : mapImage))
 const mapLineImageComputed = computed(() => (isMobile.value ? mapLineImageMobile : mapLineImage))
+const mapAspectRatio = computed(() => (isMobile.value ? MOBILE_MAP_ASPECT_RATIO : DESKTOP_MAP_ASPECT_RATIO))
 
 let tickerCleanup: (() => void) | null = null
 let pinTrigger: ScrollTrigger | null = null
@@ -42,8 +45,7 @@ function setDesktopInitialState() {
   }
 
   gsap.set(mapBlock.value, {
-    clearProps: 'height,transformOrigin',
-    height: '100vh',
+    clearProps: 'transformOrigin',
     transformOrigin: 'center top',
   })
   gsap.set(lineContainer.value, { clipPath: `inset(0 ${100 - MAP_LINE_REVEAL_START_RATIO * 100}% 0 0)` })
@@ -183,7 +185,7 @@ watch(isWide, (wide) => {
 <section ref="sectionRoot" class="section map-illustration-section section--full-viewport" data-block
   data-component="MapIllustration">
   <div class="section-inner" data-block-inner>
-    <div ref="mapBlock" class="map-illustration" :style="{ height: isWide ? '100vh' : undefined }" role="img"
+    <div ref="mapBlock" class="map-illustration" :style="{ '--map-aspect-ratio': mapAspectRatio }" role="img"
       :aria-label="$t('carteEtapesSantiago.caption')">
       <img ref="mapImageRef" class="map-illustration__bg" :src="mapImageComputed" alt="" aria-hidden="true">
       <div ref="lineContainer" class="map-illustration__line-container">
@@ -229,21 +231,27 @@ watch(isWide, (wide) => {
 .map-illustration {
   width: 100vw;
   max-width: 100vw;
-  min-height: 100vh;
+  aspect-ratio: var(--map-aspect-ratio);
+  height: auto;
   line-height: 0;
   position: relative;
   overflow: hidden;
 }
 
-.map-illustration__bg,
+.map-illustration__bg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .map-illustration__line {
   display: block;
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: bottom center;
+  object-fit: contain;
+  object-position: center;
 }
 
 .map-illustration__line-container {
@@ -284,8 +292,6 @@ watch(isWide, (wide) => {
 
   .map-illustration {
     width: 100vw;
-    min-height: 0;
-    aspect-ratio: 1500 / 1411;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
   }
