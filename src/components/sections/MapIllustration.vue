@@ -23,8 +23,8 @@ const title = ref<HTMLElement | null>(null)
 const stepsImage = ref<HTMLImageElement | null>(null)
 const question = ref<HTMLElement | null>(null)
 
-const MAP_LINE_REVEAL_DISTANCE_PX = 1100
 const MAP_LINE_REVEAL_START_RATIO = 0.18
+const MAP_LINE_ANIMATION_DURATION_SEC = 9
 const MAP_REVEAL_TRIGGER_PX = 80
 
 const mapImageComputed = computed(() => (isMobile.value ? mapImageMobile : mapImage))
@@ -32,6 +32,7 @@ const mapLineImageComputed = computed(() => (isMobile.value ? mapLineImageMobile
 
 let tickerCleanup: (() => void) | null = null
 let pinTrigger: ScrollTrigger | null = null
+let lineRevealTimeline: gsap.core.Timeline | null = null
 let revealTimeline: gsap.core.Timeline | null = null
 let revealDone = false
 
@@ -55,6 +56,8 @@ function setDesktopInitialState() {
 function clearDesktopState() {
   tickerCleanup?.()
   tickerCleanup = null
+  lineRevealTimeline?.kill()
+  lineRevealTimeline = null
   revealTimeline?.kill()
   revealTimeline = null
   pinTrigger = null
@@ -92,17 +95,14 @@ function syncMapProgress() {
   }
 
   const traveled = Math.max(0, pinTrigger.scroll() - pinTrigger.start)
-  const progress = Math.min(traveled / MAP_LINE_REVEAL_DISTANCE_PX, 1)
-  const lineRevealRatio =
-    MAP_LINE_REVEAL_START_RATIO + progress * (1 - MAP_LINE_REVEAL_START_RATIO)
-
-  gsap.set(lineContainer.value, { clipPath: `inset(0 ${100 - lineRevealRatio * 100}% 0 0)` })
 
   if (!revealDone && traveled >= MAP_REVEAL_TRIGGER_PX) {
     revealDone = true
+    lineRevealTimeline?.play(0)
     revealTimeline?.play(0)
   } else if (revealDone && traveled < MAP_REVEAL_TRIGGER_PX) {
     revealDone = false
+    lineRevealTimeline?.pause(0)
     revealTimeline?.pause(0)
   }
 }
@@ -113,6 +113,13 @@ function initDesktopAnimation() {
   }
 
   setDesktopInitialState()
+
+  lineRevealTimeline = gsap.timeline({ paused: true })
+  lineRevealTimeline.to(lineContainer.value, {
+    clipPath: 'inset(0 0% 0 0)',
+    duration: MAP_LINE_ANIMATION_DURATION_SEC,
+    ease: 'power2.out',
+  })
 
   revealTimeline = gsap.timeline({ paused: true })
   revealTimeline
@@ -176,7 +183,7 @@ watch(isWide, (wide) => {
 <section ref="sectionRoot" class="section map-illustration-section section--full-viewport" data-block
   data-component="MapIllustration">
   <div class="section-inner" data-block-inner>
-    <div ref="mapBlock" class="map-illustration" :style="{ height: isWide ? '100vh' : '60vh' }" role="img"
+    <div ref="mapBlock" class="map-illustration" :style="{ height: isWide ? '100vh' : undefined }" role="img"
       :aria-label="$t('carteEtapesSantiago.caption')">
       <img ref="mapImageRef" class="map-illustration__bg" :src="mapImageComputed" alt="" aria-hidden="true">
       <div ref="lineContainer" class="map-illustration__line-container">
@@ -198,7 +205,7 @@ watch(isWide, (wide) => {
         <div class="centered">
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('santiagoSteps.paragraph1')"></p>
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('santiagoSteps.paragraph2')"></p>
-          <p ref="question" class="type__question paragraph-spacing" v-html="$t('santiagoSteps.highlight')"></p>
+          <p ref="question" class="type__question paragraph-spacing mb-10" v-html="$t('santiagoSteps.highlight')"></p>
         </div>
       </div>
     </div>
@@ -221,6 +228,7 @@ watch(isWide, (wide) => {
 
 .map-illustration {
   width: 100vw;
+  max-width: 100vw;
   min-height: 100vh;
   line-height: 0;
   position: relative;
@@ -230,6 +238,8 @@ watch(isWide, (wide) => {
 .map-illustration__bg,
 .map-illustration__line {
   display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -244,8 +254,6 @@ watch(isWide, (wide) => {
 }
 
 .map-illustration__line {
-  position: absolute;
-  inset: 0;
   pointer-events: none;
 }
 
@@ -258,6 +266,35 @@ watch(isWide, (wide) => {
   position: relative;
 }
 
+@media (max-width: 47.99rem) {
+
+  .map-illustration-section,
+  .map-illustration-section .section-inner,
+  .map-illustration {
+    max-width: 100vw;
+  }
+
+  .map-illustration-section {
+    width: 100%;
+  }
+
+  .map-illustration-section .section-inner {
+    width: 100%;
+  }
+
+  .map-illustration {
+    width: 100vw;
+    min-height: 0;
+    aspect-ratio: 1500 / 1411;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+
+  .map-illustration-section__steps-img {
+    bottom: 100%;
+  }
+}
+
 .map-illustration-section__steps-img {
   display: block;
   height: 25rem;
@@ -268,23 +305,5 @@ watch(isWide, (wide) => {
   position: absolute;
   right: 1rem;
   bottom: 0;
-}
-
-@media (max-width: 47.99rem) {
-  .map-illustration-section {
-    width: 100%;
-  }
-
-  .map-illustration-section .section-inner {
-    width: 100%;
-  }
-
-  .map-illustration {
-    width: 100%;
-  }
-
-  .map-illustration-section__steps-img {
-    bottom: 100%;
-  }
 }
 </style>
