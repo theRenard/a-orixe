@@ -215,7 +215,7 @@ watch(isWide, (wide) => {
   justify-content: center;
 }
 
-@media (max-width: 47.99rem) {
+/* @media (max-width: 47.99rem) {
   .capsule-sonore-section {
     width: 100%;
   }
@@ -227,5 +227,5 @@ watch(isWide, (wide) => {
   .capsule-sonore-section__illustration {
     width: 100%;
   }
-}
+} */
 </style>
