@@ -1,9 +1,17 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import type { Ref } from 'vue'
-import { DEFAULT_ANIMATION_DURATION, REVEAL_ANIMATION_ENABLED, REVEAL_ANIMATION_MARKERS } from '@/config'
+import {
+  DEFAULT_ANIMATION_DURATION,
+  REVEAL_ANIMATION_ENABLED,
+  REVEAL_ANIMATION_MARKERS,
+  REVEAL_SCROLL_END,
+} from '@/config'
 
 gsap.registerPlugin(ScrollTrigger)
+
+const REVEAL_SCROLL_START = 'top 50%'
+const REVEAL_SCROLL_SCRUB = 1
 
 export interface UseAnimationTween {
   el: Ref<HTMLElement | null> | HTMLElement
@@ -55,7 +63,17 @@ export function useAnimation(config: UseAnimationConfig): () => void {
       : null
   if (!triggerEl) return () => { }
 
-  const tl = gsap.timeline({ paused: true })
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: triggerEl,
+      start: REVEAL_SCROLL_START,
+      end: REVEAL_SCROLL_END,
+      scrub: REVEAL_SCROLL_SCRUB,
+      invalidateOnRefresh: true,
+      refreshPriority: -10,
+      markers: REVEAL_ANIMATION_MARKERS,
+    },
+  })
 
   for (const tween of tweens) {
     const el = getTweenElement(tween.el, triggerEl)
@@ -68,23 +86,8 @@ export function useAnimation(config: UseAnimationConfig): () => void {
         : tween.to
     tl.fromTo(el, from, to, 0)
   }
-
-  // gsap.set(triggerEl, { opacity: 0 })
-
-  const st = ScrollTrigger.create({
-    trigger: triggerEl,
-    start: 'top 50%',
-    end: 'top -20%',
-    once: false,
-    invalidateOnRefresh: true,
-    refreshPriority: -10,
-    onEnter: () => tl.play(),
-    onEnterBack: () => tl.restart(),
-    markers: REVEAL_ANIMATION_MARKERS,
-  })
-
   return () => {
-    st.kill()
+    tl.scrollTrigger?.kill()
     tl.kill()
   }
 }

@@ -30,19 +30,19 @@ onMounted(() => {
 
 <template>
 <section ref="sectionRoot"
-  :class="['section', 'testimonial', 'section--full-viewport', 'with-background', 'with-shadow']"
-  data-block data-component="FirstTestimonial">
+  :class="['section', 'testimonial', 'section--full-viewport', 'with-background', 'with-shadow']" data-block
+  data-component="FirstTestimonial">
   <div class="section-inner" data-block-inner>
-      <div class="container">
-        <blockquote class="centered">
-          <div ref="blockquoteInner">
-            <p class="type__testimonial-block relative" :class="`type__testimonial-block--${locale}`">
-              <span v-html="$t('camino.quote')"></span>
-            </p>
-            <footer class="type__testimonial-name" v-html="$t('camino.quoteAuthor')"></footer>
-          </div>
-        </blockquote>
-      </div>
+    <div class="container">
+      <blockquote class="centered">
+        <div ref="blockquoteInner">
+          <p class="type__testimonial-block relative" :class="`type__testimonial-block--${locale}`">
+            <span v-html="$t('camino.quote')"></span>
+          </p>
+          <footer class="type__testimonial-name" v-html="$t('camino.quoteAuthor')"></footer>
+        </div>
+      </blockquote>
     </div>
+  </div>
 </section>
 </template>

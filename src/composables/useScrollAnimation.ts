@@ -1,10 +1,19 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { SCROLL_ENABLED, SCROLL_PINNING_MARKERS, SECTION_HOLD_SCROLL_PX, SNAP_ENABLED } from '@/config'
+import {
+  SCROLL_ENABLED,
+  SCROLL_PINNING_MARKERS,
+  SECTION_HOLD_SCROLL_PX,
+  SECTION_SCROLL_DISTANCE_MULTIPLIER,
+  SNAP_ENABLED,
+} from '@/config'
 
 gsap.registerPlugin(ScrollTrigger)
 
 let mediaQuery: gsap.MatchMedia | null = null
+
+const SECTION_EXIT_DISTANCE_RATIO = 0.05
+const SECTION_FADE_DISTANCE_RATIO = 0.12
 
 /**
  * Section-by-section desktop scroll:
@@ -26,12 +35,21 @@ export function initAnimation(): void {
       const innerPanel = panel.querySelector<HTMLElement>('.section-inner')
       if (!innerPanel) return
 
-      const getHoldDistance = () => Math.max(SECTION_HOLD_SCROLL_PX, 0)
-      const getOverflowDistance = () =>
+      const scaleScrollDistance = (distance: number) =>
+        Math.round(Math.max(distance, 0) * SECTION_SCROLL_DISTANCE_MULTIPLIER)
+      const getHoldDistance = () => scaleScrollDistance(SECTION_HOLD_SCROLL_PX)
+      const getOverflowTravel = () =>
         Math.max(innerPanel.scrollHeight - window.innerHeight, 0)
-      const getTransitionDistance = () => Math.round(window.innerHeight * 0.05)
+      const getOverflowScrollDistance = () => scaleScrollDistance(getOverflowTravel())
+      const getTransitionTravel = () => Math.round(window.innerHeight * SECTION_EXIT_DISTANCE_RATIO)
+      const getTransitionScrollDistance = () => scaleScrollDistance(getTransitionTravel())
+      const getFadeScrollDistance = () =>
+        scaleScrollDistance(window.innerHeight * SECTION_FADE_DISTANCE_RATIO)
       const getPinDistance = () =>
-        getHoldDistance() + getOverflowDistance() + getTransitionDistance()
+        getHoldDistance()
+        + getOverflowScrollDistance()
+        + getTransitionScrollDistance()
+        + getFadeScrollDistance()
 
       gsap.set(panel, {
         clearProps: 'transform,z-index',
@@ -39,13 +57,18 @@ export function initAnimation(): void {
       gsap.set(innerPanel, { clearProps: 'transform' })
 
       const holdDistance = getHoldDistance()
-      const overflowDistance = getOverflowDistance()
+      const overflowDistance = getOverflowScrollDistance()
+      const transitionDistance = getTransitionScrollDistance()
+      const fadeDistance = getFadeScrollDistance()
       const totalDistance = getPinDistance()
       const holdPortion =
         totalDistance === 0 ? 0 : holdDistance / totalDistance
       const scrollPortion =
         totalDistance === 0 ? 0 : overflowDistance / totalDistance
-      const transitionPortion = Math.max(1 - holdPortion - scrollPortion, 0)
+      const transitionPortion =
+        totalDistance === 0 ? 0 : transitionDistance / totalDistance
+      const fadePortion =
+        totalDistance === 0 ? 0 : fadeDistance / totalDistance
 
       const timeline = gsap.timeline({
         defaults: { ease: 'none' },
@@ -77,18 +100,25 @@ export function initAnimation(): void {
 
       if (overflowDistance > 0) {
         timeline.to(innerPanel, {
-          y: () => -getOverflowDistance(),
+          y: () => -getOverflowTravel(),
           duration: scrollPortion,
         })
       }
 
+      const transitionStart = holdPortion + scrollPortion
+
       timeline.to(innerPanel, {
-        y: () => -(getOverflowDistance() + getTransitionDistance()),
+        y: () => -(getOverflowTravel() + getTransitionTravel()),
         duration: transitionPortion,
-      }).to(panel, {
-        opacity: 0,
-        duration: Math.min(transitionPortion, 0.12),
-      }, '<')
+      }, transitionStart)
+
+      if (transitionPortion + fadePortion > 0) {
+        timeline.to(panel, {
+          opacity: 0,
+          duration: transitionPortion + fadePortion,
+          ease: 'none',
+        }, transitionStart)
+      }
     })
 
     const lastPanel = panels[panels.length - 1]

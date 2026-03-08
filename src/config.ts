@@ -7,11 +7,17 @@ export const SNAP_ENABLED = false
 /** Extra scroll distance to hold a section once it reaches the top of the viewport. */
 export const SECTION_HOLD_SCROLL_PX = 500
 
+/** Multiplier for desktop scroll distance so section progression feels slower. */
+export const SECTION_SCROLL_DISTANCE_MULTIPLIER = 1.6
+
 /** Set to false to disable section reveal animations (useAnimation). */
 export const REVEAL_ANIMATION_ENABLED = true
 
 /** Default duration (seconds) for reveal animation tweens when not specified. */
 export const DEFAULT_ANIMATION_DURATION = 3
+
+/** End position for section reveal ScrollTriggers; farther means slower reveal progression. */
+export const REVEAL_SCROLL_END = 'top -50%'
 
 /** When true, show ScrollTrigger markers for section reveal animations (useAnimation). */
 export const REVEAL_ANIMATION_MARKERS = false

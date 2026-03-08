@@ -37,18 +37,18 @@ import CommentEstNeRecitSection from '@/components/sections/CommentEstNeRecitSec
 <template>
 <main>
   <!--
-    <HeroIllustration />
-    <CaminoSection />
-    <FirstTestimonial />
-    <EtapesClesSection />
-    <SecondTestimonial />
-    <RessentirLieuxSection />
-    <FifthTestimonial />
-    <AssociationSection />
-    <ReconstitutionTracSection />
-    <ThirdTestimonial />
-    <ElementsJacquaireSection />
     -->
+  <HeroIllustration />
+  <CaminoSection />
+  <FirstTestimonial />
+  <EtapesClesSection />
+  <SecondTestimonial />
+  <RessentirLieuxSection />
+  <FifthTestimonial />
+  <AssociationSection />
+  <ReconstitutionTracSection />
+  <ThirdTestimonial />
+  <ElementsJacquaireSection />
   <ParcoursPraticableSection />
   <MapIllustration />
   <ConcentreGaliceSection />
