@@ -29,7 +29,7 @@ export function initAnimation(): void {
       const getHoldDistance = () => Math.max(SECTION_HOLD_SCROLL_PX, 0)
       const getOverflowDistance = () =>
         Math.max(innerPanel.scrollHeight - window.innerHeight, 0)
-      const getTransitionDistance = () => Math.round(window.innerHeight * 0.18)
+      const getTransitionDistance = () => Math.round(window.innerHeight * 0.05)
       const getPinDistance = () =>
         getHoldDistance() + getOverflowDistance() + getTransitionDistance()
 

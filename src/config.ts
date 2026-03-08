@@ -5,7 +5,7 @@ export const SCROLL_ENABLED = true
 export const SNAP_ENABLED = false
 
 /** Extra scroll distance to hold a section once it reaches the top of the viewport. */
-export const SECTION_HOLD_SCROLL_PX = 1000
+export const SECTION_HOLD_SCROLL_PX = 500
 
 /** Set to false to disable section reveal animations (useAnimation). */
 export const REVEAL_ANIMATION_ENABLED = true

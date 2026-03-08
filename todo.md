@@ -1,4 +1,7 @@
 NOTES:
 
-- les grands images doivent etre centrees
-- les animations doivent etre commenter plus tot quand on arrive sur la page
+1. Mobile
+2. √ Too much space between sections on scroll
+3. Animation on scroll up
+4. √ Check long texts
+5. problem with mapIllustration (size, init)

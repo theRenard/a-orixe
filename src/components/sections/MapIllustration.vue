@@ -1,101 +1,190 @@
 <script setup lang="ts">
+import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ref, computed, onMounted, onUnmounted } from 'vue'
 import mapImage from '@/assets/illustrations/map.webp'
 import mapLineImage from '@/assets/illustrations/map_line.webp'
 import espagneImage from '@/assets/illustrations/espagne_ok.webp'
 import mapImageMobile from '@/assets/illustrations/map_MOBILE_01.webp'
 import mapLineImageMobile from '@/assets/illustrations/map_MOBILE_02.webp'
 import { useMobileDetection } from '@/composables/useMobileDetection'
-import { useAnimation } from '@/composables/useAnimation'
-import { MAP_LINE_ANIMATION_MARKERS } from '@/config'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const { isMobile } = useMobileDetection()
+const { isWide, isMobile } = useMobileDetection()
 
 const sectionRoot = ref<HTMLElement | null>(null)
+const mapBlock = ref<HTMLElement | null>(null)
+const mapImageRef = ref<HTMLImageElement | null>(null)
+const lineContainer = ref<HTMLElement | null>(null)
+const lineImageRef = ref<HTMLImageElement | null>(null)
+const content = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
 const stepsImage = ref<HTMLImageElement | null>(null)
 const question = ref<HTMLElement | null>(null)
-const mapWrap = ref<HTMLElement | null>(null)
-const line = ref<HTMLElement | null>(null)
-const lineContainer = ref<HTMLElement | null>(null)
-const lineWidthPx = ref<number | null>(null)
 
-function setLineWidth() {
-  const wrap = mapWrap.value
-  if (wrap) {
-    lineWidthPx.value = wrap.offsetWidth
+const MAP_LINE_REVEAL_DISTANCE_PX = 1100
+const MAP_LINE_REVEAL_START_RATIO = 0.18
+const MAP_REVEAL_TRIGGER_PX = 80
+
+const mapImageComputed = computed(() => (isMobile.value ? mapImageMobile : mapImage))
+const mapLineImageComputed = computed(() => (isMobile.value ? mapLineImageMobile : mapLineImage))
+
+let tickerCleanup: (() => void) | null = null
+let pinTrigger: ScrollTrigger | null = null
+let revealTimeline: gsap.core.Timeline | null = null
+let revealDone = false
+
+function setDesktopInitialState() {
+  if (!mapBlock.value || !mapImageRef.value || !lineImageRef.value || !lineContainer.value || !content.value || !title.value || !stepsImage.value || !question.value) {
+    return
+  }
+
+  gsap.set(mapBlock.value, {
+    clearProps: 'height,transformOrigin',
+    height: '100vh',
+    transformOrigin: 'center top',
+  })
+  gsap.set(lineContainer.value, { clipPath: `inset(0 ${100 - MAP_LINE_REVEAL_START_RATIO * 100}% 0 0)` })
+  gsap.set(content.value, { y: -48, opacity: 0 })
+  gsap.set(title.value, { x: -80, opacity: 0 })
+  gsap.set(stepsImage.value, { x: 80, opacity: 0, rotation: 12 })
+  gsap.set(question.value, { y: -80, opacity: 0 })
+}
+
+function clearDesktopState() {
+  tickerCleanup?.()
+  tickerCleanup = null
+  revealTimeline?.kill()
+  revealTimeline = null
+  pinTrigger = null
+  revealDone = false
+
+  const elements = [
+    mapBlock.value,
+    mapImageRef.value,
+    lineContainer.value,
+    lineImageRef.value,
+    content.value,
+    title.value,
+    stepsImage.value,
+    question.value,
+  ].filter(Boolean)
+
+  elements.forEach((element) => {
+    gsap.set(element, { clearProps: 'all' })
+  })
+}
+
+function findPinTrigger(): ScrollTrigger | null {
+  if (!sectionRoot.value) return null
+  return ScrollTrigger.getAll().find((trigger) =>
+    trigger.trigger === sectionRoot.value && Boolean(trigger.pin),
+  ) ?? null
+}
+
+function syncMapProgress() {
+  if (!mapBlock.value || !mapImageRef.value || !lineContainer.value || !lineImageRef.value) return
+
+  if (!pinTrigger) {
+    pinTrigger = findPinTrigger()
+    if (!pinTrigger) return
+  }
+
+  const traveled = Math.max(0, pinTrigger.scroll() - pinTrigger.start)
+  const progress = Math.min(traveled / MAP_LINE_REVEAL_DISTANCE_PX, 1)
+  const lineRevealRatio =
+    MAP_LINE_REVEAL_START_RATIO + progress * (1 - MAP_LINE_REVEAL_START_RATIO)
+
+  gsap.set(lineContainer.value, { clipPath: `inset(0 ${100 - lineRevealRatio * 100}% 0 0)` })
+
+  if (!revealDone && traveled >= MAP_REVEAL_TRIGGER_PX) {
+    revealDone = true
+    revealTimeline?.play(0)
+  } else if (revealDone && traveled < MAP_REVEAL_TRIGGER_PX) {
+    revealDone = false
+    revealTimeline?.pause(0)
   }
 }
 
-const mapImageComputed = computed(() => {
-  return isMobile.value ? mapImageMobile : mapImage
-})
-const mapLineImageComputed = computed(() => {
-  return isMobile.value ? mapLineImageMobile : mapLineImage
-})
+function initDesktopAnimation() {
+  if (!mapBlock.value || !mapImageRef.value || !lineContainer.value || !lineImageRef.value || !content.value || !title.value || !stepsImage.value || !question.value) {
+    return
+  }
 
-const lineStyle = computed(() => {
-  const w = lineWidthPx.value
-  const bgImg = mapLineImageComputed.value
-  if (w == null) return { backgroundImage: `url(${bgImg})` }
-  return { width: `${w}px`, backgroundImage: `url(${bgImg})` }
-})
+  setDesktopInitialState()
+
+  revealTimeline = gsap.timeline({ paused: true })
+  revealTimeline
+    .to(content.value, {
+      y: 0,
+      opacity: 1,
+      duration: 3,
+      ease: 'power3.out',
+    }, 0)
+    .to(title.value, {
+      x: 0,
+      opacity: 1,
+      duration: 3,
+      ease: 'power3.out',
+    }, 0.1)
+    .to(stepsImage.value, {
+      x: 0,
+      opacity: 1,
+      rotation: 0,
+      duration: 3,
+      ease: 'power3.out',
+    }, 0.18)
+    .to(question.value, {
+      y: 0,
+      opacity: 1,
+      duration: 3,
+      ease: 'power3.out',
+    }, 0.26)
+
+  const tick = () => {
+    syncMapProgress()
+  }
+
+  gsap.ticker.add(tick)
+  tickerCleanup = () => {
+    gsap.ticker.remove(tick)
+  }
+  syncMapProgress()
+}
 
 onMounted(() => {
-  setLineWidth()
-  const wrap = mapWrap.value
-  if (wrap) {
-    const resizeObserver = new ResizeObserver(setLineWidth)
-    resizeObserver.observe(wrap)
-    onUnmounted(() => resizeObserver.disconnect())
-  }
-  const containerEl = lineContainer.value
-  const triggerEl = sectionRoot.value
-  if (containerEl && triggerEl) {
-    const tl = gsap.timeline({
-      scrollTrigger: { trigger: triggerEl, start: 'top 70%', once: true, markers: MAP_LINE_ANIMATION_MARKERS },
-    })
-    tl.to(containerEl, { width: '27%', duration: 0, ease: 'linear' }, 0)
-    tl.to(containerEl, { width: '100%', duration: 5, ease: 'linear' }, 0.15)
-  }
-  if (sectionRoot.value) {
-    useAnimation({
-      trigger: sectionRoot,
-      tweens: [
-        { el: title, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, delay: 0.1, ease: 'power3.out' } },
-        { el: stepsImage, from: { x: 80, opacity: 0, rotation: 12 }, to: { x: 0, opacity: 1, delay: 0.18, rotation: 0, ease: 'power3.out' } },
-        { el: question, from: { y: -80, opacity: 0 }, to: { y: 0, opacity: 1, delay: 0.26, ease: 'power3.out' } },
-      ],
-    })
+  nextTick(() => {
+    if (!isWide.value) return
+    initDesktopAnimation()
+  })
+})
+
+onUnmounted(() => {
+  clearDesktopState()
+})
+
+watch(isWide, (wide) => {
+  clearDesktopState()
+  if (wide) {
+    initDesktopAnimation()
   }
 })
 </script>
 
-<doc lang="text">
-  Previous animation (useRevealAnimation):
-  - elements: [{ el: sectionRoot, direction: 'down', delay: 0, duration: 3 }]
-  - offset: 44
-  - ease: 'power3.out'
-  - runOnMount: false
-  Line-width timeline (ScrollTrigger):
-  - trigger: sectionRoot, start: 'top 70%', once: true
-  - lineContainer: width 27% at 0, then to width 100% over duration 5, ease linear, position 0.15
-</doc>
-
 <template>
-<section ref="sectionRoot" :class="['section', 'map-illustration-section']" data-block data-component="MapIllustration">
+<section ref="sectionRoot" class="section map-illustration-section section--full-viewport" data-block
+  data-component="MapIllustration">
   <div class="section-inner" data-block-inner>
-      <div ref="mapWrap" class="map-illustration section--full-viewport image-section" role="img"
-        :aria-label="$t('carteEtapesSantiago.caption')">
-        <img class="map-illustration__bg" :src="mapImageComputed" alt="" />
-        <div ref="lineContainer" class="map-illustration__line-container map-illustration__line-container--visible">
-          <div ref="line" class="map-illustration__line" :style="lineStyle" aria-hidden="true" />
-        </div>
+    <div ref="mapBlock" class="map-illustration" :style="{ height: isWide ? '100vh' : '60vh' }" role="img"
+      :aria-label="$t('carteEtapesSantiago.caption')">
+      <img ref="mapImageRef" class="map-illustration__bg" :src="mapImageComputed" alt="" aria-hidden="true">
+      <div ref="lineContainer" class="map-illustration__line-container">
+        <img ref="lineImageRef" class="map-illustration__line" :src="mapLineImageComputed" alt="" aria-hidden="true">
       </div>
+    </div>
+
+    <div ref="content" class="map-illustration-section__content pb-10">
       <div class="container">
         <div class="centered--large">
           <div class="row-two-col map-illustration-section__steps-row">
@@ -113,53 +202,56 @@ onMounted(() => {
         </div>
       </div>
     </div>
+  </div>
 </section>
 </template>
 
 <style scoped>
 .map-illustration-section {
+  width: 100vw;
+  justify-content: flex-start;
+  align-items: stretch;
   overflow-x: hidden;
 }
 
+.map-illustration-section .section-inner {
+  position: relative;
+  width: 100vw;
+}
+
 .map-illustration {
-  width: 100%;
+  width: 100vw;
+  min-height: 100vh;
   line-height: 0;
   position: relative;
+  overflow: hidden;
 }
 
-.image-section {
-  min-height: auto !important;
-}
-
-.map-illustration__bg {
+.map-illustration__bg,
+.map-illustration__line {
   display: block;
   width: 100%;
-  height: auto;
-  vertical-align: middle;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom center;
 }
 
 .map-illustration__line-container {
   position: absolute;
   inset: 0;
-  width: 0;
   overflow: hidden;
+  will-change: clip-path;
 }
 
-.map-illustration__line-container--visible {
-  width: 100%;
-}
-
-/* Line width is set in px to match map so it doesn't scale as container grows */
 .map-illustration__line {
   position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  min-width: 100%;
-  background-size: cover;
-  background-position: left center;
-  background-repeat: no-repeat;
+  inset: 0;
   pointer-events: none;
+}
+
+.map-illustration-section__content {
+  line-height: normal;
+  padding-top: 2.5rem;
 }
 
 .map-illustration-section__steps-row {
@@ -179,6 +271,18 @@ onMounted(() => {
 }
 
 @media (max-width: 47.99rem) {
+  .map-illustration-section {
+    width: 100%;
+  }
+
+  .map-illustration-section .section-inner {
+    width: 100%;
+  }
+
+  .map-illustration {
+    width: 100%;
+  }
+
   .map-illustration-section__steps-img {
     bottom: 100%;
   }
