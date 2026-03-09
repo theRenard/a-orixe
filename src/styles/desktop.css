@@ -12,7 +12,7 @@
 
   section.section--full-viewport {
     min-width: 100vw;
-    min-height: 100vh;
+    min-height: var(--app-height);
   }
 
   section.testimonial {
@@ -38,7 +38,7 @@
   }
 
   .block-viewport {
-    height: 100dvh;
+    height: var(--app-height);
     overflow: hidden;
   }
 
@@ -47,13 +47,13 @@
   }
 
   [data-block] {
-    height: 100dvh;
+    height: var(--app-height);
     margin: 0;
   }
 
   [data-block-inner] {
     height: 100%;
-    min-height: 100dvh;
+    min-height: var(--app-height);
     overflow-y: auto;
     overflow-x: hidden;
   }

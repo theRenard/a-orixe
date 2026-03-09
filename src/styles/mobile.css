@@ -45,7 +45,7 @@ section.section--full-viewport {
    gestures are not captured by a nested scroll context (avoids "stuck" slow scroll). */
 .block-viewport {
   height: auto;
-  min-height: 100dvh;
+  min-height: var(--app-height);
   overflow: visible;
   position: relative;
 }
@@ -66,7 +66,7 @@ section.section--full-viewport {
 
 [data-block-inner] {
   /* height: 100%;
-  min-height: 100dvh;
+  min-height: var(--app-height);
   overflow-y: auto;
   overflow-x: hidden; */
 }

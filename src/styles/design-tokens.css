@@ -32,6 +32,7 @@
 :root {
   /* Fixed design width: proportions scale with viewport width only (design for 1920px) */
   --design-width: 1920;
+  --app-height: 100vh;
 
   /* Colors */
   --color-teal-dark: #2d4b4b;

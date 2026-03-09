@@ -5,6 +5,7 @@ import mouseIcon from '@/assets/icons/scroll_down_2.webp'
 import { useRevealAnimation } from '@/composables/useRevealAnimation'
 import { useMobileDetection, isMobileViewport } from '@/composables/useMobileDetection'
 import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
+import { getViewportHeight, subscribeViewportHeight } from '@/composables/useViewportHeight'
 
 const { isWide, isMobile } = useMobileDetection()
 
@@ -20,6 +21,7 @@ const unregisterBlockEnter = inject<((index: number) => void) | undefined>('bloc
 
 /** Illustration height in vh: 100 at top, 50 after scrolling (over first ~600px). */
 const illustrationHeightVh = ref(isWide.value ? 100 : 75)
+const viewportHeightPx = ref(getViewportHeight())
 const SCROLL_THRESHOLD_PX = 600
 
 /** Hide mouse icon as soon as user scrolls. */
@@ -59,9 +61,13 @@ function onBlockScroll() {
 
 let myBlockIndex = -1
 let mobileRevealCleanup: (() => void) | void
+let viewportHeightCleanup: (() => void) | undefined
 
 onMounted(() => {
   setInitialState()
+  viewportHeightCleanup = subscribeViewportHeight((height) => {
+    viewportHeightPx.value = height
+  })
   myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
   registerBlockEnter?.(myBlockIndex, () => run())
   if (isMobileViewport()) mobileRevealCleanup = run()
@@ -74,6 +80,7 @@ onMounted(() => {
 onUnmounted(() => {
   unregisterBlockEnter?.(myBlockIndex)
   mobileRevealCleanup?.()
+  viewportHeightCleanup?.()
 })
 
 watch(isWide, () => {
@@ -91,7 +98,7 @@ watch(isWide, () => {
   <div ref="blockInnerRef" data-block-inner class="block-inner">
     <section class="hero-block section--full-viewport" aria-label="Hero">
       <div ref="bg" class="hero-block__illustration"
-        :style="{ backgroundImage: `url(${heroImage})`, height: `${illustrationHeightVh}vh` }" role="img"
+        :style="{ backgroundImage: `url(${heroImage})`, height: `${Math.round((illustrationHeightVh / 100) * viewportHeightPx)}px` }" role="img"
         :aria-label="$t('hero.illustrationAlt')" />
       <div ref="sectionRoot" class="hero-block__content mt-4 type__credits">
         <div class="container">
@@ -223,7 +230,7 @@ watch(isWide, () => {
 @media (min-width: 48rem) {
   /* Limit hero scroll height so less scroll is needed to reach bottom and go to next block */
   .hero-block {
-    max-height: calc(100dvh + 600px);
+    max-height: calc(var(--app-height) + 600px);
   }
 
   .credits__inner {

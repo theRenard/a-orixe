@@ -30,7 +30,7 @@ useHead({
 .app-root {
   position: relative;
   width: 100%;
-  min-height: 100vh !important;
+  min-height: var(--app-height) !important;
 }
 
 .app-root::before {

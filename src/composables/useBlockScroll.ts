@@ -1,6 +1,7 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
+import { getViewportHeight } from './useViewportHeight'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -105,7 +106,7 @@ export function useBlockScroll(input: UseBlockScrollInput) {
     const blocks = getBlockElements()
     if (index < 0 || index >= blocks.length) return
     currentBlockIndex.value = index
-    const vh = window.innerHeight
+    const vh = getViewportHeight()
     currentScrollTop = index * vh
     const rail = getRail()
     if (rail) gsap.set(rail, { y: -index * vh })
@@ -115,7 +116,7 @@ export function useBlockScroll(input: UseBlockScrollInput) {
   function applyRailTransform() {
     const rail = getRail()
     if (!rail) return
-    const vh = window.innerHeight
+    const vh = getViewportHeight()
     const y = -currentBlockIndex.value * vh
     ScrollTrigger.update()
     gsap.to(rail, {
@@ -200,13 +201,15 @@ export function useBlockScroll(input: UseBlockScrollInput) {
   }
 
   function onTouchStart(_e: TouchEvent) {
-    if (!isEnabled() || !_e.touches.length) return
-    lastTouchY = _e.touches[0].clientY
+    const touch = _e.touches.item(0)
+    if (!isEnabled() || !touch) return
+    lastTouchY = touch.clientY
     touchAccumulatedDelta = 0
   }
 
   function onTouchMove(e: TouchEvent) {
-    if (!isEnabled() || !e.touches.length) return
+    const touch = e.touches.item(0)
+    if (!isEnabled() || !touch) return
     const blocks = getBlockElements()
     if (blocks.length === 0) return
 
@@ -219,7 +222,7 @@ export function useBlockScroll(input: UseBlockScrollInput) {
       return
     }
 
-    const currentY = e.touches[0].clientY
+    const currentY = touch.clientY
     const deltaY = lastTouchY - currentY
     lastTouchY = currentY
 
@@ -297,7 +300,7 @@ export function useBlockScroll(input: UseBlockScrollInput) {
     if (!container) return
     // ScrollTrigger's default scroller is typically document.body (or window); proxy both so triggers see our block-based "scroll".
     // Use cached currentScrollTop (updated in tween onUpdate) so ScrollTrigger sees smooth scroll during the transition and fires when the section enters the viewport.
-    const vh = window.innerHeight
+    const vh = getViewportHeight()
     const getScrollTop = () => currentScrollTop
     const getScrollHeight = () => getBlockElements().length * vh
     const getRect = () => ({
@@ -335,7 +338,7 @@ export function useBlockScroll(input: UseBlockScrollInput) {
     })
     nextTick(() => {
       const rail = getRail()
-      const vh = window.innerHeight
+      const vh = getViewportHeight()
       if (rail) {
         gsap.set(rail, { y: -currentBlockIndex.value * vh })
         currentScrollTop = currentBlockIndex.value * vh

@@ -45,6 +45,7 @@ function timestampToSeconds(ts: string): number {
 function ensureAudio(): HTMLAudioElement {
   if (!audio) {
     audio = new Audio(props.src)
+    audio.preload = 'metadata'
     console.log('[SoundPlayer] src URL:', props.src)
     audio.addEventListener('ended', () => {
       isPlaying.value = false
