@@ -6,11 +6,13 @@ import {
   REVEAL_ANIMATION_ENABLED,
   REVEAL_ANIMATION_MARKERS,
   REVEAL_SCROLL_END,
+  REVEAL_SCROLL_START_MOBILE,
+  REVEAL_SCROLL_START_WIDE,
 } from '@/config'
+import { isMobileViewport } from '@/composables/useMobileDetection'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const REVEAL_SCROLL_START = 'top 50%'
 const REVEAL_SCROLL_SCRUB = 1
 
 export interface UseAnimationTween {
@@ -63,10 +65,14 @@ export function useAnimation(config: UseAnimationConfig): () => void {
       : null
   if (!triggerEl) return () => { }
 
+  const revealScrollStart = isMobileViewport()
+    ? REVEAL_SCROLL_START_MOBILE
+    : REVEAL_SCROLL_START_WIDE
+
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: triggerEl,
-      start: REVEAL_SCROLL_START,
+      start: revealScrollStart,
       end: REVEAL_SCROLL_END,
       scrub: REVEAL_SCROLL_SCRUB,
       invalidateOnRefresh: true,

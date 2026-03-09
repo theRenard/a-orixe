@@ -16,6 +16,12 @@ export const REVEAL_ANIMATION_ENABLED = true
 /** Default duration (seconds) for reveal animation tweens when not specified. */
 export const DEFAULT_ANIMATION_DURATION = 3
 
+/** Start position for reveal ScrollTriggers on wide viewports. */
+export const REVEAL_SCROLL_START_WIDE = 'top 50%'
+
+/** Start position for reveal ScrollTriggers on narrow viewports so animations begin sooner. */
+export const REVEAL_SCROLL_START_MOBILE = 'top 75%'
+
 /** End position for section reveal ScrollTriggers; farther means slower reveal progression. */
 export const REVEAL_SCROLL_END = 'top -50%'
 
