@@ -10,6 +10,7 @@ import { useMobileDetection } from '@/composables/useMobileDetection'
 
 const { isWide, isMobile } = useMobileDetection()
 
+const sectionRoot = ref<HTMLElement | null>(null)
 const mapBlock = ref<HTMLElement | null>(null)
 const mapImageRef = ref<HTMLImageElement | null>(null)
 const lineContainer = ref<HTMLElement | null>(null)
@@ -30,6 +31,8 @@ const mapAspectRatio = computed(() => (isMobile.value ? MOBILE_MAP_ASPECT_RATIO 
 
 let lineRevealTimeline: gsap.core.Timeline | null = null
 let revealTimeline: gsap.core.Timeline | null = null
+let visibilityObserver: IntersectionObserver | null = null
+let animationStarted = false
 
 function setDesktopInitialState() {
   if (!mapBlock.value || !mapImageRef.value || !lineImageRef.value || !lineContainer.value || !content.value || !title.value || !stepsImage.value || !question.value) {
@@ -52,6 +55,9 @@ function clearDesktopState() {
   lineRevealTimeline = null
   revealTimeline?.kill()
   revealTimeline = null
+  visibilityObserver?.disconnect()
+  visibilityObserver = null
+  animationStarted = false
 
   const elements = [
     mapBlock.value,
@@ -69,8 +75,34 @@ function clearDesktopState() {
   })
 }
 
+function startDesktopAnimation() {
+  if (animationStarted) return
+  animationStarted = true
+  lineRevealTimeline?.play(0)
+  revealTimeline?.play(0)
+  visibilityObserver?.disconnect()
+  visibilityObserver = null
+}
+
+function observeVisibility() {
+  if (!sectionRoot.value) return
+
+  visibilityObserver?.disconnect()
+  visibilityObserver = new IntersectionObserver(
+    (entries) => {
+      const entry = entries[0]
+      if (!entry?.isIntersecting) return
+      startDesktopAnimation()
+    },
+    {
+      threshold: 0.25,
+    },
+  )
+  visibilityObserver.observe(sectionRoot.value)
+}
+
 function initDesktopAnimation() {
-  if (!mapBlock.value || !mapImageRef.value || !lineContainer.value || !lineImageRef.value || !content.value || !title.value || !stepsImage.value || !question.value) {
+  if (!sectionRoot.value || !mapBlock.value || !mapImageRef.value || !lineContainer.value || !lineImageRef.value || !content.value || !title.value || !stepsImage.value || !question.value) {
     return
   }
 
@@ -111,8 +143,7 @@ function initDesktopAnimation() {
       ease: 'power3.out',
     }, 0.26)
 
-  lineRevealTimeline.play(0)
-  revealTimeline.play(0)
+  observeVisibility()
 }
 
 onMounted(() => {
@@ -135,8 +166,7 @@ watch(isWide, (wide) => {
 </script>
 
 <template>
-<section class="section map-illustration-section section--full-viewport" data-block
-  data-component="MapIllustration">
+<section ref="sectionRoot" class="section map-illustration-section section--full-viewport" data-block data-component="MapIllustration">
   <div class="section-inner" data-block-inner>
     <div ref="mapBlock" class="map-illustration" :style="{ '--map-aspect-ratio': mapAspectRatio }" role="img"
       :aria-label="$t('carteEtapesSantiago.caption')">
@@ -251,6 +281,7 @@ watch(isWide, (wide) => {
 
   .map-illustration-section__steps-img {
     bottom: 100%;
+    top: -30rem;
   }
 }
 
@@ -264,6 +295,6 @@ watch(isWide, (wide) => {
   position: absolute;
   right: 1rem;
   bottom: 0;
-  top: -30rem;
+  top: auto;
 }
 </style>

@@ -11,7 +11,7 @@ export const SCROLL_SMOOTHER_DESKTOP_SMOOTH = 0.9
 export const SCROLL_SMOOTHER_TOUCH_SMOOTH = 0.1
 
 /** Extra scroll distance to hold a section once it reaches the top of the viewport. */
-export const SECTION_HOLD_SCROLL_PX = 500
+export const SECTION_HOLD_SCROLL_PX = 200
 
 /** Multiplier for desktop scroll distance so section progression feels slower. */
 export const SECTION_SCROLL_DISTANCE_MULTIPLIER = 1.6
