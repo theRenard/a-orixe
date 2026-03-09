@@ -4,6 +4,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import imageSrc from '@/assets/photos/01_florence_antunes.webp'
 import ImageCrop from '@/components/tools/ImageCrop.vue'
+import { ANIMATION_PLAYBACK_RATE } from '@/config'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 
 const { isWide } = useMobileDetection()
@@ -108,6 +109,7 @@ function initDesktopAnimation() {
   setDesktopInitialState()
 
   revealTimeline = gsap.timeline({ paused: true })
+  revealTimeline.timeScale(ANIMATION_PLAYBACK_RATE)
   revealTimeline
     .to(content.value, {
       y: 0,

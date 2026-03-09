@@ -11,6 +11,6 @@ NOTES:
 1. √ Progression bar
 2. Less white spaces
 3. Images ore texts can be somehow cut
-4. line on map should start automatically
+4. √ line on map should start automatically
 5. somes animations are too fast (text)
 6. 

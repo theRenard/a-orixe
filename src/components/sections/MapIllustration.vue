@@ -6,6 +6,7 @@ import mapLineImage from '@/assets/illustrations/map_line.webp'
 import espagneImage from '@/assets/illustrations/espagne_ok.webp'
 import mapImageMobile from '@/assets/illustrations/map_MOBILE_01.webp'
 import mapLineImageMobile from '@/assets/illustrations/map_MOBILE_02.webp'
+import { ANIMATION_PLAYBACK_RATE } from '@/config'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 
 const { isWide, isMobile } = useMobileDetection()
@@ -109,6 +110,7 @@ function initDesktopAnimation() {
   setDesktopInitialState()
 
   lineRevealTimeline = gsap.timeline({ paused: true })
+  lineRevealTimeline.timeScale(ANIMATION_PLAYBACK_RATE)
   lineRevealTimeline.to(lineContainer.value, {
     clipPath: 'inset(0 0% 0 0)',
     duration: MAP_LINE_ANIMATION_DURATION_SEC,
@@ -116,6 +118,7 @@ function initDesktopAnimation() {
   })
 
   revealTimeline = gsap.timeline({ paused: true })
+  revealTimeline.timeScale(ANIMATION_PLAYBACK_RATE)
   revealTimeline
     .to(content.value, {
       y: 0,

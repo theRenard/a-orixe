@@ -4,6 +4,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import heroImage from '@/assets/illustrations/illu_principale_ok.webp'
 import mouseIcon from '@/assets/icons/scroll_down_2.webp'
+import { ANIMATION_PLAYBACK_RATE } from '@/config'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 
 const { isWide, isMobile } = useMobileDetection()
@@ -107,6 +108,7 @@ function initDesktopAnimation() {
   setDesktopInitialState()
 
   revealTimeline = gsap.timeline({ paused: true })
+  revealTimeline.timeScale(ANIMATION_PLAYBACK_RATE)
   revealTimeline
     .to(content.value, {
       y: 0,

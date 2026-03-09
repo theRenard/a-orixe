@@ -2,6 +2,7 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ref, onMounted, onUnmounted } from 'vue'
+import { ANIMATION_PLAYBACK_RATE } from '@/config'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -22,6 +23,7 @@ onMounted(() => {
   const tl = gsap.timeline({
     scrollTrigger: { trigger: chart, start: 'top 80%', once: true },
   })
+  tl.timeScale(ANIMATION_PLAYBACK_RATE)
 
   tl.fromTo(fill1, { width: '0%' }, { width: '46%', duration: 3, ease: 'power2.out' }, 0)
   tl.fromTo(fill2, { width: '0%' }, { width: '19%', duration: 3, ease: 'power2.out' }, 0.1)

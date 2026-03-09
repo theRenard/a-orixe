@@ -6,6 +6,7 @@ import ImageCrop from '@/components/tools/ImageCrop.vue'
 import SoundPlayer from '@/components/tools/SoundPlayer.vue'
 import audioForetOiseaux from '@/assets/audio/audio_foret_oiseaux.mp3'
 import capsuleSonoreImage from '@/assets/photos/13_florence_antunes.webp'
+import { ANIMATION_PLAYBACK_RATE } from '@/config'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 
 const { isWide, isMobile } = useMobileDetection()
@@ -104,6 +105,7 @@ function initDesktopAnimation() {
   setDesktopInitialState()
 
   revealTimeline = gsap.timeline({ paused: true })
+  revealTimeline.timeScale(ANIMATION_PLAYBACK_RATE)
   revealTimeline.to(playerBlock.value, {
     y: 0,
     opacity: 1,

@@ -5,7 +5,7 @@ export const SCROLL_ENABLED = true
 export const SNAP_ENABLED = false
 
 /** Seconds of smoothing applied to desktop page scrolling. */
-export const SCROLL_SMOOTHER_DESKTOP_SMOOTH = 0.9
+export const SCROLL_SMOOTHER_DESKTOP_SMOOTH = 1.2
 
 /** Lighter smoothing on touch devices so scrolling still feels responsive. */
 export const SCROLL_SMOOTHER_TOUCH_SMOOTH = 0.1
@@ -14,16 +14,19 @@ export const SCROLL_SMOOTHER_TOUCH_SMOOTH = 0.1
 export const SECTION_HOLD_SCROLL_PX = 200
 
 /** Multiplier for desktop scroll distance so section progression feels slower. */
-export const SECTION_SCROLL_DISTANCE_MULTIPLIER = 1.6
+export const SECTION_SCROLL_DISTANCE_MULTIPLIER = 2
 
 /** Seconds for pinned desktop sections to catch up to the scroll position. */
-export const SECTION_SCROLL_SCRUB = 0.75
+export const SECTION_SCROLL_SCRUB = 1
 
 /** Set to false to disable section reveal animations (useAnimation). */
 export const REVEAL_ANIMATION_ENABLED = true
 
 /** Default duration (seconds) for reveal animation tweens when not specified. */
-export const DEFAULT_ANIMATION_DURATION = 3
+export const DEFAULT_ANIMATION_DURATION = 4
+
+/** GSAP playback rate for non-scrubbed timelines. Lower than 1 makes animations slower. */
+export const ANIMATION_PLAYBACK_RATE = 0.85
 
 /** Start position for reveal ScrollTriggers on wide viewports. */
 export const REVEAL_SCROLL_START_WIDE = 'top 50%'
@@ -32,7 +35,7 @@ export const REVEAL_SCROLL_START_WIDE = 'top 50%'
 export const REVEAL_SCROLL_START_MOBILE = 'top 75%'
 
 /** End position for section reveal ScrollTriggers; farther means slower reveal progression. */
-export const REVEAL_SCROLL_END = 'top -50%'
+export const REVEAL_SCROLL_END = 'top -90%'
 
 /** When true, show ScrollTrigger markers for section reveal animations (useAnimation). */
 export const REVEAL_ANIMATION_MARKERS = false
