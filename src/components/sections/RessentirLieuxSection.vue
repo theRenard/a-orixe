@@ -181,7 +181,7 @@ watch(isWide, (wide) => {
             <p class="type__section-paragraph paragraph-spacing" v-html="$t('ressentirLieux.paragraph')"></p>
             <p class="type__section-paragraph paragraph-spacing" v-html="$t('ressentirLieux.transition')"></p>
             <p ref="question" class="type__question paragraph-spacing" v-html="$t('ressentirLieux.question')"></p>
-            <p class="type__section-paragraph paragraph-spacing" v-html="$t('ressentirLieux.paragraph2')"></p>
+            <p class="type__section-paragraph paragraph-spacing pb-10" v-html="$t('ressentirLieux.paragraph2')"></p>
           </div>
         </div>
       </div>

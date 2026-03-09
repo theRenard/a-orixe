@@ -14,7 +14,7 @@ onMounted(() => {
   useAnimation({
     trigger: sectionRoot,
     tweens: [
-      { el: image, from: { scale: 2, opacity: 0 }, to: { scale: 1, opacity: 1, duration: 2, ease: 'power3.out' } },
+      { el: image, from: { scale: 2, opacity: 0 }, to: { scale: 1, opacity: 1, duration: 7, ease: 'power3.out' } },
       { el: title, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, delay: 0.7, ease: 'power3.out' } },
     ],
   })
@@ -30,21 +30,22 @@ onMounted(() => {
 </doc>
 
 <template>
-<section ref="sectionRoot" :class="['section', 'elements-jacquaire-section', 'section--full-viewport']" data-block data-component="ElementsJacquaireSection">
+<section ref="sectionRoot" :class="['section', 'elements-jacquaire-section', 'section--full-viewport']" data-block
+  data-component="ElementsJacquaireSection">
   <div class="section-inner" data-block-inner>
-      <div class="container">
-        <img ref="image" src="../../assets/illustrations/benevoles_ok.webp" :alt="$t('elementsJacquaire.title')"
-          class="elements-jacquaire-section__image ma" :class="{ 'paragraph-spacing': isMobile }" loading="lazy"
-          height="auto" style="width: calc(50% * var(--scale-small));">
-        <div class="centered">
-          <h2 ref="title"
-            class="type__section-title type__section-title--with-line elements-jacquaire-section__title heading-spacing">
-            {{ $t('elementsJacquaire.title') }}
-          </h2>
-          <p class="type__section-paragraph paragraph-spacing" v-html="$t('elementsJacquaire.paragraph')"></p>
-        </div>
+    <div class="container">
+      <img ref="image" src="../../assets/illustrations/benevoles_ok.webp" :alt="$t('elementsJacquaire.title')"
+        class="elements-jacquaire-section__image ma" :class="{ 'paragraph-spacing': isMobile }" loading="lazy"
+        height="auto" style="width: calc(50% * var(--scale-small));">
+      <div class="centered">
+        <h2 ref="title"
+          class="type__section-title type__section-title--with-line elements-jacquaire-section__title heading-spacing">
+          {{ $t('elementsJacquaire.title') }}
+        </h2>
+        <p class="type__section-paragraph paragraph-spacing" v-html="$t('elementsJacquaire.paragraph')"></p>
       </div>
     </div>
+  </div>
 </section>
 </template>
 

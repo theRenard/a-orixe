@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import LanguageSelector from '@/components/LanguageSelector.vue'
+import ReadProgressBar from '@/components/ReadProgressBar.vue'
 import { RouterView } from 'vue-router'
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
@@ -19,16 +20,24 @@ useHead({
 <template>
 <div class="app-root">
   <LanguageSelector />
-  <RouterView />
+  <ReadProgressBar />
+  <div id="smooth-wrapper">
+    <div id="smooth-content">
+      <RouterView />
+    </div>
+  </div>
 </div>
 </template>
 
 <style scoped>
-/* .app-root {
+.app-root {
   position: relative;
-  width: 100%;
-  min-height: 100vh !important;
-} */
+  min-height: 100dvh;
+}
+
+#smooth-wrapper {
+  overflow: hidden;
+}
 
 .app-root::before {
   content: '';

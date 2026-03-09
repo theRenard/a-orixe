@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import mapImage from '@/assets/illustrations/map.webp'
 import mapLineImage from '@/assets/illustrations/map_line.webp'
 import espagneImage from '@/assets/illustrations/espagne_ok.webp'
@@ -9,11 +8,8 @@ import mapImageMobile from '@/assets/illustrations/map_MOBILE_01.webp'
 import mapLineImageMobile from '@/assets/illustrations/map_MOBILE_02.webp'
 import { useMobileDetection } from '@/composables/useMobileDetection'
 
-gsap.registerPlugin(ScrollTrigger)
-
 const { isWide, isMobile } = useMobileDetection()
 
-const sectionRoot = ref<HTMLElement | null>(null)
 const mapBlock = ref<HTMLElement | null>(null)
 const mapImageRef = ref<HTMLImageElement | null>(null)
 const lineContainer = ref<HTMLElement | null>(null)
@@ -25,7 +21,6 @@ const question = ref<HTMLElement | null>(null)
 
 const MAP_LINE_REVEAL_START_RATIO = 0.18
 const MAP_LINE_ANIMATION_DURATION_SEC = 9
-const MAP_REVEAL_TRIGGER_PX = 80
 const DESKTOP_MAP_ASPECT_RATIO = '4000 / 1609'
 const MOBILE_MAP_ASPECT_RATIO = '1500 / 1411'
 
@@ -33,11 +28,8 @@ const mapImageComputed = computed(() => (isMobile.value ? mapImageMobile : mapIm
 const mapLineImageComputed = computed(() => (isMobile.value ? mapLineImageMobile : mapLineImage))
 const mapAspectRatio = computed(() => (isMobile.value ? MOBILE_MAP_ASPECT_RATIO : DESKTOP_MAP_ASPECT_RATIO))
 
-let tickerCleanup: (() => void) | null = null
-let pinTrigger: ScrollTrigger | null = null
 let lineRevealTimeline: gsap.core.Timeline | null = null
 let revealTimeline: gsap.core.Timeline | null = null
-let revealDone = false
 
 function setDesktopInitialState() {
   if (!mapBlock.value || !mapImageRef.value || !lineImageRef.value || !lineContainer.value || !content.value || !title.value || !stepsImage.value || !question.value) {
@@ -56,14 +48,10 @@ function setDesktopInitialState() {
 }
 
 function clearDesktopState() {
-  tickerCleanup?.()
-  tickerCleanup = null
   lineRevealTimeline?.kill()
   lineRevealTimeline = null
   revealTimeline?.kill()
   revealTimeline = null
-  pinTrigger = null
-  revealDone = false
 
   const elements = [
     mapBlock.value,
@@ -79,34 +67,6 @@ function clearDesktopState() {
   elements.forEach((element) => {
     gsap.set(element, { clearProps: 'all' })
   })
-}
-
-function findPinTrigger(): ScrollTrigger | null {
-  if (!sectionRoot.value) return null
-  return ScrollTrigger.getAll().find((trigger) =>
-    trigger.trigger === sectionRoot.value && Boolean(trigger.pin),
-  ) ?? null
-}
-
-function syncMapProgress() {
-  if (!mapBlock.value || !mapImageRef.value || !lineContainer.value || !lineImageRef.value) return
-
-  if (!pinTrigger) {
-    pinTrigger = findPinTrigger()
-    if (!pinTrigger) return
-  }
-
-  const traveled = Math.max(0, pinTrigger.scroll() - pinTrigger.start)
-
-  if (!revealDone && traveled >= MAP_REVEAL_TRIGGER_PX) {
-    revealDone = true
-    lineRevealTimeline?.play(0)
-    revealTimeline?.play(0)
-  } else if (revealDone && traveled < MAP_REVEAL_TRIGGER_PX) {
-    revealDone = false
-    lineRevealTimeline?.pause(0)
-    revealTimeline?.pause(0)
-  }
 }
 
 function initDesktopAnimation() {
@@ -151,15 +111,8 @@ function initDesktopAnimation() {
       ease: 'power3.out',
     }, 0.26)
 
-  const tick = () => {
-    syncMapProgress()
-  }
-
-  gsap.ticker.add(tick)
-  tickerCleanup = () => {
-    gsap.ticker.remove(tick)
-  }
-  syncMapProgress()
+  lineRevealTimeline.play(0)
+  revealTimeline.play(0)
 }
 
 onMounted(() => {
@@ -182,7 +135,7 @@ watch(isWide, (wide) => {
 </script>
 
 <template>
-<section ref="sectionRoot" class="section map-illustration-section section--full-viewport" data-block
+<section class="section map-illustration-section section--full-viewport" data-block
   data-component="MapIllustration">
   <div class="section-inner" data-block-inner>
     <div ref="mapBlock" class="map-illustration" :style="{ '--map-aspect-ratio': mapAspectRatio }" role="img"

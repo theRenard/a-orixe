@@ -1,19 +1,24 @@
 import gsap from 'gsap'
+import { ScrollSmoother } from 'gsap/ScrollSmoother'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import {
   SCROLL_ENABLED,
   SCROLL_PINNING_MARKERS,
+  SCROLL_SMOOTHER_DESKTOP_SMOOTH,
+  SCROLL_SMOOTHER_TOUCH_SMOOTH,
   SECTION_HOLD_SCROLL_PX,
   SECTION_SCROLL_DISTANCE_MULTIPLIER,
+  SECTION_SCROLL_SCRUB,
   SNAP_ENABLED,
 } from '@/config'
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
 
 let mediaQuery: gsap.MatchMedia | null = null
 
 const SECTION_EXIT_DISTANCE_RATIO = 0.05
 const SECTION_FADE_DISTANCE_RATIO = 0.12
+const SECTION_RELEASE_TRAVEL_RATIO = 0.08
 
 /**
  * Section-by-section desktop scroll:
@@ -28,10 +33,24 @@ export function initAnimation(): void {
   mediaQuery = gsap.matchMedia()
 
   mediaQuery.add('(min-width: 48rem)', () => {
+    ScrollSmoother.get()?.kill()
+
+    const wrapper = document.querySelector<HTMLElement>('#smooth-wrapper')
+    const content = document.querySelector<HTMLElement>('#smooth-content')
+    const smoother = wrapper && content
+      ? ScrollSmoother.create({
+        wrapper,
+        content,
+        smooth: SCROLL_SMOOTHER_DESKTOP_SMOOTH,
+        smoothTouch: SCROLL_SMOOTHER_TOUCH_SMOOTH,
+        effects: false,
+      })
+      : null
+
     const panels = gsap.utils.toArray<HTMLElement>('.section')
     const pinnedPanels = panels.slice(0, -1)
 
-    pinnedPanels.forEach((panel, index) => {
+    pinnedPanels.forEach((panel) => {
       const innerPanel = panel.querySelector<HTMLElement>('.section-inner')
       if (!innerPanel) return
 
@@ -41,6 +60,8 @@ export function initAnimation(): void {
       const getOverflowTravel = () =>
         Math.max(innerPanel.scrollHeight - window.innerHeight, 0)
       const getOverflowScrollDistance = () => scaleScrollDistance(getOverflowTravel())
+      const getReleaseTravel = (travel: number) =>
+        Math.min(travel, Math.round(window.innerHeight * SECTION_RELEASE_TRAVEL_RATIO))
       const getTransitionTravel = () => Math.round(window.innerHeight * SECTION_EXIT_DISTANCE_RATIO)
       const getTransitionScrollDistance = () => scaleScrollDistance(getTransitionTravel())
       const getFadeScrollDistance = () =>
@@ -57,8 +78,12 @@ export function initAnimation(): void {
       gsap.set(innerPanel, { clearProps: 'transform' })
 
       const holdDistance = getHoldDistance()
+      const overflowTravel = getOverflowTravel()
       const overflowDistance = getOverflowScrollDistance()
+      const overflowReleaseTravel = getReleaseTravel(overflowTravel)
       const transitionDistance = getTransitionScrollDistance()
+      const transitionTravel = getTransitionTravel()
+      const transitionReleaseTravel = getReleaseTravel(transitionTravel)
       const fadeDistance = getFadeScrollDistance()
       const totalDistance = getPinDistance()
       const holdPortion =
@@ -79,7 +104,7 @@ export function initAnimation(): void {
           pin: true,
           pinSpacing: true,
           anticipatePin: 1,
-          scrub: true,
+          scrub: SECTION_SCROLL_SCRUB,
           invalidateOnRefresh: true,
           refreshPriority: 10,
           markers: SCROLL_PINNING_MARKERS,
@@ -99,22 +124,55 @@ export function initAnimation(): void {
       }
 
       if (overflowDistance > 0) {
-        timeline.to(innerPanel, {
-          y: () => -getOverflowTravel(),
-          duration: scrollPortion,
-        })
+        const overflowReleasePortion =
+          overflowTravel === 0 ? 0 : scrollPortion * (overflowReleaseTravel / overflowTravel)
+        const overflowMainPortion = scrollPortion - overflowReleasePortion
+
+        if (overflowReleasePortion > 0) {
+          timeline.to(innerPanel, {
+            y: -overflowReleaseTravel,
+            duration: overflowReleasePortion,
+            ease: 'power1.out',
+          })
+        }
+
+        if (overflowMainPortion > 0) {
+          timeline.to(innerPanel, {
+            y: -overflowTravel,
+            duration: overflowMainPortion,
+            ease: 'none',
+          })
+        }
       }
 
       const transitionStart = holdPortion + scrollPortion
 
-      timeline.to(innerPanel, {
-        y: () => -(getOverflowTravel() + getTransitionTravel()),
-        duration: transitionPortion,
-      }, transitionStart)
+      if (transitionPortion > 0) {
+        const transitionReleasePortion =
+          transitionTravel === 0 ? 0 : transitionPortion * (transitionReleaseTravel / transitionTravel)
+        const transitionMainPortion = transitionPortion - transitionReleasePortion
+        const baseTransitionY = -overflowTravel
+
+        if (transitionReleasePortion > 0) {
+          timeline.to(innerPanel, {
+            y: baseTransitionY - transitionReleaseTravel,
+            duration: transitionReleasePortion,
+            ease: 'power1.out',
+          }, transitionStart)
+        }
+
+        if (transitionMainPortion > 0) {
+          timeline.to(innerPanel, {
+            y: baseTransitionY - transitionTravel,
+            duration: transitionMainPortion,
+            ease: 'none',
+          }, transitionStart + transitionReleasePortion)
+        }
+      }
 
       if (transitionPortion + fadePortion > 0) {
         timeline.to(panel, {
-          opacity: 0,
+          opacity: 0.5,
           duration: transitionPortion + fadePortion,
           ease: 'none',
         }, transitionStart)
@@ -132,6 +190,7 @@ export function initAnimation(): void {
     ScrollTrigger.refresh()
 
     return () => {
+      smoother?.kill()
       panels.forEach((panel) => {
         panel.style.removeProperty('margin-bottom')
         gsap.set(panel, { clearProps: 'transform,opacity,z-index' })

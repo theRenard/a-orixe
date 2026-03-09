@@ -34,7 +34,7 @@
     overflow: hidden;
   }
 
-  .with-borders {
+  . .with-borders {
     border-top: 3px solid var(--color-amber-4d);
     border-bottom: 3px solid var(--color-amber-4d);
   }

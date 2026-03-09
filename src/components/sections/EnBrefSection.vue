@@ -52,7 +52,7 @@ onMounted(() => {
     }, 0.2)
     tl.to(obj2, {
       value: target2,
-      duration: 2,
+      duration: 3,
       ease: 'power2.out',
       onUpdate: () => { el2.textContent = String(Math.round(obj2.value)) },
     }, 0.35)
@@ -69,7 +69,7 @@ onMounted(() => {
   Count-up timeline (ScrollTrigger):
   - trigger: sectionRoot, start: 'top 70%', once: true
   - stat1El: tween value 0 -> t('enBref.stat1Number'), duration 3, ease power2.out, onUpdate sets el1.textContent
-  - stat2El: tween value 0 -> t('enBref.stat2Number'), duration 2, ease power2.out, onUpdate sets el2.textContent
+  - stat2El: tween value 0 -> t('enBref.stat2Number'), duration 3, ease power2.out, onUpdate sets el2.textContent
   - positions: 0.2 and 0.35
 </doc>
 

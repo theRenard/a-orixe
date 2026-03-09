@@ -23,9 +23,9 @@ onMounted(() => {
     scrollTrigger: { trigger: chart, start: 'top 80%', once: true },
   })
 
-  tl.fromTo(fill1, { width: '0%' }, { width: '46%', duration: 2, ease: 'power2.out' }, 0)
-  tl.fromTo(fill2, { width: '0%' }, { width: '19%', duration: 2, ease: 'power2.out' }, 0.1)
-  tl.fromTo(fill3, { width: 0 }, { width: 2, duration: 2, ease: 'power2.out' }, 0.2)
+  tl.fromTo(fill1, { width: '0%' }, { width: '46%', duration: 3, ease: 'power2.out' }, 0)
+  tl.fromTo(fill2, { width: '0%' }, { width: '19%', duration: 3, ease: 'power2.out' }, 0.1)
+  tl.fromTo(fill3, { width: 0 }, { width: 2, duration: 3, ease: 'power2.out' }, 0.2)
 
   cleanup = () => {
     tl.scrollTrigger?.kill()
@@ -42,7 +42,7 @@ onUnmounted(() => {
 <doc lang="text">
   Previous animation: GSAP timeline with ScrollTrigger.
   - scrollTrigger: { trigger: chart, start: 'top 80%', once: true }
-  - Timeline: fill1 width 0% → 46% (duration 2, ease power2.out, position 0); fill2 width 0% → 19% (duration 2, ease power2.out, position 0.1); fill3 width 0 → 2 (duration 2, ease power2.out, position 0.2).
+  - Timeline: fill1 width 0% → 46% (duration 3, ease power2.out, position 0); fill2 width 0% → 19% (duration 3, ease power2.out, position 0.1); fill3 width 0 → 2 (duration 3, ease power2.out, position 0.2).
   - Refs: chartRef, fill1Ref, fill2Ref, fill3Ref. Bars shown at final widths via CSS below.
 </doc>
 

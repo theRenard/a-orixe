@@ -13,6 +13,8 @@ const props = withDefaults(
 
 const fillPercent = ref(0)
 let observer: IntersectionObserver | null = null
+let mutationObserver: MutationObserver | null = null
+let setupScheduled = false
 let blockElements: Element[] = []
 /** For each block index, whether it is currently intersecting the viewport. */
 const intersecting = ref<boolean[]>([])
@@ -39,6 +41,7 @@ function updateProgress() {
 }
 
 function setupObserver() {
+  setupScheduled = false
   observer?.disconnect()
   const viewport = props.viewportRef?.value
   const root = viewport ?? null
@@ -73,9 +76,33 @@ function setupObserver() {
   blockElements.forEach((el) => observer!.observe(el))
 }
 
+function scheduleSetup() {
+  if (setupScheduled) return
+  setupScheduled = true
+  requestAnimationFrame(() => {
+    teardown()
+    setupObserver()
+  })
+}
+
+function setupMutationObserver() {
+  if (typeof document === 'undefined') return
+
+  mutationObserver?.disconnect()
+  mutationObserver = new MutationObserver(() => {
+    scheduleSetup()
+  })
+  mutationObserver.observe(document.body, {
+    childList: true,
+    subtree: true,
+  })
+}
+
 function teardown() {
   observer?.disconnect()
   observer = null
+  mutationObserver?.disconnect()
+  mutationObserver = null
 }
 
 watch(
@@ -89,6 +116,7 @@ watch(
 
 onMounted(() => {
   setupObserver()
+  setupMutationObserver()
 })
 onUnmounted(teardown)
 </script>
