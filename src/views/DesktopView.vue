@@ -56,7 +56,7 @@ function unregisterBlockEnter(index: number) {
 provide('blockScroll/registerBlockEnter', registerBlockEnter)
 provide('blockScroll/unregisterBlockEnter', unregisterBlockEnter)
 
-const { currentBlockIndex } = useBlockScroll({
+useBlockScroll({
   containerRef: mainRef,
   railRef,
   enabled: isWide,
