@@ -51,10 +51,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.fourth-testimonial {
-  overflow-x: hidden;
-}
-
 .fourth-testimonial__container {
   position: relative;
 }

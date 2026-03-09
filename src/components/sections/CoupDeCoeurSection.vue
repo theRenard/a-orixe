@@ -53,8 +53,3 @@ onMounted(() => {
 </section>
 </template>
 
-<style scoped>
-.coup-de-coeur-section {
-  overflow-x: hidden;
-}
-</style>

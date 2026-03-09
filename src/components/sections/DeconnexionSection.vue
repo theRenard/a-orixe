@@ -45,8 +45,3 @@ onMounted(() => {
 </section>
 </template>
 
-<style scoped>
-.deconnexion-section {
-  overflow-x: hidden;
-}
-</style>

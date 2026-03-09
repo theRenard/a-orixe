@@ -199,7 +199,6 @@ watch(isWide, (wide) => {
   width: 100vw;
   justify-content: flex-start;
   align-items: stretch;
-  overflow-x: hidden;
 }
 
 .reconstitution-trac-section .section-inner {

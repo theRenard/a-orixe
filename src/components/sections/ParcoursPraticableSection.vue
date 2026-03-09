@@ -59,10 +59,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.parcours-praticable-section {
-  overflow-x: hidden;
-}
-
 .parcours-praticable-section__first {
   margin-top: 1rem;
 }

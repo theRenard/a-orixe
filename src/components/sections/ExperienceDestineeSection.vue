@@ -76,10 +76,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.experience-destinee-section {
-  overflow-x: hidden;
-}
-
 .experience-destinee-section__illustration {
   display: block;
   max-width: 100%;

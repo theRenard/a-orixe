@@ -63,10 +63,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.concentre-galice-section {
-  overflow-x: hidden;
-}
-
 .concentre-galice-section .centered--large+.centered :deep(.paragraph-spacing) {
   margin-top: 0.75rem !important;
 }

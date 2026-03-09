@@ -35,8 +35,3 @@ onMounted(() => {
 </div>
 </template>
 
-<style scoped>
-.ressentir-lieux-closing-section {
-  overflow-x: hidden;
-}
-</style>

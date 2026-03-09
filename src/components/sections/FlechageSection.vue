@@ -47,8 +47,3 @@ onMounted(() => {
 </section>
 </template>
 
-<style scoped>
-.flechage-section {
-  overflow-x: hidden;
-}
-</style>

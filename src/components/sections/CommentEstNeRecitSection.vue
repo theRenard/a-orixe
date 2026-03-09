@@ -66,7 +66,6 @@ onMounted(() => {
 
 <style scoped>
 .comment-est-ne-section {
-  overflow-x: hidden;
   background-color: var(--color-white);
   /* padding: 4rem 0 5rem; */
 }

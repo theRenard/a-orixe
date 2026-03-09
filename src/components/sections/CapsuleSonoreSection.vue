@@ -174,7 +174,6 @@ watch(isWide, (wide) => {
   width: 100vw;
   justify-content: flex-start;
   align-items: stretch;
-  overflow-x: hidden;
 }
 
 .capsule-sonore-section .section-inner {

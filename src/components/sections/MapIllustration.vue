@@ -169,7 +169,8 @@ watch(isWide, (wide) => {
 </script>
 
 <template>
-<section ref="sectionRoot" class="section map-illustration-section section--full-viewport" data-block data-component="MapIllustration">
+<section ref="sectionRoot" class="section map-illustration-section section--full-viewport" data-block
+  data-component="MapIllustration">
   <div class="section-inner" data-block-inner>
     <div ref="mapBlock" class="map-illustration" :style="{ '--map-aspect-ratio': mapAspectRatio }" role="img"
       :aria-label="$t('carteEtapesSantiago.caption')">
@@ -179,7 +180,7 @@ watch(isWide, (wide) => {
       </div>
     </div>
 
-    <div ref="content" class="map-illustration-section__content pb-10">
+    <div ref="content" class="map-illustration-section__content">
       <div class="container">
         <div class="centered--large">
           <div class="row-two-col map-illustration-section__steps-row">
@@ -193,7 +194,7 @@ watch(isWide, (wide) => {
         <div class="centered">
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('santiagoSteps.paragraph1')"></p>
           <p class="type__section-paragraph paragraph-spacing" v-html="$t('santiagoSteps.paragraph2')"></p>
-          <p ref="question" class="type__question paragraph-spacing mb-10" v-html="$t('santiagoSteps.highlight')"></p>
+          <p ref="question" class="type__question paragraph-spacing" v-html="$t('santiagoSteps.highlight')"></p>
         </div>
       </div>
     </div>
@@ -206,7 +207,6 @@ watch(isWide, (wide) => {
   width: 100vw;
   justify-content: flex-start;
   align-items: stretch;
-  overflow-x: hidden;
 }
 
 .map-illustration-section .section-inner {

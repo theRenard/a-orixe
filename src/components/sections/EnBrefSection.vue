@@ -124,7 +124,6 @@ onMounted(() => {
 <style scoped>
 .en-bref-section {
   background-color: var(--color-teal-enbref-bg);
-  overflow-x: hidden;
 }
 
 .en-bref-section__inner {

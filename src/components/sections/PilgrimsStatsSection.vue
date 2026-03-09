@@ -49,10 +49,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.pilgrims-stats-section {
-  overflow-x: hidden;
-}
-
 .pilgrims-stats-section__chart {
   display: block;
 }

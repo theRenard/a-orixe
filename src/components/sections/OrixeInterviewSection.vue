@@ -58,8 +58,3 @@ onMounted(() => {
 </section>
 </template>
 
-<style scoped>
-.orixe-interview-section {
-  overflow-x: hidden;
-}
-</style>

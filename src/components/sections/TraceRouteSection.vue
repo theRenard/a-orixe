@@ -57,10 +57,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.trace-route-section {
-  overflow-x: hidden;
-}
-
 .trace-route-section__player-wrap {
   display: flex;
   flex-direction: column;

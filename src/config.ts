@@ -14,7 +14,7 @@ export const SCROLL_SMOOTHER_TOUCH_SMOOTH = 0.1
 export const SECTION_HOLD_SCROLL_PX = 200
 
 /** Multiplier for desktop scroll distance so section progression feels slower. */
-export const SECTION_SCROLL_DISTANCE_MULTIPLIER = 2
+export const SECTION_SCROLL_DISTANCE_MULTIPLIER = 0.5
 
 /** Seconds for pinned desktop sections to catch up to the scroll position. */
 export const SECTION_SCROLL_SCRUB = 1

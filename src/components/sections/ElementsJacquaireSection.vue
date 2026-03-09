@@ -50,10 +50,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.elements-jacquaire-section {
-  overflow-x: hidden;
-}
-
 /* .elements-jacquaire-section__image {
   display: block;
   max-width: 100%;

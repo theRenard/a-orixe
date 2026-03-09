@@ -172,7 +172,7 @@ export function initAnimation(): void {
 
       if (transitionPortion + fadePortion > 0) {
         timeline.to(panel, {
-          opacity: 0.5,
+          opacity: 0,
           duration: transitionPortion + fadePortion,
           ease: 'none',
         }, transitionStart)

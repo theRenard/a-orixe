@@ -197,7 +197,6 @@ watch(isWide, (wide) => {
   width: 100vw;
   justify-content: flex-start;
   align-items: stretch;
-  overflow-x: hidden;
 }
 
 .ressentir-lieux-section .section-inner {

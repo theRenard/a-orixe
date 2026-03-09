@@ -81,10 +81,6 @@ const imageList = computed(() => [
 </template>
 
 <style scoped>
-.joyau-section {
-  overflow-x: hidden;
-}
-
 .joyau-section__quote {
   margin: 0;
 }

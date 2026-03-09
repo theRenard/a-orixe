@@ -45,8 +45,3 @@ onMounted(() => {
 </section>
 </template>
 
-<style scoped>
-.santiago-journey-section {
-  overflow-x: hidden;
-}
-</style>

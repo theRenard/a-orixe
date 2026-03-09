@@ -26,7 +26,7 @@ onMounted(() => {
 </doc>
 
 <template>
-<section ref="sectionRoot" :class="['section', 'reconnaissance-section', 'section--full-viewport']" data-block
+<section ref="sectionRoot" :class="['section', 'reconnaissance-section']" data-block
   data-component="ReconnaissanceSection">
   <div class="section-inner" data-block-inner>
     <div class="container">
@@ -43,9 +43,3 @@ onMounted(() => {
   </div>
 </section>
 </template>
-
-<style scoped>
-.reconnaissance-section {
-  overflow-x: hidden;
-}
-</style>

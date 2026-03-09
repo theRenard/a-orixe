@@ -21,8 +21,3 @@ defineProps<{
   </div>
 </template>
 
-<style scoped>
-.reveal-section {
-  overflow-x: hidden;
-}
-</style>

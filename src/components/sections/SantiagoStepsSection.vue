@@ -57,10 +57,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.santiago-steps-section {
-  overflow-x: hidden;
-}
-
 .santiago-steps-section__title-row {
   display: flex;
   align-items: flex-end;

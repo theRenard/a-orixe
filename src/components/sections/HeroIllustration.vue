@@ -266,7 +266,6 @@ watch(isWide, (wide) => {
 .hero-block {
   width: 100vw;
   line-height: 0;
-  overflow-x: hidden;
   justify-content: flex-start;
   align-items: stretch;
 }

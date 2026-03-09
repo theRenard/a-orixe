@@ -68,10 +68,6 @@ const imageList = computed(() => [
 </template>
 
 <style scoped>
-.signalisation-section {
-  overflow-x: hidden;
-}
-
 .signalisation-section__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

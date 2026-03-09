@@ -56,10 +56,6 @@ onMounted(() => {
   margin: 0 auto;
 }
 
-.reconnaissance-footnote-section {
-  overflow-x: hidden;
-}
-
 .reconnaissance-footnote-section .paragraph-spacing {
   margin-top: 0.75rem;
 }

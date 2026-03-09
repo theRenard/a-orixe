@@ -44,11 +44,11 @@ import CommentEstNeRecitSection from '@/components/sections/CommentEstNeRecitSec
     <SecondTestimonial />
     <RessentirLieuxSection />
     <FifthTestimonial />
-  <AssociationSection />
-  <ReconstitutionTracSection />
+    <AssociationSection />
+    <ReconstitutionTracSection />
+    -->
   <ThirdTestimonial />
   <ElementsJacquaireSection />
-  -->
   <ParcoursPraticableSection />
   <MapIllustration />
   <ConcentreGaliceSection />

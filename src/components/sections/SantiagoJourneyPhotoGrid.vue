@@ -21,7 +21,7 @@ onMounted(() => {
   const tweens: UseAnimationTween[] = [
     {
       el: photoGrid,
-      from: { y: -80, opacity: 0, scale: 0.5, rotation: 12 },
+      from: { y: -80, opacity: 0, scale: 0.5, rotation: 8 },
       to: { y: 0, opacity: 1, scale: 1, rotation: 0, ease: 'power3.out' },
     },
     { el: cellLeft, from: { x: -80, opacity: 0 }, to: { x: 0, opacity: 1, delay: 0.06, ease: 'power3.out' } },
@@ -66,17 +66,20 @@ const imageList = computed(() => [
                 <img :src="leftImage" :alt="$t('santiagoJourney.imageCaption')" loading="lazy">
               </ImageCrop>
             </div>
-            <div ref="cellRightTop" class="santiago-journey-photo-grid__cell santiago-journey-photo-grid__cell--right-top">
+            <div ref="cellRightTop"
+              class="santiago-journey-photo-grid__cell santiago-journey-photo-grid__cell--right-top">
               <ImageCrop width="100%" height="100%" position="center 50%">
                 <img :src="rightTopImage" alt="" loading="lazy" role="presentation">
               </ImageCrop>
             </div>
-            <div ref="cellRightBottom" class="santiago-journey-photo-grid__cell santiago-journey-photo-grid__cell--right-bottom">
+            <div ref="cellRightBottom"
+              class="santiago-journey-photo-grid__cell santiago-journey-photo-grid__cell--right-bottom">
               <ImageCrop width="100%" height="100%" position="center 50%">
                 <img :src="rightBottomImage" alt="" loading="lazy" role="presentation">
               </ImageCrop>
             </div>
-            <p ref="caption" class="santiago-journey-photo-grid__caption type__image-caption type__image-caption--with-line">
+            <p ref="caption"
+              class="santiago-journey-photo-grid__caption type__image-caption type__image-caption--with-line">
               {{ $t('santiagoJourney.imageCaption') }}
             </p>
           </div>
@@ -88,10 +91,6 @@ const imageList = computed(() => [
 </template>
 
 <style scoped>
-.santiago-journey-photo-grid-section {
-  overflow-x: hidden;
-}
-
 .santiago-journey-photo-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

@@ -59,7 +59,6 @@ import heroImage from '@/assets/illustrations/illu_principale_ok.webp'
 .hero-block {
   width: 100%;
   line-height: 0;
-  overflow-x: hidden;
 }
 
 .hero-block__illustration {

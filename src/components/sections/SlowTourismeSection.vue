@@ -61,10 +61,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.slow-tourisme-section {
-  overflow-x: hidden;
-}
-
 .slow-tourisme-section__illustration {
   display: block;
   max-width: 100%;

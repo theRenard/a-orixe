@@ -53,8 +53,3 @@ onMounted(() => {
 </section>
 </template>
 
-<style scoped>
-.association-section {
-  overflow-x: hidden;
-}
-</style>
