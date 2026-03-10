@@ -39,7 +39,7 @@
 
   .block-viewport {
     height: var(--app-height);
-    overflow: hidden;
+    overflow: clip;
   }
 
   .blocks-rail {
@@ -55,7 +55,7 @@
     height: 100%;
     min-height: var(--app-height);
     overflow-y: auto;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   /* Two-column layout: left column fixed width, right column wraps to full width */

@@ -28,6 +28,32 @@ export interface UseBlockScrollInput {
   options?: UseBlockScrollOptions
 }
 
+const DOM_DELTA_PIXEL = 0
+const DOM_DELTA_LINE = 1
+const DOM_DELTA_PAGE = 2
+const MIN_WHEEL_LINE_DELTA_PX = 16
+const SCROLL_EDGE_TOLERANCE_PX = 12
+
+function normalizeWheelDeltaPx(
+  event: WheelEvent,
+  scrollThresholdPx: number,
+): number {
+  let deltaPx = event.deltaY
+
+  if (event.deltaMode === DOM_DELTA_LINE) {
+    deltaPx *= MIN_WHEEL_LINE_DELTA_PX
+  } else if (event.deltaMode === DOM_DELTA_PAGE) {
+    deltaPx *= getViewportHeight()
+  }
+
+  if (event.deltaMode !== DOM_DELTA_PIXEL && deltaPx !== 0) {
+    const magnitude = Math.max(Math.abs(deltaPx), scrollThresholdPx)
+    return Math.sign(deltaPx) * magnitude
+  }
+
+  return deltaPx
+}
+
 /**
  * Block-based navigation: scroll (wheel) is only a trigger.
  * - User can scroll within a block if it has [data-block-inner] with overflow (content taller than viewport).
@@ -86,20 +112,21 @@ export function useBlockScroll(input: UseBlockScrollInput) {
     const inner = getBlockInner(block)
     if (!inner) return true // no inner scroll → consider "at end"
     const { scrollTop, scrollHeight, clientHeight } = inner
-    const atBottom = scrollTop + clientHeight >= scrollHeight - 2
+    const remainingScrollPx = scrollHeight - clientHeight - scrollTop
+    const atBottom = remainingScrollPx <= SCROLL_EDGE_TOLERANCE_PX
     return atBottom
   }
 
   function isScrollableAtTop(block: HTMLElement): boolean {
     const inner = getBlockInner(block)
     if (!inner) return true
-    return inner.scrollTop <= 2
+    return inner.scrollTop <= SCROLL_EDGE_TOLERANCE_PX
   }
 
   function hasScrollableInner(block: HTMLElement): boolean {
     const inner = getBlockInner(block)
     if (!inner) return false
-    return inner.scrollHeight > inner.clientHeight
+    return inner.scrollHeight - inner.clientHeight > SCROLL_EDGE_TOLERANCE_PX
   }
 
   function goToBlock(index: number) {
@@ -149,7 +176,7 @@ export function useBlockScroll(input: UseBlockScrollInput) {
       return
     }
 
-    const deltaY = e.deltaY
+    const deltaY = normalizeWheelDeltaPx(e, scrollThresholdPx)
     const scrollingDown = deltaY > 0
     const scrollingUp = deltaY < 0
 

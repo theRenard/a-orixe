@@ -37,7 +37,7 @@ import EnBrefSection from '@/components/sections/EnBrefSection.vue'
 import CommentEstNeRecitSection from '@/components/sections/CommentEstNeRecitSection.vue'
 import ReadProgressBar from '@/components/ReadProgressBar.vue'
 import WindowWidthLabel from '@/components/WindowWidthLabel.vue'
-// import BlockCounter from '@/components/BlockCounter.vue'
+import BlockCounter from '@/components/BlockCounter.vue'
 import { MOBILE_ANIMATIONS_ENABLED } from '@/config/feature-flags'
 
 const mainRef = ref<HTMLElement | null>(null)
@@ -138,7 +138,7 @@ onUnmounted(() => {
 
 <template>
 <main ref="mainRef" class="block-viewport">
-  <!-- <BlockCounter v-if="isWide" /> -->
+  <BlockCounter v-if="isWide" />
   <WindowWidthLabel v-if="isWide" />
   <ReadProgressBar v-if="isWide" :viewport-ref="(mainRef as unknown as { value: HTMLElement | null })"
     :rail-ref="(railRef as unknown as { value: HTMLElement | null })" />

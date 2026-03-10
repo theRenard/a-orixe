@@ -4,7 +4,7 @@ withDefaults(
     /** Static version number (e.g. 1 → "v1"). */
     version?: number
   }>(),
-  { version: 1 }
+  { version: 4 }
 )
 </script>
 
