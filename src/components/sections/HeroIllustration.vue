@@ -4,8 +4,10 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import heroImage from '@/assets/illustrations/illu_principale_ok.webp'
 import mouseIcon from '@/assets/icons/scroll_down_2.webp'
-import { ANIMATION_PLAYBACK_RATE } from '@/config'
-import { useMobileDetection } from '@/composables/useMobileDetection'
+import { useRevealAnimation } from '@/composables/useRevealAnimation'
+import { useMobileDetection, isMobileViewport } from '@/composables/useMobileDetection'
+import { getBlockIndexFromElement } from '@/composables/useBlockIndex'
+import { getViewportHeight, subscribeViewportHeight } from '@/composables/useViewportHeight'
 
 const { isWide, isMobile } = useMobileDetection()
 gsap.registerPlugin(ScrollTrigger)
@@ -19,14 +21,15 @@ const creditsLeft = ref<HTMLElement | null>(null)
 const creditsRight = ref<HTMLElement | null>(null)
 const scrollIndicator = ref<HTMLElement | null>(null)
 
-const HERO_SCROLL_THRESHOLD_PX = 600
-const HERO_SCROLL_INDICATOR_HIDE_PX = 10
-const HERO_REVEAL_TRIGGER_PX = 50
+/** Illustration height in vh: 100 at top, 50 after scrolling (over first ~600px). */
+const illustrationHeightVh = ref(isWide.value ? 100 : 75)
+const viewportHeightPx = ref(getViewportHeight())
+const SCROLL_THRESHOLD_PX = 600
 
-let tickerCleanup: (() => void) | null = null
-let pinTrigger: ScrollTrigger | null = null
-let revealTimeline: gsap.core.Timeline | null = null
-let revealDone = false
+const tickerCleanup: (() => void) | null = null
+const pinTrigger: ScrollTrigger | null = null
+const revealTimeline: gsap.core.Timeline | null = null
+const revealDone = false
 
 function setDesktopInitialState() {
   if (!illustration.value || !content.value || !heroTitle.value || !heroSubtitle.value || !creditsLeft.value || !creditsRight.value) return
@@ -42,121 +45,28 @@ function setDesktopInitialState() {
   }
 }
 
-function clearDesktopState() {
-  tickerCleanup?.()
-  tickerCleanup = null
-  revealTimeline?.kill()
-  revealTimeline = null
-  pinTrigger = null
-  revealDone = false
-
-  const elements = [
-    illustration.value,
-    content.value,
-    heroTitle.value,
-    heroSubtitle.value,
-    creditsLeft.value,
-    creditsRight.value,
-    scrollIndicator.value,
-  ].filter(Boolean)
-
-  elements.forEach((element) => {
-    gsap.set(element, { clearProps: 'all' })
-  })
-}
-
-function findPinTrigger(): ScrollTrigger | null {
-  if (!sectionRoot.value) return null
-  return ScrollTrigger.getAll().find((trigger) =>
-    trigger.trigger === sectionRoot.value && Boolean(trigger.pin),
-  ) ?? null
-}
-
-function syncHeroProgress() {
-  if (!illustration.value) return
-
-  if (!pinTrigger) {
-    pinTrigger = findPinTrigger()
-    if (!pinTrigger) return
-  }
-
-  const traveled = Math.max(0, pinTrigger.scroll() - pinTrigger.start)
-  const imageProgress = Math.min(traveled / HERO_SCROLL_THRESHOLD_PX, 1)
-  gsap.set(illustration.value, { height: `${100 - imageProgress * 50}vh` })
-
-  if (scrollIndicator.value) {
-    gsap.set(scrollIndicator.value, {
-      opacity: traveled <= HERO_SCROLL_INDICATOR_HIDE_PX ? 1 : 0,
-      visibility: traveled <= HERO_SCROLL_INDICATOR_HIDE_PX ? 'inherit' : 'hidden',
-    })
-  }
-
-  if (!revealDone && traveled >= HERO_REVEAL_TRIGGER_PX) {
-    revealDone = true
-    revealTimeline?.play(0)
-  } else if (revealDone && traveled < HERO_REVEAL_TRIGGER_PX) {
-    revealDone = false
-    revealTimeline?.pause(0)
-  }
-}
-
-function initDesktopAnimation() {
-  if (!sectionRoot.value || !illustration.value || !content.value || !heroTitle.value || !heroSubtitle.value || !creditsLeft.value || !creditsRight.value) {
-    return
-  }
-
-  setDesktopInitialState()
-
-  revealTimeline = gsap.timeline({ paused: true })
-  revealTimeline.timeScale(ANIMATION_PLAYBACK_RATE)
-  revealTimeline
-    .to(content.value, {
-      y: 0,
-      opacity: 1,
-      duration: 3,
-      ease: 'power3.out',
-    }, 0)
-    .to(heroTitle.value, {
-      x: 0,
-      opacity: 1,
-      duration: 3,
-      ease: 'power3.out',
-    }, 0.1)
-    .to(heroSubtitle.value, {
-      x: 0,
-      opacity: 1,
-      duration: 3,
-      ease: 'power3.out',
-    }, 0.2)
-    .to(creditsLeft.value, {
-      x: 0,
-      opacity: 1,
-      duration: 3,
-      ease: 'power3.out',
-    }, 0.35)
-    .to(creditsRight.value, {
-      x: 0,
-      opacity: 1,
-      duration: 3,
-      ease: 'power3.out',
-    }, 0.35)
-
-  const tick = () => {
-    syncHeroProgress()
-  }
-
-  gsap.ticker.add(tick)
-  tickerCleanup = () => {
-    gsap.ticker.remove(tick)
-  }
-  syncHeroProgress()
-}
+let myBlockIndex = -1
+let mobileRevealCleanup: (() => void) | void
+let viewportHeightCleanup: (() => void) | undefined
 
 onMounted(() => {
-  nextTick(() => {
-    if (!isWide.value) return
-    initDesktopAnimation()
+  setInitialState()
+  viewportHeightCleanup = subscribeViewportHeight((height) => {
+    viewportHeightPx.value = height
   })
+  myBlockIndex = getBlockIndexFromElement(sectionRoot.value)
+  registerBlockEnter?.(myBlockIndex, () => run())
+  if (isMobileViewport()) mobileRevealCleanup = run()
+  const el = blockInnerRef.value
+  if (el) {
+    el.addEventListener('scroll', onBlockScroll, { passive: true })
+    onUnmounted(() => el.removeEventListener('scroll', onBlockScroll))
+  }
+})
+onUnmounted(() => {
+  unregisterBlockEnter?.(myBlockIndex)
+  mobileRevealCleanup?.()
+  viewportHeightCleanup?.()
 })
 
 onUnmounted(() => {
@@ -186,30 +96,14 @@ watch(isWide, (wide) => {
 </doc>
 
 <template>
-<section
-  ref="sectionRoot"
-  :class="['section', 'hero-block', 'section--full-viewport', 'block--first']"
-  :data-wide="isWide" :data-mobile="isMobile" data-block data-component="HeroIllustration" aria-label="Hero">
-  <div class="section-inner" data-block-inner>
-      <div
-        ref="illustration"
-        class="hero-block__illustration"
-        :style="{ height: isWide ? '100vh' : '75vh' }" role="img"
-        :aria-label="$t('hero.illustrationAlt')">
-        <img
-          :src="heroImage"
-          alt=""
-          class="hero-block__illustration-image"
-          aria-hidden="true">
-        <div
-          ref="scrollIndicator"
-          v-if="isWide"
-          class="scroll-indicator"
-          aria-hidden="true">
-          <img :src="mouseIcon" alt="" class="scroll-indicator__icon" />
-        </div>
-      </div>
-      <div ref="content" class="hero-block__content mt-4 type__credits">
+<div :data-wide="isWide" :data-mobile="isMobile" data-block data-component="HeroIllustration"
+  class="block block--first">
+  <div ref="blockInnerRef" data-block-inner class="block-inner">
+    <section class="hero-block section--full-viewport" aria-label="Hero">
+      <div ref="bg" class="hero-block__illustration"
+        :style="{ backgroundImage: `url(${heroImage})`, height: `${Math.round((illustrationHeightVh / 100) * viewportHeightPx)}px` }"
+        role="img" :aria-label="$t('hero.illustrationAlt')" />
+      <div ref="sectionRoot" class="hero-block__content mt-4 type__credits">
         <div class="container">
           <h1 ref="heroTitle" class="type__hero-title">
             {{ $t('hero.title') }}
@@ -217,9 +111,7 @@ watch(isWide, (wide) => {
           <p ref="heroSubtitle" class="type__hero-subtitle mt-0" v-html="$t('hero.subtitle')"></p>
           <div class="paragraph-spacing" :class="{ 'mb-0': isMobile }">
             <div class="container credits__inner">
-              <div
-                ref="creditsLeft"
-                class="credits__col credits__col--left"
+              <div ref="creditsLeft" class="credits__col credits__col--left"
                 :class="{ 'pb-2': isMobile, 'pt-2': isMobile }">
                 <div class="credits__line-accent" aria-hidden="true" />
                 <p>
@@ -230,27 +122,25 @@ watch(isWide, (wide) => {
                     class="type__credits-bold">{{ $t('credits.translatedByName') }}</span></p>
                 <p>
                   {{ $t('credits.publishedOnPrefix') }}<span class="type__credits-bold">{{ $t('credits.publishedOnDate')
-                  }}</span>
+                    }}</span>
                 </p>
               </div>
-              <div
-                ref="creditsRight"
-                :class="{ 'pb-2': isMobile, 'pt-2': isMobile }"
+              <div ref="creditsRight" :class="{ 'pb-2': isMobile, 'pt-2': isMobile }"
                 class="credits__col credits__col--right">
                 <div :class="{ 'ml-auto': isWide }" class="credits__line-accent" aria-hidden="true" />
                 <p>
                   {{ $t('credits.artDirectionPrefix') }}<span class="type__credits-bold">{{
                     $t('credits.artDirectionName')
-                  }}</span>
+                    }}</span>
                 </p>
                 <p>
                   {{ $t('credits.illustrationPrefix') }}<span class="type__credits-bold">{{
                     $t('credits.illustrationName')
-                  }}</span>
+                    }}</span>
                 </p>
                 <p>
                   {{ $t('credits.devDesignPrefix') }}<span class="type__credits-bold">{{ $t('credits.devDesignName')
-                  }}</span>
+                    }}</span>
                 </p>
               </div>
             </div>
@@ -258,8 +148,8 @@ watch(isWide, (wide) => {
         </div>
       </div>
 
-    </div>
-</section>
+  </div>
+  </section>
 </template>
 
 <style scoped>
@@ -349,7 +239,7 @@ watch(isWide, (wide) => {
 
   /* Limit hero scroll height so less scroll is needed to reach bottom and go to next block */
   .hero-block {
-    max-height: calc(100dvh + 600px);
+    max-height: calc(var(--app-height) + 600px);
   }
 
   .credits__inner {

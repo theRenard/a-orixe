@@ -32,11 +32,8 @@ useHead({
 <style scoped>
 .app-root {
   position: relative;
-  min-height: 100dvh;
-}
-
-#smooth-wrapper {
-  overflow: hidden;
+  width: 100%;
+  min-height: var(--app-height) !important;
 }
 
 .app-root::before {

@@ -45,7 +45,7 @@
 
   .section--full-viewport {
     min-width: 100vw;
-    min-height: 100vh;
+    min-height: var(--app-height);
   }
 
   .testimonial {
@@ -71,28 +71,28 @@
     padding-left: 15rem;
   }
 
-  /* Section inner: reference .section-inner layout; height/overflow also on [data-block-inner] for pinning. */
-  .section-inner {
-    height: auto;
-    /* overflow: hidden; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .block-viewport {
+    height: var(--app-height);
+    overflow: clip;
+  }
+
+  .blocks-rail {
+    will-change: transform;
   }
 
   /* Pinning: fixed height per block, inner can be taller for fake-scroll (see useScrollAnimation). */
   [data-block] {
-    /* height: 100dvh;
-    min-height: 100dvh;
+    height: var(--app-height);
     margin: 0;
-    overflow: hidden; */
+    overflow: hidden;
+    */
   }
 
   [data-block-inner] {
-    /* height: auto;
-    min-height: 100%;
-    overflow: hidden;
-    overflow-x: hidden; */
+    height: 100%;
+    min-height: var(--app-height);
+    overflow-y: auto;
+    overflow-x: clip;
   }
 
   /* Two-column layout: left column fixed width, right column wraps to full width */

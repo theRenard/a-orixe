@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import SoundPlayer from '@/components/tools/SoundPlayer.vue'
-import audioDonManuel from '@/assets/audio/audio_don_manuel.mp4'
+import audioDonManuel from '@/assets/audio/audio_don_manuel.mp3'
 import chaptersDonManuel from '@/assets/audio-refs/Horodatage-Audio-DonManuel.json'
 import donManuelImage from '@/assets/audio-photos/pastille-photo-don-manuel.webp'
 import { useAnimation } from '@/composables/useAnimation'
