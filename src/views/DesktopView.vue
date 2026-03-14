@@ -56,7 +56,7 @@ function unregisterBlockEnter(index: number) {
 provide('blockScroll/registerBlockEnter', registerBlockEnter)
 provide('blockScroll/unregisterBlockEnter', unregisterBlockEnter)
 
-useBlockScroll({
+const { goToBlock } = useBlockScroll({
   containerRef: mainRef,
   railRef,
   enabled: isWide,
@@ -68,6 +68,15 @@ useBlockScroll({
     },
   },
 })
+
+function scrollToTop() {
+  if (isWide.value) {
+    goToBlock(0)
+  } else {
+    document.getElementById('article-start')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+}
+provide('scrollToTop', scrollToTop)
 
 // Desktop: animation = callback when block becomes active (onBlockChange above).
 // Mobile: page scrolls normally; fire animation when [data-block] enters viewport.
@@ -143,10 +152,10 @@ onUnmounted(() => {
   <ReadProgressBar v-if="isWide" :viewport-ref="(mainRef as unknown as { value: HTMLElement | null })"
     :rail-ref="(railRef as unknown as { value: HTMLElement | null })" />
   <div ref="railRef" class="blocks-rail">
-    <!--
-      -->
-    <HeroIllustration v-if="isWide" />
-    <HeroIllustrationMobile v-else />
+    <div id="article-start">
+      <HeroIllustration v-if="isWide" />
+      <HeroIllustrationMobile v-else />
+    </div>
     <CaminoSection />
     <FirstTestimonial />
     <EtapesClesSection />

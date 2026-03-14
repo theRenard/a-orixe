@@ -11,6 +11,8 @@ const author = ref<HTMLElement | null>(null)
 const content = ref<HTMLElement | null>(null)
 const registerBlockEnter = inject<((index: number, play: () => void) => void) | undefined>('blockScroll/registerBlockEnter')
 const unregisterBlockEnter = inject<((index: number) => void) | undefined>('blockScroll/unregisterBlockEnter')
+const scrollToTop = inject<(() => void) | undefined>('scrollToTop')
+const faviconUrl = `${import.meta.env.BASE_URL}favicon.svg`
 const { run, setInitialState } = useRevealAnimation({
   elements: [
     { el: sectionRoot, direction: 'down', delay: 0, duration: 3 },
@@ -64,6 +66,22 @@ onUnmounted(() => {
               <p class="comment-est-ne-section__paragraph paragraph-spacing" v-html="$t('commentEstNeRecit.paragraph')">
               </p>
             </div>
+          </div>
+          <div class="comment-est-ne-section__back-wrap">
+            <button
+              type="button"
+              class="comment-est-ne-section__back-btn"
+              :aria-label="$t('backToTop.label')"
+              @click="scrollToTop?.()"
+            >
+              <img
+                :src="faviconUrl"
+                alt=""
+                class="comment-est-ne-section__back-icon"
+                width="48"
+                height="48"
+              >
+            </button>
           </div>
         </div>
       </div>
@@ -181,5 +199,39 @@ onUnmounted(() => {
 
 .comment-est-ne-section__author-website {
   margin-bottom: 0;
+}
+
+.comment-est-ne-section__back-wrap {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.comment-est-ne-section__back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.comment-est-ne-section__back-btn:hover {
+  opacity: 0.85;
+  transform: scale(1.05);
+}
+
+.comment-est-ne-section__back-btn:focus-visible {
+  outline: 2px solid var(--color-teal-dark);
+  outline-offset: 4px;
+}
+
+.comment-est-ne-section__back-icon {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  object-fit: contain;
 }
 </style>
