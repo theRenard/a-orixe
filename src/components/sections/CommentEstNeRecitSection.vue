@@ -210,17 +210,24 @@ onUnmounted(() => {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem;
-  background: none;
-  border: none;
+  width: 4.5rem;
+  height: 4.5rem;
+  padding: 0;
+  background: var(--color-cream);
+  border: 3px solid var(--color-teal-medium);
   cursor: pointer;
   border-radius: 50%;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  overflow: hidden;
+  box-shadow: 0 0.35rem 1rem rgb(45 75 75 / 0.14);
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .comment-est-ne-section__back-btn:hover {
-  opacity: 0.85;
+  background: var(--color-teal-light);
+  opacity: 1;
   transform: scale(1.05);
+  box-shadow: 0 0.5rem 1.25rem rgb(45 75 75 / 0.2);
 }
 
 .comment-est-ne-section__back-btn:focus-visible {
@@ -230,8 +237,9 @@ onUnmounted(() => {
 
 .comment-est-ne-section__back-icon {
   display: block;
-  width: 3rem;
-  height: 3rem;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 </style>
